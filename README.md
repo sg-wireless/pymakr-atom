@@ -31,12 +31,12 @@ If you want to synchronize a subfolder of your project instead of the entire pro
 
 ## REPL
 
-Using the REPL is easy and works the same way as . Type any micro-python command, use tab to auto-complete, arrow keys to go back in history and any of the following commands:
+Using the REPL is easy and works the same way as your commandline based telnet or serial connection to your board. Type any micro-python command, use tab to auto-complete, arrow keys to go back in history and any of the following commands:
 - `CTRL-B`: Enter friendly REPL
 - `CTRL-C`: Stop any running code
 - `CTRL-D`: Soft reset
 
-Ctrl-C and Ctrl-V can also be used to copy and paste in the console. Mac users also have to use these instead of the cmd versions.
+Ctrl-C and Ctrl-V can also be used to copy and paste in the console (also on mac).
 
 ## Run
 
