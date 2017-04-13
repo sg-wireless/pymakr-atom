@@ -1,0 +1,27 @@
+{
+  "name": "Pymakr",
+  "main": "./lib/main.js",
+  "version": "0.0.0",
+  "description": "Adds a REPL console to Atom that connects to your Pycom-board and can run and sync your python code.",
+  "keywords": ["Pycom","Pymakr","MicroPython","WiPy","Wipy2","LoPy","SiPy","FiPy"],
+  "repository": "https://github.com/pycom/Pymakr-atom",
+  "license": "GPL-3.0",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0",
+     "node": ">=6.3.0 <=7.0.0"
+  },
+  "dependencies": {
+    "telnet-client": "^0.13.0",
+    "xterm": "^2.3.2",
+    "electron-rebuild": "^1.5.7",
+    "bindings": "1.2.1",
+    "commander": "^2.9.0",
+    "debug": "^2.3.2",
+    "lie": "^3.1.0",
+    "nan": "^2.4.0",
+    "object.assign": "^4.0.3"
+  },
+  "scripts": {
+    "install": "node install.js"
+  }
+}

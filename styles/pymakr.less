@@ -1,0 +1,53 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+
+// temp solution because for some reason CSS won't allow me to reference a relative folder one level higher
+@import "xterm.css";
+
+.pymakr {
+  height: 210px;
+  &.collapsed {
+    height:25px;
+  }
+  .pycom-top-bar {
+    height:25px;
+    min-width: 310px;
+    padding: 0 @component-padding;
+    .title {
+      width: 190px;
+      line-height: 25px;
+      float: left;
+    }
+    .buttons {
+      width: 290px;
+      position: absolute;
+      right:9px;
+      top:0px;
+      button {
+        float:right;
+        color:@text-color;
+        background: @button-background-color;
+        border: none;
+        padding: 4px;
+        margin: 0 4px 0 0;
+        .hidden {
+          display:none
+        }
+        &:hover{
+          background:@button-background-color-hover;
+        }
+        &.cancel {
+          background: @background-color-error;
+          color:#fff;
+        }
+      }
+    }
+  }
+  #terminal {
+    background: #000;
+    padding-left: 2px;
+  }
+}

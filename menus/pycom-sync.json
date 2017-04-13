@@ -1,0 +1,34 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle REPL screen",
+        "command": "pymakr:toggleREPL"
+      },
+      {
+        "label": "Synchronize code",
+        "command": "pymakr:sync"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "Pycom Sync",
+          "submenu": [
+            {
+              "label": "Toggle REPL screen",
+              "command": "pymakr:toggleREPL"
+            },
+            {
+              "label": "Syncrhonize code",
+              "command": "pymakr:synchronize"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
