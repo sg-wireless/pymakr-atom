@@ -1,4 +1,4 @@
-#  package
+#  Pymakr Atom Package
 
 Pymakr enables you to communicate to your Pycom board using the build in command line REPL. Run a single file to your board, sync your entire project or directly type and execute commands.
 
