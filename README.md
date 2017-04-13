@@ -48,4 +48,6 @@ The 'sync' button will synchronize all files in your project to the board. Make 
 
 If you want to sync only a certain folder in your project, use the 'Sync folder' field in the settings and add the folder name.
 
+By default, only the following file types are synchronized: py, txt, log, json and xml. This can be changed using the 'Sync file types' field in the settings.
+
 The sync limit is set to 350kb. If you sync folder contains more than that, the terminal will refuse to sync.
