@@ -51,3 +51,19 @@ If you want to sync only a certain folder in your project, use the 'Sync folder'
 By default, only the following file types are synchronized: py, txt, log, json and xml. This can be changed using the 'Sync file types' field in the settings.
 
 The sync limit is set to 350kb. If you sync folder contains more than that, the terminal will refuse to sync.
+
+## Common issues
+
+### Failed to load package: Cannot find module 'serialport'
+In some cases this is caused by the atom package manager using python 3.x, while node-gyp (used for compiling the serialport lib) needs python 2.x
+
+Solution: Tell the package manager to use python 2 instead. Running the following command switches apm to 2.7:
+
+`echo "python=/usr/bin/python2.7" >> ~/.atom/.apmrc`
+
+Now reinstall Pymakr or run `apm install` from the Pymakr package located in `~/.atom/packages/Pymakr`
+
+### Synchronizing a project results in 'Failed to allocate memory' error
+Synchronizing takes a bit of memory, so this error can occur when code running on the board is taking a substantial amount of memory.
+
+Solution: Run the board in [safe mode](https://docs.pycom.io/pycom_esp32/pycom_esp32/toolsandfeatures.html#boot-modes-and-safe-boot) when synchronizing
