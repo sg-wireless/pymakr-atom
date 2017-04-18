@@ -55,7 +55,7 @@ The sync limit is set to 350kb. If you sync folder contains more than that, the 
 ## Common issues
 
 ### Failed to load package: Cannot find module 'serialport'
-In some cases this is caused by the atom package manager using python 3.x, while node-gyp (used for compiling the serialport lib) needs python 2.x
+In some cases this is caused by the atom package manager (apm) using python 3.x, while node-gyp (used for compiling the serialport lib) needs python 2.x. To confirm this, `apm --version` can be run to check which python version apm is using.
 
 Solution: Tell the package manager to use python 2 instead. Running the following command switches apm to 2.7:
 
@@ -64,6 +64,6 @@ Solution: Tell the package manager to use python 2 instead. Running the followin
 Now reinstall Pymakr or run `apm install` from the Pymakr package located in `~/.atom/packages/Pymakr`
 
 ### Synchronizing a project results in 'Failed to allocate memory' error
-Synchronizing takes a bit of memory, so this error can occur when code running on the board is taking a substantial amount of memory.
+Synchronizing takes a bit of memory, so this error can occur when code running on the board already is taking a substantial amount of memory.
 
 Solution: Run the board in [safe mode](https://docs.pycom.io/pycom_esp32/pycom_esp32/toolsandfeatures.html#boot-modes-and-safe-boot) when synchronizing
