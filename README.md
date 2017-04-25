@@ -52,6 +52,15 @@ By default, only the following file types are synchronized: py, txt, log, json a
 
 The sync limit is set to 350kb. If you sync folder contains more than that, the terminal will refuse to sync.
 
+
+## Manual install
+
+To manually install the plugin, follow these steps
+- Delete any existing installation of the plugin
+- Download the code from github
+- Run the commands 'apm link' and 'apm install' from the downloaded folder
+- Restart atom
+
 ## Common issues
 
 ### Failed to load package: Cannot find module 'serialport'
