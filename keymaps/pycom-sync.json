@@ -1,6 +1,6 @@
 {
   "atom-workspace": {
-    "ctrl-alt-s": "pymakr:synchronize",
+    "ctrl-alt-s": "pymakr:sync",
     "ctrl-alt-t": "pymakr:toggleREPL",
     "ctrl-alt-c": "pymakr:connect",
     "ctrl-alt-r": "pymakr:run"

@@ -2,12 +2,17 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Toggle REPL screen",
-        "command": "pymakr:toggleREPL"
-      },
-      {
-        "label": "Synchronize code",
-        "command": "pymakr:sync"
+        "label": "Pymakr",
+        "submenu": [
+          {
+            "label": "Toggle Pycom Console",
+            "command": "pymakr:toggleREPL"
+          },
+          {
+            "label": "Run current file",
+            "command": "pymakr:run"
+          }
+        ]
       }
     ]
   },
@@ -16,15 +21,19 @@
       "label": "Packages",
       "submenu": [
         {
-          "label": "Pycom Sync",
+          "label": "Pymakr",
           "submenu": [
             {
-              "label": "Toggle REPL screen",
+              "label": "Toggle Pycom Console",
               "command": "pymakr:toggleREPL"
             },
             {
-              "label": "Syncrhonize code",
-              "command": "pymakr:synchronize"
+              "label": "Run current file",
+              "command": "pymakr:run"
+            },
+            {
+              "label": "Synchronize project",
+              "command": "pymakr:sync"
             }
           ]
         }
