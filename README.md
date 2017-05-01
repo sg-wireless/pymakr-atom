@@ -35,8 +35,9 @@ Using the REPL is easy and works the same way as your commandline based telnet o
 - `CTRL-B`: Enter friendly REPL
 - `CTRL-C`: Stop any running code
 - `CTRL-D`: Soft reset
+- `CTRL-E`: Paste mode
 
-Ctrl-C and Ctrl-V can also be used to copy and paste in the console (also on mac).
+Ctrl-C and Ctrl-V (or cmd-c/cmd-v on mac) can also be used to copy and paste in the console (also on mac).
 
 ## Run
 
