@@ -23,12 +23,20 @@
     height:25px;
   }
   .resizer {
+    display: none;
     position: absolute;
     top:-5px;
     left:0px;
     right:0px;
     height: 10px;
     cursor:n-resize;
+  }
+  cursor: pointer;
+  &.open {
+    cursor: default;
+    .resizer {
+      display: block;
+    }
   }
   .pycom-top-bar {
     height:25px;
