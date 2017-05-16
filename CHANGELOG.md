@@ -1,3 +1,10 @@
+## 1.0.0 - Stable release
+* Added project specific settings
+* Added serial port detection (in sub-navigation under the 'more' button)
+* Multiple bug fixes for synchronization over serial
+* Terminal height now resizable by dragging the top edge
+* Fixed 'failed to connect' bug when reconnecting on telnet
+
 ## 0.9.4 - Stability improvements
 * Include precompiled serialport libs for mac and linux
 * Improved error handling and stability on sync
