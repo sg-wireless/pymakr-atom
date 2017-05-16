@@ -199,8 +199,11 @@ class Monitor(object):
         machine.reset()
 
     def exit_monitor(self):
+        from network import WLAN
+        wlan = WLAN(mode=WLAN.STA_AP)
         self.running = False
         self.connection.destroy()
+
 
     @staticmethod
     def encode_str_len32(contents):
