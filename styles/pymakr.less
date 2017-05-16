@@ -4,13 +4,39 @@
 // for a full listing of what's available.
 @import "ui-variables";
 
-// temp solution because for some reason CSS won't allow me to reference a relative folder one level higher
-@import "xterm.css";
+@import "../node_modules/font-awesome/less/font-awesome.less";
+@fa-font-path: "atom://Pymakr/node_modules/font-awesome/fonts";
+
+@font-face {
+  font-family: 'Font Awesome';
+  font-weight: normal;
+  font-style: normal;
+  src: url('@{fa-font-path}/fontawesome-webfont.woff') format('woff');
+}
+.fa {
+  font-family: 'Font Awesome';
+}
 
 .pymakr {
   height: 210px;
   &.collapsed {
     height:25px;
+  }
+  .resizer {
+    display: none;
+    position: absolute;
+    top:-5px;
+    left:0px;
+    right:0px;
+    height: 10px;
+    cursor:n-resize;
+  }
+  cursor: pointer;
+  &.open {
+    cursor: default;
+    .resizer {
+      display: block;
+    }
   }
   .pycom-top-bar {
     height:25px;
@@ -22,11 +48,12 @@
       float: left;
     }
     .buttons {
-      width: 290px;
+      width: 380px;
       position: absolute;
       right:9px;
       top:0px;
       button {
+        position: relative;
         float:right;
         color:@text-color;
         background: @button-background-color;
@@ -42,6 +69,37 @@
         &.cancel {
           background: @background-color-error;
           color:#fff;
+        }
+        span.fa.down {
+          display: none;
+        }
+        div.subnav {
+          display: none;
+          position: absolute;
+          right:0px;
+          bottom:26px;
+          line-height: 25px;
+          background: @button-background-color;
+          div {
+            width: 133px;
+            padding:0 5px;
+            text-align: right;
+            cursor: pointer;
+            &:hover {
+              background:@button-background-color-hover;
+            }
+          }
+        }
+        &.open {
+          span.fa.up {
+            display: none;
+          }
+          span.fa.down {
+            display: inline;
+          }
+          div.subnav {
+            display: block;
+          }
         }
       }
     }

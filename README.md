@@ -2,8 +2,8 @@
 
 Pymakr enables you to communicate to your Pycom board using the build in command line REPL. Run a single file to your board, sync your entire project or directly type and execute commands.
 
-- Works with Mac OSX, Linux and windows
-- Connects to any Pycom board: WiPy, WiPy2.0, LoPy and any newer board
+- Works with Mac OSX, Linux and windows.
+- Connects to any Pycom board: WiPy, WiPy2.0, LoPy and any newer board.
 - Works best with firmware 1.6.11.b1 and higher. Earlier firmware might have unexpected behaviour when synchronizing files over serial.
 
 More info and documentation can be found on https://docs.pycom.io/
@@ -37,11 +37,11 @@ Using the REPL is easy and works the same way as your commandline based telnet o
 - `CTRL-D`: Soft reset
 - `CTRL-E`: Paste mode
 
-Ctrl-C and Ctrl-V (or cmd-c/cmd-v on mac) can also be used to copy and paste in the console (also on mac).
+Ctrl-C and Ctrl-V (or cmd-c/cmd-v on mac) can also be used to copy and paste in the console.
 
 ## Run
 
-The 'run' button on the right top of the commandline will run the code in the currently open file to the connected board. Any print output or exceptions from this code will appear in the commandline
+The 'run' button on the right top of the commandline will run the code from the currently open file to the connected board. Any print output or exceptions from this code will appear in the commandline
 
 ## Sync
 
@@ -53,13 +53,14 @@ By default, only the following file types are synchronized: py, txt, log, json a
 
 The sync limit is set to 350kb. If you sync folder contains more than that, the terminal will refuse to sync.
 
-
 ## Manual install
 
 To manually install the plugin, follow these steps
 - Delete any existing installation of the plugin
 - Download the code from github
-- Run the commands 'apm link' and 'apm install' from the downloaded folder
+- Override all files in the `~/.atom/packages/Pyakr` folder
+- If you haven't installed Pymakr before, place the files in any folder and run `apm link`
+- Run the commands `apm install` (or `npm install` if apm is not available) from package folder
 - Restart atom
 
 ## Common issues
