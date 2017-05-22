@@ -1,3 +1,9 @@
+## 1.0.1 - Bugfixes
+* Multiple typo's and small bugfixes
+* Added an option to get the wifi AP SSID from the board
+* UI updates including pycom logo
+* Increased maximum lines in terminal to 5000
+
 ## 1.0.0 - Stable release
 * Added project specific settings
 * Added serial port detection (in sub-navigation under the 'more' button)
