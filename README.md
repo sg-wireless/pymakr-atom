@@ -58,7 +58,7 @@ The sync limit is set to 350kb. If you sync folder contains more than that, the 
 To manually install the plugin, follow these steps
 - Delete any existing installation of the plugin
 - Download the code from github
-- Override all files in the `~/.atom/packages/Pyakr` folder
+- Override all files in the `~/.atom/packages/Pymakr` folder
 - If you haven't installed Pymakr before, place the files in any folder and run `apm link`
 - Run the commands `apm install` (or `npm install` if apm is not available) from package folder
 - Restart atom
