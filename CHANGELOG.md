@@ -1,3 +1,9 @@
+## 1.0.2 - Bugfixes
+* Added timeout and reconnect logic on serial connection (useful for pysense/pytrack sleep)
+* Pysense/pytrack serialport detection
+* Bugfix related to project settings not refreshing (issue #23)
+* Ignoring hidden and empty subfolders during synchronize
+
 ## 1.0.1 - Bugfixes
 * Multiple typo's and small bugfixes
 * Added an option to get the wifi AP SSID from the board
