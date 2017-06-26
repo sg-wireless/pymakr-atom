@@ -3,16 +3,15 @@
 var exec = require('child_process').exec;
 
 function installPrecompiledSerialLib(){
-  var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
-  console.log(precompiles[process.platform])
-  if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
-    var seperator = process.platform == 'win32' ? "&" : ";"
-    exec('cd lib/connections/serialport-'+precompiles[process.platform]+seperator+" npm install",function(error,stdout,stderr){
-      if(error){
-        console.log(error)
-      }
-    })
-  }
+  // var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
+  // if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
+  //   var seperator = process.platform == 'win32' ? "&" : ";"
+  //   exec('cd precompiles/serialport-'+precompiles[process.platform]+seperator+" npm install",function(error,stdout,stderr){
+  //     if(error){
+  //       console.log(error)
+  //     }
+  //   })
+  // }
 }
 
 if (process.platform != 'win32') {
