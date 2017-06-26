@@ -1,6 +1,6 @@
 'use strict';
 
-var bindings = require('../node_modules/bindings')('serialport.node');
+var bindings = require('bindings')('serialport.node');
 var listUnix = require('./list-unix');
 
 var linux = process.platform !== 'win32' && process.platform !== 'darwin';
