@@ -1,6 +1,8 @@
 // installing and re-compiling serialport
 // not needed on windows, for which a pre-compiled version is included in the lib/connections/serialport-win folder
 
+var exec = require('child_process').exec
+
 function installPrecompiledSerialLib(){
   // var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
   // if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
@@ -38,9 +40,11 @@ if (process.platform != 'win32') {
                 }
               })
             }
-          }
-        )
+          })
+        }
       }
-    }
-  )
+    )
+  }
+}
+)
 }
