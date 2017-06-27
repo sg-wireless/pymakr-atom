@@ -145,7 +145,7 @@
     "color": "true",
     "save_optional": "",
     "ignore_scripts": "",
-    "user_agent": "npm/3.10.5 node/v6.9.5 darwin x64",
+    "user_agent": "npm/3.10.10 node/v6.9.5 darwin x64",
     "cache_lock_wait": "10000",
     "production": "",
     "save_bundle": "",
