@@ -30,7 +30,7 @@
     "object.assign": "^4.0.3",
     "element-resize-detector": "1.1.11",
     "font-awesome": "^4.7.0",
-    "serialport": "^4.0.7"
+    "bindings": "1.2.1"
   },
   "scripts": {
     "install": "node install.js"
