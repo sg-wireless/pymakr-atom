@@ -1,25 +1,33 @@
 // installing and re-compiling serialport
-// not needed on windows, for which a pre-compiled version is included in the lib/connections/serialport-win folder
+
+var exec = require('child_process').exec
+
 if (process.platform != 'win32') {
-  var exec = require('child_process').exec;
-  exec('npm install electron-rebuild',
-  function(error,stdout,stderr){
-    if(error){
-      console.log(error)
-    }else{
-      exec('npm install serialport',
-      function(error,stdout,stderr){
-        if(error){
-          console.log(error)
-        }else{
-          exec('$(npm bin)/electron-rebuild -f -w serialport -v 1.3.13',
-          function(error,stout,stderr){
+  console.log("Installing serialport")
+  exec('npm install serialport',
+    function(error,stdout,stderr){
+      if(error){
+        console.log(error)
+      }else{
+        console.log("Installing electron rebuild")
+        exec('npm install electron-rebuild',
+          function(error,stdout,stderr){
             if(error){
               console.log(error)
+            }else{
+              console.log("Rebuilding...")
+              exec('$(npm bin)/electron-rebuild -f -w serialport -v 1.3.13',
+                function(error,stout,stderr){
+                  if(error){
+                    console.log(error)
+                  }
+                  console.log("Done!")
+                }
+              )
             }
-          })
-        }
-      })
+          }
+        )
+      }
     }
-  })
+  )
 }

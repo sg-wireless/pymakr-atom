@@ -23,14 +23,14 @@
     "telnet-client": "^0.13.0",
     "xterm": "^2.3.2",
     "electron-rebuild": "^1.5.7",
-    "bindings": "1.2.1",
     "commander": "^2.9.0",
     "debug": "^2.3.2",
     "lie": "^3.1.0",
     "nan": "^2.4.0",
     "object.assign": "^4.0.3",
     "element-resize-detector": "1.1.11",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "bindings": "1.2.1"
   },
   "scripts": {
     "install": "node install.js"

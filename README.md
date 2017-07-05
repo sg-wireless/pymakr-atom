@@ -78,3 +78,15 @@ Now reinstall Pymakr or run `apm install` from the Pymakr package located in `~/
 Synchronizing takes a bit of memory, so this error can occur when code running on the board already is taking a substantial amount of memory.
 
 Solution: Run the board in [safe mode](https://docs.pycom.io/pycom_esp32/pycom_esp32/toolsandfeatures.html#boot-modes-and-safe-boot) when synchronizing
+
+### Cannot connect to Pycom board via REPL or see the Sync/Run buttons
+
+In the case of a board that has already has code uploaded to it and is running a loop/non-exiting script, the board may not boot into a REPL.
+
+Solution: If the board is currently running code, you will need to exit the current script before proceeding:
+
+1. Ensure your board is connected to your computer
+2. Press the reset button on the device
+3. Press ctrl-c on within the Pymakr console to exit the current script/program
+
+The REPL should then appear with the '>>>' prompt and you will be able to run/sync your code.
