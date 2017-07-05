@@ -1,7 +1,9 @@
 // installing and re-compiling serialport
+// executed automatically from package.json on install
 
 var exec = require('child_process').exec
 
+// Don't preform on windows, since it often fails there. Automatically defaults to precompiled version in /precompiles folder
 if (process.platform != 'win32') {
   console.log("Installing serialport")
   exec('npm install serialport',
