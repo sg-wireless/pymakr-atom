@@ -1,3 +1,6 @@
+## 1.0.3 - Serialport fix for atom 1.17
+* Fixes issues with serialport lib on windows32 and problems in newer atom versions 1.17.2 and 1.18
+
 ## 1.0.2 - Bugfixes
 * Added timeout and reconnect logic on serial connection (useful for pysense/pytrack sleep)
 * Pysense/pytrack serialport detection
