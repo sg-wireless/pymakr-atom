@@ -1,3 +1,18 @@
+## 1.0.3 - Serialport fix for atom 1.17
+* Fixes issues with serialport lib on windows32 and problems in newer atom versions 1.17.2 and 1.18
+
+## 1.0.2 - Bugfixes
+* Added timeout and reconnect logic on serial connection (useful for pysense/pytrack sleep)
+* Pysense/pytrack serialport detection
+* Bugfix related to project settings not refreshing (issue #23)
+* Ignoring hidden and empty subfolders during synchronize
+
+## 1.0.1 - Bugfixes
+* Multiple typo's and small bugfixes
+* Added an option to get the wifi AP SSID from the board
+* UI updates including pycom logo
+* Increased maximum lines in terminal to 5000
+
 ## 1.0.0 - Stable release
 * Added project specific settings
 * Added serial port detection (in sub-navigation under the 'more' button)
