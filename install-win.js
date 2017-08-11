@@ -6,7 +6,7 @@
 var exec = require('child_process').exec
 
 console.log("Installing serialport")
-exec('npm install serialport',
+exec('npm install serialport@4.0.6',
   function(error,stdout,stderr){
     if(error){
       console.log(error)
@@ -18,7 +18,7 @@ exec('npm install serialport',
             console.log(error)
           }else{
             console.log("Rebuilding...")
-            exec('C:\\Users\\devel\\Projects\\pymakr-atom\\node_modules\\.bin\\electron-rebuild -f -w serialport -v 1.3.13',
+            exec('C:\\Users\\<user>\\Projects\\pymakr-atom\\node_modules\\.bin\\electron-rebuild -f -w serialport -v 1.3.13',
               function(error,stout,stderr){
                 if(error){
                   console.log(error)
