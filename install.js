@@ -6,7 +6,7 @@ var exec = require('child_process').exec
 // Don't preform on windows, since it often fails there. Automatically defaults to precompiled version in /precompiles folder
 if (process.platform != 'win32') {
   console.log("Installing serialport")
-  exec('npm install serialport',
+  exec('npm install serialport@4.0.6',
     function(error,stdout,stderr){
       if(error){
         console.log(error)
