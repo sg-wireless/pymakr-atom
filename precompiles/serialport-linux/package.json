@@ -2,26 +2,25 @@
   "_args": [
     [
       {
-        "raw": "serialport@4.0.7",
+        "raw": "serialport@4.0.6",
         "scope": null,
         "escapedName": "serialport",
         "name": "serialport",
-        "rawSpec": "4.0.7",
-        "spec": "4.0.7",
+        "rawSpec": "4.0.6",
+        "spec": "4.0.6",
         "type": "version"
       },
       "/home/ralph/Projects/pymakr-atom"
     ]
   ],
-  "_from": "serialport@4.0.7",
-  "_id": "serialport@4.0.7",
+  "_from": "serialport@4.0.6",
+  "_id": "serialport@4.0.6",
   "_inCache": true,
-  "_installable": true,
   "_location": "/serialport",
   "_nodeVersion": "0.12.7",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/serialport-4.0.7.tgz_1481518569217_0.2832766058854759"
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/serialport-4.0.6.tgz_1478841581360_0.1015991938766092"
   },
   "_npmUser": {
     "name": "reconbot",
@@ -29,25 +28,24 @@
   },
   "_npmVersion": "2.15.6",
   "_phantomChildren": {
-    "commander": "2.10.0"
+    "commander": "2.11.0"
   },
   "_requested": {
-    "raw": "serialport@4.0.7",
+    "raw": "serialport@4.0.6",
     "scope": null,
     "escapedName": "serialport",
     "name": "serialport",
-    "rawSpec": "4.0.7",
-    "spec": "4.0.7",
+    "rawSpec": "4.0.6",
+    "spec": "4.0.6",
     "type": "version"
   },
   "_requiredBy": [
-    "#USER",
-    "/"
+    "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/serialport/-/serialport-4.0.7.tgz",
-  "_shasum": "421c618a8a612bd40cfa461b4a46154daf2229a5",
+  "_resolved": "https://registry.npmjs.org/serialport/-/serialport-4.0.6.tgz",
+  "_shasum": "2ea4c1a2b6ad91d9cacd78e8e530f8969ac650ae",
   "_shrinkwrap": null,
-  "_spec": "serialport@4.0.7",
+  "_spec": "serialport@4.0.6",
   "_where": "/home/ralph/Projects/pymakr-atom",
   "author": {
     "name": "Chris Williams",
@@ -61,7 +59,7 @@
   "binary": {
     "module_name": "serialport",
     "module_path": "build/{configuration}/",
-    "host": "https://github.com/EmergingTechnologyAdvisors/node-serialport/releases/download/4.0.7"
+    "host": "https://github.com/EmergingTechnologyAdvisors/node-serialport/releases/download/4.0.6"
   },
   "bugs": {
     "url": "https://github.com/EmergingTechnologyAdvisors/node-serialport/issues"
@@ -75,7 +73,7 @@
     "debug": "^2.3.2",
     "lie": "^3.1.0",
     "nan": "^2.4.0",
-    "node-pre-gyp": "^0.6.32",
+    "node-pre-gyp": "^0.6.31",
     "object.assign": "^4.0.3"
   },
   "description": "Node.js package to access serial ports. Welcome your robotic javascript overlords. Better yet, program them!",
@@ -98,13 +96,13 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "421c618a8a612bd40cfa461b4a46154daf2229a5",
-    "tarball": "https://registry.npmjs.org/serialport/-/serialport-4.0.7.tgz"
+    "shasum": "2ea4c1a2b6ad91d9cacd78e8e530f8969ac650ae",
+    "tarball": "https://registry.npmjs.org/serialport/-/serialport-4.0.6.tgz"
   },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "gitHead": "4a2a3cfae7ecba4e22e9c6d4cf7dfb7ec64324f6",
+  "gitHead": "fdad0051e94e2fc29a333f0818df17ae3e8d402c",
   "gypfile": true,
   "homepage": "https://github.com/EmergingTechnologyAdvisors/node-serialport#readme",
   "keywords": [
@@ -150,5 +148,5 @@
     "test": "nyc grunt --verbose test",
     "valgrind": "valgrind --leak-check=full --show-possibly-lost=no node --expose-gc --trace-gc node_modules/.bin/grunt test"
   },
-  "version": "4.0.7"
+  "version": "4.0.6"
 }
