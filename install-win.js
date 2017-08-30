@@ -18,7 +18,7 @@ exec('npm install serialport@4.0.6',
             console.log(error)
           }else{
             console.log("Rebuilding...")
-            exec('C:\\Users\\<user>\\Projects\\pymakr-atom\\node_modules\\.bin\\electron-rebuild -f -w serialport -v 1.3.13',
+            exec('C:\\Users\\ralph\\Projects\\pymakr-atom\\node_modules\\.bin\\electron-rebuild -f -w serialport -v 1.7.5',
               function(error,stout,stderr){
                 if(error){
                   console.log(error)

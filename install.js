@@ -3,9 +3,30 @@
 
 var exec = require('child_process').exec
 
+console.log("Installing serialport")
+var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
+if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
+  var plf = precompiles[process.platform]
+  var cpcommand = 'cp'
+  var build = 'build'
+  if(plf == 'win'){
+    cpcommand = 'xcopy'
+  }
+  if(plf == 'win' || plf == 'linux'){
+    build = 'node_modules/bindings/buid'
+  }
+  if(plf == 'win' && process.arch == 'ia32'){
+    plf = 'win32'
+  }
+  var path = "precompiles/serialport-" + plf + ""
+  console.log(path)
+  exec(cpcommand+' '+path+'/build/Release/serialport.node '+build)
+}
+
 // Don't preform on windows, since it often fails there. Automatically defaults to precompiled version in /precompiles folder
 if (process.platform != 'win32') {
-  console.log("Installing serialport")
+
+
   exec('npm install serialport@4.0.6',
     function(error,stdout,stderr){
       if(error){
