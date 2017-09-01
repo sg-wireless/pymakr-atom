@@ -1,4 +1,4 @@
-## 1.0.3 - Shared codebase with VSCode plugin
+## 1.0.4 - Shared codebase with VSCode plugin
 * Big refactor to get a shared base code with the VSCode plugin
 * Added 'open_on_start' config
 * Fixes issues with serialport lib for newer versions of atom
