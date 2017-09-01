@@ -1,3 +1,10 @@
+## 1.0.3 - Shared codebase with VSCode plugin
+* Big refactor to get a shared base code with the VSCode plugin
+* Added 'open_on_start' config
+* Fixes issues with serialport lib for newer versions of atom
+* Bugfix in the run feature on linux.
+* More relaxed keep-alive protocol on telnet (ping has to fail twice before connection break)
+
 ## 1.0.3 - Serialport fix for atom 1.17
 * Fixes issues with serialport lib on windows32 and problems in newer atom versions 1.17.2 and 1.18
 
