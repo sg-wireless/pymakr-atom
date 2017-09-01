@@ -6,6 +6,7 @@ Pymakr enables you to communicate to your Pycom board using the build in command
 - Connects to any Pycom board: WiPy, WiPy2.0, LoPy and any newer board.
 - Works best with firmware 1.6.11.b1 and higher. Earlier firmware might have unexpected behaviour when synchronizing files over serial.
 
+
 More info and documentation can be found on https://docs.pycom.io/
 
 ## Usage
@@ -74,12 +75,17 @@ Solution: Tell the package manager to use python 2 instead. Running the followin
 
 Now reinstall Pymakr or run `apm install` from the Pymakr package located in `~/.atom/packages/Pymakr`
 
+## 'Could not locate the bindings file'
+If the installation of the serialport library failed, it reverts back to the precompiled version that is included in the plugin. This is compiled for the latest versions of atom and loses compatibility with older versions.
+
+Solution: upgrade to the latest Atom (1.19.0 or higher) or install the previous version of the plugin (```apm install pymakr@1.0.3```)
+
 ### Synchronizing a project results in 'Failed to allocate memory' error
 Synchronizing takes a bit of memory, so this error can occur when code running on the board already is taking a substantial amount of memory.
 
 Solution: Run the board in [safe mode](https://docs.pycom.io/pycom_esp32/pycom_esp32/toolsandfeatures.html#boot-modes-and-safe-boot) when synchronizing
 
-### Cannot connect to Pycom board via REPL or see the Sync/Run buttons
+### Cannot connect to Pycom board via REPL
 
 In the case of a board that has already has code uploaded to it and is running a loop/non-exiting script, the board may not boot into a REPL.
 
