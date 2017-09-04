@@ -142,7 +142,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\serialport.cpp"/>
     <ClCompile Include="..\src\serialport_win.cpp"/>
-    <ClCompile Include="C:\Users\devel\AppData\Local\atom\app-1.19.4\resources\app\apm\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
+    <ClCompile Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app\apm\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>
