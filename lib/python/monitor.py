@@ -28,7 +28,7 @@ class SerialPortConnection(object):
     def disconnectWLAN(self):
         # disconnect wlan because it spams debug messages that disturb the monitor protocol
         from network import WLAN
-        wlan = WLAN()
+        wlan = WLAN(mode=WLAN.STA)
         wlan.disconnect()
 
     def destroy(self):
