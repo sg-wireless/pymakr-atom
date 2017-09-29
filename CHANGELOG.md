@@ -1,3 +1,18 @@
+## 1.1.4 - Bugfixes
+* Serialport installation fix for linux
+* Bugfix in sync code, caused in 1.1.3
+* Sync support for old wipy 1.0
+
+## 1.1.3 - Bugfixes
+* Support for atom 1.20.1
+* Small bugfixes in sync
+* Fixed 'name undefined' error during run
+* Disappearing connect/sync/run buttons fixed
+
+## 1.1.1 - Win64 bugfix
+* Serialport library improved for 64 bit
+* Small bugfix in communication protocol
+
 ## 1.1.0 - Shared codebase with VSCode plugin
 * Big refactor to get a shared base code with the VSCode plugin
 * Added 'open_on_start' config
