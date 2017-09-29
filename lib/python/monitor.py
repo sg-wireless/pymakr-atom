@@ -25,10 +25,18 @@ class SerialPortConnection(object):
         self.poll.register(self.serial, select.POLLIN)
         self.write = self.serial.write
 
+    def isWipy1(self):
+        return os.uname().machine == "WiPy with CC3200"
+
     def disconnectWLAN(self):
         # disconnect wlan because it spams debug messages that disturb the monitor protocol
         from network import WLAN
-        wlan = WLAN(mode=WLAN.STA)
+        wlan = None
+        if self.isWipy1():
+            wlan = WLAN()
+        else:
+            wlan = WLAN(mode=WLAN.STA)
+
         wlan.disconnect()
 
     def destroy(self):
@@ -232,6 +240,7 @@ class Monitor(object):
 
     def read_from_file(self):
         filename = self.stream.read_exactly(self.read_int16())
+
         if connection_type == 'u':
             time.sleep_ms(300)
         try:
@@ -249,6 +258,7 @@ class Monitor(object):
             to_read, data_len = Monitor.block_split_helper(data_len)
             data = source.read(to_read)
             self.stream.send(data)
+
         source.close()
 
     def remove_file(self):

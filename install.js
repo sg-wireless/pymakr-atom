@@ -12,14 +12,16 @@ if(process.platform in precompiles) { // always returns win32 on windows, even o
     cpcommand = 'xcopy'
   }
   if(plf == 'win'){
-    build = 'node_modules/bindings/buid'
+    build = 'node_modules/bindings/build'
   }
   if(plf == 'win' && process.arch == 'ia32'){
     plf = 'win32'
   }
   var path = "precompiles/serialport-" + plf + ""
-  console.log(path)
-  exec(cpcommand+' '+path+'/build/Release/serialport.node '+build)
+  exec("mkdir "+build,function(){
+    exec(cpcommand+' '+path+'/build/Release/serialport.node '+build+"/serialport.node")
+  })
+
 }
 
 // Don't preform on windows, since it often fails there. Automatically defaults to precompiled version in /precompiles folder
