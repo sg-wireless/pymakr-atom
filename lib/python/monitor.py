@@ -17,7 +17,7 @@ class ReadTimeout(Exception):
 class SerialPortConnection(object):
     def __init__(self):
         import machine
-        self.disconnectWLAN()
+        # self.disconnectWLAN()
         self.original_term = os.dupterm()
         os.dupterm(None) # disconnect the current serial port connection
         self.serial = machine.UART(0, 115200)
@@ -241,6 +241,8 @@ class Monitor(object):
     def read_from_file(self):
         filename = self.stream.read_exactly(self.read_int16())
 
+        print("Reading from "+str(filename))
+
         if connection_type == 'u':
             time.sleep_ms(300)
         try:
@@ -249,7 +251,10 @@ class Monitor(object):
             self.write_int32(0x00000000)
             return
 
+        print("Sending data len "+str(data_len))
+
         self.write_int32(data_len)
+
         if connection_type == 'u':
             time.sleep_ms(300)
 
@@ -257,8 +262,10 @@ class Monitor(object):
         while data_len != 0:
             to_read, data_len = Monitor.block_split_helper(data_len)
             data = source.read(to_read)
+            print("Sending data...")
             self.stream.send(data)
 
+        print("Done!")
         source.close()
 
     def remove_file(self):
