@@ -30,14 +30,19 @@ class SerialPortConnection(object):
 
     def disconnectWLAN(self):
         # disconnect wlan because it spams debug messages that disturb the monitor protocol
-        from network import WLAN
-        wlan = None
-        if self.isWipy1():
-            wlan = WLAN()
-        else:
-            wlan = WLAN(mode=WLAN.STA)
+        try:
+            from network import WLAN
+            wlan = None
+            if self.isWipy1():
+                wlan = WLAN()
+            else:
+                wlan = WLAN(mode=WLAN.STA)
 
-        wlan.disconnect()
+            wlan.disconnect()
+        except:
+            # if wifi disconnect fails for whatever reason, let it continue to sync
+            # often this is the 'OSError: the requested oparation is not possible' thrown by the wlan.disconnect line
+            pass
 
     def destroy(self):
         os.dupterm(self.original_term)

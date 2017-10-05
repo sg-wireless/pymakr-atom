@@ -23,13 +23,16 @@ class SerialPortConnection(object):
  def isWipy1(self):
   return os.uname().machine=="WiPy with CC3200"
  def disconnectWLAN(self):
-  from network import WLAN
-  wlan=None
-  if self.isWipy1():
-   wlan=WLAN()
-  else:
-   wlan=WLAN(mode=WLAN.STA)
-  wlan.disconnect()
+  try:
+   from network import WLAN
+   wlan=None
+   if self.isWipy1():
+    wlan=WLAN()
+   else:
+    wlan=WLAN(mode=WLAN.STA)
+   wlan.disconnect()
+  except:
+   pass
  def destroy(self):
   os.dupterm(self.original_term)
  def read(self,length):
