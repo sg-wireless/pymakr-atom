@@ -8,6 +8,7 @@ import os
 import select
 import hashlib
 import time
+import json
 class ReadTimeout(Exception):
  pass
 class SerialPortConnection(object):
@@ -123,7 +124,7 @@ class Monitor(object):
   else:
    self.connection=SocketConnection()
   self.stream=InbandCommunication(self.connection,self.process_command)
-  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,}
+  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,b"\x01\x06":self.list_files,}
  def process_command(self,cmd):
   return self.commands[cmd]()
  def read_int16(self):
@@ -215,6 +216,27 @@ class Monitor(object):
    os.rmdir(dirname)
   except OSError as e:
    pass
+ def list_files(self,directory=''):
+  files=os.listdir(directory)
+  file_list=[]
+  for f in files:
+   try:
+    file_list+=self.list_files(f+"/")
+   except:
+    file_list.push({directory+f,'f'})
+  json_list=json.dumps(file_list)
+  data_len=len(json_list)
+  self.write_int32(data_len)
+  if connection_type=='u':
+   time.sleep_ms(300)
+  i=0
+  while data_len!=0:
+   to_read,data_len=Monitor.block_split_helper(data_len)
+   read_from=i*1024
+   data=json_list[read_from:read_from+to_read]
+   print("Sending data...")
+   self.stream.send(data)
+   i+=1
  def start_listening(self):
   self.running=True
   while self.running is True:
