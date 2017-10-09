@@ -7,6 +7,7 @@ import struct
 import os
 import select
 import hashlib
+import binascii
 import time
 import json
 class ReadTimeout(Exception):
@@ -14,6 +15,7 @@ class ReadTimeout(Exception):
 class SerialPortConnection(object):
  def __init__(self):
   import machine
+  self.disconnectWLAN()
   self.original_term=os.dupterm()
   os.dupterm(None)
   self.serial=machine.UART(0,115200)
@@ -23,13 +25,16 @@ class SerialPortConnection(object):
  def isWipy1(self):
   return os.uname().machine=="WiPy with CC3200"
  def disconnectWLAN(self):
-  from network import WLAN
-  wlan=None
-  if self.isWipy1():
-   wlan=WLAN()
-  else:
-   wlan=WLAN(mode=WLAN.STA)
-  wlan.disconnect()
+  try:
+   from network import WLAN
+   wlan=None
+   if self.isWipy1():
+    wlan=WLAN()
+   else:
+    wlan=WLAN(mode=WLAN.STA)
+   wlan.disconnect()
+  except:
+   pass
  def destroy(self):
   os.dupterm(self.original_term)
  def read(self,length):
@@ -136,7 +141,11 @@ class Monitor(object):
  def write_int16(self,value):
   self.stream.send(struct.pack('>H',value))
  def write_int32(self,value):
+  if connection_type=='u':
+   time.sleep_ms(100)
   self.stream.send(struct.pack('>L',value))
+  if connection_type=='u':
+   time.sleep_ms(100)
  def init_hash(self,length):
   self.last_hash=hashlib.sha256(b'',length)
  @staticmethod
@@ -177,8 +186,6 @@ class Monitor(object):
  def read_from_file(self):
   filename=self.stream.read_exactly(self.read_int16())
   print("Reading from "+str(filename))
-  if connection_type=='u':
-   time.sleep_ms(300)
   try:
    data_len=os.stat(filename)[6]
   except OSError:
@@ -186,8 +193,6 @@ class Monitor(object):
    return
   print("Sending data len "+str(data_len))
   self.write_int32(data_len)
-  if connection_type=='u':
-   time.sleep_ms(300)
   source=open(filename,'r')
   while data_len!=0:
    to_read,data_len=Monitor.block_split_helper(data_len)
@@ -220,15 +225,18 @@ class Monitor(object):
   files=os.listdir(directory)
   file_list=[]
   for f in files:
+   if directory!='':
+    f=directory+"/"+f
    try:
-    file_list+=self.list_files(f+"/")
+    file_list+=self.list_files(f)
    except:
-    file_list.push({directory+f,'f'})
+    file_list.append([f,'f'])
+  if directory!='':
+   return file_list
   json_list=json.dumps(file_list)
   data_len=len(json_list)
+  print("Sending data len of "+str(data_len))
   self.write_int32(data_len)
-  if connection_type=='u':
-   time.sleep_ms(300)
   i=0
   while data_len!=0:
    to_read,data_len=Monitor.block_split_helper(data_len)
@@ -237,6 +245,15 @@ class Monitor(object):
    print("Sending data...")
    self.stream.send(data)
    i+=1
+  print("done")
+ def hash_string(self,s):
+  h=hashlib.sha256(s)
+  return binascii.hexlify(h.digest())
+ def print_payload(self,data):
+  bin_str=""
+  for d in data:
+   bin_str+="{0:08b}".format(d)+" "
+  print(bin_str)
  def start_listening(self):
   self.running=True
   while self.running is True:

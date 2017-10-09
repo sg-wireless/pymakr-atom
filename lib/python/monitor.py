@@ -195,10 +195,10 @@ class Monitor(object):
 
     def write_int32(self, value):
         if connection_type == 'u':
-            time.sleep_ms(300)
+            time.sleep_ms(100)
         self.stream.send(struct.pack('>L', value))
         if connection_type == 'u':
-            time.sleep_ms(300)
+            time.sleep_ms(100)
 
     def init_hash(self, length):
         self.last_hash = hashlib.sha256(b'', length)
@@ -251,10 +251,10 @@ class Monitor(object):
         return dest.close()
 
     def read_from_file(self):
+
         filename = self.stream.read_exactly(self.read_int16())
 
         print("Reading from "+str(filename))
-
 
         try:
             data_len = os.stat(filename)[6]
@@ -265,7 +265,6 @@ class Monitor(object):
         print("Sending data len "+str(data_len))
 
         self.write_int32(data_len)
-
 
         source = open(filename, 'r')
         while data_len != 0:
@@ -302,6 +301,10 @@ class Monitor(object):
             pass
 
     def list_files(self,directory=''):
+        # print("Starting testread...")
+        # for i in range(40):
+        #     print("Sending "+str(i*50))
+        #     self.write_int32(i*50)
 
         files = os.listdir(directory)
         file_list = []
@@ -337,6 +340,11 @@ class Monitor(object):
         h = hashlib.sha256(s)
         return binascii.hexlify(h.digest())
 
+    def print_payload(self,data):
+        bin_str = ""
+        for d in data:
+            bin_str += "{0:08b}".format(d) + " "
+        print(bin_str)
 
     def start_listening(self):
         self.running = True
