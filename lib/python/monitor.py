@@ -19,7 +19,7 @@ class ReadTimeout(Exception):
 class SerialPortConnection(object):
     def __init__(self):
         import machine
-        # self.disconnectWLAN()
+        self.disconnectWLAN()
         self.original_term = os.dupterm()
         os.dupterm(None) # disconnect the current serial port connection
         self.serial = machine.UART(0, 115200)
@@ -219,8 +219,6 @@ class Monitor(object):
         machine.reset()
 
     def exit_monitor(self):
-        from network import WLAN
-        wlan = WLAN(mode=WLAN.STA_AP)
         self.running = False
         self.connection.destroy()
 
