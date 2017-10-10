@@ -161,8 +161,6 @@ class Monitor(object):
   import machine
   machine.reset()
  def exit_monitor(self):
-  from network import WLAN
-  wlan=WLAN(mode=WLAN.STA_AP)
   self.running=False
   self.connection.destroy()
  @staticmethod
@@ -264,6 +262,7 @@ class Monitor(object):
    except ReadTimeout:
     print("ReadTimeout, exit monitor")
     self.exit_monitor()
+    self.reset_board()
 if __name__=='__main__':
  monitor=Monitor()
  monitor.start_listening()

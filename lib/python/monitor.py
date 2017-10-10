@@ -354,6 +354,7 @@ class Monitor(object):
             except ReadTimeout:
                 print("ReadTimeout, exit monitor")
                 self.exit_monitor()
+                self.reset_board()
 
 if __name__ == '__main__':
     monitor = Monitor()
