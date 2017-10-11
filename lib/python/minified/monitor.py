@@ -7,7 +7,9 @@ import struct
 import os
 import select
 import hashlib
+import binascii
 import time
+import json
 class ReadTimeout(Exception):
  pass
 class SerialPortConnection(object):
@@ -127,7 +129,7 @@ class Monitor(object):
   else:
    self.connection=SocketConnection()
   self.stream=InbandCommunication(self.connection,self.process_command)
-  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,}
+  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,b"\x01\x06":self.list_files,}
  def process_command(self,cmd):
   return self.commands[cmd]()
  def read_int16(self):
@@ -139,7 +141,11 @@ class Monitor(object):
  def write_int16(self,value):
   self.stream.send(struct.pack('>H',value))
  def write_int32(self,value):
+  if connection_type=='u':
+   time.sleep_ms(100)
   self.stream.send(struct.pack('>L',value))
+  if connection_type=='u':
+   time.sleep_ms(100)
  def init_hash(self,length):
   self.last_hash=hashlib.sha256(b'',length)
  @staticmethod
@@ -155,8 +161,6 @@ class Monitor(object):
   import machine
   machine.reset()
  def exit_monitor(self):
-  from network import WLAN
-  wlan=WLAN(mode=WLAN.STA_AP)
   self.running=False
   self.connection.destroy()
  @staticmethod
@@ -179,21 +183,21 @@ class Monitor(object):
   return dest.close()
  def read_from_file(self):
   filename=self.stream.read_exactly(self.read_int16())
-  if connection_type=='u':
-   time.sleep_ms(300)
+  print("Reading from "+str(filename))
   try:
    data_len=os.stat(filename)[6]
   except OSError:
    self.write_int32(0x00000000)
    return
+  print("Sending data len "+str(data_len))
   self.write_int32(data_len)
-  if connection_type=='u':
-   time.sleep_ms(300)
   source=open(filename,'r')
   while data_len!=0:
    to_read,data_len=Monitor.block_split_helper(data_len)
    data=source.read(to_read)
+   print("Sending data...")
    self.stream.send(data)
+  print("Done!")
   source.close()
  def remove_file(self):
   try:
@@ -215,6 +219,39 @@ class Monitor(object):
    os.rmdir(dirname)
   except OSError as e:
    pass
+ def list_files(self,directory=''):
+  files=os.listdir(directory)
+  file_list=[]
+  for f in files:
+   if directory!='':
+    f=directory+"/"+f
+   try:
+    file_list+=self.list_files(f)
+   except:
+    file_list.append([f,'f'])
+  if directory!='':
+   return file_list
+  json_list=json.dumps(file_list)
+  data_len=len(json_list)
+  print("Sending data len of "+str(data_len))
+  self.write_int32(data_len)
+  i=0
+  while data_len!=0:
+   to_read,data_len=Monitor.block_split_helper(data_len)
+   read_from=i*1024
+   data=json_list[read_from:read_from+to_read]
+   print("Sending data...")
+   self.stream.send(data)
+   i+=1
+  print("done")
+ def hash_string(self,s):
+  h=hashlib.sha256(s)
+  return binascii.hexlify(h.digest())
+ def print_payload(self,data):
+  bin_str=""
+  for d in data:
+   bin_str+="{0:08b}".format(d)+" "
+  print(bin_str)
  def start_listening(self):
   self.running=True
   while self.running is True:
@@ -225,6 +262,7 @@ class Monitor(object):
    except ReadTimeout:
     print("ReadTimeout, exit monitor")
     self.exit_monitor()
+    self.reset_board()
 if __name__=='__main__':
  monitor=Monitor()
  monitor.start_listening()
