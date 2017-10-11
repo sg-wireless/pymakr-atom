@@ -299,11 +299,6 @@ class Monitor(object):
             pass
 
     def list_files(self,directory=''):
-        # print("Starting testread...")
-        # for i in range(40):
-        #     print("Sending "+str(i*50))
-        #     self.write_int32(i*50)
-
         files = os.listdir(directory)
         file_list = []
         for f in files:
