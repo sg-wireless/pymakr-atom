@@ -1,3 +1,7 @@
+## 1.1.5 - Hotfix
+* Compatibility until 1.22.0 tested
+* Small bugfixes sync feature
+
 ## 1.1.4 - Bugfixes
 * Serialport installation fix for linux
 * Bugfix in sync code, caused in 1.1.3
