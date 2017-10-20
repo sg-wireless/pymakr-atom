@@ -194,11 +194,9 @@ class Monitor(object):
         self.stream.send(struct.pack('>H', value))
 
     def write_int32(self, value):
-        if connection_type == 'u':
-            time.sleep_ms(100)
+        time.sleep_ms(100)
         self.stream.send(struct.pack('>L', value))
-        if connection_type == 'u':
-            time.sleep_ms(100)
+        time.sleep_ms(100)
 
     def init_hash(self, length):
         self.last_hash = hashlib.sha256(b'', length)
