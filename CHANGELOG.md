@@ -1,3 +1,8 @@
+## 1.2.0 - Download feature, multi project support
+* Splits 'sync' into 'download' and 'upload'
+* Adds detection for selected project in the tree-view
+* Better stability for upload
+
 ## 1.1.5 - Hotfix
 * Compatibility until 1.22.0 tested
 * Small bugfixes sync feature

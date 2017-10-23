@@ -44,15 +44,19 @@ Ctrl-C and Ctrl-V (or cmd-c/cmd-v on mac) can also be used to copy and paste in 
 
 The 'run' button on the right top of the commandline will run the code from the currently open file to the connected board. Any print output or exceptions from this code will appear in the commandline
 
-## Sync
+## Sync (download / upload)
 
-The 'sync' button will synchronize all files in your project to the board. Make sure you have a `main.py` and `boot.py` file in your project if you want to make sure your board will run properly. After synchronizing, the board will be reset. it might take a few seconds to reconnect if you are using a telnet connection.
+The `upload` button will synchronize all files in your project to the board. Make sure you have a `main.py` and `boot.py` file in your project if you want to make sure your board will run properly. After uploading, the board will be reset. it might take a few seconds to reconnect if you are using a telnet connection.
 
-If you want to sync only a certain folder in your project, use the 'Sync folder' field in the settings and add the folder name.
+If you want to upload only a certain folder in your project, use the 'Sync folder' field in the settings and add the folder name.
 
 By default, only the following file types are synchronized: py, txt, log, json and xml. This can be changed using the 'Sync file types' field in the settings.
 
-The sync limit is set to 350kb. If you sync folder contains more than that, the terminal will refuse to sync.
+The upload limit is set to 350kb. If your sync folder contains more than that, the terminal will refuse to sync.
+
+The `download` button does the opposite: it reads the files from the board and will download it to your project (or subfolder in case you changed the 'sync folder' setting). Before it overwrites your local files, a confirmation box will be shown. This box will also give the option to download only new files instead of overwriting existing ones.
+
+The download feature also uses the 'sync file types' and 'sync folder' settings to determine which files will be downloaded and to which folder they are saved.
 
 ## Manual install
 
