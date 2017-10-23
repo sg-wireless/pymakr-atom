@@ -3,6 +3,7 @@
     "ctrl-alt-s": "pymakr:sync",
     "ctrl-alt-t": "pymakr:toggleREPL",
     "ctrl-alt-c": "pymakr:connect",
-    "ctrl-alt-r": "pymakr:run"
+    "ctrl-alt-r": "pymakr:run",
+    "ctrl-r": "pymakr:clearTerminal"
   }
 }
