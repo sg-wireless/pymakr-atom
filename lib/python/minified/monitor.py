@@ -129,7 +129,7 @@ class Monitor(object):
   else:
    self.connection=SocketConnection()
   self.stream=InbandCommunication(self.connection,self.process_command)
-  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,b"\x01\x06":self.list_files,}
+  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,b"\x01\x06":self.list_files,b"\x01\x07":self.mem_free,}
  def process_command(self,cmd):
   return self.commands[cmd]()
  def read_int16(self):
@@ -167,6 +167,9 @@ class Monitor(object):
  @staticmethod
  def encode_str_len16(string):
   return struct.pack('>H',len(string))
+ def mem_free(self):
+  import os
+  self.write_int16(os.getfree('/flash'))
  def write_to_file(self):
   print("Writing to file")
   name=self.stream.read_exactly(self.read_int16())
