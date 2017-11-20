@@ -1,3 +1,7 @@
+## 1.2.1 - versioning update
+* atom v1.23.0 compatibility added
+* Bugfix for paste in terminal on mac (cmd-v instead of ctrl-v)
+
 ## 1.2.0 - Download feature, multi project support
 * Splits 'sync' into 'download' and 'upload'
 * Adds detection for selected project in the tree-view
