@@ -169,7 +169,10 @@ class Monitor(object):
   return struct.pack('>H',len(string))
  def mem_free(self):
   import os
-  self.write_int16(os.getfree('/flash'))
+  try:
+   self.write_int16(os.getfree('/flash'))
+  except AttributeError:
+   self.write_int16(350000)
  def write_to_file(self):
   print("Writing to file")
   name=self.stream.read_exactly(self.read_int16())
