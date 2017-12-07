@@ -1,3 +1,7 @@
+## 1.2.2 - bugfixes
+* Fixed upload issue on windows machines
+* Added check for available space on boards before uploading
+
 ## 1.2.1 - versioning update
 * atom v1.23.0 compatibility added
 * Bugfix for paste in terminal on mac (cmd-v instead of ctrl-v)
