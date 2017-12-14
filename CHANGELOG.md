@@ -1,3 +1,6 @@
+## 1.2.3 - atom v1.24.0 support
+* v1.24.0 support
+
 ## 1.2.2 - bugfixes
 * Fixed upload issue on windows machines
 * Added check for available space on boards before uploading
