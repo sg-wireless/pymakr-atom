@@ -8,18 +8,21 @@ if(process.platform in precompiles) { // always returns win32 on windows, even o
   var plf = precompiles[process.platform]
   var cpcommand = 'cp'
   var build = 'build'
+  var build_bindings = 'node_modules/bindings/build'
   if(plf == 'win'){
     cpcommand = 'xcopy'
-  }
-  if(plf == 'win'){
-    build = 'node_modules/bindings/build'
   }
   if(plf == 'win' && process.arch == 'ia32'){
     plf = 'win32'
   }
   var path = "precompiles/serialport-" + plf + ""
+
   exec("mkdir "+build,function(){
     exec(cpcommand+' '+path+'/build/Release/serialport.node '+build+"/serialport.node")
+  })
+
+  exec("mkdir "+build_bindings,function(){
+    exec(cpcommand+' '+path+'/build/Release/serialport.node '+build_bindings+"/serialport.node")
   })
 
 }

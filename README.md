@@ -63,7 +63,7 @@ The download feature also uses the 'sync file types' and 'sync folder' settings 
 To manually install the plugin, follow these steps
 - Delete any existing installation of the plugin
 - Download the code from github
-- Override all files in the `~/.atom/packages/Pymakr` folder
+- Override all files in the `~/.atom/packages/pymakr` folder
 - If you haven't installed Pymakr before, place the files in any folder and run `apm link`
 - Run the commands `apm install` (or `npm install` if apm is not available) from package folder
 - Restart atom
@@ -77,7 +77,7 @@ Solution: Tell the package manager to use python 2 instead. Running the followin
 
 `echo "python=/usr/bin/python2.7" >> ~/.atom/.apmrc`
 
-Now reinstall Pymakr or run `apm install` from the Pymakr package located in `~/.atom/packages/Pymakr`
+Now reinstall Pymakr or run `apm install` from the Pymakr package located in `~/.atom/packages/pymakr`
 
 ## 'Could not locate the bindings file'
 If the installation of the serialport library failed, it reverts back to the precompiled version that is included in the plugin. This is compiled for the latest versions of atom and loses compatibility with older versions.

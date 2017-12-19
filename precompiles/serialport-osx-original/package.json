@@ -28,7 +28,7 @@
   },
   "_npmVersion": "2.15.6",
   "_phantomChildren": {
-    "commander": "2.12.2"
+    "commander": "2.11.0"
   },
   "_requested": {
     "raw": "serialport@4.0.6",
