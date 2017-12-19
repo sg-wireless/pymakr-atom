@@ -1,3 +1,9 @@
+## 1.2.6 - Hotfix
+* Fix for problems with LESS file path and missing bindings file
+
+## 1.2.5 - hotfix
+* Fix for manditory lowercase packagename in latest Atom
+
 ## 1.2.3 - atom v1.24.0 support
 * v1.24.0 support
 
