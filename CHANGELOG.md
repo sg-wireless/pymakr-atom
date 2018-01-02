@@ -1,3 +1,6 @@
+## 1.2.7 - Hotfix copy from terminal
+* Fix for not being able to copy output from terminal
+
 ## 1.2.6 - Hotfix
 * Fix for problems with LESS file path and missing bindings file
 
