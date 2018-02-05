@@ -129,7 +129,7 @@ class Monitor(object):
   else:
    self.connection=SocketConnection()
   self.stream=InbandCommunication(self.connection,self.process_command)
-  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,b"\x01\x06":self.list_files,b"\x01\x07":self.mem_free,}
+  self.commands={b"\x00\x00":self.ack,b"\x00\xFE":self.reset_board,b"\x00\xFF":self.exit_monitor,b"\x01\x00":self.write_to_file,b"\x01\x01":self.read_from_file,b"\x01\x02":self.remove_file,b"\x01\x03":self.hash_last_file,b"\x01\x04":self.create_dir,b"\x01\x05":self.remove_dir,b"\x01\x06":self.list_files,b"\x01\x07":self.mem_free,b"\x01\x08":self.get_version,}
  def process_command(self,cmd):
   return self.commands[cmd]()
  def read_int16(self):
@@ -167,6 +167,9 @@ class Monitor(object):
  @staticmethod
  def encode_str_len16(string):
   return struct.pack('>H',len(string))
+ def get_version(self):
+  v=self.calculate_int_version(os.uname().release)
+  self.write_int32(v)
  def mem_free(self):
   import os
   try:
@@ -256,6 +259,21 @@ class Monitor(object):
   for d in data:
    bin_str+="{0:08b}".format(d)+" "
   print(bin_str)
+ def calculate_int_version(self,version):
+  known_types=['a','b','rc','r']
+  version_parts=version.split(".")
+  dots=len(version_parts)-1
+  if dots==2:
+   version_parts.append('0')
+  for t in known_types:
+   if t in version_parts[3]:
+    version_parts[3]=version_parts[3].replace(t,'')
+  version_string=""
+  for idx,val in enumerate(version_parts):
+   if int(val)<10:
+    version_parts[idx]='0'+val
+   version_string+=version_parts[idx]
+  return int(version_string)
  def start_listening(self):
   self.running=True
   while self.running is True:

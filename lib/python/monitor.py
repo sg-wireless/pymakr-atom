@@ -178,6 +178,7 @@ class Monitor(object):
             b"\x01\x05": self.remove_dir,
             b"\x01\x06": self.list_files,
             b"\x01\x07": self.mem_free,
+            b"\x01\x08": self.get_version,
         }
 
     def process_command(self, cmd):
@@ -222,7 +223,6 @@ class Monitor(object):
         self.running = False
         self.connection.destroy()
 
-
     @staticmethod
     def encode_str_len32(contents):
         return struct.pack('>L', len(contents))
@@ -231,6 +231,9 @@ class Monitor(object):
     def encode_str_len16(string):
         return struct.pack('>H', len(string))
 
+    def get_version(self):
+        v = self.calculate_int_version(os.uname().release)
+        self.write_int32(v)
 
     def mem_free(self):
         import os
@@ -346,6 +349,28 @@ class Monitor(object):
         for d in data:
             bin_str += "{0:08b}".format(d) + " "
         print(bin_str)
+
+    def calculate_int_version(self,version):
+        known_types = ['a', 'b', 'rc', 'r']
+        version_parts = version.split(".")
+        dots = len(version_parts) - 1
+        if dots == 2:
+            version_parts.append('0')
+
+        for t in known_types:
+            if t in version_parts[3]:
+                version_parts[3] = version_parts[3].replace(t,'')
+
+        version_string = ""
+
+        for idx, val in enumerate(version_parts):
+            if int(val) < 10:
+                version_parts[idx] = '0'+val
+            version_string += version_parts[idx]
+
+        return int(version_string)
+
+
 
     def start_listening(self):
         self.running = True
