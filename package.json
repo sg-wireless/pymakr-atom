@@ -20,6 +20,7 @@
     "node": ">=6.3.0 <=7.0.0"
   },
   "dependencies": {
+    "binascii": "0.0.2",
     "bindings": "1.2.1",
     "commander": "^2.9.0",
     "debug": "^2.3.2",
@@ -31,7 +32,8 @@
     "nan": "^2.4.0",
     "object.assign": "^4.0.3",
     "telnet-client": "^0.13.0",
-    "xterm": "^2.9.2"
+    "xterm": "^2.9.2",
+    "binascii":"0.0.2"
   },
   "scripts": {
     "install": "node install.js"
