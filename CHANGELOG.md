@@ -1,3 +1,7 @@
+## 1.2.9 - Bugfix
+* Atom v1.24.1 support
+* Improved ctrl-c before upload to stop running code
+
 ## 1.2.8 - Automatic soft-boot option and bugfixes
 * Added feature that automatically soft boots before uploading (off by default)
 * Changed 'reconnect' button to 'disconnect'
