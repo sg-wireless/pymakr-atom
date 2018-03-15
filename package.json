@@ -32,8 +32,8 @@
     "nan": "^2.4.0",
     "object.assign": "^4.0.3",
     "telnet-client": "^0.13.0",
-    "xterm": "^2.9.2",
-    "binascii":"0.0.2"
+    "utf8": "^3.0.0",
+    "xterm": "^2.9.2"
   },
   "scripts": {
     "install": "node install.js"
