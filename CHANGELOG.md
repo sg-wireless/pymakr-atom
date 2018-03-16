@@ -1,3 +1,6 @@
+## 1.2.10 - atom v1.25 Compatibility
+* win64 and OSX serialport-lib precompiles fixed for atom v1.25
+
 ## 1.2.9 - Bugfix
 * Atom v1.24.1 support
 * Improved ctrl-c before upload to stop running code
