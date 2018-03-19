@@ -13,43 +13,61 @@
     <Filter Include="..\src">
       <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src\win">
+      <UniqueIdentifier>{47FC5EC4-15EB-E92F-89D7-AFE51CF838A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..">
+      <UniqueIdentifier>{739DB09A-CC57-A953-A6CF-F64FA08E4FA7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src">
+      <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="..\src\win">
+      <UniqueIdentifier>{47FC5EC4-15EB-E92F-89D7-AFE51CF838A9}</UniqueIdentifier>
+    </Filter>
     <Filter Include="C:">
       <UniqueIdentifier>{7B735499-E5DD-1C2B-6C26-70023832A1CF}</UniqueIdentifier>
     </Filter>
     <Filter Include="C:\Users">
       <UniqueIdentifier>{E9F714C1-DA89-54E2-60CF-39FEB20BF756}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel">
-      <UniqueIdentifier>{C895332D-439C-61E4-6FD2-203F788522A5}</UniqueIdentifier>
+    <Filter Include="C:\Users\Ralph">
+      <UniqueIdentifier>{96268D73-84D6-F5B8-BFD4-4F74937A48FB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData">
+    <Filter Include="C:\Users\Ralph\AppData">
       <UniqueIdentifier>{F852EB63-437C-846A-220F-8D9ED6DAEC1D}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local">
+    <Filter Include="C:\Users\Ralph\AppData\Local">
       <UniqueIdentifier>{AA1ADE49-EB66-4CF9-B60D-A95495F1ED01}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom">
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom">
       <UniqueIdentifier>{91AF2E38-7687-5704-2A6C-4C38A76C6C7C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom\app-1.19.5">
-      <UniqueIdentifier>{C8F82D5E-5B0E-7A6A-316D-AF5F30F3AC19}</UniqueIdentifier>
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0">
+      <UniqueIdentifier>{AE766903-786F-F2BA-0B27-4357A801F1DA}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources">
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources">
       <UniqueIdentifier>{02993FF4-6DD0-55B6-6A36-E99A964FF863}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app">
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources\app">
       <UniqueIdentifier>{796C56B0-A938-902A-0081-40464DA4EDD9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app\apm">
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources\app\apm">
       <UniqueIdentifier>{50B2B692-91A6-28AC-1352-B4A963293364}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app\apm\node_modules">
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources\app\apm\node_modules">
       <UniqueIdentifier>{56DF7A98-063D-FB9D-485C-089023B4C16A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app\apm\node_modules\node-gyp">
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources\app\apm\node_modules\node-gyp">
       <UniqueIdentifier>{77348C0E-2034-7791-74D5-63C077DF5A3B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app\apm\node_modules\node-gyp\src">
+    <Filter Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources\app\apm\node_modules\node-gyp\src">
       <UniqueIdentifier>{8CDEE807-BC53-E450-C8B8-4DEBB66742D4}</UniqueIdentifier>
     </Filter>
     <Filter Include="..">
@@ -63,8 +81,14 @@
     <ClCompile Include="..\src\serialport_win.cpp">
       <Filter>..\src</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app\apm\node_modules\node-gyp\src\win_delay_load_hook.cc">
-      <Filter>C:\Users\devel\AppData\Local\atom\app-1.19.5\resources\app\apm\node_modules\node-gyp\src</Filter>
+    <ClCompile Include="..\src\win\disphelper.c">
+      <Filter>..\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win\enumser.cpp">
+      <Filter>..\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources\app\apm\node_modules\node-gyp\src\win_delay_load_hook.cc">
+      <Filter>C:\Users\Ralph\AppData\Local\atom\app-1.25.0\resources\app\apm\node_modules\node-gyp\src</Filter>
     </ClCompile>
     <None Include="..\binding.gyp">
       <Filter>..</Filter>

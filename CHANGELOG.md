@@ -1,3 +1,20 @@
+## 1.2.11 - atom v1.25 Compatibility
+* win32 and linux serialport-lib precompiles fixed for atom v1.25
+
+## 1.2.10 - atom v1.25 Compatibility
+* win64 and OSX serialport-lib precompiles fixed for atom v1.25
+
+## 1.2.9 - Bugfix
+* Atom v1.24.1 support
+* Improved ctrl-c before upload to stop running code
+
+## 1.2.8 - Automatic soft-boot option and bugfixes
+* Added feature that automatically soft boots before uploading (off by default)
+* Changed 'reconnect' button to 'disconnect'
+* Added shortkey for disconnect
+* Bugfix: allow file to run when extension is uppercase (.PY)
+* Bugfix: detect project settings when opening a folder from an empty window
+
 ## 1.2.7 - Hotfix copy from terminal
 * Fix for not being able to copy output from terminal
 

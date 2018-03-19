@@ -1,21 +1,28 @@
-#include "./serialport.h"
-#include "./serialport_win.h"
 #include <nan.h>
 #include <list>
 #include <vector>
-#include <string.h>
-#include <windows.h>
-#include <Setupapi.h>
-#include <devguid.h>
-#pragma comment (lib, "setupapi.lib")
+#include "./serialport.h"
+#include "win/disphelper.h"
+#include "win/stdafx.h"
+#include "win/enumser.h"
+
+#ifdef WIN32
 
 #define MAX_BUFFER_SIZE 1000
+
+struct WindowsPlatformOptions : OpenBatonPlatformOptions {
+};
+
+OpenBatonPlatformOptions* ParsePlatformOptions(const v8::Local<v8::Object>& options) {
+  // currently none
+  return new WindowsPlatformOptions();
+}
 
 // Declare type of pointer to CancelIoEx function
 typedef BOOL (WINAPI *CancelIoExType)(HANDLE hFile, LPOVERLAPPED lpOverlapped);
 
 std::list<int> g_closingHandles;
-
+int bufferSize;
 void ErrorCodeToString(const char* prefix, int errorCode, char *errorStr) {
   switch (errorCode) {
   case ERROR_FILE_NOT_FOUND:
@@ -28,7 +35,7 @@ void ErrorCodeToString(const char* prefix, int errorCode, char *errorStr) {
     _snprintf_s(errorStr, ERROR_STRING_SIZE, _TRUNCATE, "%s: Access denied", prefix);
     break;
   case ERROR_OPERATION_ABORTED:
-    _snprintf_s(errorStr, ERROR_STRING_SIZE, _TRUNCATE, "%s: Operation aborted", prefix);
+    _snprintf_s(errorStr, ERROR_STRING_SIZE, _TRUNCATE, "%s: operation aborted", prefix);
     break;
   default:
     _snprintf_s(errorStr, ERROR_STRING_SIZE, _TRUNCATE, "%s: Unknown error code %d", prefix, errorCode);
@@ -68,6 +75,11 @@ void EIO_Open(uv_work_t* req) {
     _snprintf_s(temp, sizeof(temp), _TRUNCATE, "Opening %s", originalPath);
     ErrorCodeToString(temp, errorCode, data->errorString);
     return;
+  }
+
+  bufferSize = data->bufferSize;
+  if (bufferSize > MAX_BUFFER_SIZE) {
+    bufferSize = MAX_BUFFER_SIZE;
   }
 
   DCB dcb = { 0 };
@@ -135,16 +147,22 @@ void EIO_Open(uv_work_t* req) {
     return;
   }
 
-  // Set the timeouts for read and write operations read operation is to return
-  // immediately with the bytes that have already been received, even if no bytes
-  // have been received.
+  // Set the com port read/write timeouts
+  DWORD serialBitsPerByte = 8/*std data bits*/ + 1/*start bit*/;
+  serialBitsPerByte += (data->parity == SERIALPORT_PARITY_NONE) ? 0 : 1;
+  serialBitsPerByte += (data->stopBits == SERIALPORT_STOPBITS_ONE) ? 1 : 2;
+  DWORD msPerByte = (data->baudRate > 0) ?
+                    ((1000 * serialBitsPerByte + data->baudRate - 1) / data->baudRate) :
+                    1;
+  if (msPerByte < 1) {
+    msPerByte = 1;
+  }
   COMMTIMEOUTS commTimeouts = {0};
-  commTimeouts.ReadIntervalTimeout = MAXDWORD;  // Never timeout
+  commTimeouts.ReadIntervalTimeout = msPerByte;  // Minimize chance of concatenating of separate serial port packets on read
   commTimeouts.ReadTotalTimeoutMultiplier = 0;  // Do not allow big read timeout when big read buffer used
-  commTimeouts.ReadTotalTimeoutConstant = 0;    // Total read timeout (period of read loop)
-  commTimeouts.WriteTotalTimeoutConstant = 0;   // Const part of write timeout
-  commTimeouts.WriteTotalTimeoutMultiplier = 0; // Variable part of write timeout (per byte)
-
+  commTimeouts.ReadTotalTimeoutConstant = 1000;  // Total read timeout (period of read loop)
+  commTimeouts.WriteTotalTimeoutConstant = 1000;  // Const part of write timeout
+  commTimeouts.WriteTotalTimeoutMultiplier = msPerByte;  // Variable part of write timeout (per byte)
   if (!SetCommTimeouts(file, &commTimeouts)) {
     ErrorCodeToString("Open (SetCommTimeouts)", GetLastError(), data->errorString);
     CloseHandle(file);
@@ -158,6 +176,18 @@ void EIO_Open(uv_work_t* req) {
   data->result = (int)file;
 }
 
+struct WatchPortBaton {
+  HANDLE fd;
+  DWORD bytesRead;
+  char buffer[MAX_BUFFER_SIZE];
+  char errorString[ERROR_STRING_SIZE];
+  DWORD errorCode;
+  bool disconnected;
+  Nan::Callback* dataCallback;
+  Nan::Callback* errorCallback;
+  Nan::Callback* disconnectedCallback;
+};
+
 void EIO_Update(uv_work_t* req) {
   ConnectionOptionsBaton* data = static_cast<ConnectionOptionsBaton*>(req->data);
 
@@ -166,14 +196,14 @@ void EIO_Update(uv_work_t* req) {
   dcb.DCBlength = sizeof(DCB);
 
   if (!GetCommState((HANDLE)data->fd, &dcb)) {
-    ErrorCodeToString("Update (GetCommState)", GetLastError(), data->errorString);
+    ErrorCodeToString("GetCommState", GetLastError(), data->errorString);
     return;
   }
 
   dcb.BaudRate = data->baudRate;
 
   if (!SetCommState((HANDLE)data->fd, &dcb)) {
-    ErrorCodeToString("Update (SetCommState)", GetLastError(), data->errorString);
+    ErrorCodeToString("SetCommState", GetLastError(), data->errorString);
     return;
   }
 }
@@ -219,18 +249,70 @@ void EIO_Set(uv_work_t* req) {
   }
 }
 
-void EIO_Get(uv_work_t* req) {
-  GetBaton* data = static_cast<GetBaton*>(req->data);
 
-  DWORD bits = 0;
-  if (!GetCommModemStatus((HANDLE)data->fd, &bits)) {
-    ErrorCodeToString("Getting control settings on COM port (GetCommModemStatus)", GetLastError(), data->errorString);
-    return;
+void EIO_WatchPort(uv_work_t* req) {
+  WatchPortBaton* data = static_cast<WatchPortBaton*>(req->data);
+  data->bytesRead = 0;
+  data->disconnected = false;
+
+  // Event used by GetOverlappedResult(..., TRUE) to wait for incoming data or timeout
+  // Event MUST be used if program has several simultaneous asynchronous operations
+  // on the same handle (i.e. ReadFile and WriteFile)
+  HANDLE hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
+
+  while (true) {
+    OVERLAPPED ov = {0};
+    ov.hEvent = hEvent;
+
+    // Start read operation - synchrounous or asynchronous
+    DWORD bytesReadSync = 0;
+    if (!ReadFile((HANDLE)data->fd, data->buffer, bufferSize, &bytesReadSync, &ov)) {
+      data->errorCode = GetLastError();
+      if (data->errorCode != ERROR_IO_PENDING) {
+        // Read operation error
+        if (data->errorCode == ERROR_OPERATION_ABORTED) {
+          data->disconnected = true;
+        } else {
+          ErrorCodeToString("Reading from COM port (ReadFile)", data->errorCode, data->errorString);
+          CloseHandle(hEvent);
+          return;
+        }
+        break;
+      }
+
+      // Read operation is asynchronous and is pending
+      // We MUST wait for operation completion before deallocation of OVERLAPPED struct
+      // or read data buffer
+
+      // Wait for async read operation completion or timeout
+      DWORD bytesReadAsync = 0;
+      if (!GetOverlappedResult((HANDLE)data->fd, &ov, &bytesReadAsync, TRUE)) {
+        // Read operation error
+        data->errorCode = GetLastError();
+        if (data->errorCode == ERROR_OPERATION_ABORTED) {
+          data->disconnected = true;
+        } else {
+          ErrorCodeToString("Reading from COM port (GetOverlappedResult)", data->errorCode, data->errorString);
+          CloseHandle(hEvent);
+          return;
+        }
+        break;
+      } else {
+        // Read operation completed asynchronously
+        data->bytesRead = bytesReadAsync;
+      }
+    } else {
+      // Read operation completed synchronously
+      data->bytesRead = bytesReadSync;
+    }
+
+    // Return data received if any
+    if (data->bytesRead > 0) {
+      break;
+    }
   }
 
-  data->cts = bits & MS_CTS_ON;
-  data->dsr = bits & MS_DSR_ON;
-  data->dcd = bits & MS_RLSD_ON;
+  CloseHandle(hEvent);
 }
 
 bool IsClosingHandle(int fd) {
@@ -243,46 +325,75 @@ bool IsClosingHandle(int fd) {
   return false;
 }
 
-NAN_METHOD(Write) {
-  // file descriptor
-  if (!info[0]->IsInt32()) {
-    Nan::ThrowTypeError("First argument must be an int");
-    return;
-  }
-  int fd = Nan::To<int>(info[0]).FromJust();
+void DisposeWatchPortCallbacks(WatchPortBaton* data) {
+  delete data->dataCallback;
+  delete data->errorCallback;
+  delete data->disconnectedCallback;
+}
 
-  // buffer
-  if (!info[1]->IsObject() || !node::Buffer::HasInstance(info[1])) {
-    Nan::ThrowTypeError("Second argument must be a buffer");
-    return;
-  }
-  v8::Local<v8::Object> buffer = info[1]->ToObject();
-  char* bufferData = node::Buffer::Data(buffer);
-  size_t bufferLength = node::Buffer::Length(buffer);
+// FinalizerCallback will prevent WatchPortBaton::buffer from getting
+// collected by gc while finalizing v8::ArrayBuffer. The buffer will
+// get cleaned up through this callback.
+static void FinalizerCallback(char* data, void* hint) {
+  uv_work_t* req = reinterpret_cast<uv_work_t*>(hint);
+  WatchPortBaton* wpb = static_cast<WatchPortBaton*>(req->data);
+  delete wpb;
+  delete req;
+}
 
-  // callback
-  if (!info[2]->IsFunction()) {
-    Nan::ThrowTypeError("Third argument must be a function");
-    return;
+void EIO_AfterWatchPort(uv_work_t* req) {
+  Nan::HandleScope scope;
+
+  WatchPortBaton* data = static_cast<WatchPortBaton*>(req->data);
+  if (data->disconnected) {
+    data->disconnectedCallback->Call(0, NULL);
+    DisposeWatchPortCallbacks(data);
+    goto cleanup;
   }
 
-  WriteBaton* baton = new WriteBaton();
-  memset(baton, 0, sizeof(WriteBaton));
-  baton->fd = fd;
-  baton->buffer.Reset(buffer);
-  baton->bufferData = bufferData;
-  baton->bufferLength = bufferLength;
-  baton->offset = 0;
-  baton->callback.Reset(info[2].As<v8::Function>());
+  bool skipCleanup = false;
+  if (data->bytesRead > 0) {
+    v8::Local<v8::Value> argv[1];
+    argv[0] = Nan::NewBuffer(data->buffer, data->bytesRead, FinalizerCallback, req).ToLocalChecked();
+    skipCleanup = true;
+    data->dataCallback->Call(1, argv);
+  } else if (data->errorCode > 0) {
+    if (data->errorCode == ERROR_INVALID_HANDLE && IsClosingHandle((int)data->fd)) {
+      DisposeWatchPortCallbacks(data);
+      goto cleanup;
+    } else {
+      v8::Local<v8::Value> argv[1];
+      argv[0] = Nan::Error(data->errorString);
+      data->errorCallback->Call(1, argv);
+      Sleep(100);  // prevent the errors from occurring too fast
+    }
+  }
+  AfterOpenSuccess((int)data->fd, data->dataCallback, data->disconnectedCallback, data->errorCallback);
+
+cleanup:
+  if (!skipCleanup) {
+    delete data;
+    delete req;
+  }
+}
+
+void AfterOpenSuccess(int fd, Nan::Callback* dataCallback, Nan::Callback* disconnectedCallback, Nan::Callback* errorCallback) {
+  WatchPortBaton* baton = new WatchPortBaton();
+  memset(baton, 0, sizeof(WatchPortBaton));
+  baton->fd = (HANDLE)fd;
+  baton->dataCallback = dataCallback;
+  baton->errorCallback = errorCallback;
+  baton->disconnectedCallback = disconnectedCallback;
 
   uv_work_t* req = new uv_work_t();
   req->data = baton;
 
-  uv_queue_work(uv_default_loop(), req, EIO_Write, (uv_after_work_cb)EIO_AfterWrite);
+  uv_queue_work(uv_default_loop(), req, EIO_WatchPort, (uv_after_work_cb)EIO_AfterWatchPort);
 }
 
 void EIO_Write(uv_work_t* req) {
-  WriteBaton* data = static_cast<WriteBaton*>(req->data);
+  QueuedWrite* queuedWrite = static_cast<QueuedWrite*>(req->data);
+  WriteBaton* data = static_cast<WriteBaton*>(queuedWrite->baton);
   data->result = 0;
 
   do {
@@ -323,162 +434,8 @@ void EIO_Write(uv_work_t* req) {
   } while (data->bufferLength > data->offset);
 }
 
-void EIO_AfterWrite(uv_work_t* req) {
-  Nan::HandleScope scope;
-  WriteBaton* baton = static_cast<WriteBaton*>(req->data);
-  delete req;
-
-  v8::Local<v8::Value> argv[1];
-  if (baton->errorString[0]) {
-    argv[0] = v8::Exception::Error(Nan::New<v8::String>(baton->errorString).ToLocalChecked());
-  } else {
-    argv[0] = Nan::Null();
-  }
-  baton->callback.Call(1, argv);
-  delete baton;
-}
-
-NAN_METHOD(Read) {
-  // file descriptor
-  if (!info[0]->IsInt32()) {
-    Nan::ThrowTypeError("First argument must be a fd");
-    return;
-  }
-  int fd = Nan::To<int>(info[0]).FromJust();
-
-  // buffer
-  if (!info[1]->IsObject() || !node::Buffer::HasInstance(info[1])) {
-    Nan::ThrowTypeError("Second argument must be a buffer");
-    return;
-  }
-  v8::Local<v8::Object> buffer = info[1]->ToObject();
-  size_t bufferLength = node::Buffer::Length(buffer);
-
-  // offset
-  if (!info[2]->IsInt32()) {
-    Nan::ThrowTypeError("Third argument must be an int");
-    return;
-  }
-  int offset = Nan::To<v8::Int32>(info[2]).ToLocalChecked()->Value();
-
-  // bytes to read
-  if (!info[3]->IsInt32()) {
-    Nan::ThrowTypeError("Fourth argument must be an int");
-    return;
-  }
-  size_t bytesToRead = Nan::To<v8::Int32>(info[3]).ToLocalChecked()->Value();
-
-  if ((bytesToRead + offset) > bufferLength) {
-    Nan::ThrowTypeError("'bytesToRead' + 'offset' cannot be larger than the buffer's length");
-    return;
-  }
-
-  // callback
-  if (!info[4]->IsFunction()) {
-    Nan::ThrowTypeError("Fifth argument must be a function");
-    return;
-  }
-
-  ReadBaton* baton = new ReadBaton();
-  memset(baton, 0, sizeof(ReadBaton));
-  baton->fd = fd;
-  baton->offset = offset;
-  baton->bytesToRead = bytesToRead;
-  baton->bufferLength = bufferLength;
-  baton->bufferData = node::Buffer::Data(buffer);
-  baton->callback.Reset(info[4].As<v8::Function>());
-
-  uv_work_t* req = new uv_work_t();
-  req->data = baton;
-  uv_queue_work(uv_default_loop(), req, EIO_Read, (uv_after_work_cb)EIO_AfterRead);
-}
-
-void EIO_Read(uv_work_t* req) {
-  ReadBaton* data = static_cast<ReadBaton*>(req->data);
-  data->bytesRead = 0;
-  int errorCode = ERROR_SUCCESS;
-
-  char* offsetPtr = data->bufferData;
-  offsetPtr += data->offset;
-
-  // Event used by GetOverlappedResult(..., TRUE) to wait for incoming data or timeout
-  // Event MUST be used if program has several simultaneous asynchronous operations
-  // on the same handle (i.e. ReadFile and WriteFile)
-  HANDLE hEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
-
-  while (true) {
-    OVERLAPPED ov = {0};
-    ov.hEvent = hEvent;
-
-    // Start read operation - synchrounous or asynchronous
-    DWORD bytesReadSync = 0;
-    if (!ReadFile((HANDLE)data->fd, offsetPtr, data->bytesToRead, &bytesReadSync, &ov)) {
-      errorCode = GetLastError();
-      if (errorCode != ERROR_IO_PENDING) {
-        // Read operation error
-        if (errorCode == ERROR_OPERATION_ABORTED) {
-        } else {
-          ErrorCodeToString("Reading from COM port (ReadFile)", errorCode, data->errorString);
-          CloseHandle(hEvent);
-          return;
-        }
-        break;
-      }
-
-      // Read operation is asynchronous and is pending
-      // We MUST wait for operation completion before deallocation of OVERLAPPED struct
-      // or read data buffer
-
-      // Wait for async read operation completion or timeout
-      DWORD bytesReadAsync = 0;
-      if (!GetOverlappedResult((HANDLE)data->fd, &ov, &bytesReadAsync, TRUE)) {
-        // Read operation error
-        errorCode = GetLastError();
-        if (errorCode == ERROR_OPERATION_ABORTED) {
-        } else {
-          ErrorCodeToString("Reading from COM port (GetOverlappedResult)", errorCode, data->errorString);
-          CloseHandle(hEvent);
-          return;
-        }
-        break;
-      } else {
-        // Read operation completed asynchronously
-        data->bytesRead = bytesReadAsync;
-      }
-    } else {
-      // Read operation completed synchronously
-      data->bytesRead = bytesReadSync;
-    }
-
-    // Return data received if any
-    if (data->bytesRead > 0) {
-      break;
-    }
-  }
-
-  CloseHandle(hEvent);
-}
-
-void EIO_AfterRead(uv_work_t* req) {
-  Nan::HandleScope scope;
-  ReadBaton* baton = static_cast<ReadBaton*>(req->data);
-  delete req;
-
-  v8::Local<v8::Value> argv[2];
-  if (baton->errorString[0]) {
-    argv[0] = Nan::Error(baton->errorString);
-    argv[1] = Nan::Undefined();
-  } else {
-    argv[0] = Nan::Null();
-    argv[1] = Nan::New<v8::Integer>((int)baton->bytesRead);
-  }
-
-  baton->callback.Call(2, argv);
-  delete baton;
-}
-
 void EIO_Close(uv_work_t* req) {
-  VoidBaton* data = static_cast<VoidBaton*>(req->data);
+  CloseBaton* data = static_cast<CloseBaton*>(req->data);
 
   g_closingHandles.push_back(data->fd);
 
@@ -492,194 +449,112 @@ void EIO_Close(uv_work_t* req) {
     pCancelIoEx((HANDLE)data->fd, NULL);
   }
   if (!CloseHandle((HANDLE)data->fd)) {
-    ErrorCodeToString("Closing connection (CloseHandle)", GetLastError(), data->errorString);
+    ErrorCodeToString("closing connection", GetLastError(), data->errorString);
     return;
   }
 }
 
-char *copySubstring(char *someString, int n)
-{
-  char *new_ = (char*)malloc(sizeof(char)*n + 1);
-  strncpy_s(new_, n + 1, someString, n);
-  new_[n] = '\0';
-  return new_;
-}
-
-NAN_METHOD(List) {
-  // callback
-  if (!info[0]->IsFunction()) {
-    Nan::ThrowTypeError("First argument must be a function");
-    return;
-  }
-
-  ListBaton* baton = new ListBaton();
-  strcpy(baton->errorString, "");
-  baton->callback.Reset(info[0].As<v8::Function>());
-
-  uv_work_t* req = new uv_work_t();
-  req->data = baton;
-  uv_queue_work(uv_default_loop(), req, EIO_List, (uv_after_work_cb)EIO_AfterList);
-}
-
+/*
+ * listComPorts.c -- list COM ports
+ *
+ * http://github.com/todbot/usbSearch/
+ *
+ * 2012, Tod E. Kurt, http://todbot.com/blog/
+ *
+ *
+ * Uses DispHealper : http://disphelper.sourceforge.net/
+ *
+ * Notable VIDs & PIDs combos:
+ * VID 0403 - FTDI
+ *
+ * VID 0403 / PID 6001 - Arduino Diecimila
+ *
+ */
 void EIO_List(uv_work_t* req) {
   ListBaton* data = static_cast<ListBaton*>(req->data);
 
-  GUID *guidDev = (GUID*)& GUID_DEVCLASS_PORTS;
-  HDEVINFO hDevInfo = SetupDiGetClassDevs(guidDev, NULL, NULL, DIGCF_PRESENT | DIGCF_PROFILE);
-  SP_DEVINFO_DATA deviceInfoData;
+  {
+    DISPATCH_OBJ(wmiSvc);
+    DISPATCH_OBJ(colDevices);
 
-  int memberIndex = 0;
-  DWORD dwSize, dwPropertyRegDataType;
-  char szBuffer[400];
-  char *pnpId;
-  char *vendorId;
-  char *productId;
-  char *name;
-  char *manufacturer;
-  char *locationId;
-  bool isCom;
-  while (true) {
-    pnpId = NULL;
-    vendorId = NULL;
-    productId = NULL;
-    name = NULL;
-    manufacturer = NULL;
-    locationId = NULL;
+    dhInitialize(TRUE);
+    dhToggleExceptions(FALSE);
 
-    ZeroMemory(&deviceInfoData, sizeof(SP_DEVINFO_DATA));
-    deviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
+    dhGetObject(L"winmgmts:{impersonationLevel=impersonate}!\\\\.\\root\\cimv2", NULL, &wmiSvc);
+    dhGetValue(L"%o", &colDevices, wmiSvc, L".ExecQuery(%S)", L"Select * from Win32_PnPEntity");
 
-    if (SetupDiEnumDeviceInfo(hDevInfo, memberIndex, &deviceInfoData) == FALSE) {
-      if (GetLastError() == ERROR_NO_MORE_ITEMS) {
-        break;
+    int port_count = 0;
+    FOR_EACH(objDevice, colDevices, NULL) {
+      char* name = NULL;
+      char* pnpid = NULL;
+      char* manu = NULL;
+      char* match;
+
+      dhGetValue(L"%s", &name,  objDevice, L".Name");
+      dhGetValue(L"%s", &pnpid, objDevice, L".PnPDeviceID");
+
+      if (name != NULL && ((match = strstr(name, "(COM")) != NULL)) {  // look for "(COM23)"
+        // 'Manufacturuer' can be null, so only get it if we need it
+        dhGetValue(L"%s", &manu, objDevice,  L".Manufacturer");
+        port_count++;
+        char* comname = strtok(match, "()");
+        ListResultItem* resultItem = new ListResultItem();
+        resultItem->comName = comname;
+        resultItem->manufacturer = manu;
+        resultItem->pnpId = pnpid;
+        data->results.push_back(resultItem);
+        dhFreeString(manu);
       }
-    }
 
-    dwSize = sizeof(szBuffer);
-    SetupDiGetDeviceInstanceId(hDevInfo, &deviceInfoData, szBuffer, dwSize, &dwSize);
-    szBuffer[dwSize] = '\0';
-    pnpId = strdup(szBuffer);
+      dhFreeString(name);
+      dhFreeString(pnpid);
+    } NEXT(objDevice);
 
-    vendorId = strstr(szBuffer, "VID_");
-    if (vendorId) {
-      vendorId += 4;
-      vendorId = copySubstring(vendorId, 4);
-    }
-    productId = strstr(szBuffer, "PID_");
-    if (productId) {
-      productId += 4;
-      productId = copySubstring(productId, 4);
-    }
+    SAFE_RELEASE(colDevices);
+    SAFE_RELEASE(wmiSvc);
 
-    if (SetupDiGetDeviceRegistryProperty(hDevInfo, &deviceInfoData, SPDRP_LOCATION_INFORMATION, &dwPropertyRegDataType, (BYTE*)szBuffer, sizeof(szBuffer), &dwSize)) {
-      locationId = strdup(szBuffer);
-    }
-    if (SetupDiGetDeviceRegistryProperty(hDevInfo, &deviceInfoData, SPDRP_MFG, &dwPropertyRegDataType, (BYTE*)szBuffer, sizeof(szBuffer), &dwSize)) {
-      manufacturer = strdup(szBuffer);
-    }
-
-    HKEY hkey = SetupDiOpenDevRegKey(hDevInfo, &deviceInfoData, DICS_FLAG_GLOBAL, 0, DIREG_DEV, KEY_READ);
-    if (hkey != INVALID_HANDLE_VALUE) {
-      dwSize = sizeof(szBuffer);
-      if (RegQueryValueEx(hkey, "PortName", NULL, NULL, (LPBYTE)&szBuffer, &dwSize) == ERROR_SUCCESS) {
-        szBuffer[dwSize] = '\0';
-        name = strdup(szBuffer);
-        isCom = strstr(szBuffer, "COM") != NULL;
-      }
-    }
-    if (isCom) {
-      ListResultItem* resultItem = new ListResultItem();
-      resultItem->comName = name;
-      resultItem->manufacturer = manufacturer;
-      resultItem->pnpId = pnpId;
-      if (vendorId) {
-        resultItem->vendorId = vendorId;
-      }
-      if (productId) {
-        resultItem->productId = productId;
-      }
-      if (locationId) {
-        resultItem->locationId = locationId;
-      }
-      data->results.push_back(resultItem);
-    }
-    free(pnpId);
-    free(vendorId);
-    free(productId);
-    free(locationId);
-    free(manufacturer);
-    free(name);
-
-    RegCloseKey(hkey);
-    memberIndex++;
+    dhUninitialize(TRUE);
   }
-  if (hDevInfo) {
-    SetupDiDestroyDeviceInfoList(hDevInfo);
+
+  std::vector<UINT> ports;
+  if (CEnumerateSerial::UsingQueryDosDevice(ports)) {
+    for (size_t i = 0; i < ports.size(); i++) {
+      char comname[64] = { 0 };
+      _snprintf_s(comname, sizeof(comname), _TRUNCATE, "COM%u", ports[i]);
+      bool bFound = false;
+      for (std::list<ListResultItem*>::iterator ri = data->results.begin(); ri != data->results.end(); ++ri) {
+        if (stricmp((*ri)->comName.c_str(), comname) == 0) {
+          bFound = true;
+          break;
+        }
+      }
+      if (!bFound) {
+        ListResultItem* resultItem = new ListResultItem();
+        resultItem->comName = comname;
+        resultItem->manufacturer = "";
+        resultItem->pnpId = "";
+        data->results.push_back(resultItem);
+      }
+    }
   }
 }
-
-void setIfNotEmpty(v8::Local<v8::Object> item, std::string key, const char *value) {
-  v8::Local<v8::String> v8key = Nan::New<v8::String>(key).ToLocalChecked();
-  if (strlen(value) > 0) {
-    Nan::Set(item, v8key, Nan::New<v8::String>(value).ToLocalChecked());
-  } else {
-    Nan::Set(item, v8key, Nan::Undefined());
-  }
-}
-
-void EIO_AfterList(uv_work_t* req) {
-  Nan::HandleScope scope;
-
-  ListBaton* data = static_cast<ListBaton*>(req->data);
-
-  v8::Local<v8::Value> argv[2];
-  if (data->errorString[0]) {
-    argv[0] = v8::Exception::Error(Nan::New<v8::String>(data->errorString).ToLocalChecked());
-    argv[1] = Nan::Undefined();
-  } else {
-    v8::Local<v8::Array> results = Nan::New<v8::Array>();
-    int i = 0;
-    for (std::list<ListResultItem*>::iterator it = data->results.begin(); it != data->results.end(); ++it, i++) {
-      v8::Local<v8::Object> item = Nan::New<v8::Object>();
-
-      setIfNotEmpty(item, "comName", (*it)->comName.c_str());
-      setIfNotEmpty(item, "manufacturer", (*it)->manufacturer.c_str());
-      setIfNotEmpty(item, "serialNumber", (*it)->serialNumber.c_str());
-      setIfNotEmpty(item, "pnpId", (*it)->pnpId.c_str());
-      setIfNotEmpty(item, "locationId", (*it)->locationId.c_str());
-      setIfNotEmpty(item, "vendorId", (*it)->vendorId.c_str());
-      setIfNotEmpty(item, "productId", (*it)->productId.c_str());
-
-      Nan::Set(results, i, item);
-    }
-    argv[0] = Nan::Null();
-    argv[1] = results;
-  }
-  data->callback.Call(2, argv);
-
-  for (std::list<ListResultItem*>::iterator it = data->results.begin(); it != data->results.end(); ++it) {
-    delete *it;
-  }
-  delete data;
-  delete req;
-}
-
 
 void EIO_Flush(uv_work_t* req) {
-  VoidBaton* data = static_cast<VoidBaton*>(req->data);
+  FlushBaton* data = static_cast<FlushBaton*>(req->data);
 
-  DWORD purge_all = PURGE_RXABORT | PURGE_RXCLEAR | PURGE_TXABORT | PURGE_TXCLEAR;
-  if (!PurgeComm((HANDLE)data->fd, purge_all)) {
-    ErrorCodeToString("Flushing connection (PurgeComm)", GetLastError(), data->errorString);
+  if (!FlushFileBuffers((HANDLE)data->fd)) {
+    ErrorCodeToString("flushing connection (FlushFileBuffers)", GetLastError(), data->errorString);
     return;
   }
 }
 
 void EIO_Drain(uv_work_t* req) {
-  VoidBaton* data = static_cast<VoidBaton*>(req->data);
+  DrainBaton* data = static_cast<DrainBaton*>(req->data);
 
   if (!FlushFileBuffers((HANDLE)data->fd)) {
-    ErrorCodeToString("Draining connection (FlushFileBuffers)", GetLastError(), data->errorString);
+    ErrorCodeToString("draining connection (FlushFileBuffers)", GetLastError(), data->errorString);
     return;
   }
 }
+
+#endif

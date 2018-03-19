@@ -2,63 +2,64 @@
   "_args": [
     [
       {
-        "raw": "serialport",
+        "raw": "serialport@4.0.6",
         "scope": null,
         "escapedName": "serialport",
         "name": "serialport",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "rawSpec": "4.0.6",
+        "spec": "4.0.6",
+        "type": "version"
       },
-      "C:\\Users\\devel\\Projects\\pymakr-atom"
+      "C:\\Users\\Ralph\\projects\\pymakr-atom"
     ]
   ],
-  "_from": "serialport@latest",
-  "_id": "serialport@5.0.0",
+  "_from": "serialport@4.0.6",
+  "_id": "serialport@4.0.6",
   "_inCache": true,
   "_location": "/serialport",
-  "_nodeVersion": "6.10.3",
+  "_nodeVersion": "0.12.7",
   "_npmOperationalInternal": {
-    "host": "s3://npm-registry-packages",
-    "tmp": "tmp/serialport-5.0.0.tgz_1501389660491_0.9268227878492326"
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/serialport-4.0.6.tgz_1478841581360_0.1015991938766092"
   },
   "_npmUser": {
     "name": "reconbot",
     "email": "wizard@roborooter.com"
   },
-  "_npmVersion": "5.3.0",
-  "_phantomChildren": {},
+  "_npmVersion": "2.15.6",
+  "_phantomChildren": {
+    "commander": "2.15.0"
+  },
   "_requested": {
-    "raw": "serialport",
+    "raw": "serialport@4.0.6",
     "scope": null,
     "escapedName": "serialport",
     "name": "serialport",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "4.0.6",
+    "spec": "4.0.6",
+    "type": "version"
   },
   "_requiredBy": [
-    "#USER"
+    "/"
   ],
-  "_resolved": "https://registry.npmjs.org/serialport/-/serialport-5.0.0.tgz",
-  "_shasum": "08a1a494eaf5acdc34b5a7423c1877d997d2a8cf",
+  "_resolved": "https://registry.npmjs.org/serialport/-/serialport-4.0.6.tgz",
+  "_shasum": "2ea4c1a2b6ad91d9cacd78e8e530f8969ac650ae",
   "_shrinkwrap": null,
-  "_spec": "serialport",
-  "_where": "C:\\Users\\devel\\Projects\\pymakr-atom",
+  "_spec": "serialport@4.0.6",
+  "_where": "C:\\Users\\Ralph\\projects\\pymakr-atom",
   "author": {
     "name": "Chris Williams",
     "email": "voodootikigod@gmail.com",
     "url": "http://www.voodootikigod.com"
   },
   "bin": {
-    "serialport-list": "./bin/list.js",
-    "serialport-repl": "./bin/repl.js",
-    "serialport-term": "./bin/terminal.js"
+    "serialport-list": "./bin/serialport-list.js",
+    "serialport-term": "./bin/serialport-terminal.js"
   },
   "binary": {
     "module_name": "serialport",
     "module_path": "build/{configuration}/",
-    "host": "https://github.com/EmergingTechnologyAdvisors/node-serialport/releases/download/5.0.0"
+    "host": "https://github.com/EmergingTechnologyAdvisors/node-serialport/releases/download/4.0.6"
   },
   "bugs": {
     "url": "https://github.com/EmergingTechnologyAdvisors/node-serialport/issues"
@@ -67,72 +68,61 @@
     "node-pre-gyp"
   ],
   "dependencies": {
-    "bindings": "1.3.0",
-    "commander": "^2.11.0",
-    "debug": "^2.6.6",
-    "nan": "^2.6.2",
-    "node-pre-gyp": "^0.6.36",
-    "promirepl": "^1.0.1",
-    "safe-buffer": "^5.0.1"
+    "bindings": "1.2.1",
+    "commander": "^2.9.0",
+    "debug": "^2.3.2",
+    "lie": "^3.1.0",
+    "nan": "^2.4.0",
+    "node-pre-gyp": "^0.6.31",
+    "object.assign": "^4.0.3"
   },
-  "description": "Node.js package to access serial ports. Linux, OSX and Windows. Welcome your robotic JavaScript overlords. Better yet, program them!",
+  "description": "Node.js package to access serial ports. Welcome your robotic javascript overlords. Better yet, program them!",
   "devDependencies": {
-    "bluebird": "^3.5.0",
-    "chai": "^4.0.2",
-    "chai-subset": "^1.5.0",
-    "eslint": "^4.1.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "^0.4.4",
-    "jsdoc-to-markdown": "^3.0.0",
-    "mocha": "^3.4.2",
+    "chai": "^3.5.0",
+    "chai-subset": "^1.2.2",
+    "coveralls": "^2.11.9",
+    "eslint-config-standard": "^5.1.0",
+    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-standard": "^1.3.2",
+    "grunt": "^1.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "gruntify-eslint": "^2.0.0",
+    "mocha": "^2.4.5",
     "node-pre-gyp-github": "^1.1.2",
-    "proxyquire": "^1.7.10",
-    "sinon": "^2.3.8"
+    "nyc": "^6.4.4",
+    "sandboxed-module": "^2.0.3",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
   },
   "directories": {},
   "dist": {
-    "integrity": "sha512-xOCTlKQDyzQR1C3eR45n7ogZEJojpraH0WSqLw7q47lJrJXXLBUY1AjDYhdJb+SiT8dHrk8h8MJadQG7L5mIRw==",
-    "shasum": "08a1a494eaf5acdc34b5a7423c1877d997d2a8cf",
-    "tarball": "https://registry.npmjs.org/serialport/-/serialport-5.0.0.tgz"
+    "shasum": "2ea4c1a2b6ad91d9cacd78e8e530f8969ac650ae",
+    "tarball": "https://registry.npmjs.org/serialport/-/serialport-4.0.6.tgz"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">= 0.10.0"
   },
-  "gitHead": "88b701cc3f9259e0deab39bb3a5c5de24be45bdc",
+  "gitHead": "fdad0051e94e2fc29a333f0818df17ae3e8d402c",
   "gypfile": true,
   "homepage": "https://github.com/EmergingTechnologyAdvisors/node-serialport#readme",
   "keywords": [
-    "ccTalk",
-    "com port",
-    "data logging",
+    "serialport",
+    "johnny-five",
+    "serial port",
     "hardware",
     "iot",
-    "johnny-five",
-    "modem",
-    "nodebots",
-    "RFID",
-    "sensor",
-    "serial port",
-    "serial",
-    "serialport",
-    "sms gateway",
-    "stream",
-    "tty"
+    "nodebots"
   ],
   "license": "MIT",
-  "main": "lib",
+  "main": "./lib/serialport",
   "maintainers": [
-    {
-      "name": "reconbot",
-      "email": "wizard@roborooter.com"
-    },
     {
       "name": "jjrosent",
       "email": "jakerosenthal@gmail.com"
+    },
+    {
+      "name": "reconbot",
+      "email": "wizard@roborooter.com"
     },
     {
       "name": "voodootikigod",
@@ -147,18 +137,16 @@
     "url": "git://github.com/EmergingTechnologyAdvisors/node-serialport.git"
   },
   "scripts": {
-    "arduino-test": "TEST_PORT=$(./bin/find-arduino.js) npm test",
-    "debugger": "TEST_PORT=$(./bin/find-arduino.js) node --inspect --debug-brk test/manual-testing/performance.js",
-    "docs": "jsdoc2md --no-cache -t .docs/README.hbs --partial .docs/sig-name.hbs --partial .docs/sig-link.hbs --partial .docs/edit-warning.hbs -r table --separators --name-format -f lib/* lib/bindings/* lib/parsers/* > README.md",
-    "docs:diff": "jsdoc2md --no-cache -t .docs/README.hbs --partial .docs/sig-name.hbs --partial .docs/sig-link.hbs --partial .docs/edit-warning.hbs -r table --separators --name-format -f lib/* lib/bindings/* lib/parsers/* | diff README.md - || (echo 'Docs out of date, run `npm run docs` and commit the new README.md' && false)",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "grunt": "grunt",
+    "gyp-rebuild": "node-gyp rebuild",
     "install": "node-pre-gyp install --fallback-to-build",
-    "lint": "eslint lib test bin examples",
+    "integration": "mocha test/arduinoTest/integration.js test/integration-lite.js",
+    "lint": "grunt --verbose lint",
     "rebuild-all": "npm rebuild && node-gyp rebuild",
-    "repl": "node bin/repl.js",
     "stress": "mocha --no-timeouts test/arduinoTest/stress.js",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
-    "test:watch": "mocha -w",
-    "valgrind": "TEST_PORT=$(./bin/find-arduino.js) valgrind --leak-check=full node test/manual-testing/memory-binding.js"
+    "test": "nyc grunt --verbose test",
+    "valgrind": "valgrind --leak-check=full --show-possibly-lost=no node --expose-gc --trace-gc node_modules/.bin/grunt test"
   },
-  "version": "5.0.0"
+  "version": "4.0.6"
 }
