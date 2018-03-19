@@ -1,3 +1,6 @@
+## 1.2.11 - atom v1.25 Compatibility
+* win32 and linux serialport-lib precompiles fixed for atom v1.25
+
 ## 1.2.10 - atom v1.25 Compatibility
 * win64 and OSX serialport-lib precompiles fixed for atom v1.25
 
