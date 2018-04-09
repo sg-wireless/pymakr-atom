@@ -100,3 +100,12 @@ Solution: If the board is currently running code, you will need to exit the curr
 3. Press ctrl-c on within the Pymakr console to exit the current script/program
 
 The REPL should then appear with the '>>>' prompt and you will be able to run/sync your code.
+
+### Any error where the traceback contains `\.atom\packages\Pymakr\` with a capital P
+This happened after Pymakr renamed to pymakr (lowercase) starting at version 1.2.5, but Atom remembers the old folder name inside the packages folder.
+
+Solution:
+- Uninstall Pymakr
+- Remove folder: `~/.atom/.apm/Pymkr`
+- Empty folder: `~/.config/Atom/Cache`
+- Reinstall pymakr
