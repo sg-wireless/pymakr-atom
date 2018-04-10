@@ -1,3 +1,6 @@
+## 1.2.12 - atom v1.26 Compatibility
+* Updated package.json to support latest atom beta version
+
 ## 1.2.11 - atom v1.25 Compatibility
 * win32 and linux serialport-lib precompiles fixed for atom v1.25
 
