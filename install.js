@@ -31,7 +31,7 @@ if(process.platform in precompiles) { // always returns win32 on windows, even o
 if (process.platform != 'win32') {
 
   console.log("Installing serialport")
-  exec('npm install serialport@4.0.6',
+  exec('npm install serialport@6.2.0',
     function(error,stdout,stderr){
       if(error){
         console.log(error)
