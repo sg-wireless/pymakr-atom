@@ -89,6 +89,15 @@ Synchronizing takes a bit of memory, so this error can occur when code running o
 
 Solution: Run the board in [safe mode](https://docs.pycom.io/pycom_esp32/pycom_esp32/toolsandfeatures.html#boot-modes-and-safe-boot) when synchronizing
 
+### Any error where the traceback contains `\.atom\packages\Pymakr\` with a capital P
+This happened after Pymakr renamed to pymakr (lowercase) starting at version 1.2.5, but Atom remembers the old folder name inside the packages folder.
+
+Solution:
+- Uninstall Pymakr
+- Remove folder: `~/.atom/.apm/Pymkr`
+- Empty folder: `~/.config/Atom/Cache`
+- Reinstall pymakr
+
 ### Cannot connect to Pycom board via REPL
 
 In the case of a board that has already has code uploaded to it and is running a loop/non-exiting script, the board may not boot into a REPL.

@@ -12,7 +12,7 @@
 
 Imagine a world where you can write JavaScript to control blenders, lights, security systems, or even robots. That's right—robots! Thanks to Node Serialport, that world is here.
 
-Node-Serialport provides a stream interface for the low-level serial port code necessary to controll [Arduino](http://www.arduino.cc/) chipsets, X10 interfaces, [Zigbee](http://www.zigbee.org/) radios, highway signs, lcd screens, cash drawers, motor controllers, sensor packages, fork lifts, modems, drones, CNC machines, plotters, vending machines, ccTalk coin accecptors, SMS Gateways, RFID scanners and much more. If you have a hardware device with a [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter) we can speak to it. The physical world is your oyster with this goodie.
+Node-Serialport provides a stream interface for the low-level serial port code necessary to control [Arduino](http://www.arduino.cc/) chipsets, X10 interfaces, [Zigbee](http://www.zigbee.org/) radios, highway signs, lcd screens, cash drawers, motor controllers, sensor packages, fork lifts, modems, drones, CNC machines, plotters, vending machines, ccTalk coin accecptors, SMS Gateways, RFID scanners and much more. If you have a hardware device with a [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter) we can speak to it. The physical world is your oyster with this goodie.
 
 For a full breakdown of why we made Node-Serialport, please read [NodeBots - The Rise of JS Robotics](http://www.voodootikigod.com/nodebots-the-rise-of-js-robotics). It explains why one would want to program robots in JS in the first place.
 
@@ -20,16 +20,17 @@ We're not against firmware but we're better than it.
 
 ## Quick Answers to Important Questions
 - [**API Docs**](https://node-serialport.github.io/node-serialport/)
+- [Parsers API Docs](https://node-serialport.github.io/parsers/)
 - **For support**, open a [GitHub issue](https://github.com/node-serialport/node-serialport/issues/new).
 - **For discussions, design ideas, and clarifications**, please join our [Gitter chat room](https://gitter.im/EmergingTechnologyAdvisors/node-serialport).
-- **To test Node-Serialport**, we recommend two related projects—[Browser Serialport](https://github.com/garrows/browser-serialport) ("just like Node Serialport, but for browser apps") and [Serialport Test Piliot](https://github.com/j5js/serialport-test-pilot).
 - **To contribute**, please review our [contribution guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md). You might want to check out our [roadmap](https://github.com/node-serialport/node-serialport/issues/746). We also have issues tagged ["good first PR"](https://github.com/node-serialport/node-serialport/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+pr%22), if you'd like to start somewhere specific. We'll do our best to support you until we merge your PR.
 
 ***
 
 ## API Documentation
 
-Can be found at https://node-serialport.github.io/node-serialport/
+- [**API Docs**](https://node-serialport.github.io/node-serialport/)
+- [Parsers API Docs](https://node-serialport.github.io/parsers/)
 
 See our [changelog](CHANGELOG.md) for what's new, and our [upgrade guide](UPGRADE_GUIDE.md) for a walk-through on differences between major versions.
 
@@ -42,6 +43,8 @@ npm run docs
 ```
 
 And browsing to `./docs/index.html`.
+
+Parsers have been spun out in to their own [GitHub Repo](https://github.com/node-serialport/parsers).
 
 ***
 ## Helpful Resources for Getting Started with Node-Serialport
@@ -69,7 +72,7 @@ In addition to reading the [article mentioned above](http://www.voodootikigod.co
   * [Testing](#testing)
   * [Debugging](#debugging)
   * [Error Handling](#error-handling)
-d* [Command Line Tools](#command-line-tools)
+* [Command Line Tools](#command-line-tools)
   * [Serial Port List](#serial-port-list)
   * [Srial Port Terminal](#serial-port-terminal)
   * [Serial Port Repl](#serial-port-repl)
@@ -82,24 +85,22 @@ d* [Command Line Tools](#command-line-tools)
 
 | Platform / Arch | Node v4.x | Node v6.x | Node v8.x | Node v9.x |
 |       ---       | --- | --- | --- | --- |
-| Linux / ia32    |  ☑  |  ☑  |  ☑  |  ☐  |
-| Linux / x64     |  ☑  |  ☑  |  ☑  |  ☐  |
+| Linux / ia32    |  ☑  |  ☑  |  ☑  |  ☑  |
+| Linux / x64     |  ☑  |  ☑  |  ☑  |  ☑  |
 | Linux / ARM v6¹ |  ☐  |  ☐  |  ☐  |  ☐  |
 | Linux / ARM v7¹ |  ☐  |  ☐  |  ☐  |  ☐  |
 | Linux / ARM v8¹ |  ☐  |  ☐  |  ☐  |  ☐  |
 | Linux / MIPSel¹ |  ☐  |  ☐  |  ☐  |  ☐  |
 | Linux / PPC64¹  |  ☐  |  ☐  |  ☐  |  ☐  |
-| Windows² / x86  |  ☐  |  ☑  |  ☑  |  ☐  |
-| Windows² / x64  |  ☑  |  ☑  |  ☑  |  ☐  |
-| OSX³ / x64      |  ☑  |  ☑  |  ☑  |  ☐  |
+| Windows² / x86  |  ☐  |  ☑  |  ☑  |  ☑  |
+| Windows² / x64  |  ☑  |  ☑  |  ☑  |  ☑  |
+| OSX³ / x64      |  ☑  |  ☑  |  ☑  |  ☑  |
 
 ¹ ARM, MIPSel and PPC64¹ platforms are not currently part of our testing or build matrix, but are known to work.
 
 ² Windows 7, 8, 10, and 10 IoT are supported, but our CI tests only Windows Server 2012 R2.
 
 ³ OSX 10.4 Tiger and above are supported, but our CI tests only 10.9.5 Mavericks with Xcode 6.1.
-
-⁴ Node 9 is not supported but we're providing builds for it.
 
 ## Installation Instructions
 
