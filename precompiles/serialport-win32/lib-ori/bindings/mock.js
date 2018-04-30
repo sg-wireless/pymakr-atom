@@ -10,6 +10,9 @@ function resolveNextTick(value) {
   return new Promise(resolve => process.nextTick(() => resolve(value)));
 }
 
+/**
+ * Mock bindings for pretend serialport access
+ */
 class MockBinding extends BaseBinding {
   constructor(opt) {
     super(opt);
@@ -17,7 +20,7 @@ class MockBinding extends BaseBinding {
     this.isOpen = false;
     this.port = null;
     this.lastWrite = null;
-    this.recording = new Buffer(0);
+    this.recording = Buffer.alloc(0);
     this.writeOperation = null; // in flight promise or null
   }
 

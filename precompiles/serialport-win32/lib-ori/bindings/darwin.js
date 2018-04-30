@@ -1,7 +1,6 @@
 'use strict';
 const binding = require('bindings')('serialport.node');
 const BaseBinding = require('./base');
-const linuxList = require('./linux-list');
 const Poller = require('./poller');
 const promisify = require('../util').promisify;
 const unixRead = require('./unix-read');
@@ -12,9 +11,12 @@ const defaultBindingOptions = Object.freeze({
   vtime: 0
 });
 
-class LinuxBinding extends BaseBinding {
+/**
+ * The Darwin binding layer for OSX
+ */
+class DarwinBinding extends BaseBinding {
   static list() {
-    return linuxList();
+    return promisify(binding.list)();
   }
 
   constructor(opt) {
@@ -82,7 +84,7 @@ class LinuxBinding extends BaseBinding {
   }
 
   getBaudRate() {
-    return super.getBaudRate()
+    return super.get()
       .then(() => promisify(binding.getBaudRate)(this.fd));
   }
 
@@ -98,4 +100,4 @@ class LinuxBinding extends BaseBinding {
   }
 }
 
-module.exports = LinuxBinding;
+module.exports = DarwinBinding;
