@@ -1,3 +1,11 @@
+## 1.3.0 - Upload refactor
+* Complete rebuild of the upload and download code that fixes multiple bugs.
+* Bugfix in in project config
+* Support for Atom v1.26.1 and v1.27.0
+* Added manufacturer info to serialport list
+* Fix for windows32 serialport issue
+* More reliable install script
+
 ## 1.2.12 - atom v1.26 Compatibility
 * Updated package.json to support latest atom beta version
 
