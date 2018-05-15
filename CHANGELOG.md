@@ -1,3 +1,8 @@
+## 1.3.1 - Bugfixes
+* Small bugfix in error handling of the upload feature
+* Added reboot_after_upload instructions to help feature
+* Synchronize codestyle and API with the VSCode plugin
+
 ## 1.3.0 - Upload refactor
 * Complete rebuild of the upload and download code that fixes multiple bugs.
 * Bugfix in in project config
