@@ -36,6 +36,6 @@
     "xterm": "^2.9.2"
   },
   "scripts": {
-    "install": "node install.js"
+    "install": "node scripts/install.js"
   }
 }
