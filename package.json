@@ -16,7 +16,7 @@
   "repository": "https://github.com/pycom/pymakr-atom",
   "license": "GPL-3.0",
   "engines": {
-    "atom": ">=1.16.0 <=1.27.0",
+    "atom": ">=1.16.0 <=1.27.1",
     "node": ">=6.3.0 <=7.0.0"
   },
   "dependencies": {
