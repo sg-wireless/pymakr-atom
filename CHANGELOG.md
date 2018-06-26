@@ -1,3 +1,12 @@
+## 1.3.4 - Bugfixes
+* atom 1.28.0 support
+
+## 1.3.3 - Bugfixes
+* atom 1.27.2 support
+
+## 1.3.2 - Bugfixes
+* atom 1.27.1 support
+
 ## 1.3.1 - Bugfixes
 * Small bugfix in error handling of the upload feature
 * Added reboot_after_upload instructions to help feature

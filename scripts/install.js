@@ -12,7 +12,7 @@ if(process.platform in precompiles) { // always returns win32 on windows, even o
   if(plf == 'win' && process.arch == 'ia32'){
     plf = 'win32'
   }
-  
+
   var path = "precompiles/serialport-" + plf + ""
   var from = path+'/build/Release/serialport.node'
   var node_file = '/serialport.node'
@@ -53,7 +53,7 @@ if (process.platform != 'win32') {
               console.log(error)
             }else{
               console.log("Rebuilding...")
-              exec('$(npm bin)/electron-rebuild -f -w serialport -v 1.3.13',
+              exec('$(npm bin)/electron-rebuild -f -w serialport -v 1.7.2',
                 function(error,stout,stderr){
                   if(error){
                     console.log(error)
