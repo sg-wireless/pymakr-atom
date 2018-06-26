@@ -10,7 +10,7 @@
         "spec": "6.2.0",
         "type": "version"
       },
-      "C:\\Users\\Ralph\\Projects\\pymakr-atom"
+      "C:\\Users\\Ralph\\projects\\pymakr-atom"
     ]
   ],
   "_from": "serialport@6.2.0",
@@ -46,7 +46,7 @@
   "_shasum": "99413b30b160ff06711563a71324f0959c48a7a0",
   "_shrinkwrap": null,
   "_spec": "serialport@6.2.0",
-  "_where": "C:\\Users\\Ralph\\Projects\\pymakr-atom",
+  "_where": "C:\\Users\\Ralph\\projects\\pymakr-atom",
   "bin": {
     "serialport-list": "./bin/list.js",
     "serialport-repl": "./bin/repl.js",
