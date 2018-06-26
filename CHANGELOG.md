@@ -1,3 +1,6 @@
+## 1.3.4 - Bugfixes
+* atom 1.28.0 support
+
 ## 1.3.3 - Bugfixes
 * atom 1.27.2 support
 
