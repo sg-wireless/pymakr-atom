@@ -1,3 +1,10 @@
+## 1.4.0 - Upload feature improvements
+* Support for uploading (and downloading) binary files like images and mpy files
+* Added auto-connect feature
+* Added settings option to allow upload of all file types
+* Upload stability improvements and hash file checks, retries and remembering half-succeeded uploads
+* Fixed small layout bugs in button display
+
 ## 1.3.4 - Bugfixes
 * atom 1.28.0 support
 
