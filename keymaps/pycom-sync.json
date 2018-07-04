@@ -1,6 +1,8 @@
 {
   "atom-workspace": {
-    "ctrl-alt-s": "pymakr:sync",
+    "ctrl-alt-up": "pymakr:upload",
+    "ctrl-alt-u": "pymakr:upload",
+    "ctrl-alt-down": "pymakr:upload",
     "ctrl-alt-t": "pymakr:toggleREPL",
     "ctrl-alt-c": "pymakr:connect",
     "ctrl-alt-d": "pymakr:disconnect",
