@@ -1,3 +1,8 @@
+## 1.4.2 - Bugfixes
+* Run button now works for preview files (one click on file instead of double)
+* Bindings issue fixed for serialport lib
+* Added warning when board is connected in another atom window
+
 ## 1.4.1 - Bugfixes
 * Symlink folders no longer ignored when uploading
 * Comport prioritising fixed

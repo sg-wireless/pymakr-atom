@@ -14,6 +14,7 @@
     ]
   ],
   "_from": "serialport@6.2.0",
+  "_hasShrinkwrap": false,
   "_id": "serialport@6.2.0",
   "_inCache": true,
   "_location": "/serialport",
@@ -27,9 +28,7 @@
     "email": "wizard@roborooter.com"
   },
   "_npmVersion": "5.8.0",
-  "_phantomChildren": {
-    "ms": "2.0.0"
-  },
+  "_phantomChildren": {},
   "_requested": {
     "raw": "serialport@6.2.0",
     "scope": null,
