@@ -1,6 +1,5 @@
 // installing and re-compiling serialport
 // executed automatically from package.json on install
-
 var exec = require('child_process').exec
 var fs = require('fs')
 
@@ -37,9 +36,11 @@ if(process.platform in precompiles) { // always returns win32 on windows, even o
   })
 
 }
-// Don't preform on windows, since it often fails there. Automatically defaults to precompiled version in /precompiles folder
-if (process.platform != 'win32') {
 
+
+// Don't preform on windows, since it almost always fails there. Automatically defaults to precompiled version in /precompiles folder
+if (process.platform != 'win32') {
+  var exec = require('child_process').exec
   console.log("Installing serialport")
   exec('npm install serialport@6.2.0',
     function(error,stdout,stderr){
@@ -53,7 +54,7 @@ if (process.platform != 'win32') {
               console.log(error)
             }else{
               console.log("Rebuilding...")
-              exec('$(npm bin)/electron-rebuild -f -w serialport -v 1.7.2',
+              exec('$(npm bin)/electron-rebuild -f -w serialport -v 2.0.5',
                 function(error,stout,stderr){
                   if(error){
                     console.log(error)
@@ -68,6 +69,8 @@ if (process.platform != 'win32') {
     }
   )
 }
+
+
 
 function copyFile(source, target, cb) {
   var cbCalled = false;
