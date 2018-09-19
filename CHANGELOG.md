@@ -1,3 +1,14 @@
+## 1.4.2 - Bugfixes
+* Run button now works for preview files (one click on file instead of double)
+* Bindings issue fixed for serialport lib
+* Added warning when board is connected in another atom window
+
+## 1.4.1 - Bugfixes
+* Symlink folders no longer ignored when uploading
+* Comport prioritising fixed
+* Fixed hash comparison in upload feature
+* Small bugfixes, code synchronization with VSCode
+
 ## 1.4.0 - Upload feature improvements
 * Support for uploading (and downloading) binary files like images and mpy files
 * Added auto-connect feature
