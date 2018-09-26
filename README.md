@@ -110,6 +110,15 @@ Solution: If the board is currently running code, you will need to exit the curr
 
 The REPL should then appear with the '>>>' prompt and you will be able to run/sync your code.
 
+### Cannot connect to Pycom on Linux
+
+If you're a linux user and can't connect to your board, there might be a permission issue to access the serial port.
+
+Solution:
+Run the following command
+`sudo usermod -a -G dialout $USER`
+
+
 ### Any error where the traceback contains `\.atom\packages\Pymakr\` with a capital P
 This happened after Pymakr renamed to pymakr (lowercase) starting at version 1.2.5, but Atom remembers the old folder name inside the packages folder.
 
