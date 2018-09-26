@@ -112,3 +112,10 @@ In the case of a board that has already has code uploaded to it and is running a
 3. Press ctrl-c on within the Pymakr console to exit the current script/program
 
 The REPL should then appear with the `>>>` prompt and you will be able to run/sync your code.
+### Cannot connect to Pycom on Linux
+
+If you're a linux user and can't connect to your board, there might be a permission issue to access the serial port.
+
+Solution:
+Run the following command
+`sudo usermod -a -G dialout $USER`
