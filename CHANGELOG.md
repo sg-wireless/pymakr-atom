@@ -1,3 +1,11 @@
+## 1.4.3 - Bugfixes
+* Flagged compatible with atom 1.31
+* Fixed failing upload issues
+* Removed hash-check after upload for >500kb files (too slow)
+* Added DNS lookup for address [@ldecicco]
+* Added basic py_ignore setting for ignoring specific files for upload
+* Added common issue with linux permissions to readme file
+
 ## 1.4.2 - Bugfixes
 * Run button now works for preview files (one click on file instead of double)
 * Bindings issue fixed for serialport lib
