@@ -43,7 +43,6 @@
     "promirepl": "^1.0.1",
     "prompt-list": "^3.1.2",
     "safe-buffer": "^5.0.1",
-    "serialport": "^6.2.0",
     "telnet-client": "^0.13.0",
     "utf8": "^3.0.0",
     "xterm": "^2.9.2"
