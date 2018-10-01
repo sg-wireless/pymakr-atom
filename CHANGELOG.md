@@ -1,3 +1,6 @@
+## 1.4.4 - Bugfix for windows
+* Fixed an issue on windows where serialport lib fails to install.
+
 ## 1.4.3 - Bugfixes
 * Flagged compatible with atom 1.31
 * Fixed failing upload issues
