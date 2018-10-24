@@ -3,6 +3,10 @@
 var exec = require('child_process').exec
 var fs = require('fs')
 
+var vtools = require('./functions-versions.js')
+var serialport_version = '6.2.2'
+var electron_version = '2.0.9'
+
 var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
 if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
   var plf = precompiles[process.platform]
@@ -41,8 +45,8 @@ if(process.platform in precompiles) { // always returns win32 on windows, even o
 // Don't preform on windows, since it almost always fails there. Automatically defaults to precompiled version in /precompiles folder
 if (process.platform != 'win32') {
   var exec = require('child_process').exec
-  console.log("Installing serialport")
-  exec('npm install serialport@6.2.0',
+  console.log("Installing serialport "+serialport_version)
+  exec('npm install serialport@'+serialport_version,
     function(error,stdout,stderr){
       if(error){
         console.log(error)
@@ -53,8 +57,14 @@ if (process.platform != 'win32') {
             if(error){
               console.log(error)
             }else{
-              console.log("Rebuilding...")
-              exec('$(npm bin)/electron-rebuild -f -w serialport -v 2.0.5',
+              console.log("Getting current versions")
+
+              // TODO:  getCurrentVersion doesn't work reliably yet. 
+              // atom --version returns nothing after last atom updates.
+              // vtools.getCurrentVersions(function(atom,electron_version){
+
+              console.log("Rebuilding for electron "+electron_version+"...")
+              exec('$(npm bin)/electron-rebuild -f -w serialport -v '+electron_version,
                 function(error,stout,stderr){
                   if(error){
                     console.log(error)
@@ -62,6 +72,7 @@ if (process.platform != 'win32') {
                   console.log("Done!")
                 }
               )
+              // })
             }
           }
         )

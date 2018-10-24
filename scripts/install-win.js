@@ -3,10 +3,15 @@
 // Only use to generate pre-compiled serialport lib, never let this be executed by users. The script doesn't work on all (most) pc's
 // remember to change the path on line 21 to direct to your user folder
 
+
 var exec = require('child_process').exec
+var vtools = require('./functions-versions.js')
+
+var user_folder = "C:\\Users\\<user>"
+var serialport_version = '6.2.2'
 
 console.log("Installing serialport")
-exec('npm install serialport@4.0.6',
+exec('npm install serialport@'+serialport_version,
   function(error,stdout,stderr){
     if(error){
       console.log(error)
@@ -17,15 +22,18 @@ exec('npm install serialport@4.0.6',
           if(error){
             console.log(error)
           }else{
-            console.log("Rebuilding...")
-            exec('C:\\Users\\ralph\\Projects\\pymakr-atom\\node_modules\\.bin\\electron-rebuild -f -w serialport -v 2.0.0',
-              function(error,stout,stderr){
-                if(error){
-                  console.log(error)
+            console.log("Getting current versions")
+            vtools.getCurrentVersions(function(atom,electron_version){
+              console.log("Rebuilding...")
+              exec(user_folder + '\\Projects\\pymakr-vsc\\node_modules\\.bin\\electron-rebuild -f -w serialport -v '+electron_version,
+                function(error,stout,stderr){
+                  if(error){
+                    console.log(error)
+                  }
+                  console.log("Done!")
                 }
-                console.log("Done!")
-              }
-            )
+              )
+            })
           }
         }
       )
