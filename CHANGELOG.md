@@ -1,3 +1,7 @@
+## 1.4.5 - Updates
+* Tagged atom v1.32 compatible
+* Added automation and update detection scripts for easier rebuilds
+
 ## 1.4.4 - Bugfix for windows
 * Fixed an issue on windows where serialport lib fails to install.
 
