@@ -4,7 +4,6 @@ var exec = require('child_process').exec
 //params
 var url = "https://api.github.com/repos/atom/atom/releases/latest"
 var download_url_tmp = "https://github.com/atom/atom/releases/download/v" // add: <version>/<filename>
-https://github.com/atom/atom/releases/download/v1.31.1/atom-mac.zip
 var path_latest = ""//"/atom/atom/releases/latest"
 var request = require('request');
 var filenames = {'win32': 'atom-windows.zip', 'win64': 'atom-x64-windows.zip', 'darwin': 'atom-mac.zip', 'linux': 'atom.x86_64.rpm', 'aix': 'atom.x86_64.rpm'}
@@ -59,7 +58,6 @@ module.exports = {
   }
 }
 function getContent(url,cb){
-
   var headers = {
     'User-Agent':       'Super Agent/0.0.1',
     'Content-Type':     'application/x-www-form-urlencoded'

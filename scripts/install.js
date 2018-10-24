@@ -3,9 +3,9 @@
 var exec = require('child_process').exec
 var fs = require('fs')
 
-
 var vtools = require('./functions-versions.js')
 var serialport_version = '6.2.2'
+var electron_version = '2.0.9'
 
 var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
 if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
@@ -58,18 +58,21 @@ if (process.platform != 'win32') {
               console.log(error)
             }else{
               console.log("Getting current versions")
-              vtools.getCurrentVersions(function(atom,electron_version){
 
-                console.log("Rebuilding for electron "+electron_version+"...")
-                exec('$(npm bin)/electron-rebuild -f -w serialport -v '+electron_version,
-                  function(error,stout,stderr){
-                    if(error){
-                      console.log(error)
-                    }
-                    console.log("Done!")
+              // TODO:  getCurrentVersion doesn't work reliably yet. 
+              // atom --version returns nothing after last atom updates.
+              // vtools.getCurrentVersions(function(atom,electron_version){
+
+              console.log("Rebuilding for electron "+electron_version+"...")
+              exec('$(npm bin)/electron-rebuild -f -w serialport -v '+electron_version,
+                function(error,stout,stderr){
+                  if(error){
+                    console.log(error)
                   }
-                )
-              })
+                  console.log("Done!")
+                }
+              )
+              // })
             }
           }
         )
