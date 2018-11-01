@@ -25,6 +25,7 @@
     "commander": "^2.13.0",
     "crypto": "^1.0.1",
     "debug": "^3.1.0",
+    "dns": "^0.2.2",
     "electron-rebuild": "^1.8.2",
     "element-resize-detector": "1.1.11",
     "font-awesome": "^4.7.0",
