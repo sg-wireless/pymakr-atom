@@ -5,6 +5,7 @@
     "ctrl-alt-c": "pymakr:connect",
     "ctrl-alt-d": "pymakr:disconnect",
     "ctrl-alt-r": "pymakr:run",
+    "ctrl-shift-enter": "pymakr:runselection",
     "ctrl-r": "pymakr:clearTerminal"
   }
 }

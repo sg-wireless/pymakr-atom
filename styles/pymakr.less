@@ -22,7 +22,7 @@
   &.collapsed {
     height:25px;
   }
-  .resizer {
+  .pymakr-resizer {
     display: none;
     position: absolute;
     top:-5px;
@@ -32,9 +32,9 @@
     cursor:n-resize;
   }
   cursor: pointer;
-  &.open {
+  &.pymakr-open {
     cursor: default;
-    .resizer {
+    .pymakr-resizer {
       display: block;
     }
   }
@@ -50,7 +50,7 @@
         color:darken(@text-color,20%);
       }
     }
-	.logo {
+	.pymakr-logo {
 		height:17px;
 		padding-bottom:2px
 	}
@@ -58,7 +58,7 @@
 		padding-left:5px;
 		margin-bottom:3px;
 	}
-    .buttons {
+    .pymakr-buttons {
       width: 445px;
       position: absolute;
       right:9px;
@@ -84,7 +84,7 @@
         span.fa.down {
           display: none;
         }
-        div.subnav {
+        div.pymakr-subnav {
           display: none;
           position: absolute;
           right:0px;
@@ -108,14 +108,14 @@
           span.fa.down {
             display: inline;
           }
-          div.subnav {
+          div.pymakr-subnav {
             display: block;
           }
         }
       }
     }
   }
-  #terminal {
+  #pymakr-terminal {
     background: #000;
     padding-left: 2px;
   }
