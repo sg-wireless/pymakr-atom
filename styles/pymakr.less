@@ -31,12 +31,36 @@
     height: 10px;
     cursor:n-resize;
   }
+  .pymakr-overlay {
+    display: none;
+    position: absolute;
+    top:25px;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    background-color:#000000;
+    opacity:0.7;
+    z-index: 1;
+  }
+  .pymakr-overlay-contents {
+    display: none;
+    position: absolute;
+    top:25px;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    z-index: 2;
+  }
   cursor: pointer;
+  .pymakr-open{
+    display: block;
+  }
   &.pymakr-open {
     cursor: default;
     .pymakr-resizer {
       display: block;
     }
+
   }
   .pycom-top-bar {
     height:25px;
