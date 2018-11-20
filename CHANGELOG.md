@@ -1,3 +1,11 @@
+## 1.4.6 - Stability improvements
+* Removed dependancy grouping from precompiled serialport lib (issue #106)
+* Added symlink support for files in upload feature
+* When code is selected, only selection is used when clicking 'run'
+* Added shortcut to run current cursor line / selection (ctrl-shift-enter)
+* Improved hash-check after upload for memory usage, added error handling when memory runs out
+* Safe-boot before retrying to upload a file that failed due to memory error.
+
 ## 1.4.5 - Updates
 * Tagged atom v1.32 compatible
 * Added automation and update detection scripts for easier rebuilds
