@@ -4,7 +4,7 @@ var exec = require('child_process').exec
 var fs = require('fs')
 
 var vtools = require('./functions-versions.js')
-var serialport_version = '6.2.2'
+var serialport_version = '7.0.2'
 var electron_version = '2.0.9'
 
 var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
@@ -59,7 +59,7 @@ if (process.platform != 'win32') {
             }else{
               console.log("Getting current versions")
 
-              // TODO:  getCurrentVersion doesn't work reliably yet. 
+              // TODO:  getCurrentVersion doesn't work reliably yet.
               // atom --version returns nothing after last atom updates.
               // vtools.getCurrentVersions(function(atom,electron_version){
 

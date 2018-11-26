@@ -113,7 +113,7 @@ In the case of a board that has already has code uploaded to it and is running a
 
 The REPL should then appear with the `>>>` prompt and you will be able to run/sync your code.
 
-### Cannot connect to Pycom on Linux
+### Cannot connect to Pycom device on Linux
 
 If you're a linux user and can't connect to your board, there might be a permission issue to access the serial port.
 
