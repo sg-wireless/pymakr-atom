@@ -17,6 +17,11 @@
   font-family: 'Font Awesome';
 }
 
+.blur-text {
+  text-shadow: 0 0 10px white;
+  color: transparent;
+}
+
 .pymakr {
   height: 210px;
   &.collapsed {
@@ -39,9 +44,10 @@
     right:0px;
     bottom: 0px;
     background-color:#000000;
-    opacity:0.7;
+    opacity:0.5;
     z-index: 1;
   }
+
   .pymakr-overlay-contents {
     display: none;
     position: absolute;
@@ -50,6 +56,19 @@
     right:0px;
     bottom: 0px;
     z-index: 2;
+    .pymakr-overlay-wrapper {
+      padding: 10px;
+      .pymakr-overlay-nav {
+        width: 150px;
+        float:left;
+      }
+      .pymakr-overlay-wrapper {
+        div.hidden {
+          display: none;
+
+        }
+      }
+    }
   }
   cursor: pointer;
   .pymakr-open{
