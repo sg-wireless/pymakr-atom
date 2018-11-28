@@ -1,3 +1,8 @@
+## 1.4.7 - Stability improvements
+* Added a warning when safe boot fails before upload or download
+* Flagged compatible with atom 1.33.x
+
+
 ## 1.4.6 - Stability improvements
 * Removed dependancy grouping from precompiled serialport lib (issue #106)
 * Added symlink support for files in upload feature
