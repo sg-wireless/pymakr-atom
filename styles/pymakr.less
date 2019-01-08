@@ -58,6 +58,16 @@
     z-index: 2;
     .pymakr-overlay-wrapper {
       padding: 10px;
+      .buttons {
+        position: absolute;
+        top:5px;
+        left:300px;
+        button {
+          height: 30px
+          border:none;
+          cursor: pointer;
+        }
+      }
       .pymakr-overlay-nav {
         display: none;
         width: 150px;
@@ -68,16 +78,29 @@
           display: none;
         }
       }
-      .snippets-list {
+      #snippets-title {
+        line-height: 40px;
+      }
+      #snippets-left {
         position: absolute;
         width: 200px;
         left: 0;
         top:0;
+        ul li {
+          cursor: pointer;
+        }
       }
-      .snippets-display {
+      #snippets-right {
         position: absolute;
         left:200px;
         top:0;
+        right:0;
+        textarea {
+          width: 300px;
+        }
+      }
+      #snippets-description {
+        float:right;
       }
     }
   }
