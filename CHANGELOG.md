@@ -1,3 +1,7 @@
+## 1.4.8 - Stability improvements
+* Fixed bug where terminal would freeze when not auto-rebooting after upload
+* Flagged compatible with atom 1.34.x
+
 ## 1.4.7 - Stability improvements
 * Added a warning when safe boot fails before upload or download
 * Flagged compatible with atom 1.33.x
