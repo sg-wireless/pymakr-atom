@@ -1,10 +1,10 @@
 #  Pymakr Atom Package
 
-Pymakr enables you to communicate to your Pycom board using the build in command line REPL. Run a single file to your board, sync your entire project or directly type and execute commands.
+Pymakr enables you to communicate to your Pycom board using the build in command line REPL. Run a single file to your board, upload your entire project or directly type and execute commands.
 
 - Works with macOS, Linux, and Windows.
 - Connects to any Pycom board: WiPy, WiPy 2.0, LoPy, and any newer board.
-- Works best with firmware `1.6.11.b1` and higher. Earlier firmware might have unexpected behaviour when synchronizing files over serial.
+- Works best with firmware `1.6.11.b1` and higher. Earlier firmware might have unexpected behaviour when uploading files over serial.
 
 More info and documentation can be found on [docs.pycom.io](https://docs.pycom.io)
 
@@ -17,9 +17,13 @@ At any time, use the `close` button on the far right to close the command line. 
 Useful keymaps:
 
 - `ctrl-opt/alt-c`: (Re)connect
+- `ctrl-opt/alt-d`: Disconnect
 - `ctrl-opt/alt-t`: Toggle terminal
-- `ctrl-opt/alt-s`: Synchronize project
+- `ctrl-opt/alt-s`: Upload project
+- `ctrl-shift-s`  : Upload current file only
 - `ctrl-opt/alt-r`: Run current file
+- `ctrl-shift-enter`: Run current selection or line
+- `ctrl-r`: Clear terminal
 
 ## Settings
 
@@ -36,6 +40,7 @@ Using the REPL is easy and works the same way as your command line based telnet 
 - `CTRL-C`: Stop any running code
 - `CTRL-D`: Soft reset
 - `CTRL-E`: Paste mode
+- `CTRL-F`: Safe boot
 
 Ctrl-C and Ctrl-V (or cmd-c/cmd-v on Mac) can also be used to copy and paste in the console.
 
@@ -85,11 +90,11 @@ If the installation of the `serialport` library failed, it reverts back to the p
 
 Solution: upgrade to the latest Atom (1.19.0 or higher) or install the previous version of the plugin (`apm install pymakr@1.0.3`)
 
-### Synchronizing a project results in 'Failed to allocate memory' error
+### Uploading a project results in 'Failed to allocate memory' error
 
-Synchronizing takes a bit of memory, so this error can occur when code running on the board already is taking a substantial amount of memory.
+Uploading takes a bit of memory, so this error can occur when code running on the board already is taking a substantial amount of memory.
 
-**Solution:** use safe boot with [REPL](https://docs.pycom.io/gettingstarted/programming/repl) or [Expansion Board](https://docs.pycom.io/product-info/boards/expansion3) when synchronizing
+**Solution:** use safe boot with [REPL](https://docs.pycom.io/gettingstarted/programming/repl) or [Expansion Board](https://docs.pycom.io/product-info/boards/expansion3) when uploading
 
 ### Any error where the traceback contains `\.atom\packages\Pymakr\` with a capital P
 
@@ -111,7 +116,7 @@ In the case of a board that has already has code uploaded to it and is running a
 2. Press the reset button on the device
 3. Press ctrl-c on within the Pymakr console to exit the current script/program
 
-The REPL should then appear with the `>>>` prompt and you will be able to run/sync your code.
+The REPL should then appear with the `>>>` prompt and you will be able to run/upload your code.
 
 ### Cannot connect to Pycom device on Linux
 
