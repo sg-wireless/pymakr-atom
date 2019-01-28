@@ -1,7 +1,21 @@
+## 1.4.10 - Bigfixes
+* Small fixes for upload feature
+* Auto Connect enabled by default
+* Fixed small reference error when address is not configured (issue #111)
+* Improved help text
+
+## 1.4.9 - Fast upload
+* Experimental 'fast upload' feature, using bigger chunks and zlib compression. Only for latest firmware
+* Added feature for force-uploading single file only. Put under 'more' button for now (or `ctrl-shift-s`)
+* Fixed terminal-freeze bug that happened after uploading when reboot-after-upload was disabled
+
+## 1.4.8 - Stability improvements
+* Fixed bug where terminal would freeze when not auto-rebooting after upload
+* Flagged compatible with atom 1.34.x
+
 ## 1.4.7 - Stability improvements
 * Added a warning when safe boot fails before upload or download
 * Flagged compatible with atom 1.33.x
-
 
 ## 1.4.6 - Stability improvements
 * Removed dependancy grouping from precompiled serialport lib (issue #106)
