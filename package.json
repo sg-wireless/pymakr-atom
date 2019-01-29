@@ -46,6 +46,7 @@
     "rimraf": "^2.6.2",
     "safe-buffer": "^5.0.1",
     "serialport": "^7.0.2",
+    "slugify": "^1.3.4",
     "telnet-client": "^0.16.1",
     "utf8": "^3.0.0",
     "xterm": "^2.9.2"
