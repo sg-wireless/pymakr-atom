@@ -1,3 +1,9 @@
+## 1.4.10 - Bigfixes
+* Small fixes for upload feature
+* Auto Connect enabled by default
+* Fixed small reference error when address is not configured (issue #111)
+* Improved help text
+
 ## 1.4.9 - Fast upload
 * Experimental 'fast upload' feature, using bigger chunks and zlib compression. Only for latest firmware
 * Added feature for force-uploading single file only. Put under 'more' button for now (or `ctrl-shift-s`)
