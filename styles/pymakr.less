@@ -215,3 +215,65 @@
 	  color:red;
   }
 }
+
+div.pymakr-feedback {
+  position: absolute;
+  right: 11px;
+  top: -165px;
+  width: 350px;
+  height: 150px;
+  line-height: 25px;
+  background: rgb(81, 160, 202);
+  padding: 5px 10px;
+  color: #fff;
+  h2 {
+    margin: 7px 0px;
+  }
+
+  .feedback-link {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline-block;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .dontshowagain {
+    position: absolute;
+    bottom: 10px;
+    left:5px;
+    display: inline-block;
+    padding: 0 5px;
+    cursor: pointer;
+    text-decoration: underline;
+    &:hover {
+      background: rgb(130, 210, 252);
+    }
+  }
+  .square {
+    position: absolute;
+    background: rgb(81, 160, 202);
+    right: 12px;
+    bottom: -9px;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+  }
+  .close-button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: #fff;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 16px;
+    &:hover {
+      background: rgb(130, 210, 252);
+    }
+
+  }
+}
