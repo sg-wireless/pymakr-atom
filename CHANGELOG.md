@@ -1,3 +1,10 @@
+## 1.4.11 - Bigfixes
+* Solved error when upload button is pressed while loading (issue #112)
+* Better feedback in terminal about autoconnect
+* Added popup window to ask users for feedback about Pymakr 2.0
+* Added setting for autoconnect comports, expanded default to support some boards on windows
+* Better feedback when incorrectly setting sync_folder
+
 ## 1.4.10 - Bigfixes
 * Small fixes for upload feature
 * Auto Connect enabled by default
