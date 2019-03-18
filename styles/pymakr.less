@@ -25,12 +25,12 @@
   color: transparent;
 }
 
-.pymakr {
+#pymakr {
   height: 210px;
   &.collapsed {
     height:25px;
   }
-  .pymakr-resizer {
+  #pymakr-resizer {
     display: none;
     position: absolute;
     top:-5px;
@@ -39,7 +39,7 @@
     height: 10px;
     cursor:n-resize;
   }
-  .pymakr-overlay {
+  #pymakr-overlay {
     display: none;
     position: absolute;
     top:25px;
@@ -51,7 +51,7 @@
     z-index: 1;
   }
 
-  .pymakr-overlay-contents {
+  #pymakr-overlay-contents {
     display: none;
     position: absolute;
     top:25px;
@@ -59,7 +59,7 @@
     right:0px;
     bottom: 0px;
     z-index: 2;
-    .pymakr-overlay-wrapper {
+    #pymakr-overlay-wrapper {
       padding: 10px;
       .wrapper-close {
         position: absolute;
@@ -70,7 +70,7 @@
         font-size: 18px;
         cursor: pointer;
       }
-      .buttons {
+      #pymakr-buttons {
         position: absolute;
         top:5px;
         left:300px;
@@ -80,12 +80,12 @@
           cursor: pointer;
         }
       }
-      .pymakr-overlay-nav {
+      #pymakr-overlay-nav {
         display: none;
         width: 150px;
         float:left;
       }
-      .pymakr-overlay-wrapper {
+      #pymakr-overlay-content-wrapper {
         div.hidden {
           display: none;
         }
@@ -127,7 +127,7 @@
     }
 
   }
-  .pycom-top-bar {
+  #pycom-top-bar {
     height:25px;
     min-width: 310px;
     padding: 0 @component-padding;
@@ -139,15 +139,15 @@
         color:darken(@text-color,20%);
       }
     }
-	.pymakr-logo {
-		height:17px;
-		padding-bottom:2px
-	}
-	.icon {
-		padding-left:5px;
-		margin-bottom:3px;
-	}
-    .pymakr-buttons {
+  	.pymakr-logo {
+  		height:17px;
+  		padding-bottom:2px
+  	}
+  	.icon {
+  		padding-left:5px;
+  		margin-bottom:3px;
+  	}
+    #pymakr-buttons {
       width: 445px;
       position: absolute;
       right:9px;
