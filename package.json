@@ -53,5 +53,12 @@
   },
   "scripts": {
     "install": "node scripts/install.js"
+  },
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
   }
 }
