@@ -19,12 +19,17 @@
 .hidden {
   display: none;
 }
-
 .blur-text {
   text-shadow: 0 0 10px white;
   color: transparent;
 }
-
+.pymakr-status-bar {
+  display: inline-block;
+  padding: 0 9px;
+  &:hover {
+    background: @button-background-color-hover;
+  }
+}
 #pymakr {
   height: 210px;
   &.collapsed {
@@ -117,7 +122,7 @@
     }
   }
   cursor: pointer;
-  .pymakr-open{
+  .pymakr-open {
     display: block;
   }
   &.pymakr-open {
@@ -261,7 +266,7 @@ div.pymakr-feedback {
     height: 20px;
     transform: rotate(45deg);
   }
-  .close-button {
+  #close {
     position: absolute;
     top: 4px;
     right: 4px;
