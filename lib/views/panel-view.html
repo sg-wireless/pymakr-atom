@@ -4,23 +4,55 @@
   <div id="pymakr-overlay-contents"></div>
 
   <div id="pycom-top-bar">
-      <div id="pymakr-title">Starting...</div>
-      <div id="pymakr-buttons">
-        <button id="close"><span class="fa fa-chevron-down"></span></button>
-        <button id="settings">
-          <span class="fa fa-cog"></span> Settings
-          <div class="pymakr-subnav"></div>
-        </button>
-        <button id="more">
-          <span class="fa down fa-chevron-down"></span><span class="fa up fa-chevron-up"></span> More
-          <div class="pymakr-subnav"></div>
-        </button>
-      </div>
+    <div id="pymakr-options-left">
+      <button id="pymakr-projects" class="has-sub"><span id="project-name">No project...</span>
+        <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
+        <div class="subnav">
+          Not implemented yet...
+        </div>
+      </button>
+
+      <button id="pymakr-connect" class="has-sub">Connect Device
+        <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
+        <div class="subnav">
+          <div><span id="pymakr-connect-all" class="fa fa-"></span> Connect to all</div>
+          <div><span id="pymakr-close-all" class="fa fa-"></span> Close all</div>
+          <span class="separator" id="pymakr-comports-list">
+          </span>
+          <span id="pymakr-address-list">
+
+          </span>
+        </div>
+      </button>
+
+    </div>
+
+    <div id="pymakr-connection-tabs">
+      
+    </div>
+
+    <div id="pymakr-buttons">
+      <button id="close"><span class="fa fa-times"></span></button>
+      <button id="settings" class="has-sub">
+        <span class="fa fa-cog"></span> Settings
+        <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
+        <div class="subnav">
+          <div id="pymakr-global_settings"><span class="fa fa-"></span> Global settings</div>
+          <div id="pymakr-project_settings"><span class="fa fa-"></span> Project settings</div>
+          <div id="pymakr-setting-auto_connect"><span class="fa fa-"></span>
+            <input type="checkbox" name="auto_connect" id="setting-auto_connect-value" /> Autoconnect
+          </div>
+          <div><span id="pymakr-setting-safe_boot_on_upload" class="fa fa-"></span>
+            <input type="checkbox" name="safe_boot_on_upload" id="setting-safe_boot_on_upload-value" /> Safe-boot before upload
+          </div>
+        </div>
+
+      </button>
+    </div>
   </div>
 
   <div id="pymakr-overlay"></div>
 
   <div id="pymakr-terminal"></div>
-
 
 </div>
