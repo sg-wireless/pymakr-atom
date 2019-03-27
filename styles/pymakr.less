@@ -151,11 +151,13 @@
       position: absolute;
       left:210px;
       top:0px;
-      div.tab {
+      right:200px;
+      div.pymakr-connection {
         position: relative;
         color:@text-color;
         background: @button-background-color;
         border: none;
+        display: inline-block;
         cursor: pointer;
         padding: 4px;
         margin: 0 4px 0 0;
@@ -248,9 +250,15 @@
       }
     }
   }
-  #pymakr-terminal {
+  #pymakr-terminal-area {
     background: #000;
     padding-left: 2px;
+    div.device-terminal {
+      display: none;
+      &.open {
+        display: block;
+      }
+    }
   }
   #green {
 	  color:green;
