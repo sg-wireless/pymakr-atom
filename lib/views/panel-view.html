@@ -15,8 +15,8 @@
       <button id="pymakr-connect" class="has-sub">Connect Device
         <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
         <div class="subnav">
-          <div><span id="pymakr-connect-all" class="fa fa-"></span> Connect to all</div>
-          <div><span id="pymakr-close-all" class="fa fa-"></span> Close all</div>
+          <div id="pymakr-connect-all" ><span  class="fa fa-"></span> Connect to all</div>
+          <div id="pymakr-close-all"><span  class="fa fa-"></span> Close all</div>
           <span class="separator" id="pymakr-comports-list">
           </span>
           <span id="pymakr-address-list">
@@ -54,7 +54,9 @@
   <div id="pymakr-overlay"></div>
 
   <div id="pymakr-terminal-area">
-    
+    <div id="pymakr-terminal-placeholder" class="open">
+      No terminal open. Use the 'Connect Device' button to open a device.
+    </div>
   </div>
 
 </div>

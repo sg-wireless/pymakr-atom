@@ -31,7 +31,8 @@
   }
 }
 #pymakr {
-  height: 210px;
+  height: 356px;
+
   // -webkit-transition: height 0.2s ease-in-out;
   // -moz-transition: height 0.2s ease-in-out;
   // -o-transition: height 0.2s ease-in-out;
@@ -149,7 +150,7 @@
   	}
     #pymakr-connection-tabs {
       position: absolute;
-      left:210px;
+      left:241px;
       top:0px;
       right:200px;
       div.pymakr-connection {
@@ -159,8 +160,28 @@
         border: none;
         display: inline-block;
         cursor: pointer;
-        padding: 4px;
+        padding: 4px 4px 4px 20px;
         margin: 0 4px 0 0;
+        span.connection-status {
+          position: absolute;
+          display: block;
+          left: 8px;
+          top: 8px;
+          width: 10px;
+          height: 10px;
+          border-radius: 5px;
+          background: red;
+          border: none;
+        }
+        span.close {
+          display: inline-block;
+          width: 11px;
+          height: 11px;
+          background: red;
+        }
+        &.connected span.connection-status{
+          background: green;
+        }
       }
     }
     #pymakr-buttons {
@@ -253,10 +274,46 @@
   #pymakr-terminal-area {
     background: #000;
     padding-left: 2px;
+    height: 100%;
+    margin-left:60px;
+    #pymakr-terminal-placeholder {
+      height: 100%;
+      display: none;
+      &.open {
+        display: block;
+      }
+    }
     div.device-terminal {
       display: none;
       &.open {
         display: block;
+      }
+    }
+  }
+
+  #pymakr-left-panel {
+    position: absolute;
+    left:0px;
+    top:26px;
+    bottom: 0px;
+    width: 60px;
+    button {
+      position: relative;
+      background: @button-background-color;
+      width: 60px;
+      height: 60px;
+      border:1px solid black;
+      font-size: 18px;
+      padding-right: 18px;
+      div.sub {
+        position: absolute;
+        width: 15px;
+        border-left:1px solid black;
+        top:0px;
+        right:0px;
+        bottom:0px;
+        padding-top: 20px;
+        font-size: 10px;
       }
     }
   }
