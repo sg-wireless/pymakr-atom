@@ -1,3 +1,7 @@
+## 1.4.13 - Compatibility update
+* Flagged compatible with Atom 1.36
+* Removed feedback popup
+
 ## 1.4.12 - Hotfixes
 * Hotfix for issue #115 (nullpointer after 3 retries of upload)
 * Hotfix for upload memory usage and nullpointer during upload (by @josverl in vscode pull request)
