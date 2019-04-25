@@ -73,6 +73,37 @@
       display: block;
     }
 
+    #pymakr-info-view {
+      #pymakr-info-close {
+        position: absolute;
+        top:14px;
+        left:20px;
+        color:#fff;
+      }
+      .column {
+        width: 300px;
+        margin-top:30px;
+        float: left;
+        .row {
+          div {
+            float: left;
+            width: 150px;
+            padding:0 7px;
+            text-shadow: 0 0 17px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin: 5px 0;
+          }
+          .label {
+            font-weight: bold;
+            text-align: right;
+          }
+          .data {
+
+          }
+        }
+      }
+    }
+
     #pymakr-overlay-wrapper {
       padding: 10px;
 
@@ -121,7 +152,7 @@
         }
       }
       #snippets-description {
-        float:right;
+        float: right;
       }
     }
   }
@@ -160,7 +191,7 @@
       left:241px;
       top:0px;
       right:125px;
-      
+
       div.pymakr-connection {
         position: relative;
         color:@text-color;
@@ -243,10 +274,16 @@
       div.subnav {
         display: none;
         position: absolute;
-        right:-25px;
         bottom:26px;
         line-height: 25px;
         background: @button-background-color;
+        &.left {
+          left:0px;
+          div {
+            width:150px;
+            text-align: left;
+          }
+        }
         div {
           width: 175px;
           padding:0 5px;
