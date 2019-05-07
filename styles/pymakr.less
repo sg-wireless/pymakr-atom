@@ -237,82 +237,81 @@
         cursor: pointer;
       }
     }
-
-    button {
-      position: relative;
-      color:@text-color;
+  }
+  button {
+    position: relative;
+    color:@text-color;
+    background: @button-background-color;
+    border: none;
+    padding: 4px;
+    margin: 0 4px 0 0;
+    &.has-sub {
+      margin-right:29px;
+    }
+    .hidden {
+      display:none
+    }
+    &:hover{
+      background:@button-background-color-hover;
+    }
+    &.cancel {
+      background: @background-color-error;
+      color:#fff;
+    }
+    span.fa.down {
+      display: none;
+    }
+    div.open-subnav {
+      position: absolute;
+      right: -25px;
+      top:0px;
+      bottom:0px;
+      width: 25px;
+      padding-top: 4px;
+      border-left: 1px solid darken(@button-background-color,10);
+      background: lighten(@button-background-color,5);
+    }
+    div.subnav {
+      display: none;
+      position: absolute;
+      bottom:26px;
+      line-height: 25px;
       background: @button-background-color;
-      border: none;
-      padding: 4px;
-      margin: 0 4px 0 0;
-      &.has-sub {
-        margin-right:29px;
+      &.left {
+        left:0px;
+        div {
+          width:150px;
+          text-align: left;
+        }
       }
-      .hidden {
-        display:none
+      div {
+        width: 175px;
+        padding:0 5px;
+        text-align: right;
+        cursor: pointer;
+        &:hover {
+          background:@button-background-color-hover;
+        }
+        input {
+
+        }
       }
-      &:hover{
-        background:@button-background-color-hover;
+      span.separator{
+        display: inline-block;
+        border-top: 1px solid #444;
       }
-      &.cancel {
-        background: @background-color-error;
-        color:#fff;
+    }
+    &.open {
+      span.fa.up {
+        display: none;
       }
       span.fa.down {
-        display: none;
-      }
-      div.open-subnav {
-        position: absolute;
-        right: -25px;
-        top:0px;
-        bottom:0px;
-        width: 25px;
-        padding-top: 4px;
-        border-left: 1px solid darken(@button-background-color,10);
-        background: lighten(@button-background-color,5);
+        display: inline;
       }
       div.subnav {
-        display: none;
-        position: absolute;
-        bottom:26px;
-        line-height: 25px;
-        background: @button-background-color;
-        &.left {
-          left:0px;
-          div {
-            width:150px;
-            text-align: left;
-          }
-        }
-        div {
-          width: 175px;
-          padding:0 5px;
-          text-align: right;
-          cursor: pointer;
-          &:hover {
-            background:@button-background-color-hover;
-          }
-          input {
-
-          }
-        }
-        span.separator{
-          display: inline-block;
-          border-top: 1px solid #444;
-        }
-      }
-      &.open {
-        span.fa.up {
-          display: none;
-        }
-        span.fa.down {
-          display: inline;
-        }
-        div.subnav {
-          display: block;
-          overflow-y: visible;
-          height: auto;
-        }
+        display: block;
+        overflow-y: visible;
+        height: auto;
       }
     }
   }
@@ -321,6 +320,7 @@
     padding-left: 2px;
     height: 100%;
     margin-left:60px;
+    margin-right:26px;
     #pymakr-terminal-placeholder {
       height: 100%;
       display: none;
@@ -332,6 +332,41 @@
       display: none;
       &.open {
         display: block;
+      }
+    }
+  }
+  #pymakr-right-panel{
+    position: absolute;
+    right:0px;
+    top:26px;
+    bottom: 0px;
+    width: 26px;
+    button {
+      transform: rotate(90deg);
+      margin: 53px 0 4px -23px;
+      padding-left: 24px;
+      height: 26px;
+      transform: rotate(90deg);
+      &:first-child {
+        margin-top: 26px;
+      }
+      &.has-sub {
+        .open-subnav{
+          display: none;
+        }
+      }
+      .subnav {
+        top: 117px;
+        left: -87px;
+        transform: rotate(-90deg);
+        div {
+          background: @button-background-color;
+        }
+      }
+      span.fa {
+        position: absolute;
+        left: 7px;
+        top: 7px;
       }
     }
   }
