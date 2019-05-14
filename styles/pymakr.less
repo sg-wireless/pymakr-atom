@@ -6,6 +6,11 @@
 
 @import "../node_modules/font-awesome/less/font-awesome.less";
 @fa-font-path: "atom://pymakr/node_modules/font-awesome/fonts";
+@bg-dark: #21252b;
+@border-dark: #181a1f;
+@bg-button: #181a1f;
+
+
 
 @font-face {
   font-family: 'Font Awesome';
@@ -32,6 +37,7 @@
 }
 #pymakr {
   height: 356px;
+  background: #000;
 
   // -webkit-transition: height 0.2s ease-in-out;
   // -moz-transition: height 0.2s ease-in-out;
@@ -167,9 +173,11 @@
     }
   }
   #pycom-top-bar {
-    height:25px;
+    height:26px;
     min-width: 310px;
-    padding: 0 @component-padding;
+    padding: 0;
+    border-left: solid 1px @border-dark;
+    background-color: @bg-dark;
     #pymakr-title {
       display: none;
       line-height: 25px;
@@ -243,10 +251,14 @@
     color:@text-color;
     background: @button-background-color;
     border: none;
+    border-right: 1px solid @border-dark;
     padding: 4px;
-    margin: 0 4px 0 0;
+    margin: 0;
+    span.fa {
+      margin: 0 3px;
+    }
     &.has-sub {
-      margin-right:29px;
+      margin-right:17px;
     }
     .hidden {
       display:none
@@ -263,13 +275,17 @@
     }
     div.open-subnav {
       position: absolute;
-      right: -25px;
+      right: -17px;
       top:0px;
       bottom:0px;
-      width: 25px;
-      padding-top: 4px;
-      border-left: 1px solid darken(@button-background-color,10);
-      background: lighten(@button-background-color,5);
+      width: 17px;
+      font-size: 9px;
+      padding:3px;
+      border-left: 1px solid @border-dark;
+      background: @button-background-color;
+      span.fa {
+        margin:4px 0;
+      }
     }
     div.subnav {
       display: none;
@@ -341,6 +357,7 @@
     top:26px;
     bottom: 0px;
     width: 26px;
+    background: @bg-dark;
     button {
       transform: rotate(90deg);
       margin: 53px 0 4px -23px;
@@ -377,6 +394,9 @@
     top:26px;
     bottom: 0px;
     width: 60px;
+    &.disabled {
+        opacity: 0.4;
+    }
     button {
       position: relative;
       background: @button-background-color;
