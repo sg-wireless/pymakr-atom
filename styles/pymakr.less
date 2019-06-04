@@ -85,11 +85,28 @@
         top:14px;
         left:20px;
         color:#fff;
+        cursor: pointer;
       }
       .column {
         width: 300px;
         margin-top:30px;
         float: left;
+        input {
+          margin-left: 0px;
+        }
+        div.radio, div.checkbox {
+          position: static;
+          display: inline;
+        }
+        &.vertical{
+          .row div.label, .row div.data {
+            width: 300px;
+            text-align: left;
+          }
+          .row{
+            margin-bottom: 10px;
+          }
+        }
         .row {
           div {
             float: left;

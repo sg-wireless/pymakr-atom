@@ -27,41 +27,51 @@
     </div>
     <div class="row">
       <div class="label">LoRa ID</div>
-      <div class="data" id="info-view-lora_id">TBI...</div>
+      <div class="data" id="info-view-lora_mac">loading...</div>
     </div>
     <div class="row">
       <div class="label">LTE Imei</div>
-      <div class="data" id="info-view-lte_imei">loading...</div>
+      <div class="data" id="info-view-lte_imei">TBI</div>
     </div>
   </div>
 
-  <div class="column" id="middle">
+  <div class="column vertical" id="middle">
     <div class="row">
       <div class="label">Filesystem Type</div>
-      <div class="data" id="info-view-fs_type">loading...</div>
+      <div class="data radio" id="info-view-fs_type">
+        <input type="radio" name="info-view-fs_type-input" value="LittleFS" /> <label for="info-view-fs_type-input"> LittleFS</label>
+        <input type="radio" name="info-view-fs_type-input" value="FAT32" /> <label for="info-view-fs_type-input"> FAT32</label>
+      </div>
     </div>
     <div class="row">
       <div class="label">Partition</div>
-      <div class="data" id="info-view-partition">loading...</div>
+      <div class="data radio" id="info-view-partition">
+        <input type="radio" name="info-view-partition-input" value="Factory" /> <label for="info-view-partition-input"> Factory</label>
+        <input type="radio" name="info-view-partition-input" value="OTA" /> <label for="info-view-partition-input"> OTA</label>
+      </div>
     </div>
     <div class="row">
-      <div class="label">WiFi on boot</div>
-      <div class="data" id="info-view-wifi_on_boot">loading...</div>
+      <div class="label">On boot</div>
+      <div class="data">
+        <span class="checkbox" id="info-view-heartbeat_on_boot">
+          <input type="checkbox" name="info-view-heartbeat_on_boot-input" value="" /> <label for="info-view-heartbeat_on_boot-input"> Heartbeat</label>
+        </span>
+        <span class="checkbox" id="info-view-wifi_on_boot">
+          <input type="checkbox" name="info-view-wifi_on_boot-input" value="" /> <label for="info-view-wifi_on_boot-input"> WiFi</label>
+        </span>
+      </div>
     </div>
-
-    <div class="row">
-      <div class="label">Heartbeat on boot</div>
-      <div class="data" id="info-view-heartbeat_on_boot">loading...</div>
-    </div>
+  </div>
+  <div class="column vertical" id="right">
 
     <div class="row">
       <div class="label">Memory status</div>
-      <div class="data" id="info-view-free_ram">loading...</div>
+      <div class="data"><span id="info-view-free_ram">loading...</span> <button id="info-button-free_ram">Collect</button></div>
     </div>
 
     <div class="row">
       <div class="label">Flash status</div>
-      <div class="data" id="info-view-free_memory">loading...</div>
+      <div class="data"><span id="info-view-free_memory">loading...</span><button id="info-button-free_memory">Format</button></div>
     </div>
 
   </div>
