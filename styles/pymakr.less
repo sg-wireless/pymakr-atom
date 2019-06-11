@@ -97,6 +97,29 @@
         div.radio, div.checkbox {
           position: static;
           display: inline;
+          width: 16px;
+
+          input {
+            border:none;
+            background-color: #3b404c;
+          }
+
+        }
+        div.checkbox input{
+          border-radius: 3px;
+        }
+
+        button {
+          width: 55px;
+          height: 17px;
+          border-radius: 2px;
+          background-color: #17ffbd;
+          font-size: 10px;
+          padding: 0px;
+          font-size: 10px;
+          text-align: center;
+          color: #333333;
+          margin-left:15px;
         }
         &.vertical{
           .row div.label, .row div.data {
@@ -195,6 +218,9 @@
     padding: 0;
     border-left: solid 1px @border-dark;
     background-color: @bg-dark;
+    #pymakr-options-left {
+        display: inline-block;
+    }
     #pymakr-title {
       display: none;
       line-height: 25px;
