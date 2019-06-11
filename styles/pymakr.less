@@ -250,7 +250,7 @@
         border: none;
         display: inline-block;
         cursor: pointer;
-        padding: 4px 4px 4px 20px;
+        padding: 4px 21px 4px 20px;
         margin: 0 4px 0 0;
         span.connection-status {
           position: absolute;
@@ -260,17 +260,26 @@
           width: 10px;
           height: 10px;
           border-radius: 5px;
-          background: red;
+          background: #fc1247;
           border: none;
         }
         span.close {
-          display: inline-block;
-          width: 11px;
-          height: 11px;
-          background: red;
+          display: block;
+          position: absolute;
+          right:0px;
+          top:0px;
+          bottom:0px;
+          width: 17px;
+          border-left:1px solid @border-dark;
+          color: #fff;
+          text-shadow:none;
+          font-weight:normal;
+          font-size: 11px;
+          padding: 5px 3px;
+
         }
         &.connected span.connection-status{
-          background: green;
+          background: #17ffbd;
         }
       }
     }
@@ -301,7 +310,7 @@
       margin: 0 3px;
     }
     &.has-sub {
-      margin-right:17px;
+      margin-right:14px;
     }
     .hidden {
       display:none
