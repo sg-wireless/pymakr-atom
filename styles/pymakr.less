@@ -9,6 +9,8 @@
 @bg-dark: #21252b;
 @border-dark: #181a1f;
 @bg-button: #181a1f;
+@button-background-dark:#21252b;
+@button-background-light:#363b46;
 
 
 
@@ -246,12 +248,15 @@
       div.pymakr-connection {
         position: relative;
         color:@text-color;
-        background: @button-background-color;
+        background: @button-background-dark;
         border: none;
         display: inline-block;
         cursor: pointer;
         padding: 4px 21px 4px 20px;
         margin: 0 1px 0 0;
+        &.open {
+          background: @button-background-light;
+        }
         span.connection-status {
           position: absolute;
           display: block;
@@ -301,7 +306,7 @@
   button {
     position: relative;
     color:@text-color;
-    background: @button-background-color;
+    background: @button-background-dark;
     border: none;
     border-right: 1px solid @border-dark;
     padding: 4px;
@@ -315,7 +320,7 @@
     .hidden {
       display:none
     }
-    &:hover{
+    &:hover, &:hover div.open-subnav{
       background:@button-background-color-hover;
     }
     &.cancel {
@@ -334,7 +339,6 @@
       font-size: 9px;
       padding:3px;
       border-left: 1px solid @border-dark;
-      background: @button-background-color;
       span.fa {
         margin:4px 0;
       }
@@ -344,17 +348,18 @@
       position: absolute;
       bottom:26px;
       line-height: 25px;
-      background: @button-background-color;
+      background: @button-background-dark;
+      padding: 11px 1px;
       &.left {
         left:0px;
         div {
-          width:150px;
+          width:237px;
           text-align: left;
         }
       }
       div {
-        width: 175px;
-        padding:0 5px;
+        width: 195px;
+        padding: 0px 5px;
         text-align: right;
         cursor: pointer;
         &:hover {
@@ -367,6 +372,11 @@
       span.separator{
         display: inline-block;
         border-top: 1px solid #444;
+        margin-top: 6px;
+        padding-top: 6px;
+      }
+      div.pymakr-add-address-button {
+        cursor:pointer;
       }
     }
     &.open {
@@ -451,7 +461,7 @@
     }
     button {
       position: relative;
-      background: @button-background-color;
+      background: @button-background-dark;
       width: 60px;
       height: 60px;
       border:1px solid black;
