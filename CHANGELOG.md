@@ -1,3 +1,6 @@
+## 1.4.14 - Compatibility update
+* Flagged compatible with Atom 1.38 and 1.39-beta
+
 ## 1.4.13 - Compatibility update
 * Flagged compatible with Atom 1.36
 * Removed feedback popup
