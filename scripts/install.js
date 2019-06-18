@@ -5,7 +5,7 @@ var fs = require('fs')
 
 var vtools = require('./functions-versions.js')
 var serialport_version = '7.0.2'
-var electron_version = '2.0.9'
+var electron_version = '2.0.18'
 
 var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
 if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
