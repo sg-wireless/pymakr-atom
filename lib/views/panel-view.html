@@ -15,16 +15,21 @@
       <button id="pymakr-connect" class="has-sub"><span class="fa fa-microchip"></span> Connect Device
         <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
         <div class="subnav left">
-          <div id="pymakr-connect-all" ><span  class="fa fa-"></span> Connect all available devices</div>
-          <div id="pymakr-close-all"><span  class="fa fa-"></span> Close all connections</div>
+          <div id="pymakr-connect-all" ><span class="fa fa-"></span> Connect all available devices</div>
+          <div id="pymakr-close-all"><span class="fa fa-"></span> Close all connections</div>
           <span class="separator" id="pymakr-comports-list">
+            <div class="loading_text">Loading comport list...</div>
           </span>
           <span  class="separator" id="pymakr-address-list">
-
+            <div class="loading_text">Loading address list...</div>
           </span>
           <span  class="separator" id="pymakr-add-address">
             <div id="pymakr-add-address-button"><span class="fa fa-"></span> Add IP address</div>
-            <div id="pymakr-add-address-field-wrapper" class="hidden"><input type="text" id="pymakr-add-address-input" placeholder="192.168.4.1"/></div>
+            <div id="pymakr-add-address-field-wrapper" class="hidden">
+              <input type="text" id="pymakr-add-address-input" placeholder="192.168.4.1" />
+              <div id="pymakr-add-address-submit">Add</div>
+            </div>
+          </span>
         </div>
       </button>
 
