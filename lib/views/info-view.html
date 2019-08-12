@@ -41,8 +41,10 @@
       <div class="data radio" id="info-view-fs_type">
         <input type="radio" name="info-view-fs_type-input" value="LittleFS" /> <label for="info-view-fs_type-input"> LittleFS</label>
         <input type="radio" name="info-view-fs_type-input" value="FAT" /> <label for="info-view-fs_type-input"> FAT</label>
+        <span id="info-view-fs_type-test"></span>
       </div>
     </div>
+
     <div class="row">
       <div class="label">Partition</div>
       <div class="data radio" id="info-view-partition">
@@ -50,6 +52,7 @@
         <input type="radio" name="info-view-partition-input" value="OTA_0" /> <label for="info-view-partition-input"> OTA</label>
       </div>
     </div>
+
     <div class="row">
       <div class="label">On boot</div>
       <div class="data">
@@ -62,8 +65,8 @@
       </div>
     </div>
   </div>
-  <div class="column vertical" id="right">
 
+  <div class="column vertical" id="right">
     <div class="row">
       <div class="label">Memory status</div>
       <div class="data"><span id="info-view-free_ram">loading...</span> <button id="info-button-free_ram">Collect</button></div>
@@ -73,6 +76,9 @@
       <div class="label">Flash status</div>
       <div class="data"><span id="info-view-free_memory">loading...</span><button id="info-button-free_memory">Format</button></div>
     </div>
+  </div>
 
+  <div id="pymakr-info-top-buttons">
+    <button id="info-button-reboot">Reboot</button></div>
   </div>
 </div>
