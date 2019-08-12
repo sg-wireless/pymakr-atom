@@ -1,103 +1,83 @@
+// normal execution: 'node scripts/install.js'
+// without electron rebuild command: 'node scripts/install.js no_rebuild'
 // installing and re-compiling serialport
 // executed automatically from package.json on install
 var exec = require('child_process').exec
 var fs = require('fs')
 
-var vtools = require('./functions-versions.js')
-var serialport_version = '7.0.2'
-var electron_version = '2.0.18'
+var do_rebuild = true
+if(process.argv.length == 3){
+  if(process.argv[2] == "no_rebuild"){
+    do_rebuild = false
+  }
+}
+// bindings params
+// FIXME: Source / target Swap ?
+var dir = __dirname.replace('/scripts','').replace('\\scripts','')
+var bindings_target = dir + '/node_modules/@serialport/bindings/build/Release/bindings.node'
+var bindings_source = dir + '/precompiles/serialport-<os>/bindings.node'
 
+// electron rebuild params
+var electron_version = '3.1.10'
+var electron_rebuild_path = "$(npm bin)/"
+var electron_rebuild_path_win = '.\\node_modules\\.bin\\' // assuming current directory = project folder
+
+// copy precompiled bindings.node file for correct OS
 var precompiles = {'win32': 'win', 'darwin': 'osx', 'linux': 'linux', 'aix': 'linux'}
 if(process.platform in precompiles) { // always returns win32 on windows, even on 64bit
-  var plf = precompiles[process.platform]
-  var build = 'build'
-  var build_bindings = 'node_modules/bindings/build'
-  if(plf == 'win' && process.arch == 'ia32'){
-    plf = 'win32'
+  var os = precompiles[process.platform]
+  var is_windows = os == 'win'
+  if(os == 'win' && process.arch == 'ia32'){
+    os = 'win32'
+  }
+  if(is_windows){
+    do_rebuild = false
   }
 
-  var path = "precompiles/serialport-" + plf + ""
-  var from = path+'/build/Release/serialport.node'
-  var node_file = '/serialport.node'
-
-  console.log("Making dir "+build_bindings)
-  if (!fs.existsSync(build_bindings)){
-    fs.mkdirSync(build_bindings);
-  }
-
-  console.log("Making dir "+build)
-  if (!fs.existsSync(build)){
-    fs.mkdirSync(build);
-  }
-
-  console.log("Copy node file to "+build)
-  copyFile(from,build+node_file,function(){
-
-    console.log("Copy node file to "+build_bindings)
-    copyFile(from,build_bindings+node_file,function(){
-      console.log("Copied both files")
-    })
-  })
-
-}
-
-
-// Don't preform on windows, since it almost always fails there. Automatically defaults to precompiled version in /precompiles folder
-if (process.platform != 'win32') {
-  var exec = require('child_process').exec
-  console.log("Installing serialport "+serialport_version)
-  exec('npm install serialport@'+serialport_version,
-    function(error,stdout,stderr){
-      if(error){
-        console.log(error)
-      }else{
-        console.log("Installing electron rebuild")
-        exec('npm install electron-rebuild',
-          function(error,stdout,stderr){
-            if(error){
-              console.log(error)
-            }else{
-              console.log("Getting current versions")
-
-              // TODO:  getCurrentVersion doesn't work reliably yet.
-              // atom --version returns nothing after last atom updates.
-              // vtools.getCurrentVersions(function(atom,electron_version){
-
-              console.log("Rebuilding for electron "+electron_version+"...")
-              exec('$(npm bin)/electron-rebuild -f -w serialport -v '+electron_version,
-                function(error,stout,stderr){
-                  if(error){
-                    console.log(error)
-                  }
-                  console.log("Done!")
-                }
-              )
-              // })
-            }
-          }
-        )
-      }
+  bindings_source = bindings_source.replace('<os>',os)
+  // FIXME: only copies on the 2nd run ( Copy before rebuild ?)
+  console.log("Copy bindings file")
+  copyFile(bindings_source,bindings_target,function(error){
+    if(error){
+      console.log("Failed to copy bindings file, pymakr won't work")
+      console.log(error)
+    }else{
+      console.log("Bindings file in place")
     }
-  )
+
+    if(do_rebuild){
+      // Try to run electron rebuild anyway (just in case we're installing on a newer version of vsc with updated electron)
+      console.log("Installing electron rebuild")
+      exec('npm install electron-rebuild',
+        function(error,stdout,stderr){
+          if(error){
+            console.log(error)
+          }else{
+            console.log("Rebuilding for electron "+electron_version+"...")
+            var path = electron_rebuild_path
+            if(process.platform == 'win32'){
+              path = electron_rebuild_path_win
+            }
+            // -f force -v electron version
+            exec(path + 'electron-rebuild -f -w serialport -v '+electron_version,
+              function(error,stout,stderr){
+                if(error){
+                  console.log(error)
+                }
+                console.log("done")
+              }
+            )
+          }
+        }
+      )
+    }else{
+      console.log("Not rebuilding serialport lib")
+    }
+  })
 }
 
 
-
-function copyFile(source, target, cb) {
-  var cbCalled = false;
-
-  var rd = fs.createReadStream(source);
-  rd.on("error", function(err) {
-    done(err);
-  });
-  var wr = fs.createWriteStream(target);
-  wr.on("error", function(err) {
-    done(err);
-  });
-  wr.on("close", function(ex) {
-    done();
-  });
-  rd.pipe(wr);
+function copyFile( source, target, cb) {
 
   function done(err) {
     if (!cbCalled) {
@@ -105,4 +85,27 @@ function copyFile(source, target, cb) {
       cbCalled = true;
     }
   }
+
+  if(fs.existsSync(source)){
+
+    var cbCalled = false;
+
+    var rd = fs.createReadStream(source);
+    rd.on("error", function(err) {
+      done(err);
+    });
+    var wr = fs.createWriteStream(target);
+    wr.on("error", function(err) {
+      done(err);
+    });
+    wr.on("close", function(ex) {
+      console.log("Copy completed")
+      done();
+
+    });
+    rd.pipe(wr);
+  }else{
+    done(new Error("File "+source+" doesn't exist"))
+  }
+
 }
