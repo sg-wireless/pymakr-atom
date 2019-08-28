@@ -1,3 +1,7 @@
+## 1.4.15 - Compatibility update
+* Flagged compatible with Atom 1.40 and 1.41-beta
+* Improved serialport lib repair code, lower chance of serialport compile issues
+
 ## 1.4.14 - Compatibility update
 * Flagged compatible with Atom 1.38 and 1.39-beta
 
