@@ -1,3 +1,6 @@
+## 1.4.17 - Hotfix
+* Added @serialport/bindings to package.json to prevent issues on some installs (issue #134)
+
 ## 1.4.16 - Hotfix
 * Linux precompile error for Atom 1.40 and 1.41-beta
 * Improved serialport lib repair code to fix issue #134
