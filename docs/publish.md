@@ -1,6 +1,7 @@
 Procedure
 - Merge new code to master
 - Update changelog.md
+- Make sure to up the version compatibility in package.json if needed "engines->atom"
 - Push to master
 - Run 'apm publish major|minor|patch' command to publish to the Atom servers
   - This updates package.json with the right version
