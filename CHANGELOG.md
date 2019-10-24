@@ -1,4 +1,7 @@
 ## 1.4.17 - Hotfix
+* Added @serialport/bindings to package.json to prevent issues on some installs (issue #143)
+
+## 1.4.17 - Hotfix
 * Added @serialport/bindings to package.json to prevent issues on some installs (issue #134)
 
 ## 1.4.16 - Hotfix
