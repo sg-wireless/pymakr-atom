@@ -20,19 +20,19 @@
     "node": ">=6.3.0 <=7.0.0"
   },
   "dependencies": {
-    "@serialport/bindings": "^2.0.8",
     "binascii": "0.0.2",
-    "bindings": "1.3.0",
+    "bindings": "^1.5.0",
     "commander": "^2.13.0",
     "crypto": "^1.0.1",
     "debug": "^4.1.0",
-    "electron-rebuild": "^1.8.6",
+    "electron-rebuild": "^1.8.8",
     "element-resize-detector": "1.1.14",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "lie": "^3.1.0",
     "nan": "^2.9.2",
     "ncp": "^2.0.0",
+    "node-abi": "^2.12.0",
     "object.assign": "^4.0.3",
     "parser-byte-length": "^1.0.2",
     "parser-cctalk": "^1.0.2",
@@ -46,12 +46,20 @@
     "request": "^2.88.0",
     "rimraf": "^2.6.2",
     "safe-buffer": "^5.0.1",
-    "serialport": "^7.0.2",
+    "serialport": "^8.0.5",
     "telnet-client": "^0.16.1",
     "utf8": "^3.0.0",
     "xterm": "^2.9.2"
   },
   "scripts": {
-    "install": "node scripts/install.js"
+    "install2": "node scripts/install.js",
+    "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
+    "download-native": "node scripts/download-binaries.js"
+  },
+  "devDependencies": {
+    "axios": "^0.19.0",
+    "git-tags": "^0.2.4",
+    "node-powershell": "^4.0.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }

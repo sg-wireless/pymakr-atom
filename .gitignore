@@ -2,5 +2,14 @@
 npm-debug.log
 node_modules
 connection_state.json
+# ignore the vscode instance used in testing 
+.vscode-test/*
+
+# ignore the test package lock ( but not the package file) 
+test-electron/package-lock.json
+
 scripts/atom
 scripts/pymakr
+atom
+pymakr
+precompiles
