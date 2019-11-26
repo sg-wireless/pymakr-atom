@@ -1,4 +1,7 @@
-## 1.4.17 - Hotfix
+## 1.4.19 - Compatibility update
+* Implemented new solution for multi platform compatibility.
+
+## 1.4.18 - Hotfix
 * Added @serialport/bindings to package.json to prevent issues on some installs (issue #143)
 
 ## 1.4.17 - Hotfix
