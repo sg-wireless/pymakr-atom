@@ -5,8 +5,9 @@ const path = require("path");
 const dir = __dirname.replace("/scripts", "").replace("\\scripts", "");
 const bindings_target =
   dir + "/node_modules/@serialport/bindings/build/release";
+const bindings_target_capital =
+  dir + "/node_modules/@serialport/bindings/build/Release";
 
-const bindings_source = dir + "/native_modules";
 
 function copyFileSync(source, target) {
   var targetFile = target;
@@ -48,6 +49,7 @@ function copyFolderRecursiveSync(source, target) {
 function postInstall() {
   try {
     rimraf.sync(bindings_target);
+    rimraf.sync(bindings_target_capital);
     console.log(
       `\nCleaned the '${bindings_target}' \nfolder to prevent including native modules in the default location and breaking cross-platform portability.`
     );

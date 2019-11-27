@@ -39,7 +39,6 @@ jobs:
           npm install npx
           npm add prebuild-install --save-dev
           npm install --no-audit
-          node scripts/post-install.js
 
       #      todo: fix errors in running prebuild-install in Action runners
       #      - name: Update Native Modules
