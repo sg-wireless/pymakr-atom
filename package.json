@@ -61,6 +61,7 @@
     "axios": "^0.19.0",
     "git-tags": "^0.2.4",
     "node-powershell": "^4.0.0",
-    "xmlhttprequest": "^1.8.0"
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0"
   }
 }
