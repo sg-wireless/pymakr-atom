@@ -1,4 +1,4 @@
-## 1.4.19 - Compatibility update
+## 1.5.0 - Compatibility update
 * Implemented new solution for multi platform compatibility.
 
 ## 1.4.18 - Hotfix
