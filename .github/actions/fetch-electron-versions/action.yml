@@ -1,5 +1,5 @@
 name: "Fetch Electron Versions"
-description: "Fetch and Parse Electron Versions to Test for VSCode"
+description: "Fetch and Parse Electron Versions to Test for Atom"
 author: BradenM
 inputs:
   max-count:

@@ -11,7 +11,7 @@ const repo = {
 
 /**
  * Resolves Electron runtime target for given
- * VSCode git tag
+ * Atom git tag
  *
  * @param {string} tag - VSCode Git Tag
  * @returns {*} Object with tag and runtime_version
@@ -31,8 +31,7 @@ const resolveElectronVersion = async tag => {
 };
 
 /**
- * Fetches VSCode Git Tags
- * from repo
+ * Fetches three different electron versions from Atom Git Tags
  *
  * @param {number} count - maximum number of versions to return
  * @returns {string[]} Array containing master and 3 of the latest tags

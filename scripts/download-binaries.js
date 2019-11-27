@@ -59,11 +59,10 @@ const getBinaries = async (count = 3) => {
     [{ ElectronVersions: electronVersions }]
   );
 
-  // IMPORTANT: ps.dispose() MUST be called for execution to finish.
   ps.invoke()
     .then(output => {
       console.log(output);
-      ps.dispose(); // This was missing from your code.
+      ps.dispose(); 
     })
     .catch(err => {
       console.log(err);
