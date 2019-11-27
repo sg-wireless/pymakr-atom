@@ -53,6 +53,7 @@
   },
   "scripts": {
     "install2": "node scripts/install.js",
+    "postinstall": "pwsh -nop -f ./scripts/mp-download-atom.ps1 -copyonly",
     "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
     "download-native": "node scripts/download-binaries.js"
   },
