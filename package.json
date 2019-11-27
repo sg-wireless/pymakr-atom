@@ -52,8 +52,7 @@
     "xterm": "^2.9.2"
   },
   "scripts": {
-    "install2": "node scripts/install.js",
-    "postinstall": "pwsh -nop -f ./scripts/mp-download-atom.ps1 -copyonly",
+    "postinstall": "node scripts/post-install.js",
     "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
     "download-native": "node scripts/download-binaries.js"
   },

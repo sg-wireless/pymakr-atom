@@ -1,3 +1,6 @@
+## 1.5.3 - Hotfix
+* Updated post-install script 
+
 ## 1.5.2 - Compatibility update
 * Updated supported Atom versions
 
