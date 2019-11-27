@@ -1,3 +1,6 @@
+## 1.5.2 - Compatibility update
+* Updated supported Atom versions
+
 ## 1.5.0 - Compatibility update
 * Implemented new solution for multi platform compatibility.
 
