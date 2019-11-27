@@ -1332,6 +1332,8 @@ const repo = {
   repo: "atom"
 };
 
+const unsupportedElectronVersions = ["3.1.10"];
+
 /**
  * Resolves Electron runtime target for given
  * Atom git tag
@@ -1346,6 +1348,7 @@ const resolveElectronVersion = async tag => {
       `https://raw.githubusercontent.com/atom/atom/${tag}/package.json`
     );
     const version = response.data.electronVersion.toString();
+
     core.info(`Atom ${tag} uses Electron v${version}`);
     return version;
   } catch (e) {
@@ -1362,11 +1365,12 @@ const resolveElectronVersion = async tag => {
 const getAtomTagsElectron = async (count = 3) => {
   try {
     console.log("Fetching tags...");
-    const tags = (await octokit.repos
-      .listTags({
+    const tags = (
+      await octokit.repos.listTags({
         ...repo,
         per_page: 50
-      })).data.map(item => item.name);
+      })
+    ).data.map(item => item.name);
     const foundTags = [];
     for (let i = 0; i <= tags.length && foundTags.length < count; i++) {
       const electronVersion = await resolveElectronVersion(tags[i]);
@@ -1383,7 +1387,21 @@ const getAtomTagsElectron = async (count = 3) => {
         `Selected Atom ${item.version} (electron v${item.electronVersion})`
       );
     });
-    const versions = foundTags.map(item => item.electronVersion);
+    const filteredFoundTags = foundTags.filter(
+      item =>
+        !unsupportedElectronVersions.some(
+          version => version === item.electronVersion
+        )
+    );
+    if (filteredFoundTags.length != foundTags.length) {
+      console.log(
+        `\nRemoved ${foundTags.length -
+          filteredFoundTags.length} unsupported electron version (${unsupportedElectronVersions.join(
+          ", "
+        )})`
+      );
+    }
+    const versions = filteredFoundTags.map(item => item.electronVersion);
     core.info(`\nElectron Versions: ${versions} \n`);
     core.setOutput("versions", versions);
   } catch (error) {
