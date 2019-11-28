@@ -28,32 +28,25 @@ const fetchElectronVersion = async tag => {
   }
 };
 
-const getBinaries = async (count = 3) => {
-  console.log("Fetching tags...");
+// gets binaries for current and nightly Atom version
+const getBinaries = async () => {
   const tags = (
     await octokit.repos.listTags({
       ...repo,
       per_page: 50
     })
   ).data.map(item => item.name);
-  const foundTags = [];
-  for (let i = 0; i <= tags.length && foundTags.length < count; i++) {
-    console.log(tags[i]);
-    const electronVersion = await fetchElectronVersion(tags[i]);
-    if (
-      electronVersion &&
-      !foundTags.find(item => item.electronVersion === electronVersion)
-    )
-      foundTags.push({ version: tags[i], electronVersion });
-  }
-  console.log("\n");
-  foundTags.forEach(item => {
-    console.log(`${item.version} uses ${item.electronVersion}`);
-  });
-  const electronVersions = foundTags.map(item => item.electronVersion);
+
+  const atomNightlyTag = tags[0];
+  const atomCurrentTag = "master";
+  const atomNightlyElectron = await fetchElectronVersion(atomNightlyTag);
+  const atomCurrentElectron = await fetchElectronVersion(atomCurrentTag);
+  const electronVersions = [];
+  electronVersions.push(atomCurrentElectron);
+  if (atomCurrentElectron != atomNightlyElectron)
+    electronVersions.push(atomNightlyElectron);
   console.log("\n");
   console.log(`Downloading binaries for ${electronVersions.join(", ")}`);
-
   ps.addCommand(
     "/Users/pk/dev/pycom/pymakr-atom/scripts/mp-download-atom.ps1",
     [{ ElectronVersions: electronVersions }]
@@ -62,7 +55,7 @@ const getBinaries = async (count = 3) => {
   ps.invoke()
     .then(output => {
       console.log(output);
-      ps.dispose(); 
+      ps.dispose();
     })
     .catch(err => {
       console.log(err);
@@ -70,4 +63,4 @@ const getBinaries = async (count = 3) => {
     });
 };
 
-getBinaries(3);
+getBinaries();
