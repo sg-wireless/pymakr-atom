@@ -1,5 +1,8 @@
+## 1.5.4 - Compatibility update
+* Binaries removed for older Atom versions, significantly reducing package size (50%).
+
 ## 1.5.3 - Hotfix
-* Updated post-install script 
+* Updated post-install script
 
 ## 1.5.2 - Compatibility update
 * Updated supported Atom versions
