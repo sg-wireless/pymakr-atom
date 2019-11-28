@@ -1371,29 +1371,21 @@ const getAtomTagsElectron = async (count = 3) => {
         per_page: 50
       })
     ).data.map(item => item.name);
-    const foundTags = [];
-    for (let i = 0; i <= tags.length && foundTags.length < count; i++) {
-      const electronVersion = await resolveElectronVersion(tags[i]);
-      if (
-        electronVersion &&
-        !foundTags.find(item => item.electronVersion === electronVersion)
-      )
-        foundTags.push({ version: tags[i], electronVersion });
-    }
-
-    console.log("");
-    foundTags.forEach(item => {
-      console.log(
-        `Selected Atom ${item.version} (electron v${item.electronVersion})`
-      );
-    });
-    const filteredFoundTags = foundTags.filter(
+    const atomNightlyTag = tags[0];
+    const atomCurrentTag = "master";
+    const atomNightlyElectron = await resolveElectronVersion(atomNightlyTag);
+    const atomCurrentElectron = await resolveElectronVersion(atomCurrentTag);
+    const electronVersions = [];
+    electronVersions.push(atomCurrentElectron);
+    if (atomCurrentElectron != atomNightlyElectron)
+      electronVersions.push(atomNightlyElectron);
+    const filteredFoundTags = electronVersions.filter(
       item =>
         !unsupportedElectronVersions.some(
-          version => version === item.electronVersion
+          version => version === item
         )
     );
-    if (filteredFoundTags.length != foundTags.length) {
+    if (filteredFoundTags.length != electronVersions.length) {
       console.log(
         `\nRemoved ${foundTags.length -
           filteredFoundTags.length} unsupported electron version (${unsupportedElectronVersions.join(
@@ -1401,9 +1393,8 @@ const getAtomTagsElectron = async (count = 3) => {
         )})`
       );
     }
-    const versions = filteredFoundTags.map(item => item.electronVersion);
-    core.info(`\nElectron Versions: ${versions} \n`);
-    core.setOutput("versions", versions);
+    core.info(`\nElectron Versions: ${filteredFoundTags} \n`);
+    core.setOutput("versions", filteredFoundTags);
   } catch (error) {
     core.setFailed(error.message);
   }
