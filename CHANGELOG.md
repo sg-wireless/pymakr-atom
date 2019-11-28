@@ -1,3 +1,6 @@
+## 1.5.5 - Compatibility update
+* Updated supported Atom versions (>=1.41.0)
+
 ## 1.5.4 - Compatibility update
 * Binaries removed for older Atom versions, significantly reducing package size (50%).
 
