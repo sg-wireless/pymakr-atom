@@ -1,3 +1,46 @@
+## 1.5.6 - User experience improvements
+* Now Pymakr shows a post-install notification if it failed to load Serialport library, asking the user to reload Atom. 
+
+## 1.5.5 - Compatibility update
+* Updated supported Atom versions (>=1.41.0)
+
+## 1.5.4 - Compatibility update
+* Binaries removed for older Atom versions, significantly reducing package size (50%).
+
+## 1.5.3 - Hotfix
+* Updated post-install script
+
+## 1.5.2 - Compatibility update
+* Updated supported Atom versions
+
+## 1.5.0 - Compatibility update
+* Implemented new solution for multi platform compatibility.
+
+## 1.4.18 - Hotfix
+* Added @serialport/bindings to package.json to prevent issues on some installs (issue #143)
+
+## 1.4.17 - Hotfix
+* Added @serialport/bindings to package.json to prevent issues on some installs (issue #134)
+
+## 1.4.16 - Hotfix
+* Linux precompile error for Atom 1.40 and 1.41-beta
+* Improved serialport lib repair code to fix issue #134
+
+## 1.4.15 - Compatibility update
+* Flagged compatible with Atom 1.40 and 1.41-beta
+* Improved serialport lib repair code, lower chance of serialport compile issues
+
+## 1.4.14 - Compatibility update
+* Flagged compatible with Atom 1.38 and 1.39-beta
+
+## 1.4.13 - Compatibility update
+* Flagged compatible with Atom 1.36
+* Removed feedback popup
+
+## 1.4.12 - Hotfixes
+* Hotfix for issue #115 (nullpointer after 3 retries of upload)
+* Hotfix for upload memory usage and nullpointer during upload (by @josverl in vscode pull request)
+
 ## 1.4.11 - Bugfixes
 * Solved error when upload button is pressed while loading (issue #112)
 * Better feedback in terminal about autoconnect
