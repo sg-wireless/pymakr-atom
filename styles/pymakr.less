@@ -9,19 +9,17 @@
 @bg-dark: #21252b;
 @border-dark: #181a1f;
 @bg-button: #181a1f;
-@button-background-dark:#21252b;
-@button-background-light:#363b46;
-
-
+@button-background-dark: #21252b;
+@button-background-light: #363b46;
 
 @font-face {
-  font-family: 'Font Awesome';
+  font-family: "Font Awesome";
   font-weight: normal;
   font-style: normal;
-  src: url('@{fa-font-path}/fontawesome-webfont.woff') format('woff');
+  src: url("@{fa-font-path}/fontawesome-webfont.woff") format("woff");
 }
 .fa {
-  font-family: 'Font Awesome';
+  font-family: "Font Awesome";
 }
 .hidden {
   display: none;
@@ -38,7 +36,7 @@
   }
 }
 #pymakr {
-  height: 356px;
+  height: 314px;
   background: #000;
 
   // -webkit-transition: height 0.2s ease-in-out;
@@ -46,34 +44,34 @@
   // -o-transition: height 0.2s ease-in-out;
   // transition: height 0.2s ease-in-out;
   &.collapsed {
-    height:0px;
+    height: 0px;
   }
   #pymakr-resizer {
     position: absolute;
-    top:-5px;
-    left:0px;
-    right:0px;
+    top: -5px;
+    left: 0px;
+    right: 0px;
     height: 10px;
-    cursor:n-resize;
+    cursor: n-resize;
   }
   #pymakr-overlay {
     display: none;
     position: absolute;
-    top:25px;
-    left:0px;
-    right:0px;
+    top: 25px;
+    left: 0px;
+    right: 0px;
     bottom: 0px;
-    background-color:#000000;
-    opacity:0.5;
+    background-color: #000000;
+    opacity: 0.5;
     z-index: 1;
   }
 
   #pymakr-overlay-contents {
     display: none;
     position: absolute;
-    top:25px;
-    left:60px;
-    right:0px;
+    top: 25px;
+    left: 60px;
+    right: 0px;
     bottom: 0px;
     z-index: 2;
 
@@ -84,9 +82,9 @@
     #pymakr-info-view {
       #pymakr-info-close {
         position: absolute;
-        top:14px;
-        left:20px;
-        color:#fff;
+        top: 14px;
+        left: 20px;
+        color: #fff;
         cursor: pointer;
       }
 
@@ -100,7 +98,7 @@
         font-size: 10px;
         text-align: center;
         color: #333333;
-        margin-left:15px;
+        margin-left: 15px;
       }
       .column {
         #pymakr-info-top-buttons {
@@ -108,32 +106,33 @@
           top: 10px;
         }
         width: 300px;
-        margin-top:30px;
+        margin-top: 30px;
         float: left;
         input {
           margin-left: 0px;
         }
-        div.radio, div.checkbox {
+        div.radio,
+        div.checkbox {
           position: static;
           display: inline;
           width: 16px;
 
           input {
-            border:none;
+            border: none;
             background-color: #3b404c;
           }
-
         }
-        div.checkbox input{
+        div.checkbox input {
           border-radius: 3px;
         }
 
-        &.vertical{
-          .row div.label, .row div.data {
+        &.vertical {
+          .row div.label,
+          .row div.data {
             width: 300px;
             text-align: left;
           }
-          .row{
+          .row {
             margin-bottom: 10px;
           }
         }
@@ -141,7 +140,7 @@
           div {
             float: left;
             width: 150px;
-            padding:0 7px;
+            padding: 0 7px;
             text-shadow: 0 0 17px rgba(0, 0, 0, 0.5);
             color: #ffffff;
             margin: 5px 0;
@@ -151,7 +150,6 @@
             text-align: right;
           }
           .data {
-
           }
         }
       }
@@ -162,8 +160,8 @@
 
       #wrapper-close {
         position: absolute;
-        right:5px;
-        top:0px;
+        right: 5px;
+        top: 0px;
 
         z-index: 5;
         font-size: 18px;
@@ -176,7 +174,7 @@
       #pymakr-overlay-nav {
         display: none;
         width: 150px;
-        float:left;
+        float: left;
       }
       #pymakr-overlay-content-wrapper {
         div.hidden {
@@ -190,16 +188,16 @@
         position: absolute;
         width: 200px;
         left: 0;
-        top:0;
+        top: 0;
         ul li {
           cursor: pointer;
         }
       }
       #snippets-right {
         position: absolute;
-        left:200px;
-        top:0;
-        right:0;
+        left: 200px;
+        top: 0;
+        right: 0;
         textarea {
           width: 300px;
         }
@@ -220,39 +218,39 @@
     }
   }
   #pycom-top-bar {
-    height:26px;
+    height: 26px;
     min-width: 310px;
     padding: 0;
     border-left: solid 1px @border-dark;
     background-color: @bg-dark;
     #pymakr-options-left {
-        display: inline-block;
+      display: inline-block;
     }
     #pymakr-title {
       display: none;
       line-height: 25px;
       float: left;
       #project_title {
-        color:darken(@text-color,20%);
+        color: darken(@text-color, 20%);
       }
     }
-  	.pymakr-logo {
-  		height:17px;
-  		padding-bottom:2px
-  	}
-  	.icon {
-  		padding-left:5px;
-  		margin-bottom:3px;
-  	}
+    .pymakr-logo {
+      height: 17px;
+      padding-bottom: 2px;
+    }
+    .icon {
+      padding-left: 5px;
+      margin-bottom: 3px;
+    }
     #pymakr-connection-tabs {
       position: absolute;
-      left:241px;
-      top:0px;
-      right:125px;
+      left: 241px;
+      top: 0px;
+      right: 125px;
 
       div.pymakr-connection {
         position: relative;
-        color:@text-color;
+        color: @text-color;
         background: @button-background-dark;
         border: none;
         display: inline-block;
@@ -276,41 +274,40 @@
         span.close {
           display: block;
           position: absolute;
-          right:0px;
-          top:0px;
-          bottom:0px;
+          right: 0px;
+          top: 0px;
+          bottom: 0px;
           width: 17px;
-          border-left:1px solid @border-dark;
+          border-left: 1px solid @border-dark;
           color: #fff;
-          text-shadow:none;
-          font-weight:normal;
+          text-shadow: none;
+          font-weight: normal;
           font-size: 11px;
           padding: 5px 3px;
-
         }
-        &.connected span.connection-status{
+        &.connected span.connection-status {
           background: #17ffbd;
         }
       }
     }
     #pymakr-buttons {
       position: absolute;
-      top:5px;
+      top: 5px;
       width: 445px;
       position: absolute;
-      right:0px;
-      top:0px;
+      right: 0px;
+      top: 0px;
 
       button {
         float: right;
-        border:none;
+        border: none;
         cursor: pointer;
       }
     }
   }
   button {
     position: relative;
-    color:@text-color;
+    color: @text-color;
     background: @button-background-dark;
     border: none;
     border-right: 1px solid @border-dark;
@@ -320,17 +317,18 @@
       margin: 0 3px;
     }
     &.has-sub {
-      margin-right:14px;
+      margin-right: 14px;
     }
     .hidden {
-      display:none
+      display: none;
     }
-    &:hover, &:hover div.open-subnav{
-      background:@button-background-color-hover;
+    &:hover,
+    &:hover div.open-subnav {
+      background: @button-background-color-hover;
     }
     &.cancel {
       background: @background-color-error;
-      color:#fff;
+      color: #fff;
     }
     span.fa.down {
       display: none;
@@ -338,27 +336,27 @@
     div.open-subnav {
       position: absolute;
       right: -17px;
-      top:0px;
-      bottom:0px;
+      top: 0px;
+      bottom: 0px;
       width: 17px;
       font-size: 9px;
-      padding:3px;
+      padding: 3px;
       border-left: 1px solid @border-dark;
       span.fa {
-        margin:4px 0;
+        margin: 4px 0;
       }
     }
     div.subnav {
       display: none;
       position: absolute;
-      bottom:26px;
+      bottom: 26px;
       line-height: 25px;
       background: @button-background-dark;
       padding: 11px 1px;
       &.left {
-        left:0px;
+        left: 0px;
         div {
-          width:237px;
+          width: 237px;
           text-align: left;
         }
       }
@@ -368,20 +366,19 @@
         text-align: right;
         cursor: pointer;
         &:hover {
-          background:@button-background-color-hover;
+          background: @button-background-color-hover;
         }
         input {
-
         }
       }
-      span.separator{
+      span.separator {
         display: inline-block;
         border-top: 1px solid #444;
         margin-top: 6px;
         padding-top: 6px;
       }
       div.pymakr-add-address-button {
-        cursor:pointer;
+        cursor: pointer;
       }
     }
     &.open {
@@ -402,8 +399,8 @@
     background: #000;
     padding-left: 2px;
     height: 100%;
-    margin-left:60px;
-    margin-right:26px;
+    margin-left: 60px;
+    margin-right: 26px;
     #pymakr-terminal-placeholder {
       height: 100%;
       display: none;
@@ -418,10 +415,10 @@
       }
     }
   }
-  #pymakr-right-panel{
+  #pymakr-right-panel {
     position: absolute;
-    right:0px;
-    top:26px;
+    right: 0px;
+    top: 26px;
     bottom: 0px;
     width: 26px;
     background: @bg-dark;
@@ -435,7 +432,7 @@
         margin-top: 26px;
       }
       &.has-sub {
-        .open-subnav{
+        .open-subnav {
           display: none;
         }
       }
@@ -455,40 +452,117 @@
     }
   }
 
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+
+  /* Tooltip text */
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+
   #pymakr-left-panel {
     position: absolute;
-    left:0px;
-    top:26px;
+    left: 0px;
+    top: 26px;
     bottom: 0px;
     width: 60px;
-    &.disabled {
-        opacity: 0.4;
-    }
-    button {
+    display: flex;
+    flex-direction: column;
+
+    .left-button {
       position: relative;
+      flex: 1;
       background: @button-background-dark;
       width: 60px;
       height: 60px;
-      border:1px solid black;
+      cursor: pointer;
+      border: 1px solid black;
       font-size: 18px;
-      padding-right: 18px;
       div.sub {
         position: absolute;
+        display: table;
+        height: 100%;
         width: 15px;
-        border-left:1px solid black;
-        top:0px;
-        right:0px;
-        bottom:0px;
-        padding-top: 20px;
+        border-left: 1px solid black;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
         font-size: 10px;
       }
+      .clickable-content {
+        height: 100%;
+        width: 100%;
+        display: table;
+        span {
+          vertical-align: middle;
+          display: table-cell;
+          margin-top: -2px;
+        }
+      }
+
+      &.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        .left-button {
+          cursor: unset !important;
+        }
+        .tooltiptext {
+          visibility: hidden !important;
+        }
+      }
+      .icon-action-button {
+        cursor: not-allowed;
+      }
+    }
+    div.sub .icon-action-button {
+      vertical-align: middle;
+      display: table-cell;
+      cursor: pointer;
+    }
+    button .tooltiptext {
+      visibility: hidden;
+      white-space: nowrap;
+
+      background-color: #1e1e3c;
+      text-align: center;
+      padding: 2px 12px;
+
+      font-size: 14px;
+      color: #00cc96;
+      margin-left: 24px;
+      border-radius: 6px;
+      opacity: 1;
+      position: absolute;
+      z-index: 1;
+    }
+    .has-side-button {
+      cursor: unset;
+      padding-right: 16px;
+    }
+    .has-side-button .tooltiptext {
+      margin-left: 32px;
+    }
+    button:hover .tooltiptext {
+      visibility: visible;
+    }
+    .action-dialog {
+      visibility: hidden;
+      background-color: white !important;
+      position: absolute;
+      right: -66px;
+      top: 0;
+    }
+    .action-dialog .opened {
+      visibility: visible;
     }
   }
   #green {
-	  color:green;
+    color: green;
   }
   #red {
-	  color:red;
+    color: red;
   }
 }
 
@@ -519,7 +593,7 @@ div.pymakr-feedback {
   .dontshowagain {
     position: absolute;
     bottom: 10px;
-    left:5px;
+    left: 5px;
     display: inline-block;
     padding: 0 5px;
     cursor: pointer;
@@ -550,6 +624,5 @@ div.pymakr-feedback {
     &:hover {
       background: rgb(130, 210, 252);
     }
-
   }
 }

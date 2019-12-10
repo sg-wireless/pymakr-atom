@@ -55,12 +55,11 @@
     "xterm": "^2.9.2"
   },
   "scripts": {
-    "watch": "onchange '**/*.js' '**/*.html' -- sh scripts/restart-atom.sh",
+    "watch": "onchange '**/*.js' '**/*.html'  '**/*.less' -- sh scripts/restart-atom.sh",
     "postinstall": "node scripts/post-install.js",
     "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
     "download-native": "node scripts/download-binaries.js"
   },
-  
   "consumedServices": {
     "status-bar": {
       "versions": {
