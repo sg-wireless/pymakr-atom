@@ -100,7 +100,7 @@ function bindings(opts) {
     b,
     err;
 
-  for (; i < l; i++) {
+  for (; i < l; i += 1) {
     n = join.apply(
       null,
       opts.try[i].map(function(p) {
@@ -153,7 +153,7 @@ exports.getFileName = function getFileName(calling_file) {
   Error.stackTraceLimit = 10;
 
   Error.prepareStackTrace = function(e, st) {
-    for (var i = 0, l = st.length; i < l; i++) {
+    for (var i = 0, l = st.length; i < l; i += 1) {
       fileName = st[i].getFileName();
       if (fileName !== __filename) {
         if (calling_file) {

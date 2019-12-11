@@ -282,7 +282,7 @@ function wrappy (fn, cb) {
 
   function wrapper() {
     var args = new Array(arguments.length)
-    for (var i = 0; i < args.length; i++) {
+    for (var i = 0; i < args.length; i += 1) {
       args[i] = arguments[i]
     }
     var ret = fn.apply(this, args)
@@ -476,7 +476,7 @@ function createDebug(namespace) {
 
     // turn the `arguments` into a proper Array
     var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
+    for (var i = 0; i < args.length; i += 1) {
       args[i] = arguments[i];
     }
 
@@ -556,7 +556,7 @@ function enable(namespaces) {
   var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
   var len = split.length;
 
-  for (i = 0; i < len; i++) {
+  for (i = 0; i < len; i += 1) {
     if (!split[i]) continue; // ignore empty strings
     namespaces = split[i].replace(/\*/g, '.*?');
     if (namespaces[0] === '-') {
@@ -566,7 +566,7 @@ function enable(namespaces) {
     }
   }
 
-  for (i = 0; i < exports.instances.length; i++) {
+  for (i = 0; i < exports.instances.length; i += 1) {
     var instance = exports.instances[i];
     instance.enabled = exports.enabled(instance.namespace);
   }
@@ -595,12 +595,12 @@ function enabled(name) {
     return true;
   }
   var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i++) {
+  for (i = 0, len = exports.skips.length; i < len; i += 1) {
     if (exports.skips[i].test(name)) {
       return false;
     }
   }
-  for (i = 0, len = exports.names.length; i < len; i++) {
+  for (i = 0, len = exports.names.length; i < len; i += 1) {
     if (exports.names[i].test(name)) {
       return true;
     }
@@ -881,7 +881,7 @@ function forEach(obj, fn) {
 
   if (isArray(obj)) {
     // Iterate over array values
-    for (var i = 0, l = obj.length; i < l; i++) {
+    for (var i = 0, l = obj.length; i < l; i += 1) {
       fn.call(null, obj[i], i, obj);
     }
   } else {
@@ -921,7 +921,7 @@ function merge(/* obj1, obj2, obj3, ... */) {
     }
   }
 
-  for (var i = 0, l = arguments.length; i < l; i++) {
+  for (var i = 0, l = arguments.length; i < l; i += 1) {
     forEach(arguments[i], assignValue);
   }
   return result;
@@ -947,7 +947,7 @@ function deepMerge(/* obj1, obj2, obj3, ... */) {
     }
   }
 
-  for (var i = 0, l = arguments.length; i < l; i++) {
+  for (var i = 0, l = arguments.length; i < l; i += 1) {
     forEach(arguments[i], assignValue);
   }
   return result;
@@ -1297,7 +1297,7 @@ function init (debug) {
   debug.inspectOpts = {};
 
   var keys = Object.keys(exports.inspectOpts);
-  for (var i = 0; i < keys.length; i++) {
+  for (var i = 0; i < keys.length; i += 1) {
     debug.inspectOpts[keys[i]] = exports.inspectOpts[keys[i]];
   }
 }
@@ -2773,7 +2773,7 @@ module.exports = opts => {
 	const result = [];
 	const len = Math.max(stdio.length, alias.length);
 
-	for (let i = 0; i < len; i++) {
+	for (let i = 0; i < len; i += 1) {
 		let value = null;
 
 		if (stdio[i] !== undefined) {
@@ -3600,7 +3600,7 @@ src[STAR] = '(<|>)?=?\\s*\\*'
 
 // Compile to actual regexp objects.
 // All are flag-free, unless they were created above with a flag.
-for (var i = 0; i < R; i++) {
+for (var i = 0; i < R; i += 1) {
   debug(i, src[i])
   if (!re[i]) {
     re[i] = new RegExp(src[i])
@@ -4569,7 +4569,7 @@ Range.prototype.test = function (version) {
     version = new SemVer(version, this.options)
   }
 
-  for (var i = 0; i < this.set.length; i++) {
+  for (var i = 0; i < this.set.length; i += 1) {
     if (testSet(this.set[i], version, this.options)) {
       return true
     }
@@ -4578,7 +4578,7 @@ Range.prototype.test = function (version) {
 }
 
 function testSet (set, version, options) {
-  for (var i = 0; i < set.length; i++) {
+  for (var i = 0; i < set.length; i += 1) {
     if (!set[i].test(version)) {
       return false
     }
@@ -4590,7 +4590,7 @@ function testSet (set, version, options) {
     // That should allow `1.2.3-pr.2` to pass.
     // However, `1.2.4-alpha.notready` should NOT be allowed,
     // even though it's within the range set by the comparators.
-    for (i = 0; i < set.length; i++) {
+    for (i = 0; i < set.length; i += 1) {
       debug(set[i].semver)
       if (set[i].semver === ANY) {
         continue
@@ -6626,7 +6626,7 @@ class Blob {
 		if (blobParts) {
 			const a = blobParts;
 			const length = Number(a.length);
-			for (let i = 0; i < length; i++) {
+			for (let i = 0; i < length; i += 1) {
 				const element = a[i];
 				let buffer;
 				if (element instanceof Buffer) {
@@ -10396,7 +10396,7 @@ module.exports = {"activity":{"checkStarringRepo":{"method":"GET","params":{"own
 module.exports = function bind(fn, thisArg) {
   return function wrap() {
     var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
+    for (var i = 0; i < args.length; i += 1) {
       args[i] = arguments[i];
     }
     return fn.apply(thisArg, args);
@@ -11370,7 +11370,7 @@ function checkPathExt (path, options) {
   if (pathext.indexOf('') !== -1) {
     return true
   }
-  for (var i = 0; i < pathext.length; i++) {
+  for (var i = 0; i < pathext.length; i += 1) {
     var p = pathext[i].toLowerCase()
     if (p && path.substr(-p.length).toLowerCase() === p) {
       return true

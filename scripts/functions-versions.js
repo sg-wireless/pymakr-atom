@@ -48,7 +48,7 @@ module.exports = {
       var segmentsB = b.replace(regExStrip0, '').split('.');
       var l = Math.min(segmentsA.length, segmentsB.length);
 
-      for (i = 0; i < l; i++) {
+      for (i = 0; i < l; i += 1) {
           diff = parseInt(segmentsA[i], 10) - parseInt(segmentsB[i], 10);
           if (diff) {
               return diff;
