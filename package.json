@@ -33,7 +33,6 @@
     "nan": "^2.9.2",
     "node-abi": "^2.12.0",
     "ncp": "^2.0.0",
-    "node-abi": "^2.12.0",
     "object.assign": "^4.0.3",
     "parser-byte-length": "^1.0.2",
     "parser-cctalk": "^1.0.2",
