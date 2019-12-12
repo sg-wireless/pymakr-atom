@@ -66,6 +66,18 @@
     z-index: 1;
   }
 
+  .top-button {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .button-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 168px;
+  }
+
   #pymakr-overlay-contents {
     display: none;
     position: absolute;
@@ -224,7 +236,8 @@
     border-left: solid 1px @border-dark;
     background-color: @bg-dark;
     #pymakr-options-left {
-      display: inline-block;
+      display: flex;
+      flex-direction: row;
     }
     #pymakr-title {
       display: none;
@@ -243,20 +256,21 @@
       margin-bottom: 3px;
     }
     #pymakr-connection-tabs {
-      position: absolute;
-      left: 241px;
-      top: 0px;
-      right: 125px;
+      display: block;
 
       div.pymakr-connection {
         position: relative;
         color: @text-color;
         background: @button-background-dark;
         border: none;
-        display: inline-block;
+
         cursor: pointer;
         padding: 4px 21px 4px 20px;
-        margin: 0 1px 0 0;
+        margin: 0 1px 0 0px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
         &.open {
           background: @button-background-light;
         }
@@ -271,14 +285,21 @@
           background: #fc1247;
           border: none;
         }
+        .device-name {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          display: inherit;
+          //pkpk
+          max-width: 100px !important;
+        }
         span.close {
           display: block;
           position: absolute;
           right: 0px;
-          top: 0px;
+          top: 1px;
           bottom: 0px;
           width: 17px;
-          border-left: 1px solid @border-dark;
           color: #fff;
           text-shadow: none;
           font-weight: normal;
@@ -293,7 +314,6 @@
     #pymakr-buttons {
       position: absolute;
       top: 5px;
-      width: 445px;
       position: absolute;
       right: 0px;
       top: 0px;
@@ -310,14 +330,13 @@
     color: @text-color;
     background: @button-background-dark;
     border: none;
-    border-right: 1px solid @border-dark;
     padding: 4px;
     margin: 0;
     span.fa {
       margin: 0 3px;
     }
     &.has-sub {
-      margin-right: 14px;
+      margin-right: 18px;
     }
     .hidden {
       display: none;
@@ -333,6 +352,9 @@
     span.fa.down {
       display: none;
     }
+    .loading_text {
+      padding-left: 14px !important;
+    }
     div.open-subnav {
       position: absolute;
       right: -17px;
@@ -341,7 +363,8 @@
       width: 17px;
       font-size: 9px;
       padding: 3px;
-      border-left: 1px solid @border-dark;
+      padding-right: 14px;
+      border-right: 1px solid @border-dark;
       span.fa {
         margin: 4px 0;
       }
@@ -351,7 +374,7 @@
       position: absolute;
       bottom: 26px;
       line-height: 25px;
-      background: @button-background-dark;
+      background: @bg-dark;
       padding: 11px 1px;
       &.left {
         left: 0px;
@@ -362,13 +385,17 @@
       }
       div {
         width: 195px;
-        padding: 0px 5px;
+        padding: 2px 5px;
         text-align: right;
         cursor: pointer;
         &:hover {
-          background: @button-background-color-hover;
+          background: @button-background-color-hover !important;
         }
         input {
+          margin-right: 4px;
+        }
+        &::first-child {
+          margin-top: -10px;
         }
       }
       span.separator {
@@ -379,6 +406,12 @@
       }
       div.pymakr-add-address-button {
         cursor: pointer;
+      }
+      .side-menu:first-child {
+        margin-top: -10px;
+      }
+      .side-menu:last-child {
+        padding-bottom: 4px;
       }
     }
     &.open {
@@ -439,9 +472,10 @@
       .subnav {
         top: 117px;
         left: -87px;
+        background: transparent;
         transform: rotate(-90deg);
         div {
-          background: @button-background-color;
+          background: @bg-dark;
         }
       }
       span.fa {
@@ -513,6 +547,10 @@
         }
       }
       .icon-action-button {
+        cursor: not-allowed;
+      }
+      &.no-devices {
+        opacity: 0.4;
         cursor: not-allowed;
       }
     }

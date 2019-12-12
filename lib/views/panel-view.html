@@ -1,42 +1,49 @@
-
 <div id="pymakr" class="pymakr pymakr-open">
   <div id="pymakr-resizer"></div>
   <div id="pymakr-overlay-contents"></div>
 
   <div id="pycom-top-bar">
     <div id="pymakr-options-left">
-      <button id="pymakr-projects" class="has-sub"><span class="fa fa-folder"></span> <span id="project-name">No project...</span>
+      <button id="pymakr-projects" class="has-sub top-button">
+        <span class="fa fa-folder"></span>
+        <span class="button-title" id="project-name">No project...</span>
         <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
-        <div class="subnav left">
-
-        </div>
+        <div class="subnav left"></div>
       </button>
 
-      <button id="pymakr-connect" class="has-sub"><span class="fa fa-microchip"></span> Connect Device
+      <button id="pymakr-connect" class="has-sub top-button">
+        <span class="fa fa-microchip"></span>
+        <span class="button-title">Connect Device</span>
         <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
         <div class="subnav left">
-          <div id="pymakr-connect-all" ><span class="fa fa-"></span> Connect all available devices</div>
-          <div id="pymakr-close-all"><span class="fa fa-"></span> Close all connections</div>
+          <div id="pymakr-connect-all">
+            <span class="fa fa-"></span> Connect all available devices
+          </div>
+          <div id="pymakr-close-all">
+            <span class="fa fa-"></span> Close all connections
+          </div>
           <span class="separator" id="pymakr-comports-list">
             <div class="loading_text">Loading comport list...</div>
           </span>
-          <span  class="separator" id="pymakr-address-list">
+          <span class="separator" id="pymakr-address-list">
             <div class="loading_text">Loading address list...</div>
           </span>
-          <span  class="separator" id="pymakr-add-address">
-            <div id="pymakr-add-address-button"><span class="fa fa-"></span> Add IP address</div>
+          <span class="separator" id="pymakr-add-address">
+            <div id="pymakr-add-address-button">
+              <span class="fa fa-"></span> Add IP address
+            </div>
             <div id="pymakr-add-address-field-wrapper" class="hidden">
-              <input type="text" id="pymakr-add-address-input" placeholder="192.168.4.1" />
+              <input
+                type="text"
+                id="pymakr-add-address-input"
+                placeholder="192.168.4.1"
+              />
               <div id="pymakr-add-address-submit">Add</div>
             </div>
           </span>
         </div>
       </button>
-
-    </div>
-
-    <div id="pymakr-connection-tabs">
-
+      <div id="pymakr-connection-tabs"></div>
     </div>
 
     <div id="pymakr-buttons">
@@ -66,5 +73,4 @@
       No terminal open. Use the 'Connect Device' button to open a device.
     </div>
   </div>
-
 </div>

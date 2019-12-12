@@ -15,5 +15,6 @@
         "sourceType": "module"
     },
     "rules": {
+        "arrow-parens":"off"
     }
 }
