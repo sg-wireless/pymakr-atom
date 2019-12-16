@@ -2,10 +2,10 @@
 //
 // See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
 // for a full listing of what's available.
-@import "ui-variables";
+@import 'ui-variables';
 
-@import "../node_modules/font-awesome/less/font-awesome.less";
-@fa-font-path: "atom://pymakr/node_modules/font-awesome/fonts";
+@import '../node_modules/font-awesome/less/font-awesome.less';
+@fa-font-path: 'atom://pymakr/node_modules/font-awesome/fonts';
 @bg-dark: #21252b;
 @border-dark: #181a1f;
 @bg-button: #181a1f;
@@ -13,13 +13,13 @@
 @button-background-light: #363b46;
 
 @font-face {
-  font-family: "Font Awesome";
+  font-family: 'Font Awesome';
   font-weight: normal;
   font-style: normal;
-  src: url("@{fa-font-path}/fontawesome-webfont.woff") format("woff");
+  src: url('@{fa-font-path}/fontawesome-webfont.woff') format('woff');
 }
 .fa {
-  font-family: "Font Awesome";
+  font-family: 'Font Awesome';
 }
 .hidden {
   display: none;
@@ -535,9 +535,14 @@
         }
       }
 
+      &.not-connected{
+        color: red;
+      }
+
       &.disabled {
         opacity: 0.4;
         cursor: not-allowed;
+
         .left-button {
           cursor: unset !important;
         }
@@ -551,6 +556,7 @@
       &.no-devices {
         opacity: 0.4;
         cursor: not-allowed;
+        color: white !important;
       }
     }
     div.sub .icon-action-button {
