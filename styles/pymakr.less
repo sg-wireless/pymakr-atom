@@ -76,6 +76,7 @@
     white-space: nowrap;
     overflow: hidden;
     max-width: 168px;
+    margin-left: 3px;
   }
 
   #pymakr-overlay-contents {
@@ -98,11 +99,11 @@
         left: 12px;
         color: #17ffbd;
         cursor: pointer;
-        &:hover{
-          color: white
+        &:hover {
+          color: white;
         }
       }
-      #info-button-reboot{
+      #info-button-reboot {
         // width: 182px;
       }
 
@@ -117,7 +118,7 @@
         text-align: center;
         color: #333333;
         margin-left: 15px;
-        &:hover{
+        &:hover {
           background-color: #ffffff;
         }
       }
@@ -266,7 +267,7 @@
       margin-bottom: 3px;
     }
     #pymakr-connection-tabs {
-      display: block;
+      display: inherit;
 
       div.pymakr-connection {
         position: relative;
@@ -346,6 +347,11 @@
     }
     &.has-sub {
       margin-right: 18px;
+      img {
+        opacity: 0.6;
+        width: 12px;
+        margin-right: 4px;
+      }
     }
     .hidden {
       display: none;
@@ -395,16 +401,20 @@
       div {
         width: 195px;
         padding: 2px 5px;
-        text-align: right;
+        text-align: left;
         cursor: pointer;
         &:hover {
           background: @button-background-color-hover !important;
         }
         input {
-          margin-right: 4px;
+          margin-left: 4px;
         }
         &::first-child {
           margin-top: -10px;
+        }
+        img {
+          height: 12px;
+          width: 12px;
         }
       }
       span.separator {
@@ -434,6 +444,9 @@
         display: block;
         overflow-y: visible;
         height: auto;
+      }
+      div.open-subnav {
+        transform: rotateX(180deg);
       }
     }
   }
@@ -471,7 +484,7 @@
       height: 26px;
       transform: rotate(90deg);
       &:first-child {
-        margin-top: 26px;
+        margin-top: 23px;
       }
       &.has-sub {
         .open-subnav {
@@ -479,7 +492,7 @@
         }
       }
       .subnav {
-        top: 117px;
+        top: 114px;
         left: -97px;
         background: transparent;
         transform: rotate(-90deg);
@@ -523,6 +536,7 @@
       cursor: pointer;
       border: 1px solid black;
       font-size: 18px;
+
       div.sub {
         position: absolute;
         display: table;
@@ -545,10 +559,15 @@
         }
       }
 
-      &.not-connected{
-        color: red;
+      &#pymakr-action-connect {
+        color: #17ffbd;
+        transform: rotateY(0deg);
       }
 
+      &.not-connected {
+        color: red !important;
+        transform: rotateY(180deg) !important;
+      }
       &.disabled {
         opacity: 0.4;
         cursor: not-allowed;
