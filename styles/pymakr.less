@@ -11,7 +11,7 @@
 @bg-button: #181a1f;
 @button-background-dark: #21252b;
 @button-background-light: #363b46;
-
+@button-background-color-hover: #39404a;
 @font-face {
   font-family: 'Font Awesome';
   font-weight: normal;
@@ -34,7 +34,11 @@
   &:hover {
     background: @button-background-color-hover;
   }
+  &.light:hover {
+    background-color: #c5cad3 !important;
+  }
 }
+
 #pymakr {
   height: 314px;
   background: #000;
@@ -46,6 +50,97 @@
   &.collapsed {
     height: 0px;
   }
+  &.light {
+    #pymakr-terminal-area {
+      background-color: white !important;
+      color: black !important;
+      border: 1px solid black !important;
+      border-left: none !important;
+      .xterm-rows {
+        background-color: white !important;
+        color: black !important;
+      }
+      .terminal .terminal-cursor {
+        outline: 1px solid black;
+      }
+      .terminal.focus:not(.term-cursor-style-underline):not(.term-cursor-style-bar)
+        .terminal-cursor {
+        background-color: black;
+      }
+      .terminal:not(.xterm-cursor-style-underline):not(.xterm-cursor-style-bar).focus.xterm-cursor-blink-on
+        .terminal-cursor {
+        background-color: transparent;
+      }
+    }
+    .pybytes .with-underline::after {
+      color: black !important;
+    }
+    #pycom-top-bar {
+      background-color: rgb(215, 218, 224) !important;
+      color: black !important;
+    }
+    button {
+      background-color: rgb(215, 218, 224) !important;
+      color: black;
+      div.open-subnav {
+        background-color: rgb(215, 218, 224) !important;
+        &:hover {
+          background: #c5cad3 !important;
+        }
+      }
+      &:hover {
+        background: #c5cad3 !important;
+        .open-subnav {
+          background: #c5cad3 !important;
+        }
+      }
+    }
+
+    button div.subnav {
+      background-color: rgb(215, 218, 224) !important;
+      div {
+        &:hover {
+          background-color: #c5cad3 !important;
+        }
+      }
+    }
+
+    .close {
+      color: black !important;
+      opacity: 1;
+    }
+    #pymakr #pycom-top-bar {
+      background-color: rgb(215, 218, 224) !important;
+      color: black !important;
+    }
+    #pymakr-right-panel {
+      background-color: rgb(215, 218, 224) !important;
+      color: black !important;
+    }
+    #pymakr-right-panel button .subnav div {
+      background-color: rgb(215, 218, 224) !important;
+      color: black !important;
+      &:hover {
+        background-color: #c5cad3 !important;
+      }
+    }
+    .pymakr-connection {
+      background-color: white !important;
+      color: black !important;
+    }
+    .subnav {
+      div {
+        &:hover {
+          background-color: #c5cad3 !important;
+        }
+      }
+    }
+    .xterm {
+      // background-color: white !important;
+      // color: black !important;
+    }
+  }
+
   #pymakr-resizer {
     position: absolute;
     top: -5px;
@@ -271,7 +366,7 @@
 
       div.pymakr-connection {
         position: relative;
-        color: @text-color;
+        color: rgb(184, 184, 184);
         background: @button-background-dark;
         border: none;
 
@@ -337,7 +432,7 @@
   }
   button {
     position: relative;
-    color: @text-color;
+    color: rgb(184, 184, 184);
     background: @button-background-dark;
     border: none;
     padding: 4px;
@@ -404,7 +499,7 @@
         text-align: left;
         cursor: pointer;
         &:hover {
-          background: @button-background-color-hover !important;
+          background: @button-background-color-hover;
         }
         input {
           margin-left: 4px;
@@ -459,6 +554,7 @@
     #pymakr-terminal-placeholder {
       height: 100%;
       display: none;
+      color: rgb(184, 184, 184);
       &.open {
         display: block;
       }
@@ -494,10 +590,14 @@
       .subnav {
         top: 114px;
         left: -97px;
-        background: transparent;
+        background: transparent !important;
         transform: rotate(-90deg);
         div {
           background: @bg-dark;
+
+          &:hover {
+            background-color: white !important;
+          }
         }
       }
       span.fa {
@@ -571,7 +671,7 @@
       &.disabled {
         opacity: 0.4;
         cursor: not-allowed;
-
+        color: gray !important;
         .left-button {
           cursor: unset !important;
         }
@@ -771,7 +871,7 @@ div.pymakr-feedback {
     font-weight: 400;
     line-height: 1.1;
     margin-top: 20px;
-    color: white;
+    // color: white;
   }
   .bold {
     color: white;
