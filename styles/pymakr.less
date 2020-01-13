@@ -43,14 +43,57 @@
   height: 314px;
   background: #000;
 
-  // -webkit-transition: height 0.2s ease-in-out;
-  // -moz-transition: height 0.2s ease-in-out;
-  // -o-transition: height 0.2s ease-in-out;
-  // transition: height 0.2s ease-in-out;
   &.collapsed {
     height: 0px;
   }
+  .device-terminal.open {
+    color: white;
+  }
+  .font-size-measurement {
+    position: absolute;
+    left: 0;
+    color: red;
+    top: -10px;
+    z-index: -1;
+    opacity: 0;
+    font-family: courier-new, courier, monospace;
+  }
   &.light {
+    .terminal .xterm-viewport {
+      background-color: white !important;
+    }
+    #pymakr
+      #pymakr-overlay-contents
+      #pymakr-info-view
+      .column
+      .row
+      .label {
+      color: black !important;
+    }
+    #pymakr-overlay-contents #pymakr-info-view .column .row div {
+      color: black !important;
+    }
+    #pymakr-overlay-contents
+      #pymakr-info-view
+      #pymakr-info-close:hover {
+      color: black !important;
+    }
+    #pycom-top-bar #pymakr-buttons button {
+      border-top: 1px solid black;
+    }
+    #pycom-top-bar #pymakr-options-left {
+      border-top: 1px solid black;
+    }
+    .with-underline {
+      &::after {
+        content: ' ';
+        display: block;
+        width: 150px;
+        height: 3px;
+        background-color: black !important;
+        margin-top: 10px;
+      }
+    }
     #pymakr-terminal-area {
       background-color: white !important;
       color: black !important;
@@ -72,9 +115,6 @@
         background-color: transparent;
       }
     }
-    .pybytes .with-underline::after {
-      color: black !important;
-    }
     #pycom-top-bar {
       background-color: rgb(215, 218, 224) !important;
       color: black !important;
@@ -84,6 +124,7 @@
       color: black;
       div.open-subnav {
         background-color: rgb(215, 218, 224) !important;
+        border-right: 1px solid black;
         &:hover {
           background: #c5cad3 !important;
         }
@@ -379,6 +420,7 @@
         align-items: baseline;
         &.open {
           background: @button-background-light;
+          border-right: 1px solid black;
         }
         span.connection-status {
           position: absolute;
@@ -410,6 +452,9 @@
           font-weight: normal;
           font-size: 11px;
           padding: 5px 3px;
+          &:hover {
+            color: #17ffbd !important;
+          }
         }
         &.connected span.connection-status {
           background: #17ffbd;
@@ -427,6 +472,11 @@
         float: right;
         border: none;
         cursor: pointer;
+        height: 27px;
+        z-index: 10;
+        &:hover {
+          color: #17ffbd !important;
+        }
       }
     }
   }
@@ -577,6 +627,7 @@
       transform: rotate(90deg);
       margin: 53px 0 4px -23px;
       padding-left: 24px;
+      padding-right: 6px;
       height: 26px;
       transform: rotate(90deg);
       &:first-child {
