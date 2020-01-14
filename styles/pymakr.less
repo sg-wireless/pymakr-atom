@@ -13,6 +13,7 @@
 @button-background-light: #363b46;
 @button-background-color-hover: #39404a;
 @pycom-primary: #17ffbd;
+@pymakr-light-bg: #eaeaeb;
 @font-face {
   font-family: 'Font Awesome';
   font-weight: normal;
@@ -153,14 +154,14 @@
       }
     }
     #pycom-top-bar {
-      background-color: rgb(215, 218, 224) !important;
+      background-color: @pymakr-light-bg !important;
       color: #2c313a !important;
     }
     button {
-      background-color: rgb(215, 218, 224) !important;
+      background-color: @pymakr-light-bg !important;
       color: #2c313a;
       div.open-subnav {
-        background-color: rgb(215, 218, 224) !important;
+        background-color: @pymakr-light-bg !important;
         border-right: 1px solid #c5cad3;
         &:hover {
           background: #c5cad3 !important;
@@ -175,7 +176,7 @@
     }
 
     button div.subnav {
-      background-color: rgb(215, 218, 224) !important;
+      background-color: @pymakr-light-bg !important;
       div {
         &:hover {
           background-color: #c5cad3 !important;
@@ -188,15 +189,15 @@
       opacity: 1;
     }
     #pymakr #pycom-top-bar {
-      background-color: rgb(215, 218, 224) !important;
+      background-color: @pymakr-light-bg !important;
       color: #818489 !important;
     }
     #pymakr-right-panel {
-      background-color: rgb(215, 218, 224) !important;
+      background-color: @pymakr-light-bg !important;
       color: #818489 !important;
     }
     #pymakr-right-panel button .subnav div {
-      background-color: rgb(215, 218, 224) !important;
+      background-color: @pymakr-light-bg !important;
       color: #2c313a !important;
       &:hover {
         background-color: #c5cad3 !important;
@@ -487,11 +488,13 @@
           top: 1px;
           bottom: 0px;
           width: 17px;
-          color: #fff;
+          color: rgb(203, 203, 203);
           text-shadow: none;
           font-weight: normal;
           font-size: 11px;
           padding: 5px 3px;
+          opacity: 1;
+        
           &:hover {
             color: @pycom-primary !important;
           }
@@ -543,7 +546,7 @@
     }
     &:hover,
     &:hover div.open-subnav {
-      background: @button-background-color-hover;
+      background: @button-background-color-hover !important;
     }
     &.cancel {
       background: @background-color-error;
