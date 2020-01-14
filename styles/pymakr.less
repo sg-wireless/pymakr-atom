@@ -12,6 +12,7 @@
 @button-background-dark: #21252b;
 @button-background-light: #363b46;
 @button-background-color-hover: #39404a;
+@pycom-primary: #17ffbd;
 @font-face {
   font-family: 'Font Awesome';
   font-weight: normal;
@@ -68,21 +69,36 @@
       .column
       .row
       .label {
-      color: black !important;
+      color: #2c313a !important;
     }
     #pymakr-overlay-contents #pymakr-info-view .column .row div {
-      color: black !important;
+      color: #2c313a !important;
     }
-    #pymakr-overlay-contents
-      #pymakr-info-view
-      #pymakr-info-close:hover {
-      color: black !important;
+    #pymakr-overlay-contents #pymakr-info-view #pymakr-info-close {
+      background-color: #17ffbd;
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #2c313a;
+      margin-left: 4px;
+      &:hover {
+        background-color: #a2ffe5 !important;
+        color: #2c313a !important;
+      }
     }
-    #pycom-top-bar #pymakr-buttons button {
-      border-top: 1px solid black;
+    #pycom-top-bar {
+      border-left: 1px solid #c5cad3;
+      #pymakr-connection-tabs {
+        div.pymakr-connection.connected span.connection-status {
+          border: 1px solid black;
+        }
+        div.pymakr-connection.open {
+          border-right: 1px solid #c5cad3;
+        }
+      }
     }
-    #pycom-top-bar #pymakr-options-left {
-      border-top: 1px solid black;
+
+    .left-button {
+      border: 1px solid #c5cad3 !important;
     }
     .with-underline {
       &::after {
@@ -90,25 +106,46 @@
         display: block;
         width: 150px;
         height: 3px;
-        background-color: black !important;
+        background-color: #818489 !important;
         margin-top: 10px;
       }
     }
+
+    .left-button#pymakr-action-connect {
+      // color: #2c313a !important;
+      color: #2c313a !important;
+      .circle:before {
+        color: @pycom-primary !important;
+        opacity: 1 !important;
+      }
+      &.not-connected {
+        color: #2c313a !important;
+        .circle:before {
+          color: red !important;
+          opacity: 1 !important;
+        }
+      }
+      &.no-devices .circle:before {
+        color: grey !important;
+        opacity: 1 !important;
+      }
+    }
+
     #pymakr-terminal-area {
       background-color: white !important;
-      color: black !important;
-      border: 1px solid black !important;
+      color: #2c313a !important;
+      border: 1px solid #c5cad3 !important;
       border-left: none !important;
       .xterm-rows {
         background-color: white !important;
-        color: black !important;
+        color: #2c313a !important;
       }
       .terminal .terminal-cursor {
-        outline: 1px solid black;
+        outline: 1px solid #2c313a;
       }
       .terminal.focus:not(.term-cursor-style-underline):not(.term-cursor-style-bar)
         .terminal-cursor {
-        background-color: black;
+        background-color: #2c313a;
       }
       .terminal:not(.xterm-cursor-style-underline):not(.xterm-cursor-style-bar).focus.xterm-cursor-blink-on
         .terminal-cursor {
@@ -117,14 +154,14 @@
     }
     #pycom-top-bar {
       background-color: rgb(215, 218, 224) !important;
-      color: black !important;
+      color: #2c313a !important;
     }
     button {
       background-color: rgb(215, 218, 224) !important;
-      color: black;
+      color: #2c313a;
       div.open-subnav {
         background-color: rgb(215, 218, 224) !important;
-        border-right: 1px solid black;
+        border-right: 1px solid #c5cad3;
         &:hover {
           background: #c5cad3 !important;
         }
@@ -147,27 +184,27 @@
     }
 
     .close {
-      color: black !important;
+      color: #818489 !important;
       opacity: 1;
     }
     #pymakr #pycom-top-bar {
       background-color: rgb(215, 218, 224) !important;
-      color: black !important;
+      color: #818489 !important;
     }
     #pymakr-right-panel {
       background-color: rgb(215, 218, 224) !important;
-      color: black !important;
+      color: #818489 !important;
     }
     #pymakr-right-panel button .subnav div {
       background-color: rgb(215, 218, 224) !important;
-      color: black !important;
+      color: #2c313a !important;
       &:hover {
         background-color: #c5cad3 !important;
       }
     }
     .pymakr-connection {
       background-color: white !important;
-      color: black !important;
+      color: #2c313a !important;
     }
     .subnav {
       div {
@@ -233,7 +270,7 @@
         position: absolute;
         top: 16px;
         left: 12px;
-        color: #17ffbd;
+        color: @pycom-primary;
         cursor: pointer;
         &:hover {
           color: white;
@@ -247,7 +284,7 @@
         width: 55px;
         height: 17px;
         border-radius: 2px;
-        background-color: #17ffbd;
+        background-color: @pycom-primary;
         font-size: 10px;
         padding: 0px;
         font-size: 10px;
@@ -385,6 +422,9 @@
     #pymakr-options-left {
       display: flex;
       flex-direction: row;
+      &:first-child {
+        margin-left: -1px;
+      }
     }
     #pymakr-title {
       display: none;
@@ -453,7 +493,7 @@
           font-size: 11px;
           padding: 5px 3px;
           &:hover {
-            color: #17ffbd !important;
+            color: @pycom-primary !important;
           }
         }
         &.connected span.connection-status {
@@ -475,7 +515,7 @@
         height: 27px;
         z-index: 10;
         &:hover {
-          color: #17ffbd !important;
+          color: @pycom-primary !important;
         }
       }
     }
@@ -493,8 +533,8 @@
     &.has-sub {
       margin-right: 18px;
       img {
-        opacity: 0.6;
         width: 12px;
+        align-items: flex-end;
         margin-right: 4px;
       }
     }
@@ -599,7 +639,7 @@
     background: #000;
     padding-left: 2px;
     height: 100%;
-    margin-left: 60px;
+    margin-left: 59px;
     margin-right: 26px;
     #pymakr-terminal-placeholder {
       height: 100%;
@@ -647,7 +687,7 @@
           background: @bg-dark;
 
           &:hover {
-            background-color: white !important;
+            background-color: #39404a !important;
           }
         }
       }
@@ -687,13 +727,16 @@
       cursor: pointer;
       border: 1px solid black;
       font-size: 18px;
+      margin-bottom: -1px;
+      margin-left: -1px;
+      margin-right: -1px;
 
       div.sub {
         position: absolute;
         display: table;
         height: 100%;
         width: 15px;
-        border-left: 1px solid black;
+        border-left: 1px solid #818489;
         top: 0px;
         right: 0px;
         bottom: 0px;
@@ -711,8 +754,19 @@
       }
 
       &#pymakr-action-connect {
-        color: #17ffbd;
+        color: @pycom-primary;
         transform: rotateY(0deg);
+        .circle:before {
+          content: ' \25CF';
+          font-size: 15px;
+          position: absolute;
+          left: 0;
+          top: 30%;
+          left: 55%;
+          transform: translateX(-50%);
+          z-index: -1;
+          opacity: 0;
+        }
       }
 
       &.not-connected {
@@ -723,6 +777,7 @@
         opacity: 0.4;
         cursor: not-allowed;
         color: gray !important;
+        border: 1px solid black !important;
         .left-button {
           cursor: unset !important;
         }
@@ -885,7 +940,7 @@ div.pymakr-feedback {
     border-color: #9b9b9b;
     transition: 400ms ease all;
     &:focus {
-      border-color: rgba(82, 247, 197, 1);
+      border-color: @pycom-primary;
     }
   }
   &-button {
@@ -896,7 +951,7 @@ div.pymakr-feedback {
     background: linear-gradient(
       135deg,
       rgba(82, 247, 197, 0) 30%,
-      rgba(82, 247, 197, 1) 100%
+      @pycom-primary 100%
     );
     background-color: #4a7994;
     border: none;
@@ -906,14 +961,14 @@ div.pymakr-feedback {
     font-weight: 500;
     line-height: 1.42857143;
     background: none;
-    background-color: #17ffbd;
+    background-color: @pycom-primary;
     color: #1e1e3c;
     font-weight: bold;
     background-color: aquamarine;
     color: black;
   }
   a {
-    color: rgba(82, 247, 197, 1);
+    color: @pycom-primary;
     line-height: 18px;
   }
   h2,
