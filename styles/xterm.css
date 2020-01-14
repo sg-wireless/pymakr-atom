@@ -36,8 +36,8 @@
  */
 
 .terminal {
-  background-color: #000;
-  color: #fff;
+  background-color: inherit;
+  color: inherit;
   font-family: courier-new, courier, monospace;
   font-feature-settings: 'liga' 0;
   position: relative;
@@ -45,6 +45,10 @@
   -ms-user-select: none;
   -webkit-user-select: none;
   overflow: hidden;
+}
+
+.light{
+  color: black !important;
 }
 
 .terminal.focus,
