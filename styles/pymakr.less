@@ -151,6 +151,12 @@
       color: #2c313a !important;
       border: 1px solid #c5cad3 !important;
       border-left: none !important;
+      .xterm-selection {
+        background-color: blue !important;
+        div {
+          background-color: gray !important;
+        }
+      }
       .xterm-rows {
         background-color: white !important;
         color: #2c313a !important;
@@ -535,9 +541,6 @@
         cursor: pointer;
         height: 27px;
         z-index: 10;
-        &:hover {
-          color: @pycom-primary !important;
-        }
       }
     }
   }
@@ -558,6 +561,11 @@
         align-items: flex-end;
         margin-right: 4px;
       }
+      // &:hover{
+      //   .open-subnav{
+      //     color: @pycom-primary;
+      //   }
+      // }
     }
     .hidden {
       display: none;
@@ -658,7 +666,7 @@
   }
   #pymakr-terminal-area {
     background: #000;
-    padding-left: 2px;
+    padding-left: 5px;
     height: 100%;
     margin-left: 59px;
     margin-right: 26px;
@@ -813,8 +821,14 @@
       &.no-devices {
         opacity: 0.4;
         cursor: not-allowed;
-        color: white;
         transform: rotateY(180deg) !important;
+        .left-button {
+          &#pymakr-action-connect {
+            .circle:before {
+              opacity: 0;
+            }
+          }
+        }
       }
     }
     div.sub .icon-action-button {
