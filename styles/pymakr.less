@@ -113,21 +113,35 @@
     }
 
     .left-button#pymakr-action-connect {
-      // color: #2c313a !important;
-      color: #2c313a !important;
+      // background-color: #eaeaeb !important;
+      color: #21252b !important;
+      opacity: 1 !important;
+      // color: #ccc !important;
       .circle:before {
         color: @pycom-primary !important;
         opacity: 1 !important;
       }
       &.not-connected {
-        color: #2c313a !important;
+        // color: #2c313a !important;
         .circle:before {
           color: red !important;
           opacity: 1 !important;
         }
       }
+      &.no-devices {
+        transform: rotateY(180deg) !important;
+        color: #ccc !important;
+        .circle:before {
+          color: gray !important;
+          opacity: 1 !important;
+        }
+      }
+      &.connected {
+        // color: #2c313a !important;
+        opacity: 1 !important;
+      }
       &.no-devices .circle:before {
-        color: grey !important;
+        // color: grey !important;
         opacity: 1 !important;
       }
     }
@@ -213,6 +227,10 @@
           background-color: #c5cad3 !important;
         }
       }
+    }
+    #pymakr-left-panel .left-button.disabled {
+      opacity: 1 !important;
+      color: #ccc !important;
     }
     .xterm {
       // background-color: white !important;
@@ -667,7 +685,6 @@
     width: 26px;
     background: @bg-dark;
     button {
-      transform: rotate(90deg);
       margin: 53px 0 4px -23px;
       padding-left: 24px;
       padding-right: 6px;
@@ -757,8 +774,10 @@
       }
 
       &#pymakr-action-connect {
-        color: @pycom-primary;
         transform: rotateY(0deg);
+        &:not(.not-connected):not(.no-devices) {
+          color: @pycom-primary;
+        }
         .circle:before {
           content: ' \25CF';
           font-size: 15px;
@@ -773,14 +792,14 @@
       }
 
       &.not-connected {
-        color: red !important;
+        color: red;
         transform: rotateY(180deg) !important;
       }
       &.disabled {
         opacity: 0.4;
         cursor: not-allowed;
         color: gray !important;
-        border: 1px solid black !important;
+        // border: 1px solid black !important;
         .left-button {
           cursor: unset !important;
         }
@@ -794,7 +813,8 @@
       &.no-devices {
         opacity: 0.4;
         cursor: not-allowed;
-        color: white !important;
+        color: white;
+        transform: rotateY(180deg) !important;
       }
     }
     div.sub .icon-action-button {
