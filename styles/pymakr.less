@@ -132,7 +132,7 @@
         transform: rotateY(180deg) !important;
         color: #ccc !important;
         .circle:before {
-          color: gray !important;
+          color: transparent !important;
           opacity: 1 !important;
         }
       }
@@ -224,8 +224,13 @@
       }
     }
     .pymakr-connection {
-      background-color: white !important;
+      background-color: #eaeaeb !important;
       color: #2c313a !important;
+      border-right: 1px solid #c5cad3;
+      border-left: 1px solid #c5cad3;
+      &.open {
+        background-color: white !important;
+      }
     }
     .subnav {
       div {
@@ -605,6 +610,7 @@
       line-height: 25px;
       background: @bg-dark;
       padding: 11px 1px;
+      z-index: 100;
       &.left {
         left: 0px;
         div {
