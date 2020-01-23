@@ -239,6 +239,9 @@
     .close {
       color: #818489 !important;
       opacity: 1;
+      &:hover {
+        color: white;
+      }
     }
     #pymakr #pycom-top-bar {
       background-color: @pymakr-light-bg !important;
@@ -282,6 +285,11 @@
     .xterm {
       // background-color: white !important;
       // color: black !important;
+    }
+  }
+  #close {
+    &:hover {
+      color: white;
     }
   }
 
@@ -479,9 +487,17 @@
   }
   &.pymakr-open {
     cursor: default;
+
     .pymakr-resizer {
       display: block;
     }
+  }
+  &.open {
+    display: none !important;
+    border: 2px solid red;
+  }
+  &.closed {
+    display: none !important;
   }
   #pycom-top-bar {
     height: 26px;
