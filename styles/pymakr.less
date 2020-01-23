@@ -13,7 +13,8 @@
 @button-background-light: #363b46;
 @button-background-color-hover: #39404a;
 @pycom-primary: #17ffbd;
-@pymakr-light-bg: #eaeaeb;
+@pymakr-light-bg: #d9dbde;
+@pymakr-light-bg-2: #e7e9eb;
 @font-face {
   font-family: 'Font Awesome';
   font-weight: normal;
@@ -75,6 +76,11 @@
     #pymakr-overlay-contents #pymakr-info-view .column .row div {
       color: #2c313a !important;
     }
+    .top-button {
+      &:hover {
+        color: black !important;
+      }
+    }
     #pymakr-overlay-contents #pymakr-info-view #pymakr-info-close {
       background-color: #17ffbd;
       padding: 3px 8px;
@@ -113,6 +119,11 @@
             color: black !important;
           }
         }
+        &:hover {
+          span {
+            color: black;
+          }
+        }
       }
     }
 
@@ -131,7 +142,7 @@
     }
 
     .left-button#pymakr-action-connect {
-      // background-color: #eaeaeb !important;
+      // background-color: #d9dbde !important;
       color: #21252b !important;
       opacity: 1 !important;
       // color: #ccc !important;
@@ -212,6 +223,9 @@
         }
       }
     }
+    .left-button {
+      background-color: @pymakr-light-bg-2 !important;
+    }
 
     button div.subnav {
       background-color: @pymakr-light-bg !important;
@@ -242,12 +256,15 @@
       }
     }
     .pymakr-connection {
-      background-color: #eaeaeb !important;
+      background-color: #d9dbde !important;
       color: #2c313a !important;
       border-right: 1px solid #c5cad3;
       border-left: 1px solid #c5cad3;
       &.open {
         background-color: white !important;
+      }
+      &:hover {
+        color: white;
       }
     }
     .subnav {
@@ -260,6 +277,7 @@
     #pymakr-left-panel .left-button.disabled {
       opacity: 1 !important;
       color: #ccc !important;
+      background-color: @pymakr-light-bg !important;
     }
     .xterm {
       // background-color: white !important;
@@ -291,6 +309,9 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    &:hover {
+      color: white;
+    }
   }
   .button-title {
     text-overflow: ellipsis;
@@ -298,6 +319,7 @@
     overflow: hidden;
     max-width: 168px;
     margin-left: 3px;
+    color: inherit;
   }
 
   #pymakr-overlay-contents {
@@ -498,17 +520,18 @@
         color: rgb(184, 184, 184);
         background: @button-background-dark;
         border: none;
-
         cursor: pointer;
         padding: 4px 21px 4px 20px;
         margin: 0 1px 0 0px;
-
         display: flex;
         flex-direction: row;
         align-items: baseline;
         &.open {
           background: @button-background-light;
           border-right: 1px solid black;
+        }
+        &:hover {
+          color: white;
         }
         span.connection-status {
           position: absolute;
