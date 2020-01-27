@@ -17,7 +17,8 @@
     "quotes": [2, "single", { "avoidEscape": true }],
     "arrow-parens": "off",
     "no-eval": "off",
-    "class-methods-use-this" : "off",
-    "operator-linebreak": "off"
+    "class-methods-use-this": "off",
+    "operator-linebreak": "off",
+    "radix": "off"
   }
 }
