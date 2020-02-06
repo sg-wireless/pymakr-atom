@@ -3,6 +3,7 @@
 * Multiple device connections: Now it’s possible to connect to multiple devices simultaneously, with one independent terminal for each one. 
 * Dynamic workspace: The current project is now selected on Pymakr (projects dropdown) and not on the Atom file-tree.  
 * Font size customizable: Now it’s possible to change the terminal font size. 
+* Theme support: Now Pymakr supports current Atom's theme, matching with its color scheme. 
 
 ## 1.5.6 - User experience improvements
 * Now Pymakr shows a post-install notification if it failed to load Serialport library, asking the user to reload Atom. 
