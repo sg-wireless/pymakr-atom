@@ -98,18 +98,18 @@
     }
 
     #pymakr-terminal-area {
-      background-color: @input-background-color !important;
-      color: #2c313a !important;
       border: 1px solid #c5cad3 !important;
       border-left: none !important;
+      background-color: @input-background-color !important;
       .xterm-selection {
-        background-color: blue !important;
         div {
           background-color: gray !important;
         }
       }
+
       .xterm-rows {
         color: @text-color !important;
+        background-color: @input-background-color !important;
       }
       .terminal .terminal-cursor {
         outline: 1px solid #2c313a;
@@ -121,6 +121,10 @@
       .terminal:not(.xterm-cursor-style-underline):not(.xterm-cursor-style-bar).focus.xterm-cursor-blink-on
         .terminal-cursor {
         background-color: transparent;
+      }
+      .terminal:not(.xterm-cursor-style-underline):not(.xterm-cursor-style-bar).focus.xterm-cursor-blink-off
+        .terminal-cursor {
+        background-color: red;
       }
     }
 
@@ -151,7 +155,7 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: #000000;
+    background-color: @base-border-color;
     opacity: 0.5;
     z-index: 1;
   }
@@ -590,7 +594,7 @@
     }
   }
   #pymakr-terminal-area {
-    background: @input-background-color;
+    background: @base-border-color !important;
     padding-left: 5px;
     height: 100%;
     margin-left: 59px;
@@ -602,14 +606,16 @@
       padding-left: 6px;
       &.open {
         display: block;
+        flex: 1;
       }
-      #pymakr #pymakr-terminal-area{
+      #pymakr #pymakr-terminal-area {
         background-color: transparent !important;
       }
     }
     div.device-terminal {
       display: none;
       &.open {
+        height: 100%;
         display: block;
       }
     }
@@ -994,10 +1000,31 @@ div.pymakr-feedback {
   /* On OS X this is required in order for the scroll bar to appear fully opaque */
   background-color: @input-background-color !important;
   overflow-y: scroll;
+  overflow-y: scroll;
+  cursor: default;
+  position: absolute !important;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 #pymakr-terminal-area {
   .xterm-rows {
     padding-left: 6px !important;
   }
+}
+
+.xterm-cursor.xterm-cursor-blink.xterm-cursor-block {
+  border: 1px solid @text-color !important;
+}
+.xterm-dom-renderer-owner-1
+  .xterm-rows:not(.xterm-focus)
+  .xterm-cursor.xterm-cursor-block {
+  outline: 1px solid @text-color-subtle !important;
+}
+.xterm-rows {
+  color: @text-color-highlight !important;
+  background-color: @base-border-color !important;
 }
