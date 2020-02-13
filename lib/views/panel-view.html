@@ -1,0 +1,58 @@
+<div id="pymakr" class="pymakr pymakr-open">
+  <div id="pymakr-resizer"></div>
+  <span class="font-size-measurement">x</span>
+  <div id="pymakr-overlay-contents"></div>
+
+  <div id="pycom-top-bar">
+    <div id="pymakr-options-left">
+      <button id="pymakr-projects" class="has-sub top-button">
+        <span class="fa fa-folder"></span>
+        <span class="button-title" id="project-name"
+          >No project...</span
+        >
+        <div class="open-subnav">
+          <span class="fa fa-chevron-up"></span>
+        </div>
+        <div class="subnav left"></div>
+      </button>
+
+      <button id="pymakr-connect" class="has-sub top-button">
+        <span class="fa fa-microchip"></span>
+        <span class="button-title">Connect Device</span>
+        <div class="open-subnav">
+          <span class="fa fa-chevron-up"></span>
+        </div>
+        <div class="subnav left">
+          <div id="pymakr-connect-all">
+            <span class="fa fa-"></span> Open all connections
+          </div>
+          <div id="pymakr-close-all">
+            <span class="fa fa-"></span> Close all connections
+          </div>
+          <span class="separator" id="pymakr-comports-list">
+            <div class="loading_text">Loading comport list...</div>
+          </span>
+          <span class="separator" id="pymakr-address-list">
+            <div class="loading_text">Loading address list...</div>
+          </span>
+        </div>
+      </button>
+      <div id="pymakr-connection-tabs"></div>
+    </div>
+
+    <div id="pymakr-buttons">
+      <button style="font-size: 14px;" id="close">
+        <span class="fa fa-times"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="pymakr-overlay"></div>
+
+  <div id="pymakr-terminal-area">
+    <div id="pymakr-terminal-placeholder" class="open">
+      No terminal open. Use the 'Connect Device' button to open a
+      device.
+    </div>
+  </div>
+</div>
