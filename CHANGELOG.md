@@ -1,3 +1,10 @@
+## 2.0.1 
+* The connection tabs are now scrollable. 
+* Changing the font size no longer requires restarting Atom.
+* Improved terminal responsiveness.
+* Improved themes compatibility.
+* Fixed a bug where the circle from toggle connection button goes out of the switch.
+
 ## 2.0.0 
 * Improved UI: The interface has been completely rearranged, providing an objective, clear and beautiful layout. 
 * Multiple device connections: Now it’s possible to connect to multiple devices simultaneously, with one independent terminal for each one. 
