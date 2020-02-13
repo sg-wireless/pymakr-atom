@@ -23,6 +23,7 @@
     "binascii": "0.0.2",
     "bindings": "^1.5.0",
     "bluebird": "^3.7.2",
+    "chrome-tabs": "^5.4.0",
     "commander": "^2.13.0",
     "crypto": "^1.0.1",
     "debug": "^4.1.0",
