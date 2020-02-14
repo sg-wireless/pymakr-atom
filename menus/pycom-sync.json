@@ -6,7 +6,7 @@
         "submenu": [
           {
             "label": "Toggle Pycom Console",
-            "command": "pymakr:toggleREPL"
+            "command": "pymakr:toggle REPL"
           },
           {
             "label": "Run current file",
@@ -25,7 +25,7 @@
           "submenu": [
             {
               "label": "Toggle Pycom Console",
-              "command": "pymakr:toggleREPL"
+              "command": "pymakr:toggle REPL"
             },
             {
               "label": "Run current file",
