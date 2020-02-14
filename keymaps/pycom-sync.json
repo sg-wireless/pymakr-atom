@@ -2,7 +2,7 @@
   "atom-workspace": {
     "ctrl-alt-s": "pymakr:upload",
     "ctrl-shift-s": "pymakr:uploadFile",
-    "ctrl-alt-t": "pymakr:toggleREPL",
+    "ctrl-alt-t": "pymakr:toggle REPL",
     "ctrl-alt-c": "pymakr:connect",
     "ctrl-alt-d": "pymakr:disconnect",
     "ctrl-alt-r": "pymakr:run",
