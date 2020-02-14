@@ -36,7 +36,7 @@
 
 #pymakr {
   height: 314px;
-  background:@input-background-color;
+  background-color: @input-background-color !important;
   &.container {
     &-open {
       display: block !important;
@@ -51,6 +51,7 @@
   }
   .device-terminal.open {
     color: white;
+    background-color: @input-background-color !important;
   }
   .font-size-measurement {
     position: absolute;
@@ -98,8 +99,6 @@
     }
 
     #pymakr-terminal-area {
-      border: 1px solid #c5cad3 !important;
-      border-left: none !important;
       background-color: @input-background-color !important;
       .xterm-selection {
         div {
@@ -109,7 +108,7 @@
 
       .xterm-rows {
         color: @text-color !important;
-        background-color: @input-background-color !important;
+        background-color: transparent !important;
       }
       .terminal .terminal-cursor {
         outline: 1px solid #2c313a;
@@ -1026,11 +1025,11 @@ div.pymakr-feedback {
 }
 .xterm-rows {
   color: @text-color-highlight !important;
-  background-color: @base-border-color !important;
+  background-color: transparent !important;
 }
 
 .chrome-tabs .chrome-tab {
-  width: 258px;
+  width: 208px;
   height: 26px;
   &:hover {
     .chrome-tab-close {
@@ -1072,7 +1071,7 @@ div.pymakr-feedback {
   position: absolute;
   left: 0;
   height: 26px;
-  width: 240px;
+  width: 200px;
   border: 0;
   margin: 0;
   z-index: 1;
@@ -1116,8 +1115,8 @@ div.pymakr-feedback {
   content: '';
   display: block;
   position: absolute;
-  top: -2px;
-  bottom: 8px;
+  top: -4px;
+  bottom: -4px;
   width: 1px;
   background: @base-border-color;
   opacity: 1;
@@ -1223,17 +1222,17 @@ div.pymakr-feedback {
   overflow: hidden;
   white-space: nowrap;
   margin-left: 4px;
-  color: #5f6368;
+  color: @text-color;
   -webkit-mask-image: linear-gradient(
     90deg,
     #000 0%,
-    #000 calc(100% - 24px),
+    #000 calc(100% - 12px),
     transparent
   );
   mask-image: linear-gradient(
     90deg,
     #000 0%,
-    #000 calc(100% - 24px),
+    #000 calc(100% - 12px),
     transparent
   );
 }
@@ -1255,9 +1254,8 @@ div.pymakr-feedback {
   display: none;
 }
 .chrome-tabs .chrome-tab[active] .chrome-tab-title {
-  color: #45474a;
   z-index: 1;
-  color: white;
+  color: @text-color-selected;
 }
 .chrome-tabs .chrome-tab .chrome-tab-drag-handle {
   position: absolute;
