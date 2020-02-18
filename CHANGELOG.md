@@ -1,3 +1,14 @@
+## 2.1.0
+* Connection tabs are now fluid and responsive.
+* Removed horizontal scroll from connection tabs bar.
+* Added tooltip on hovering over a connection tab.
+* Removed terminal left padding, fixing selection alignment.
+* Changed minimum font size from 14 to 10.
+* Fixed an error after downloading files from device in some cases.
+* Fixed 'open on start' bug.
+* Fixed problem on connecting to device via Telnet.
+* Fixed connection state inconsistency.
+
 ## 2.0.1 
 * The connection tabs are now scrollable. 
 * Changing the font size no longer requires restarting Atom.

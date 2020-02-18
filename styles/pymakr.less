@@ -36,7 +36,7 @@
 
 #pymakr {
   height: 314px;
-  background: #000;
+  background-color: @input-background-color !important;
   &.container {
     &-open {
       display: block !important;
@@ -51,6 +51,7 @@
   }
   .device-terminal.open {
     color: white;
+    background-color: @input-background-color !important;
   }
   .font-size-measurement {
     position: absolute;
@@ -98,8 +99,6 @@
     }
 
     #pymakr-terminal-area {
-      border: 1px solid #c5cad3 !important;
-      border-left: none !important;
       background-color: @input-background-color !important;
       .xterm-selection {
         div {
@@ -109,7 +108,7 @@
 
       .xterm-rows {
         color: @text-color !important;
-        background-color: @input-background-color !important;
+        background-color: transparent !important;
       }
       .terminal .terminal-cursor {
         outline: 1px solid #2c313a;
@@ -252,7 +251,6 @@
             margin-bottom: 10px;
           }
           padding-bottom: 16px;
-
         }
         .row {
           div {
@@ -347,6 +345,7 @@
   #pycom-top-bar {
     height: 26px;
     min-width: 310px;
+    position: relative;
     padding: 0;
     border-left: solid 1px @tree-view-border-color;
     border-bottom: solid 1px @tree-view-border-color;
@@ -354,6 +353,8 @@
     #pymakr-options-left {
       display: flex;
       flex-direction: row;
+      background-color: @app-background-color;
+
       &:first-child {
         margin-left: -1px;
       }
@@ -409,17 +410,6 @@
           span.close {
             opacity: 1 !important;
           }
-        }
-        span.connection-status {
-          position: absolute;
-          display: block;
-          left: 8px;
-          top: 8px;
-          width: 10px;
-          height: 10px;
-          border-radius: 5px;
-          background: #fc1247;
-          border: none;
         }
         .device-name {
           text-overflow: ellipsis;
@@ -1019,12 +1009,6 @@ div.pymakr-feedback {
   z-index: -1;
 }
 
-#pymakr-terminal-area {
-  .xterm-rows {
-    padding-left: 6px !important;
-  }
-}
-
 .xterm-cursor.xterm-cursor-blink.xterm-cursor-block {
   border: 1px solid @text-color !important;
 }
@@ -1035,5 +1019,5 @@ div.pymakr-feedback {
 }
 .xterm-rows {
   color: @text-color-highlight !important;
-  background-color: @base-border-color !important;
+  background-color: transparent !important;
 }
