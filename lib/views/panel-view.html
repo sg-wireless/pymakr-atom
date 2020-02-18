@@ -1,6 +1,7 @@
 <div id="pymakr" class="pymakr pymakr-open">
   <div id="pymakr-resizer"></div>
   <span class="font-size-measurement">x</span>
+  <link href="css/chrome-tabs.css" rel="stylesheet" />
   <div id="pymakr-overlay-contents"></div>
 
   <div id="pycom-top-bar">
@@ -16,7 +17,12 @@
         <div class="subnav left"></div>
       </button>
 
-      <button id="pymakr-connect" class="has-sub top-button">
+      <button
+        id="pymakr-connect"
+        style="margin-right: 5px"
+        class="has-sub top-button"
+      >
+        <!-- Styles to prevent flash after JS initialization -->
         <span class="fa fa-microchip"></span>
         <span class="button-title">Connect Device</span>
         <div class="open-subnav">
@@ -37,22 +43,33 @@
           </span>
         </div>
       </button>
-      <div id="pymakr-connection-tabs"></div>
+      <div class="surface">
+        <div class="mock-browser">
+          <div class="chrome-tabs" style="--tab-content-margin: 9px">
+            <div class="chrome-tabs-content">
+            </div>
+          </div>
+
+         
+        </div>
+
+        <script src="lib/third-parties/draggabilly.pkgd.min.js"></script>
+      </div>
+
+      <div id="pymakr-buttons">
+        <button style="font-size: 14px;" id="close">
+          <span class="fa fa-times"></span>
+        </button>
+      </div>
     </div>
 
-    <div id="pymakr-buttons">
-      <button style="font-size: 14px;" id="close">
-        <span class="fa fa-times"></span>
-      </button>
-    </div>
-  </div>
+    <div id="pymakr-overlay"></div>
 
-  <div id="pymakr-overlay"></div>
-
-  <div id="pymakr-terminal-area">
-    <div id="pymakr-terminal-placeholder" class="open">
-      No terminal open. Use the 'Connect Device' button to open a
-      device.
+    <div id="pymakr-terminal-area">
+      <div id="pymakr-terminal-placeholder" class="open">
+        No terminal open. Use the 'Connect Device' button to open a
+        device.
+      </div>
     </div>
   </div>
 </div>
