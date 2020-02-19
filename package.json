@@ -1,7 +1,7 @@
 {
   "name": "pymakr",
   "main": "./lib/main.js",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Adds a REPL console to Atom that connects to your Pycom board. It can run code on the board or synchronize your project files to it.",
   "keywords": [
     "Pycom",
@@ -16,14 +16,13 @@
   "repository": "https://github.com/pycom/pymakr-atom",
   "license": "GPL-3.0",
   "engines": {
-    "atom": ">=1.41.0 <=1.44.0",
+    "atom": ">=1.41.0",
     "node": ">=6.3.0 <=7.0.0"
   },
   "dependencies": {
     "binascii": "0.0.2",
     "bindings": "^1.5.0",
     "bluebird": "^3.7.2",
-    "chrome-tabs": "git+https://github.com/pedroknup/chrome-tabs.git",
     "commander": "^2.13.0",
     "crypto": "^1.0.1",
     "debug": "^4.1.0",
@@ -32,6 +31,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.0",
     "lie": "^3.1.0",
+    "draggabilly": "2.2.0",
     "nan": "^2.9.2",
     "ncp": "^2.0.0",
     "node-abi": "^2.12.0",
