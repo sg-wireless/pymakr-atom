@@ -1,22 +1,36 @@
-## 2.1.0
-* Connection tabs are now fluid and responsive.
-* Removed horizontal scroll from connection tabs bar.
-* Added tooltip on hovering over a connection tab.
-* Removed terminal left padding, fixing selection alignment.
-* Changed minimum font size from 14 to 10.
-* Fixed an error after downloading files from device in some cases.
-* Fixed 'open on start' bug.
-* Fixed problem on connecting to device via Telnet.
-* Fixed connection state inconsistency.
+## [2.1.1] - 19.2.2020
+### Fixed
+- Pymakr doesn't require to have git installed anymore.
 
-## 2.0.1 
+
+## [2.1.0] - 18.2.2020
+### Added
+* Connection tabs are now fluid and responsive.
+* Tooltip on hovering over a connection tab.
+### Changed
+* Minimum font size from 14 to 10.
+### Fixed
+* Error after downloading files from device in some cases.
+* 'open on start' bug.
+* Problem on connecting to device via Telnet.
+* Connection state inconsistency.
+### Removed
+* Horizontal scroll from connection tabs bar.
+* Terminal left padding, fixing selection alignment.
+
+
+## [2.0.1] - 13.2.2020
+### Added
 * The connection tabs are now scrollable. 
+### Changed
 * Changing the font size no longer requires restarting Atom.
 * Improved terminal responsiveness.
 * Improved themes compatibility.
-* Fixed a bug where the circle from toggle connection button goes out of the switch.
+### Fixed
+* Circle from toggle connection button going out of the switch.
 
-## 2.0.0 
+
+## [2.0.0]
 * Improved UI: The interface has been completely rearranged, providing an objective, clear and beautiful layout. 
 * Multiple device connections: Now it’s possible to connect to multiple devices simultaneously, with one independent terminal for each one. 
 * Dynamic workspace: The current project is now selected on Pymakr (projects dropdown) and not on the Atom file-tree.  
