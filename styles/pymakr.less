@@ -504,6 +504,9 @@
         left: 50%;
         top: 50%;
       }
+      &:hover{
+        background-color: @background-color-selected !important;
+      }
     }
     &.has-sub {
       margin-right: 18px;
@@ -524,7 +527,8 @@
     }
     &:hover,
     &:hover div.open-subnav {
-      background: @background-color-selected !important;
+      background: @background-color-highlight !important;
+      
     }
     &.cancel {
       background: @background-color-error;
@@ -558,7 +562,7 @@
       color: @text-color;
       background: @app-background-color !important;
       padding: 11px 1px;
-      z-index: 100;
+      z-index: 10000;
       &.left {
         left: 0px;
         div {
@@ -572,7 +576,7 @@
         text-align: left;
         cursor: pointer;
         &:hover {
-          background: @background-color-selected;
+          background: @background-color-highlight;
         }
         input {
           margin-left: 4px;
@@ -602,6 +606,7 @@
       }
     }
     &.open {
+      
       span.fa.up {
         display: none;
       }
@@ -675,7 +680,7 @@
           background: @app-background-color;
 
           &:hover {
-            background-color: @background-color-selected !important;
+            background-color: @background-color-highlight !important;
           }
         }
       }
@@ -773,7 +778,6 @@
         &:hover{
          background: @background-color-highlight !important;
         }
-        border: 1px solid transparent;
         // border: 1px solid black !important;
         .left-button {
           cursor: unset !important;
