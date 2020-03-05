@@ -27,10 +27,30 @@
   overflow: hidden;
 }
 .pymakr-status-bar {
-  display: inline-block;
+  display: inline-flex;
+  height: 100%;
   padding: 0 9px;
-  &.light:hover {
-    background-color: #c5cad3 !important;
+  div {
+    width: 20px;
+    position: relative;
+    > svg {
+      margin-top: -2px;
+      width: 20px;
+      margin-right: 2px;
+      vertical-align: middle;
+    }
+  }
+  .cls-2 {
+    fill: @text-color;
+  }
+  path {
+    fill: transparent;
+  }
+  polygon {
+    fill: red;
+  }
+  &:hover {
+    background-color: @background-color-highlight;
   }
 }
 
@@ -159,9 +179,6 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    &:hover {
-      color: @text-color-highlight;
-    }
   }
   .button-title {
     text-overflow: ellipsis;
@@ -211,9 +228,6 @@
         text-align: center;
         color: #333333;
         margin-left: 15px;
-        &:hover {
-          background-color: #ffffff;
-        }
       }
       .column {
         #pymakr-info-top-buttons {
@@ -370,6 +384,20 @@
     .pymakr-logo {
       height: 17px;
       padding-bottom: 2px;
+      border: 1px solid red;
+      fill: blue;
+      svg {
+        fill: red;
+      }
+      .cls-2 {
+        fill: blue;
+      }
+      path {
+        fill: transparent;
+      }
+      polygon {
+        fill: red;
+      }
     }
     .icon {
       padding-left: 5px;
@@ -497,7 +525,6 @@
     &:hover,
     &:hover div.open-subnav {
       background: @background-color-selected !important;
-      color: @text-color-highlight;
     }
     &.cancel {
       background: @background-color-error;
@@ -592,8 +619,7 @@
     }
   }
   #pymakr-terminal-area {
-    background: @base-border-color !important;
-    padding-left: 5px;
+    padding-left: 2px;
     height: 100%;
     margin-left: 59px;
     margin-right: 26px;
@@ -627,7 +653,7 @@
     width: 26px;
     background: @app-background-color;
     button {
-      margin: 53px 0 4px -23px;
+      margin: 40px 0 6px -23px;
       padding-left: 24px;
       padding-right: 6px;
       height: 26px;
@@ -744,6 +770,9 @@
         opacity: 0.4;
         cursor: not-allowed;
         color: gray !important;
+        &:hover{
+         background: @background-color-highlight !important;
+        }
         border: 1px solid transparent;
         // border: 1px solid black !important;
         .left-button {
@@ -992,6 +1021,14 @@ div.pymakr-feedback {
     a {
       margin-top: 4px;
     }
+  }
+}
+#pybytes-logo {
+  width: 16px;
+  svg{
+    fill: @text-color;
+    padding-top: 3px;
+    padding-right: 3px;
   }
 }
 
