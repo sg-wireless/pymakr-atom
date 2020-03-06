@@ -1,6 +1,22 @@
+## [2.1.2] - 06.3.2020
+### Added
+* Terminal auto focus.
+### Changed
+* Space between sidebar items.
+* Pycom logo.
+* Pymakr colors (minor changes), better matching with Atom's color.
+* Terminal left padding.
+### Fixed
+* Buggy artifact behind the terminal with a light theme selected. 
+* Connection tab hover color.
+* Active connection tab is now draggable.
+* Placeholder background color now matches the terminal color.
+* Dropdown alignment.
+
+
 ## [2.1.1] - 19.2.2020
 ### Fixed
-- Pymakr doesn't require to have git installed anymore.
+* Pymakr doesn't require to have git installed anymore.
 
 
 ## [2.1.0] - 18.2.2020
