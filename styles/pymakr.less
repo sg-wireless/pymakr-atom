@@ -27,10 +27,30 @@
   overflow: hidden;
 }
 .pymakr-status-bar {
-  display: inline-block;
+  display: inline-flex;
+  height: 100%;
   padding: 0 9px;
-  &.light:hover {
-    background-color: #c5cad3 !important;
+  div {
+    width: 20px;
+    position: relative;
+    > svg {
+      margin-top: -2px;
+      width: 20px;
+      margin-right: 2px;
+      vertical-align: middle;
+    }
+  }
+  .cls-2 {
+    fill: @text-color;
+  }
+  path {
+    fill: transparent;
+  }
+  polygon {
+    fill: red;
+  }
+  &:hover {
+    background-color: @background-color-highlight;
   }
 }
 
@@ -159,9 +179,6 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    &:hover {
-      color: @text-color-highlight;
-    }
   }
   .button-title {
     text-overflow: ellipsis;
@@ -211,9 +228,6 @@
         text-align: center;
         color: #333333;
         margin-left: 15px;
-        &:hover {
-          background-color: #ffffff;
-        }
       }
       .column {
         #pymakr-info-top-buttons {
@@ -367,10 +381,6 @@
         color: darken(@text-color, 20%);
       }
     }
-    .pymakr-logo {
-      height: 17px;
-      padding-bottom: 2px;
-    }
     .icon {
       padding-left: 5px;
       margin-bottom: 3px;
@@ -476,6 +486,9 @@
         left: 50%;
         top: 50%;
       }
+      &:hover{
+        background-color: @background-color-selected !important;
+      }
     }
     &.has-sub {
       margin-right: 18px;
@@ -496,8 +509,8 @@
     }
     &:hover,
     &:hover div.open-subnav {
-      background: @background-color-selected !important;
-      color: @text-color-highlight;
+      background: @background-color-highlight !important;
+      
     }
     &.cancel {
       background: @background-color-error;
@@ -526,14 +539,14 @@
     div.subnav {
       display: none;
       position: absolute;
-      bottom: 26px;
+      bottom: 27px;
       line-height: 25px;
       color: @text-color;
       background: @app-background-color !important;
       padding: 11px 1px;
-      z-index: 100;
+      z-index: 10000;
       &.left {
-        left: 0px;
+        left: -2px;
         div {
           width: 237px;
           text-align: left;
@@ -545,7 +558,7 @@
         text-align: left;
         cursor: pointer;
         &:hover {
-          background: @background-color-selected;
+          background: @background-color-highlight;
         }
         input {
           margin-left: 4px;
@@ -575,6 +588,7 @@
       }
     }
     &.open {
+      
       span.fa.up {
         display: none;
       }
@@ -592,8 +606,7 @@
     }
   }
   #pymakr-terminal-area {
-    background: @base-border-color !important;
-    padding-left: 5px;
+    padding-left: 2px;
     height: 100%;
     margin-left: 59px;
     margin-right: 26px;
@@ -627,7 +640,7 @@
     width: 26px;
     background: @app-background-color;
     button {
-      margin: 53px 0 4px -23px;
+      margin: 40px 0 6px -23px;
       padding-left: 24px;
       padding-right: 6px;
       height: 26px;
@@ -649,7 +662,7 @@
           background: @app-background-color;
 
           &:hover {
-            background-color: @background-color-selected !important;
+            background-color: @background-color-highlight !important;
           }
         }
       }
@@ -744,7 +757,9 @@
         opacity: 0.4;
         cursor: not-allowed;
         color: gray !important;
-        border: 1px solid transparent;
+        &:hover{
+         background: @background-color-highlight !important;
+        }
         // border: 1px solid black !important;
         .left-button {
           cursor: unset !important;
@@ -992,6 +1007,14 @@ div.pymakr-feedback {
     a {
       margin-top: 4px;
     }
+  }
+}
+#pybytes-logo {
+  width: 16px;
+  svg{
+    fill: @text-color;
+    padding-top: 3px;
+    padding-right: 3px;
   }
 }
 
