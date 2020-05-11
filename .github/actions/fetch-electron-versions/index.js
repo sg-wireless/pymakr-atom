@@ -27,7 +27,7 @@ const resolveElectronVersion = async tag => {
     const version = response.data.electronVersion.toString();
 
     core.info(`Atom ${tag} uses Electron v${version}`);
-    return '4.2.7';
+    return version;
   } catch (e) {
     throw e;
   }
@@ -49,8 +49,16 @@ const getAtomTagsElectron = async (count = 3) => {
       })
     ).data.map(item => item.name);
     const atomNightlyTag = tags[0];
-    const atomCurrentTag = "master";
-    const atomNightlyElectron = await resolveElectronVersion(atomNightlyTag);
+    let currentIndex = 1;
+    let atomCurrentTag = tags[currentIndex];
+    while (atomCurrentTag.includes('beta') && currentIndex < 10)
+    {
+      currentIndex+=1;
+      atomCurrentTag = tags[currentIndex];
+    }
+    const atomNightlyElectron = await resolveElectronVersion(
+      atomNightlyTag,
+    );
     const atomCurrentElectron = await resolveElectronVersion(atomCurrentTag);
     const electronVersions = [];
     electronVersions.push(atomCurrentElectron);
