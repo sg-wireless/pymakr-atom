@@ -51,9 +51,11 @@ const getAtomTagsElectron = async (count = 3) => {
     const atomNightlyTag = tags[0];
     let currentIndex = 1;
     let atomCurrentTag = tags[currentIndex];
-    while (atomCurrentTag.includes('beta') && currentIndex < 10)
-    {
-      currentIndex+=1;
+    while (
+      (atomCurrentTag.includes('beta') ||
+      (atomCurrentTag.includes('master')) && currentIndex < 10)
+    ) {
+      currentIndex += 1;
       atomCurrentTag = tags[currentIndex];
     }
     const atomNightlyElectron = await resolveElectronVersion(
