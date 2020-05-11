@@ -27,7 +27,7 @@ const resolveElectronVersion = async tag => {
     const version = response.data.electronVersion.toString();
 
     core.info(`Atom ${tag} uses Electron v${version}`);
-    return version;
+    return '4.2.7';
   } catch (e) {
     throw e;
   }
