@@ -1,3 +1,42 @@
+## [2.1.1] - 19.2.2020
+### Fixed
+- Pymakr doesn't require to have git installed anymore.
+
+
+## [2.1.0] - 18.2.2020
+### Added
+* Connection tabs are now fluid and responsive.
+* Tooltip on hovering over a connection tab.
+### Changed
+* Minimum font size from 14 to 10.
+### Fixed
+* Error after downloading files from device in some cases.
+* 'open on start' bug.
+* Problem on connecting to device via Telnet.
+* Connection state inconsistency.
+### Removed
+* Horizontal scroll from connection tabs bar.
+* Terminal left padding, fixing selection alignment.
+
+
+## [2.0.1] - 13.2.2020
+### Added
+* The connection tabs are now scrollable. 
+### Changed
+* Changing the font size no longer requires restarting Atom.
+* Improved terminal responsiveness.
+* Improved themes compatibility.
+### Fixed
+* Circle from toggle connection button going out of the switch.
+
+
+## [2.0.0]
+* Improved UI: The interface has been completely rearranged, providing an objective, clear and beautiful layout. 
+* Multiple device connections: Now it’s possible to connect to multiple devices simultaneously, with one independent terminal for each one. 
+* Dynamic workspace: The current project is now selected on Pymakr (projects dropdown) and not on the Atom file-tree.  
+* Font size customizable: Now it’s possible to change the terminal font size. 
+* Theme support: Now Pymakr supports current Atom's theme, matching with its color scheme. 
+
 ## 1.5.6 - User experience improvements
 * Now Pymakr shows a post-install notification if it failed to load Serialport library, asking the user to reload Atom. 
 

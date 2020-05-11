@@ -44,11 +44,11 @@ const getBinaries = async () => {
   const atomCurrentElectron = await fetchElectronVersion(atomCurrentTag);
   const electronVersions = [];
   electronVersions.push(atomCurrentElectron);
-  if (atomCurrentElectron != atomNightlyElectron) electronVersions.push(atomNightlyElectron);
+  if (atomCurrentElectron !== atomNightlyElectron) electronVersions.push(atomNightlyElectron);
   console.log('\n');
   console.log(`Downloading binaries for ${electronVersions.join(', ')}`);
   ps.addCommand(
-    '/Users/pk/dev/pycom/pymakr-atom/scripts/mp-download-atom.ps1',
+    'scripts/mp-download-atom.ps1',
     [{ ElectronVersions: electronVersions }],
   );
 

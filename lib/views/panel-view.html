@@ -1,23 +1,36 @@
 <div id="pymakr" class="pymakr pymakr-open">
   <div id="pymakr-resizer"></div>
+  <span class="font-size-measurement">x</span>
+  <link href="css/chrome-tabs.css" rel="stylesheet" />
   <div id="pymakr-overlay-contents"></div>
 
   <div id="pycom-top-bar">
     <div id="pymakr-options-left">
       <button id="pymakr-projects" class="has-sub top-button">
         <span class="fa fa-folder"></span>
-        <span class="button-title" id="project-name">No project...</span>
-        <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
+        <span class="button-title" id="project-name"
+          >No project...</span
+        >
+        <div class="open-subnav">
+          <span class="fa fa-chevron-up"></span>
+        </div>
         <div class="subnav left"></div>
       </button>
 
-      <button id="pymakr-connect" class="has-sub top-button">
+      <button
+        id="pymakr-connect"
+        style="margin-right: 5px"
+        class="has-sub top-button"
+      >
+        <!-- Styles to prevent flash after JS initialization -->
         <span class="fa fa-microchip"></span>
         <span class="button-title">Connect Device</span>
-        <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
+        <div class="open-subnav">
+          <span class="fa fa-chevron-up"></span>
+        </div>
         <div class="subnav left">
           <div id="pymakr-connect-all">
-            <span class="fa fa-"></span> Connect all available devices
+            <span class="fa fa-"></span> Open all connections
           </div>
           <div id="pymakr-close-all">
             <span class="fa fa-"></span> Close all connections
@@ -28,49 +41,35 @@
           <span class="separator" id="pymakr-address-list">
             <div class="loading_text">Loading address list...</div>
           </span>
-          <!-- <span class="separator" id="pymakr-add-address">
-            <div id="pymakr-add-address-button">
-              <span class="fa fa-"></span> Add IP address
-            </div>
-            <div id="pymakr-add-address-field-wrapper" class="hidden">
-              <input
-                type="text"
-                id="pymakr-add-address-input"
-                placeholder="192.168.4.1"
-              />
-              <div id="pymakr-add-address-submit">Add</div>
-            </div>
-          </span> -->
         </div>
       </button>
-      <div id="pymakr-connection-tabs"></div>
-    </div>
+      <div class="surface">
+        <div class="mock-browser">
+          <div class="chrome-tabs" style="--tab-content-margin: 9px">
+            <div class="chrome-tabs-content">
+            </div>
+          </div>
 
-    <div id="pymakr-buttons">
-      <button id="close"><span class="fa fa-times"></span></button>
-      <!-- <button id="settings" class="has-sub">
-        <span class="fa fa-cog"></span> Settings
-        <div class="open-subnav"><span class="fa fa-chevron-up"></span></div>
-        <div class="subnav">
-          <div id="pymakr-global_settings"><span class="fa fa-"></span> Global settings</div>
-          <div id="pymakr-project_settings"><span class="fa fa-"></span> Project settings</div>
-          <div id="pymakr-setting-auto_connect"><span class="fa fa-"></span>
-            <input type="checkbox" name="auto_connect" id="setting-auto_connect-value" /> Autoconnect
-          </div>
-          <div><span id="pymakr-setting-safe_boot_on_upload" class="fa fa-"></span>
-            <input type="checkbox" name="safe_boot_on_upload" id="setting-safe_boot_on_upload-value" /> Safe-boot before upload
-          </div>
+         
         </div>
 
-      </button> -->
+        <script src="lib/third-parties/draggabilly.pkgd.min.js"></script>
+      </div>
+
+      <div id="pymakr-buttons">
+        <button style="font-size: 14px;" id="close">
+          <span class="fa fa-times"></span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div id="pymakr-overlay"></div>
+    <div id="pymakr-overlay"></div>
 
-  <div id="pymakr-terminal-area">
-    <div id="pymakr-terminal-placeholder" class="open">
-      No terminal open. Use the 'Connect Device' button to open a device.
+    <div id="pymakr-terminal-area">
+      <div id="pymakr-terminal-placeholder" class="open">
+        No terminal open. Use the 'Connect Device' button to open a
+        device.
+      </div>
     </div>
   </div>
 </div>

@@ -7,11 +7,9 @@
 @import '../node_modules/font-awesome/less/font-awesome.less';
 @fa-font-path: 'atom://pymakr/node_modules/font-awesome/fonts';
 @bg-dark: #21252b;
-@border-dark: #181a1f;
-@bg-button: #181a1f;
-@button-background-dark: #21252b;
-@button-background-light: #363b46;
-
+@pycom-primary: #17ffbd;
+@pymakr-light-bg: @app-background-color;
+@pymakr-light-bg-2: #e7e9eb;
 @font-face {
   font-family: 'Font Awesome';
   font-weight: normal;
@@ -29,23 +27,134 @@
   overflow: hidden;
 }
 .pymakr-status-bar {
-  display: inline-block;
+  display: inline-flex;
+  height: 100%;
   padding: 0 9px;
+  div {
+    width: 20px;
+    position: relative;
+    > svg {
+      margin-top: -2px;
+      width: 20px;
+      margin-right: 2px;
+      vertical-align: middle;
+    }
+  }
+  .cls-2 {
+    fill: @text-color;
+  }
+  path {
+    fill: transparent;
+  }
+  polygon {
+    fill: red;
+  }
   &:hover {
-    background: @button-background-color-hover;
+    background-color: @background-color-highlight;
   }
 }
+
 #pymakr {
   height: 314px;
-  background: #000;
+  background-color: @input-background-color !important;
+  &.container {
+    &-open {
+      display: block !important;
+    }
+    &-close {
+      display: none !important;
+    }
+  }
 
-  // -webkit-transition: height 0.2s ease-in-out;
-  // -moz-transition: height 0.2s ease-in-out;
-  // -o-transition: height 0.2s ease-in-out;
-  // transition: height 0.2s ease-in-out;
   &.collapsed {
     height: 0px;
   }
+  .device-terminal.open {
+    color: white;
+    background-color: @input-background-color !important;
+  }
+  .font-size-measurement {
+    position: absolute;
+    left: 0;
+    color: red;
+    top: -10px;
+    z-index: -1;
+    opacity: 0;
+    font-family: courier-new, courier, monospace;
+  }
+  &.light {
+    .connection-status {
+      border: 1px solid @text-color !important;
+    }
+    .left-button#pymakr-action-connect {
+      color: #21252b !important;
+      opacity: 1 !important;
+      margin-bottom: 0px;
+      .circle:before {
+        color: @pycom-primary !important;
+        opacity: 1 !important;
+      }
+      &.not-connected {
+        .circle:before {
+          color: red !important;
+          opacity: 1 !important;
+        }
+      }
+      &.no-devices {
+        transform: rotateY(180deg) !important;
+        color: #ccc !important;
+        .circle:before {
+          color: transparent !important;
+          opacity: 1 !important;
+        }
+      }
+      &.connected {
+        // color: #2c313a !important;
+        opacity: 1 !important;
+      }
+      &.no-devices .circle:before {
+        // color: grey !important;
+        opacity: 1 !important;
+      }
+    }
+
+    #pymakr-terminal-area {
+      background-color: @input-background-color !important;
+      .xterm-selection {
+        div {
+          background-color: gray !important;
+        }
+      }
+
+      .xterm-rows {
+        color: @text-color !important;
+        background-color: transparent !important;
+      }
+      .terminal .terminal-cursor {
+        outline: 1px solid #2c313a;
+      }
+      .terminal.focus:not(.term-cursor-style-underline):not(.term-cursor-style-bar)
+        .terminal-cursor {
+        background-color: #2c313a;
+      }
+      .terminal:not(.xterm-cursor-style-underline):not(.xterm-cursor-style-bar).focus.xterm-cursor-blink-on
+        .terminal-cursor {
+        background-color: transparent;
+      }
+    }
+
+    #pymakr-left-panel .left-button.disabled {
+      opacity: 1 !important;
+      color: #ccc !important;
+      background-color: @background-color-highlight;
+    }
+  }
+  #close {
+    &:hover {
+      color: @text-color;
+    }
+  }
+
   #pymakr-resizer {
     position: absolute;
     top: -5px;
@@ -61,7 +170,7 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: #000000;
+    background-color: @base-border-color;
     opacity: 0.5;
     z-index: 1;
   }
@@ -76,6 +185,8 @@
     white-space: nowrap;
     overflow: hidden;
     max-width: 168px;
+    margin-left: 3px;
+    color: inherit;
   }
 
   #pymakr-overlay-contents {
@@ -96,10 +207,10 @@
         position: absolute;
         top: 16px;
         left: 12px;
-        color: #17ffbd;
+        color: @text-color-info;
         cursor: pointer;
         &:hover {
-          color: white;
+          font-weight: 500;
         }
       }
       #info-button-reboot {
@@ -110,16 +221,13 @@
         width: 55px;
         height: 17px;
         border-radius: 2px;
-        background-color: #17ffbd;
+        background-color: @pycom-primary;
         font-size: 10px;
         padding: 0px;
         font-size: 10px;
         text-align: center;
         color: #333333;
         margin-left: 15px;
-        &:hover {
-          background-color: #ffffff;
-        }
       }
       .column {
         #pymakr-info-top-buttons {
@@ -156,6 +264,7 @@
           .row {
             margin-bottom: 10px;
           }
+          padding-bottom: 16px;
         }
         .row {
           div {
@@ -163,7 +272,7 @@
             width: 165px;
             padding: 0 7px;
             text-shadow: 0 0 17px rgba(0, 0, 0, 0.5);
-            color: #ffffff;
+            color: @text-color-highlight;
             margin: 5px 0;
           }
           .label {
@@ -235,19 +344,34 @@
   }
   &.pymakr-open {
     cursor: default;
+
     .pymakr-resizer {
       display: block;
     }
   }
+  &.open {
+    display: none !important;
+    border: 2px solid red;
+  }
+  &.closed {
+    display: none !important;
+  }
   #pycom-top-bar {
     height: 26px;
     min-width: 310px;
+    position: relative;
     padding: 0;
-    border-left: solid 1px @border-dark;
-    background-color: @bg-dark;
+    border-left: solid 1px @tree-view-border-color;
+    border-bottom: solid 1px @tree-view-border-color;
+    background-color: @app-background-color;
     #pymakr-options-left {
       display: flex;
       flex-direction: row;
+      background-color: @app-background-color;
+
+      &:first-child {
+        margin-left: -1px;
+      }
     }
     #pymakr-title {
       display: none;
@@ -257,43 +381,45 @@
         color: darken(@text-color, 20%);
       }
     }
-    .pymakr-logo {
-      height: 17px;
-      padding-bottom: 2px;
-    }
     .icon {
       padding-left: 5px;
       margin-bottom: 3px;
     }
     #pymakr-connection-tabs {
-      display: block;
-
+      display: inherit;
+      overflow-x: scroll;
       div.pymakr-connection {
         position: relative;
-        color: @text-color;
-        background: @button-background-dark;
         border: none;
-
-        cursor: pointer;
         padding: 4px 21px 4px 20px;
         margin: 0 1px 0 0px;
-
         display: flex;
         flex-direction: row;
         align-items: baseline;
-        &.open {
-          background: @button-background-light;
+        border-right: 1px solid @base-border-color;
+        margin-left: -1px;
+        &.open span.close {
+          opacity: 1 !important;
+          color: @text-color-subtle;
+          &:hover {
+            color: @text-color !important;
+          }
         }
-        span.connection-status {
-          position: absolute;
-          display: block;
-          left: 8px;
-          top: 8px;
-          width: 10px;
-          height: 10px;
-          border-radius: 5px;
-          background: #fc1247;
-          border: none;
+        &.open {
+          background: @background-color-selected;
+          border-right: 1px solid @pane-item-border-color;
+          color: @text-color-selected;
+          font-weight: 500;
+          .button-title {
+            max-width: 170px !important;
+          }
+        }
+
+        &:hover {
+          color: @text-color-selected;
+          span.close {
+            opacity: 1 !important;
+          }
         }
         .device-name {
           text-overflow: ellipsis;
@@ -304,16 +430,20 @@
         }
         span.close {
           display: block;
+          opacity: 0;
           position: absolute;
           right: 0px;
           top: 1px;
           bottom: 0px;
           width: 17px;
-          color: #fff;
+          color: @text-color-subtle;
           text-shadow: none;
           font-weight: normal;
           font-size: 11px;
           padding: 5px 3px;
+          &:hover {
+            color: @text-color;
+          }
         }
         &.connected span.connection-status {
           background: #17ffbd;
@@ -331,32 +461,60 @@
         float: right;
         border: none;
         cursor: pointer;
+        height: 27px;
+        z-index: 10;
       }
     }
   }
+
   button {
     position: relative;
     color: @text-color;
-    background: @button-background-dark;
+    background: @app-background-color;
     border: none;
     padding: 4px;
     margin: 0;
     span.fa {
       margin: 0 3px;
     }
+    &.left-button {
+      span {
+        position: absolute;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 1;
+        margin-left: 0px;
+        left: 50%;
+        top: 50%;
+      }
+      &:hover{
+        background-color: @background-color-selected !important;
+      }
+    }
     &.has-sub {
       margin-right: 18px;
+      cursor: default;
+      img {
+        width: 12px;
+        align-items: flex-end;
+        margin-right: 4px;
+      }
+      // &:hover{
+      //   .open-subnav{
+      //     color: @pycom-primary;
+      //   }
+      // }
     }
     .hidden {
       display: none;
     }
     &:hover,
     &:hover div.open-subnav {
-      background: @button-background-color-hover;
+      background: @background-color-highlight !important;
+      
     }
     &.cancel {
       background: @background-color-error;
-      color: #fff;
+      color: @text-color-highlight;
     }
     span.fa.down {
       display: none;
@@ -373,7 +531,7 @@
       font-size: 9px;
       padding: 3px;
       padding-right: 14px;
-      border-right: 1px solid @border-dark;
+      border-right: 1px solid @tree-view-border-color;
       span.fa {
         margin: 4px 0;
       }
@@ -381,12 +539,14 @@
     div.subnav {
       display: none;
       position: absolute;
-      bottom: 26px;
+      bottom: 27px;
       line-height: 25px;
-      background: @bg-dark;
+      color: @text-color;
+      background: @app-background-color !important;
       padding: 11px 1px;
+      z-index: 10000;
       &.left {
-        left: 0px;
+        left: -2px;
         div {
           width: 237px;
           text-align: left;
@@ -395,16 +555,20 @@
       div {
         width: 195px;
         padding: 2px 5px;
-        text-align: right;
+        text-align: left;
         cursor: pointer;
         &:hover {
-          background: @button-background-color-hover !important;
+          background: @background-color-highlight;
         }
         input {
-          margin-right: 4px;
+          margin-left: 4px;
         }
         &::first-child {
           margin-top: -10px;
+        }
+        img {
+          height: 12px;
+          width: 12px;
         }
       }
       span.separator {
@@ -424,6 +588,7 @@
       }
     }
     &.open {
+      
       span.fa.up {
         display: none;
       }
@@ -435,25 +600,35 @@
         overflow-y: visible;
         height: auto;
       }
+      div.open-subnav {
+        transform: rotateX(180deg);
+      }
     }
   }
   #pymakr-terminal-area {
-    background: #000;
     padding-left: 2px;
     height: 100%;
-    margin-left: 60px;
+    margin-left: 59px;
     margin-right: 26px;
     #pymakr-terminal-placeholder {
       height: 100%;
       display: none;
+      color: @text-color-subtle;
+      padding-left: 6px;
       &.open {
         display: block;
+        flex: 1;
+      }
+      #pymakr #pymakr-terminal-area {
+        background-color: transparent !important;
       }
     }
     div.device-terminal {
       display: none;
       &.open {
-        display: block;
+        height: 100%;
+        align-items: flex-end;
+        display: flex;
       }
     }
   }
@@ -463,15 +638,15 @@
     top: 26px;
     bottom: 0px;
     width: 26px;
-    background: @bg-dark;
+    background: @app-background-color;
     button {
-      transform: rotate(90deg);
-      margin: 53px 0 4px -23px;
+      margin: 40px 0 6px -23px;
       padding-left: 24px;
+      padding-right: 6px;
       height: 26px;
       transform: rotate(90deg);
       &:first-child {
-        margin-top: 26px;
+        margin-top: 23px;
       }
       &.has-sub {
         .open-subnav {
@@ -479,12 +654,16 @@
         }
       }
       .subnav {
-        top: 117px;
+        top: 114px;
         left: -97px;
-        background: transparent;
+        background: transparent !important;
         transform: rotate(-90deg);
         div {
-          background: @bg-dark;
+          background: @app-background-color;
+
+          &:hover {
+            background-color: @background-color-highlight !important;
+          }
         }
       }
       span.fa {
@@ -513,22 +692,26 @@
     width: 60px;
     display: flex;
     flex-direction: column;
-
+    z-index: 0;
     .left-button {
       position: relative;
       flex: 1;
-      background: @button-background-dark;
+      background: @background-color-highlight;
       width: 60px;
       height: 60px;
       cursor: pointer;
-      border: 1px solid black;
+      border: 1px solid @base-border-color;
       font-size: 18px;
+      margin-bottom: -1px;
+      margin-left: -1px;
+      margin-right: -1px;
+
       div.sub {
         position: absolute;
         display: table;
         height: 100%;
         width: 15px;
-        border-left: 1px solid black;
+        border-left: 1px solid #818489;
         top: 0px;
         right: 0px;
         bottom: 0px;
@@ -545,14 +728,39 @@
         }
       }
 
-      &.not-connected {
-        color: red;
+      &#pymakr-action-connect {
+        transform: rotateY(0deg);
+        margin-bottom: 0px;
+        border: 1px solid @base-border-color;
+        &:not(.not-connected):not(.no-devices) {
+          color: @pycom-primary;
+          margin-bottom: -1px;
+        }
+        .circle:before {
+          content: ' \25CF';
+          font-size: 15px;
+          position: absolute;
+          transform: translateX(-50%) translateY(-50%);
+          z-index: -1;
+          margin-left: 3px !important;
+          opacity: 0;
+          left: 50%;
+          top: 50%;
+        }
       }
 
+      &.not-connected {
+        color: red;
+        transform: rotateY(180deg) !important;
+      }
       &.disabled {
         opacity: 0.4;
         cursor: not-allowed;
-
+        color: gray !important;
+        &:hover{
+         background: @background-color-highlight !important;
+        }
+        // border: 1px solid black !important;
         .left-button {
           cursor: unset !important;
         }
@@ -566,7 +774,14 @@
       &.no-devices {
         opacity: 0.4;
         cursor: not-allowed;
-        color: white !important;
+        transform: rotateY(180deg) !important;
+        .left-button {
+          &#pymakr-action-connect {
+            .circle:before {
+              opacity: 0;
+            }
+          }
+        }
       }
     }
     div.sub .icon-action-button {
@@ -616,6 +831,15 @@
   }
   #red {
     color: red;
+  }
+  #pymakr-address-list.disabled {
+    div {
+      color: gray;
+      &:hover {
+        background-color: unset !important;
+        cursor: default !important;
+      }
+    }
   }
 }
 
@@ -718,7 +942,7 @@ div.pymakr-feedback {
     border-color: #9b9b9b;
     transition: 400ms ease all;
     &:focus {
-      border-color: rgba(82, 247, 197, 1);
+      border-color: @pycom-primary;
     }
   }
   &-button {
@@ -728,7 +952,7 @@ div.pymakr-feedback {
     background: linear-gradient(
       135deg,
       rgba(82, 247, 197, 0) 30%,
-      rgba(82, 247, 197, 1) 100%
+      @pycom-primary 100%
     );
     border: none;
     border-radius: 2px;
@@ -736,7 +960,12 @@ div.pymakr-feedback {
     font-size: 14px;
     line-height: 1.42857143;
     background: none;
+<<<<<<< HEAD
     background-color: #17ffbd;
+=======
+    background-color: @pycom-primary;
+    color: #1e1e3c;
+>>>>>>> develop
     font-weight: bold;
     color: black !important;
     text-decoration: none !important;
@@ -745,9 +974,14 @@ div.pymakr-feedback {
     text-align: center;
     padding: 4px 10px;
   }
+<<<<<<< HEAD
   .link {
     color: rgba(82, 247, 197, 1);
     color: #121224;
+=======
+  a {
+    color: @text-color-info;
+>>>>>>> develop
     line-height: 18px;
     font-weight: bold;
   }
@@ -757,7 +991,11 @@ div.pymakr-feedback {
     font-weight: 400;
     line-height: 1.1;
     margin-top: 20px;
+<<<<<<< HEAD
     color: black;
+=======
+    // color: white;
+>>>>>>> develop
   }
   .bold {
     color: black;
@@ -780,7 +1018,11 @@ div.pymakr-feedback {
       display: block;
       width: 150px;
       height: 3px;
+<<<<<<< HEAD
       background-color: #121224;
+=======
+      background-color: @text-color;
+>>>>>>> develop
       margin-top: 10px;
     }
   }
@@ -790,6 +1032,7 @@ div.pymakr-feedback {
     }
   }
 }
+<<<<<<< HEAD
 
 .landing-info-row {
   margin: 20px 0 20px 5px;
@@ -806,3 +1049,40 @@ div.pymakr-feedback {
   position: absolute;
   bottom: 0;
 }
+=======
+#pybytes-logo {
+  width: 16px;
+  svg{
+    fill: @text-color;
+    padding-top: 3px;
+    padding-right: 3px;
+  }
+}
+
+.terminal .xterm-viewport {
+  /* On OS X this is required in order for the scroll bar to appear fully opaque */
+  background-color: @input-background-color !important;
+  overflow-y: scroll;
+  overflow-y: scroll;
+  cursor: default;
+  position: absolute !important;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.xterm-cursor.xterm-cursor-blink.xterm-cursor-block {
+  border: 1px solid @text-color !important;
+}
+.xterm-dom-renderer-owner-1
+  .xterm-rows:not(.xterm-focus)
+  .xterm-cursor.xterm-cursor-block {
+  outline: 1px solid @text-color-subtle !important;
+}
+.xterm-rows {
+  color: @text-color-highlight !important;
+  background-color: transparent !important;
+}
+>>>>>>> develop
