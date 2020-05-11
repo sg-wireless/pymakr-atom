@@ -24,7 +24,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1.2.0
         with:
-          node-version: "12"
+          node-version: "10"
 
       - name: Fetch Electron Versions
         id: electron
