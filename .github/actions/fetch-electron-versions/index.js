@@ -53,7 +53,7 @@ const getAtomTagsElectron = async (count = 3) => {
     let atomCurrentTag = tags[currentIndex];
     while (
       (atomCurrentTag.includes('beta') ||
-      (atomCurrentTag.includes('master')) && currentIndex < 10)
+      (atomCurrentTag=='master') && currentIndex < 10)
     ) {
       currentIndex += 1;
       atomCurrentTag = tags[currentIndex];
