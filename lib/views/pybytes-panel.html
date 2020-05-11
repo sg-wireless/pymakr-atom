@@ -1,24 +1,22 @@
-<div >
+<div class="starting-title-section" >
   <button class="pybytes-close" id="pybytes-close">
     <span class="fa fa-times"></span>
   </button>
-  <div style="padding: 16px; display: grid;">
+  <div  style="padding: 16px; display: grid;">
     <span>Pybytes Integration</span>
     <div class="center-header">
       <h2>
-        <span class="with-underline"
-          >Login to your Pybytes account</span
-        >
+      <img id="pybytes-logo" class="pybytes-logo" alt="PyBytes Logo">
       </h2>
-      <small class="hint"
+      <!-- <small class="hint"
         >Need a Pybytes account?&nbsp;<a
           class="link-color"
           href="/register"
           >Create an account</a
         ></small
-      >
+      > -->
     </div>
-    <span class="pybytes-form-label">E-mail</span>
+    <!-- <span class="pybytes-form-label">E-mail</span>
     <input
       autofocus
       id="pybytes-login-email"
@@ -32,8 +30,8 @@
       id="pybytes-login-password"
       type="password"
       class="pybytes-login native-key-bindings"
-    />
-    <span class="pybytes-error" id="pybytes-login-password-error">
+    /> -->
+    <!-- <span class="pybytes-error" id="pybytes-login-password-error">
     </span>
     <span class="cb-inline">
       <input type="checkbox" id="pybytes-login-stay-cb" > <span style="margin-top: 3px;" id="pybytes-login-stay-label">
@@ -44,125 +42,58 @@
   </span>
     <button id="pybytes-login-button" class="pybytes-button">
       Login
-    </button>
+    </button> -->
     <div class="col-sm-6 second-section">
       <section class="info-sections">
-        <div class="row starting-title-section">
-          <div class="col-xs-10 col-xs-offset-1">
-            <h2 class="with-underline">
-              IoT out-of-the-box
-            </h2>
-            <div class="row landing-info-row">
-              <div class="col-xs-3 col-lg-2">
-                <!-- <img
-                  class="land-icon"
-                  src="/images/svg/features/module.svg"
-                /> -->
-              </div>
-              <div class="col-xs-9 col-lg-10">
-                <p class="land-text">
-                  <span class="bold">Program</span
-                  ><span> any Pycom module with MicroPython</span
-                  ><br /><span class="bold">Connect</span
-                  ><span> over WiFi, LoRa, LTE or Sigfox</span>
-                </p>
+        <div class="row">
+          <h2 class="with-underline">
+            IoT out-of-the-box
+          </h2>
+          <div style="margin-left: 5px" class="col-xs-10 col-xs-offset-1">
+
+            <div class="row landing-info-row col-xs-9 col-lg-10">
+              <img style="height: 50px; margin-right: 20px" data-v-325c8144="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMzUuNTQgNjIuNjUiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO30uY2xzLTJ7ZmlsbDojMWUxZTNjO30uY2xzLTMsLmNscy00e2ZpbGw6bm9uZTtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9LmNscy0ze3N0cm9rZTojMWUxZTNjO30uY2xzLTR7c3Ryb2tlOiM4OTg5ODk7fS5jbHMtNXttYXNrOnVybCgjbWFzayk7fS5jbHMtNnttYXNrOnVybCgjbWFzay0yLTIpO308L3N0eWxlPjxtYXNrIGlkPSJtYXNrIiB4PSIxMi44IiB5PSIxNy42MyIgd2lkdGg9IjEwLjIiIGhlaWdodD0iOC44OSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGcgaWQ9Im1hc2stMiI+PHBvbHlnb24gaWQ9InBhdGgtMSIgY2xhc3M9ImNscy0xIiBwb2ludHM9IjEyLjggMTcuNjMgMjMgMTcuNjMgMjMgMjYuNTEgMTIuOCAyNi41MSAxMi44IDE3LjYzIi8+PC9nPjwvbWFzaz48bWFzayBpZD0ibWFzay0yLTIiIHg9IjEyLjgiIHk9IjE3LjYzIiB3aWR0aD0iMTAuMiIgaGVpZ2h0PSI4Ljg5IiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48ZyBpZD0ibWFzay0yLTMiIGRhdGEtbmFtZT0ibWFzay0yIj48cG9seWdvbiBpZD0icGF0aC0xLTIiIGRhdGEtbmFtZT0icGF0aC0xIiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMTIuOCAxNy42MyAyMyAxNy42MyAyMyAyNi41MSAxMi44IDI2LjUxIDEyLjggMTcuNjMiLz48L2c+PC9tYXNrPjwvZGVmcz48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iZGV2aWNlIj48ZyBpZD0iR3JvdXAtMiI+PGcgaWQ9Ikdyb3VwIj48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yOC4xNywxLjVoLTIyYTEuMjgsMS4yOCwwLDAsMC0xLjMsMS4yN1Y1OWEyLjE5LDIuMTksMCwwLDAsMi4yMSwyLjE3SDI4LjVhMiwyLDAsMCwwLDItMlYzLjc5QTIuMzMsMi4zMywwLDAsMCwyOC4xNywxLjVaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjcuOCwwSDcuNjFBNC4yNSw0LjI1LDAsMCwwLDMuMzYsNC4yNVY1OC40YTQuMjUsNC4yNSwwLDAsMCw0LjI1LDQuMjVIMjcuOGE0LjI1LDQuMjUsMCwwLDAsNC4yNS00LjI1VjQuMjVBNC4yNiw0LjI2LDAsMCwwLDI3LjgsMFptMi43NSw1OC40YTIuNzUsMi43NSwwLDAsMS0yLjc1LDIuNzVINy42MUEyLjc1LDIuNzUsMCwwLDEsNC44Niw1OC40VjQuMjVBMi43NSwyLjc1LDAsMCwxLDcuNjEsMS41SDI3LjhhMi43NSwyLjc1LDAsMCwxLDIuNzUsMi43NVoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yNi4yOSw1LjYzSDIxLjA1YTEsMSwwLDAsMC0xLjA1LDFWOS4xN2ExLDEsMCwwLDAsMS4wNSwxLjA1aDUuMjRhMSwxLDAsMCwwLDEuMDUtMS4wNVY2LjY4QTEsMSwwLDAsMCwyNi4yOSw1LjYzWk0yMy42Nyw5LjA3YTEuMTUsMS4xNSwwLDEsMSwxLjIyLTEuMTVBMS4xOCwxLjE4LDAsMCwxLDIzLjY3LDkuMDdaIi8+PGNpcmNsZSBpZD0iY2FwYWNpdG9yIiBjbGFzcz0iY2xzLTMiIGN4PSIxMS43NCIgY3k9IjU0LjI3IiByPSIyLjc1Ii8+PHBhdGggaWQ9InJlc2lzdG9yIiBjbGFzcz0iY2xzLTMiIGQ9Ik0yMC4zMyw1Mi43OGg2LjM5YS44Ny44NywwLDAsMSwuODcuODd2MS4yYS45MS45MSwwLDAsMS0uOTEuOTFIMjAuMzFhLjkuOSwwLDAsMS0uOS0uOTFWNTMuNzFBLjkzLjkzLDAsMCwxLDIwLjMzLDUyLjc4WiIvPjxwYXRoIGlkPSJyZXNpc3Rvci0yIiBkYXRhLW5hbWU9InJlc2lzdG9yIiBjbGFzcz0iY2xzLTMiIGQ9Ik0xMiwzOC44NWgxMi4xYS42OS42OSwwLDAsMSwuNjkuN1Y0M2EuNzYuNzYsMCwwLDEtLjc3Ljc2SDEyQS43Ni43NiwwLDAsMSwxMS4yLDQzVjM5LjY1QS43OS43OSwwLDAsMSwxMiwzOC44NVoiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEzLjQ1IiBjeT0iMzYuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE2LjQ1IiBjeT0iMzYuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE5LjQ1IiBjeT0iMzYuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjIyLjQ1IiBjeT0iMzYuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEzLjQ1IiBjeT0iNDUuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE2LjQ1IiBjeT0iNDUuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjE5LjQ1IiBjeT0iNDUuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjIyLjQ1IiBjeT0iNDUuNzkiIHI9IjAuODQiLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjM0LjI3IiBjeT0iNi45IiByPSIxLjI3Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIzNC4yNyIgY3k9IjExLjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjM0LjI3IiBjeT0iMTYuOSIgcj0iMS4yNyIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMzQuMjciIGN5PSIyMS45IiByPSIxLjI3Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIzNC4yNyIgY3k9IjI2LjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjM0LjI3IiBjeT0iMzEuOSIgcj0iMS4yNyIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMzQuMjciIGN5PSIzNi45IiByPSIxLjI3Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIzNC4yNyIgY3k9IjQxLjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjM0LjI3IiBjeT0iNDYuOSIgcj0iMS4yNyIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMzQuMjciIGN5PSI1MS45IiByPSIxLjI3Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIzNC4yNyIgY3k9IjU2LjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEuMjciIGN5PSI2LjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEuMjciIGN5PSIxMS45IiByPSIxLjI3Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIxLjI3IiBjeT0iMTYuOSIgcj0iMS4yNyIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMS4yNyIgY3k9IjIxLjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEuMjciIGN5PSIyNi45IiByPSIxLjI3Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIxLjI3IiBjeT0iMzEuOSIgcj0iMS4yNyIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMS4yNyIgY3k9IjM2LjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEuMjciIGN5PSI0MS45IiByPSIxLjI3Ii8+PGNpcmNsZSBjbGFzcz0iY2xzLTIiIGN4PSIxLjI3IiBjeT0iNDYuOSIgcj0iMS4yNyIvPjxjaXJjbGUgY2xhc3M9ImNscy0yIiBjeD0iMS4yNyIgY3k9IjUxLjkiIHI9IjEuMjciLz48Y2lyY2xlIGNsYXNzPSJjbHMtMiIgY3g9IjEuMjciIGN5PSI1Ni45IiByPSIxLjI3Ii8+PC9nPjxyZWN0IGlkPSJSZWN0YW5nbGUiIGNsYXNzPSJjbHMtNCIgeD0iOS45IiB5PSIxMy44OSIgd2lkdGg9IjE1LjYiIGhlaWdodD0iMTYuNTIiIHJ4PSIyLjQiLz48ZyBpZD0icHljb21fc3ltYm9sX2JsdWVfY215ayIgZGF0YS1uYW1lPSJweWNvbSBzeW1ib2wgYmx1ZSBjbXlrIj48ZyBjbGFzcz0iY2xzLTUiPjxwb2x5bGluZSBpZD0iRmlsbC0xIiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTIuOCAxNy42MyAxMi44IDI2LjUyIDE1LjEzIDIyLjA3IDE3LjQ3IDIyLjA3IDE3LjQ3IDE3LjYzIDEyLjggMTcuNjMiLz48L2c+PGcgY2xhc3M9ImNscy02Ij48cG9seWxpbmUgaWQ9IkZpbGwtMyIgY2xhc3M9ImNscy0yIiBwb2ludHM9IjIzIDE3LjYzIDE4LjM0IDE3LjYzIDE4LjM0IDI2LjUyIDIzIDE3LjYzIi8+PC9nPjwvZz48L2c+PC9nPjwvZz48L3N2Zz4=" alt="module_menu" class="description-icon">
+              <div style="justify-content: center; display: flex; flex-direction: column;"> 
+                <span class="bold">MicroPython-based IoT devices</span>
+                <span> Choose WiFi, BLE, LTE, LoRa & Sigfox</span>
               </div>
             </div>
-            <div class="row landing-info-row">
-              <div class="col-xs-3 col-lg-2">
-                <!-- <img
-                  class="land-icon"
-                  src="/images/svg/features/cloud.svg"
-                /> -->
-              </div>
-              <div class="col-xs-9 col-lg-10">
-                <p class="land-text">
-                  <span class="bold">Onboard</span
-                  ><span> your device to the cloud in seconds</span
-                  ><br /><span class="bold">Send</span
-                  ><span> data with one command</span>
-                </p>
+            <div class="row landing-info-row col-xs-9 col-lg-10">
+              <img style="height: 50px; margin-right: 20px; margin-left: -10px"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNjAuNDQgNjEiPjxkZWZzPjxzdHlsZT4uY2xzLTEsLmNscy0ye2ZpbGw6I2ZmZjt9LmNscy0yLC5jbHMtM3tzdHJva2U6IzFlMWUzYzt9LmNscy0yLC5jbHMtMywuY2xzLTd7c3Ryb2tlLXdpZHRoOjEuNDJweDt9LmNscy0zLC5jbHMtN3tmaWxsOm5vbmU7fS5jbHMtM3tzdHJva2UtbGluZWNhcDpzcXVhcmU7fS5jbHMtNHttYXNrOnVybCgjbWFzayk7fS5jbHMtNXtmaWxsOiMxZTFlM2M7fS5jbHMtNnttYXNrOnVybCgjbWFzay0yLTIpO30uY2xzLTd7c3Ryb2tlOiM4OTg5ODk7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fTwvc3R5bGU+PG1hc2sgaWQ9Im1hc2siIHg9IjI0LjE0IiB5PSIxNi44OSIgd2lkdGg9IjExLjAzIiBoZWlnaHQ9IjkuOTMiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiPjxnIGlkPSJtYXNrLTIiPjxwb2x5Z29uIGlkPSJwYXRoLTEiIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIyNC4xNCAxNi44OSAzNS4xNyAxNi44OSAzNS4xNyAyNi44MiAyNC4xNCAyNi44MiAyNC4xNCAxNi44OSIvPjwvZz48L21hc2s+PG1hc2sgaWQ9Im1hc2stMi0yIiB4PSIyNC4xNCIgeT0iMTYuODkiIHdpZHRoPSIxMS4wMyIgaGVpZ2h0PSI5LjkzIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48ZyBpZD0ibWFzay0yLTMiIGRhdGEtbmFtZT0ibWFzay0yIj48cG9seWdvbiBpZD0icGF0aC0xLTIiIGRhdGEtbmFtZT0icGF0aC0xIiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMjQuMTQgMTYuODkgMzUuMTcgMTYuODkgMzUuMTcgMjYuODIgMjQuMTQgMjYuODIgMjQuMTQgMTYuODkiLz48L2c+PC9tYXNrPjwvZGVmcz48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iY2xvdWRfc2VydmljZXMiPjxnIGlkPSJhdG9tLV8taWNvbi1fLWZlYXR1cmVzLV8tY2xvdWQiIGRhdGEtbmFtZT0iYXRvbS0vLWljb24tLy1mZWF0dXJlcy0vLWNsb3VkIj48Y2lyY2xlIGlkPSJPdmFsIiBjbGFzcz0iY2xzLTIiIGN4PSIyNC40NCIgY3k9IjUwLjMiIHI9IjMuMTkiLz48Y2lyY2xlIGlkPSJPdmFsLTIiIGRhdGEtbmFtZT0iT3ZhbCIgY2xhc3M9ImNscy0yIiBjeD0iNDguMjYiIGN5PSI0Ni43OCIgcj0iMy41NCIvPjxjaXJjbGUgaWQ9Ik92YWwtMyIgZGF0YS1uYW1lPSJPdmFsIiBjbGFzcz0iY2xzLTIiIGN4PSIzNi41NCIgY3k9IjUyLjgiIHI9IjMuMDUiLz48Y2lyY2xlIGlkPSJPdmFsLTQiIGRhdGEtbmFtZT0iT3ZhbCIgY2xhc3M9ImNscy0yIiBjeD0iMTMuNzYiIGN5PSI0Ni4xNCIgcj0iMy4zMiIvPjxwYXRoIGlkPSJMaW5lLTMiIGNsYXNzPSJjbHMtMyIgZD0iTTM0LjUzLDM2LjE1QTM5LjY1LDM5LjY1LDAsMCwwLDM0LjIyLDQ1YTI5LjQ4LDI5LjQ4LDAsMCwwLDEuMTMsNC43OCIvPjxwYXRoIGlkPSJMaW5lLTIiIGNsYXNzPSJjbHMtMyIgZD0iTTI2LDM2LjE1cS4yNCw3LjA1LjA1LDEwLjkzIi8+PHBhdGggaWQ9IkxpbmUiIGNsYXNzPSJjbHMtMyIgZD0iTTE5LjA1LDM2LjA2Yy42NiwzLjguMzEsNi4yNC0xLDcuMzEtLjQ5LjM5LTEsLjc0LTEuNDYsMS4wNiIvPjxwYXRoIGlkPSJMaW5lLTItMiIgZGF0YS1uYW1lPSJMaW5lIiBjbGFzcz0iY2xzLTMiIGQ9Ik00NC43Miw0NUExMy4zNSwxMy4zNSwwLDAsMSw0Myw0My43NWMtMS4xOC0uOS0xLjIzLTMuNDMtLjE3LTcuNiIvPjxwYXRoIGlkPSJDb21iaW5lZC1TaGFwZSIgY2xhc3M9ImNscy0yIiBkPSJNMTAuMjIsMTYuOWE1Ljc1LDUuNzUsMCwwLDEtLjA1LS44NGMwLTQuMjQsMy43Ni03LjY3LDguNC03LjY3YTkuMSw5LjEsMCwwLDEsMi4yNC4yN0ExMS4zMywxMS4zMywwLDAsMSw0MywxMi4yM2MwLC4zLDAsLjYxLDAsLjkxQTExLjUyLDExLjUyLDAsMCwxLDUzLjU4LDI0LjYzYzAsLjIyLDAsLjQ0LDAsLjY2czAsLjQxLDAsLjYyQTEwLjI1LDEwLjI1LDAsMCwxLDQzLjM0LDM2LjE1SDE1LjA5QTEwLjI0LDEwLjI0LDAsMCwxLDEwLjIyLDE2LjlaIi8+PGcgaWQ9ImF0b20tXy1pY29uLV8tcHljb20tXy1sb2dvIiBkYXRhLW5hbWU9ImF0b20tLy1pY29uLS8tcHljb20tLy1sb2dvIj48ZyBpZD0icHljb21fc3ltYm9sX2JsdWVfY215ayIgZGF0YS1uYW1lPSJweWNvbSBzeW1ib2wgYmx1ZSBjbXlrIj48ZyBjbGFzcz0iY2xzLTQiPjxwb2x5bGluZSBpZD0iRmlsbC0xIiBjbGFzcz0iY2xzLTUiIHBvaW50cz0iMjQuMTQgMTYuODkgMjQuMTQgMjYuODIgMjYuNjYgMjEuODYgMjkuMTkgMjEuODYgMjkuMTkgMTYuODkgMjQuMTQgMTYuODkiLz48L2c+PGcgY2xhc3M9ImNscy02Ij48cG9seWxpbmUgaWQ9IkZpbGwtMyIgY2xhc3M9ImNscy01IiBwb2ludHM9IjM1LjE3IDE2Ljg5IDMwLjEzIDE2Ljg5IDMwLjEzIDI2LjgyIDM1LjE3IDE2Ljg5Ii8+PC9nPjwvZz48L2c+PHBhdGggY2xhc3M9ImNscy03IiBkPSJNNS4yLDQ3LjI1YTcuMjcsNy4yNywwLDAsMCwxLjIxLDUuMiw3LjI2LDcuMjYsMCwwLDAsNC4zMywyLjgxIi8+PHBhdGggY2xhc3M9ImNscy03IiBkPSJNLjgzLDQ3LjQ4YTExLDExLDAsMCwwLDEuODEsNy44MUExMC44NiwxMC44NiwwLDAsMCw5LjEzLDU5LjUiLz48cGF0aCBjbGFzcz0iY2xzLTciIGQ9Ik0zMi42NCw1OWE3LDcsMCwwLDAsOS42NC0xLjQ0Ii8+PHBhdGggY2xhc3M9ImNscy03IiBkPSJNMjguNDUsNTYuNjdhNyw3LDAsMCwxLTkuNjItMS40OSIvPjxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTU1LjI0LDQ2LjI1YTcsNywwLDAsMS01LjUzLDgiLz48cGF0aCBjbGFzcz0iY2xzLTciIGQ9Ik01OS42Miw0Ni40OGExMC41NCwxMC41NCwwLDAsMS04LjMsMTIiLz48L2c+PC9nPjwvZz48L3N2Zz4=" alt="module_menu" class="description-icon">
+              <div style="justify-content: center; display: flex; flex-direction: column;"> 
+                <span class="bold">Pybytes Middleware Platform</span>
+                <span>Intelligent IoT Device Management </span>
               </div>
             </div>
-            <div class="row landing-info-row">
-              <div class="col-xs-3 col-lg-2">
-                <!-- <img
-                  class="land-icon"
-                  src="/images/svg/features/prototyping.svg"
-                /> -->
-              </div>
-              <div class="col-xs-9 col-lg-10">
-                <p class="land-text">
-                  <span class="bold">Prototype</span
-                  ><span> online with devices in the field</span
-                  ><br /><span class="bold">Update</span
-                  ><span> firmware and application over-the-air</span>
-                </p>
+            <div class="row landing-info-row col-xs-9 col-lg-10">
+            <img  style="height: 50px; margin-right: 20px; margin-left: -5px"  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTMuNDIgNjEuNzgiPjxkZWZzPjxzdHlsZT4uY2xzLTEsLmNscy01e2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6bm9uZTtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2Utd2lkdGg6MS40MnB4O30uY2xzLTIsLmNscy01e3N0cm9rZTojMWUxZTNjO30uY2xzLTN7ZmlsbDojMWUxZTNjO30uY2xzLTR7ZmlsbDojODk4OTg5O30uY2xzLTV7c3Ryb2tlLXdpZHRoOjEuMTNweDt9LmNscy02e21hc2s6dXJsKCNtYXNrKTt9LmNscy03e21hc2s6dXJsKCNtYXNrLTItMik7fTwvc3R5bGU+PG1hc2sgaWQ9Im1hc2siIHg9IjYuNDMiIHk9IjUuNjgiIHdpZHRoPSIxMC4yIiBoZWlnaHQ9IjguODkiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiPjxnIGlkPSJtYXNrLTIiPjxwb2x5Z29uIGlkPSJwYXRoLTEiIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI2LjQzIDUuNjggMTYuNjMgNS42OCAxNi42MyAxNC41NyA2LjQzIDE0LjU3IDYuNDMgNS42OCIvPjwvZz48L21hc2s+PG1hc2sgaWQ9Im1hc2stMi0yIiB4PSI2LjQzIiB5PSI1LjY4IiB3aWR0aD0iMTAuMiIgaGVpZ2h0PSI4Ljg5IiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48ZyBpZD0ibWFzay0yLTMiIGRhdGEtbmFtZT0ibWFzay0yIj48cG9seWdvbiBpZD0icGF0aC0xLTIiIGRhdGEtbmFtZT0icGF0aC0xIiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNi40MyA1LjY4IDE2LjYzIDUuNjggMTYuNjMgMTQuNTcgNi40MyAxNC41NyA2LjQzIDUuNjgiLz48L2c+PC9tYXNrPjwvZGVmcz48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0ic29mdHdhcmUiPjxnIGlkPSJwcm9qZWN0Ij48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0uNzEsMzEuNzF2NGMwLDEuNjYsMS4zNCw0LDMsNEgyNS43OWwuNzUsMy40OWgyLjMzbC43NS0zLjQ5SDQ5LjcxYzEuNjYsMCwzLTIuMzQsMy00di00WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTUyLjcxLDMxLjYzSC44NlY2LjM0QTUuNjgsNS42OCwwLDAsMSw2LjU1LjY2TDM3LC42OGE5LDksMCwwLDEsNi4wOSwyLjM3bDcuMzIsNy4zMmMyLDEuODIsMi4zNCw1Ljg1LDIuMzQsOC41NloiLz48cGF0aCBpZD0ic2NyZWVuIiBjbGFzcz0iY2xzLTIiIGQ9Ik0yOS43MSw0MC43MXYxYTEsMSwwLDAsMCwxLDFoNWExLDEsMCwwLDEsMSwxdi0uMTJhMS4xMiwxLjEyLDAsMCwxLTEuMTIsMS4xMkgxOS44MWExLjA5LDEuMDksMCwwLDEtMS4wOS0xLjA3di4wOGExLDEsMCwwLDEsMS0xaDVhMSwxLDAsMCwwLDEtMXYtMWExLDEsMCwwLDAtMS0xSDQuNDlBMy43OSwzLjc5LDAsMCwxLC43MSwzNS45MlY0LjQzQTMuNzMsMy43MywwLDAsMSw0LjQzLjcxaDMzYTgsOCwwLDAsMSw1LjY2LDIuMzRsNy4zMiw3LjMyQTgsOCwwLDAsMSw1Mi43MSwxNlYzNS43M2E0LDQsMCwwLDEtNCw0aC0xOEExLDEsMCwwLDAsMjkuNzEsNDAuNzFaIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMjAuMjksNDIuMjdIMzUuNDhhLjkuOSwwLDAsMSwuOS45djEuNTZhMCwwLDAsMCwxLDAsMGgtMTdhMCwwLDAsMCwxLDAsMFY0My4xN0EuOS45LDAsMCwxLDIwLjI5LDQyLjI3WiIvPjxyZWN0IGNsYXNzPSJjbHMtMyIgeD0iMC4wMyIgeT0iMzAuNzQiIHdpZHRoPSI1Mi40NyIgaGVpZ2h0PSIxLjM0Ii8+PGcgaWQ9ImNvZGUiPjxwYXRoIGlkPSJQYXRoIiBjbGFzcz0iY2xzLTQiIGQ9Ik0yOS40OCwxMi45VjExLjIxTDI0LjE2LDE2YTEsMSwwLDAsMC0uMTEsMS4zNGwuMTEuMTJMMjkuNDgsMjJWMjAuNTRsLTQuMzEtMy44NloiLz48cGF0aCBpZD0iUGF0aC0yIiBkYXRhLW5hbWU9IlBhdGgiIGNsYXNzPSJjbHMtNCIgZD0iTTM3LjQ2LDEyLjg2VjExLjE3bDUuMzIsNC43NWExLDEsMCwwLDEsLjExLDEuMzNsLS4xMS4xMkwzNy40NiwyMlYyMC41bDQuMzEtMy44NloiLz48cmVjdCBjbGFzcz0iY2xzLTQiIHg9IjI3Ljg2IiB5PSIxNS45NCIgd2lkdGg9IjExLjIzIiBoZWlnaHQ9IjEuMjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUuNjcgNDEuNDgpIHJvdGF0ZSgtNjguMTkpIi8+PC9nPjxnIGlkPSJrZXlib2FyZCI+PHJlY3QgaWQ9IlJlY3RhbmdsZSIgY2xhc3M9ImNscy01IiB4PSIyLjIxIiB5PSI0OS4yMSIgd2lkdGg9IjMzIiBoZWlnaHQ9IjEyIiByeD0iMiIvPjxyZWN0IGlkPSJSZWN0YW5nbGUtMiIgZGF0YS1uYW1lPSJSZWN0YW5nbGUiIGNsYXNzPSJjbHMtMyIgeD0iNS43MSIgeT0iNTEuNzEiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIi8+PHJlY3QgaWQ9IlJlY3RhbmdsZS0zIiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgY2xhc3M9ImNscy0zIiB4PSI5LjcxIiB5PSI1MS43MSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTQiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiBjbGFzcz0iY2xzLTMiIHg9IjkuNzEiIHk9IjU2LjcxIiB3aWR0aD0iMTgiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTUiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiBjbGFzcz0iY2xzLTMiIHg9IjI1LjcxIiB5PSI1MS43MSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTYiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiBjbGFzcz0iY2xzLTMiIHg9IjEzLjcxIiB5PSI1MS43MSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTciIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiBjbGFzcz0iY2xzLTMiIHg9IjE3LjcxIiB5PSI1MS43MSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTgiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiBjbGFzcz0iY2xzLTMiIHg9IjI5LjcxIiB5PSI1MS43MSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTkiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiBjbGFzcz0iY2xzLTMiIHg9IjIxLjcxIiB5PSI1MS43MSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTEwIiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgY2xhc3M9ImNscy0zIiB4PSI1LjcxIiB5PSI1Ni43MSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTExIiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgY2xhc3M9ImNscy0zIiB4PSIyOS43MSIgeT0iNTYuNzEiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIi8+PC9nPjxnIGlkPSJtb3VzZSI+PHBhdGggaWQ9IlJlY3RhbmdsZS0xMiIgZGF0YS1uYW1lPSJSZWN0YW5nbGUiIGNsYXNzPSJjbHMtNSIgZD0iTTQ3LjIxLDQ5LjIxaDBhMywzLDAsMCwxLDMsM3Y2YTMsMywwLDAsMS0zLDNoMGEzLDMsMCwwLDEtMy0zdi02QTMsMywwLDAsMSw0Ny4yMSw0OS4yMVoiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTEzIiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgY2xhc3M9ImNscy0zIiB4PSI0Ni40NiIgeT0iNTAuNzEiIHdpZHRoPSIxLjUiIGhlaWdodD0iMyIgcng9IjAuNzQiLz48L2c+PC9nPjxnIGlkPSJweWNvbV9zeW1ib2xfYmx1ZV9jbXlrIiBkYXRhLW5hbWU9InB5Y29tIHN5bWJvbCBibHVlIGNteWsiPjxnIGNsYXNzPSJjbHMtNiI+PHBvbHlsaW5lIGlkPSJGaWxsLTEiIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSI2LjQzIDUuNjggNi40MyAxNC41NyA4Ljc2IDEwLjEzIDExLjA5IDEwLjEzIDExLjA5IDUuNjggNi40MyA1LjY4Ii8+PC9nPjxnIGNsYXNzPSJjbHMtNyI+PHBvbHlsaW5lIGlkPSJGaWxsLTMiIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSIxNi42MyA1LjY4IDExLjk3IDUuNjggMTEuOTcgMTQuNTcgMTYuNjMgNS42OCIvPjwvZz48L2c+PC9nPjwvZz48L3N2Zz4=" alt="module_menu" class="description-icon">
+              <div style="justify-content: center; display: flex; flex-direction: column;"> 
+                <span class="bold">PyMakr Online IDE</span>
+                <span>Online prototyping tool for IoT developers</span>
               </div>
             </div>
-            <div class="row landing-info-row">
-              <div class="col-xs-3 col-lg-2">
-                <!-- <img
-                  class="land-icon"
-                  src="/images/svg/features/data-visualisation.svg"
-                /> -->
-              </div>
-              <div class="col-xs-9 col-lg-10">
-                <p class="land-text">
-                  <span class="bold">Visualise</span
-                  ><span> your data with charts &amp; tables</span
-                  ><br /><span class="bold">Create</span
-                  ><span> dashboards for your applications</span>
-                </p>
+            <div class="row landing-info-row col-xs-9 col-lg-10">
+              <img style="height: 50px; margin-right: 20px; margin-left: -10px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3Ny4yIDc3LjIiPjxkZWZzPjxzdHlsZT4uY2xzLTEsLmNscy0zLC5jbHMtNXtmaWxsOm5vbmU7fS5jbHMtMntmaWxsOiM4OTg5ODk7fS5jbHMtM3tzdHJva2U6Izg5ODk4OTt9LmNscy0zLC5jbHMtNXtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9LmNscy00e2ZpbGw6I2ZmZjt9LmNscy01e3N0cm9rZTojMDAwO3N0cm9rZS13aWR0aDoxLjEzcHg7fS5jbHMtNntmaWxsOiMxZTFlM2M7fTwvc3R5bGU+PC9kZWZzPjxnIGlkPSJMYXllcl8yIiBkYXRhLW5hbWU9IkxheWVyIDIiPjxnIGlkPSJlLXNob3AiPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iNi45OCIgeT0iNi45OCIgd2lkdGg9IjYzLjIzIiBoZWlnaHQ9IjYzLjIzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtOC41MyAxMS4wNSkgcm90YXRlKC0xNC42OSkiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0zOS41NiwyMC42N2wtOS41LDIuNDlhMi4wNywyLjA3LDAsMCwwLTEuNDgsMi41M2w2LjY4LDI1LjQ4YTIuMDcsMi4wNywwLDAsMCwyLjUyLDEuNDdsOS41LTIuNDlhMi4wNiwyLjA2LDAsMCwwLDEuNDgtMi41Mkw0Mi4wOCwyMi4xNUEyLjA3LDIuMDcsMCwwLDAsMzkuNTYsMjAuNjdabTgsMjYuNjFhMS4yOCwxLjI4LDAsMCwxLS45MSwxLjU2bC05LjA1LDIuMzdhMS4yOCwxLjI4LDAsMCwxLTEuNTYtLjkxTDI5LjczLDI2YTEuNDIsMS40MiwwLDAsMSwuODEtMS45Mmw5LTIuMzdjMS4xLS4zNCwxLjQ5LjU5LDEuNjcsMS4yN1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0zOS41LDI0LjEzbC0yLjM1LjYyYS40OC40OCwwLDAsMC0uMzUuNTlsLjI5LDEuMTJhLjUuNSwwLDAsMCwuNi4zNUw0MCwyNi4xOWEuNDguNDgsMCwwLDAsLjM0LS41OWwtLjI5LTEuMTJBLjQ5LjQ5LDAsMCwwLDM5LjUsMjQuMTNaTTM4LjczLDI2YS41My41MywwLDEsMSwuNDEtLjY1QS41NC41NCwwLDAsMSwzOC43MywyNloiLz48cmVjdCBpZD0iUmVjdGFuZ2xlIiBjbGFzcz0iY2xzLTMiIHg9IjMzLjk4IiB5PSIyOC43MiIgd2lkdGg9IjcuMjMiIGhlaWdodD0iNy42NSIgcng9IjEuMTEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03LjAyIDEwLjYpIHJvdGF0ZSgtMTQuNjkpIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzAuNzcsMzkuMTNoMGEuOC44LDAsMCwxLS41NywxaDBhLjguOCwwLDAsMS0xLS41N2gwYS44MS44MSwwLDAsMSwuNTctMWgwQS44MS44MSwwLDAsMSwzMC43NywzOS4xM1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0zMCwzNmgwYS43OS43OSwwLDAsMS0uNTcsMWgwYS43OS43OSwwLDAsMS0xLS41N2gwYS44LjgsMCwwLDEsLjU3LTFoMEEuNzkuNzksMCwwLDEsMzAsMzZaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzEuNTgsNDIuMjNoMGEuOC44LDAsMCwxLS41NywxaDBhLjgxLjgxLDAsMCwxLTEtLjU4aDBhLjguOCwwLDAsMSwuNTgtMWgwQS43OS43OSwwLDAsMSwzMS41OCw0Mi4yM1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0zMi4zOSw0NS4zMmgwYS43OS43OSwwLDAsMS0uNTcsMWgwYS43OS43OSwwLDAsMS0xLS41N2gwYS43OS43OSwwLDAsMSwuNTctMWgwQS44LjgsMCwwLDEsMzIuMzksNDUuMzJaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzMuMiw0OC40MmgwYS44LjgsMCwwLDEtLjU3LDFoMGEuOC44LDAsMCwxLTEtLjU3aDBhLjc5Ljc5LDAsMCwxLC41Ny0xaDBBLjc5Ljc5LDAsMCwxLDMzLjIsNDguNDJaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjguMjQsMjkuNDdoMGEuOC44LDAsMCwxLS41NywxaDBhLjc5Ljc5LDAsMCwxLTEtLjU3aDBhLjc5Ljc5LDAsMCwxLC41Ny0xaDBBLjguOCwwLDAsMSwyOC4yNCwyOS40N1oiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0yOS4xLDMyLjc1aDBhLjgxLjgxLDAsMCwxLS41NywxaDBhLjgxLjgxLDAsMCwxLTEtLjU3aDBhLjguOCwwLDAsMSwuNTctMWgwQS44LjgsMCwwLDEsMjkuMSwzMi43NVoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik00OC4yNSwzNC41NWgwYS44MS44MSwwLDAsMS0uNTgsMWgwYS43OS43OSwwLDAsMS0xLS41N2gwYS44LjgsMCwwLDEsLjU3LTFoMEEuOC44LDAsMCwxLDQ4LjI1LDM0LjU1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTQ3LjQzLDMxLjQ2aDBhLjc5Ljc5LDAsMCwxLS41NywxaDBhLjc5Ljc5LDAsMCwxLTEtLjU3aDBhLjc5Ljc5LDAsMCwxLC41Ny0xaDBBLjc4Ljc4LDAsMCwxLDQ3LjQzLDMxLjQ2WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTQ5LjA2LDM3LjY1aDBhLjguOCwwLDAsMS0uNTcsMWgwYS43OS43OSwwLDAsMS0xLS41N2gwYS43OS43OSwwLDAsMSwuNTctMWgwQS43OS43OSwwLDAsMSw0OS4wNiwzNy42NVoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik00OS44Nyw0MC43NGgwYS44LjgsMCwwLDEtLjU3LDFoMGEuOC44LDAsMCwxLTEtLjU3aDBhLjguOCwwLDAsMSwuNTctMWgwQS44MS44MSwwLDAsMSw0OS44Nyw0MC43NFoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik01MC42OCw0My44NGgwYS44LjgsMCwwLDEtLjU3LDFoMGEuODEuODEsMCwwLDEtMS0uNThoMGEuOC44LDAsMCwxLC41Ny0xaDBBLjguOCwwLDAsMSw1MC42OCw0My44NFoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik00NS43MSwyNC44OWgwYS43OS43OSwwLDAsMS0uNTcsMWgwYS44LjgsMCwwLDEtMS0uNTdoMGEuOC44LDAsMCwxLC41OC0xaDBBLjc5Ljc5LDAsMCwxLDQ1LjcxLDI0Ljg5WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTQ2LjU3LDI4LjE3aDBhLjguOCwwLDAsMS0uNTcsMWgwYS44LjgsMCwwLDEtMS0uNTdoMGEuNzkuNzksMCwwLDEsLjU3LTFoMEEuNzkuNzksMCwwLDEsNDYuNTcsMjguMTdaIi8+PGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj48cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik01OC43MywzOS44LDU0LDU0LjY2Yy0uMTkuNjUtLjQuODEtMiwuODFIMjVhMSwxLDAsMCwxLTEtMVYzOWExLDEsMCwwLDEsMS0xSDU3Ljc5QzU5LjE4LDM3Ljk0LDU5LDM4LjgyLDU4LjczLDM5LjhaIi8+PHBhdGggZD0iTTI0LjA2LDU2LjU5SDUzLjZhMS40MywxLjQzLDAsMCwwLDEuMzItMS4wNWw1LjQ0LTE3LjA3YTEuMzYsMS4zNiwwLDAsMC0xLjMtMS43NEgyNFYzMS44MmExLjY3LDEuNjcsMCwwLDAtMS40NC0xLjUySDE1LjMyYy0uNzYsMC0uNzcsMS40NywwLDEuNDdoNS43OGMuODMsMCwxLjUzLjQzLDEuNTQsMS4yNy4xLDYuMTIsMCwyNC4yNywwLDI4LjQyQTEuNTMsMS41MywwLDAsMCwyNC4xOSw2M0g1My42MWMuNzYsMCwuNzQtLjYxLjc0LS42MWEuNjUuNjUsMCwwLDAtLjcyLS42OEwyNSw2MS42NEEuOTIuOTIsMCwwLDEsMjQsNjAuN1pNNTguNzMsMzkuOCw1NCw1NC42NmMtLjE5LjY1LS40LjgxLTIsLjgxSDI1YTEsMSwwLDAsMS0xLTFWMzlhMSwxLDAsMCwxLDEtMUg1Ny43OUM1OS4xOCwzNy45NCw1OSwzOC44Miw1OC43MywzOS44WiIvPjxjaXJjbGUgY2xhc3M9ImNscy01IiBjeD0iMjguNTEiIGN5PSI2Ny4wOCIgcj0iMi42NiIvPjxnIGlkPSJhdG9tLV8taWNvbi1fLXB5Y29tLV8tbG9nbyIgZGF0YS1uYW1lPSJhdG9tLS8taWNvbi0vLXB5Y29tLS8tbG9nbyI+PGcgaWQ9InB5Y29tX3N5bWJvbF9ibHVlX2NteWsiIGRhdGEtbmFtZT0icHljb20gc3ltYm9sIGJsdWUgY215ayI+PHBvbHlsaW5lIGlkPSJGaWxsLTEiIGNsYXNzPSJjbHMtNiIgcG9pbnRzPSIzNS41NiA0Mi4xNSAzNS41NiA1MS4xNyAzNy44NiA0Ni42NiA0MC4xNSA0Ni42NiA0MC4xNSA0Mi4xNSAzNS41NiA0Mi4xNSIvPjxwb2x5bGluZSBpZD0iRmlsbC0zIiBjbGFzcz0iY2xzLTYiIHBvaW50cz0iNDUuNTkgNDIuMTUgNDEuMDEgNDIuMTUgNDEuMDEgNTEuMTcgNDUuNTkgNDIuMTUiLz48L2c+PC9nPjxjaXJjbGUgY2xhc3M9ImNscy01IiBjeD0iNDkiIGN5PSI2Ni45NSIgcj0iMi41NCIvPjwvZz48L2c+PC9nPjwvc3ZnPg==" alt="module_menu" class="description-icon">
+              <div style="justify-content: center; display: flex; flex-direction: column;"> 
+                <span class="bold">Pycom Webshop</span>
+                <span>Explore our latest products at our store</span>
               </div>
             </div>
-            <div class="row landing-info-row">
-              <div class="col-xs-3 col-lg-2">
-                <!-- <img
-                  class="land-icon"
-                  src="/images/svg/features/integrations.svg"
-                /> -->
-              </div>
-              <div class="col-xs-9 col-lg-10">
-                <p class="land-text">
-                  <span class="bold">Integrate</span
-                  ><span> with 3rd party applications</span><br />
-                  <!-- <img
-                    class="icon-space"
-                    src="/images/svg/products/aws.svg"
-                  /><img
-                    class="icon-space"
-                    src="/images/svg/products/azure.svg"
-                  /><img
-                    class="icon-space"
-                    src="/images/svg/products/google-cloud.svg"
-                  /><img
-                    class="icon-space"
-                    src="/images/svg/products/webhooks.svg"
-                  /><img
-                    class="icon-space"
-                    src="/images/svg/products/sigfox.svg"
-                  /> -->
-                </p>
-              </div>
-              <div class="col-xs-9 col-lg-10">
-                <p class="land-text">
-                  <a
-                    target="_blank"
-                    href="https://pyauth.pybytes.pycom.io/login"
-                    >See more</a
-                  >
-                </p>
+            <div class="row landing-info-row col-xs-9 col-lg-10">
+              <img style="height: 50px; margin-right: 20px; margin-left: -10px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1Ni41NCA1OS4wOCI+PGRlZnM+PHN0eWxlPi5jbHMtMSwuY2xzLTJ7ZmlsbDpub25lO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS13aWR0aDoxLjEzcHg7fS5jbHMtMXtzdHJva2U6IzAwMDt9LmNscy0ye3N0cm9rZTojODk4OTg5O30uY2xzLTN7ZmlsbDojODk4OTg5O30uY2xzLTR7ZmlsbDojODg4OTg5O308L3N0eWxlPjwvZGVmcz48ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIj48ZyBpZD0iZm9ydW1fd2hpdGUiPjxnIGlkPSJGb3J1bSI+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTMuMjYsMTIuODJhNi45MSw2LjkxLDAsMCwxLDcuMTUtNi42MSw2Ljg2LDYuODYsMCwwLDEsMSwuMDdBOS4yOCw5LjI4LDAsMCwxLDMwLC41N2E5LjM3LDkuMzcsMCwwLDEsOS4zLDkuMjQsOS40Nyw5LjQ3LDAsMCwxLDcuODEsOS4zYzAsLjE2LDAsLjMyLDAsLjQ4czAsLjMsMCwuNDZhOC41Miw4LjUyLDAsMCwxLTguNSw4LjQ5SDE3Ljg1QTguNSw4LjUsMCwwLDEsMTMuMjYsMTIuOXYtLjA4Ii8+PGcgaWQ9ImF0b20tXy1pY29uLV8tcHljb20tXy1sb2dvIiBkYXRhLW5hbWU9ImF0b20tLy1pY29uLS8tcHljb20tLy1sb2dvIj48ZyBpZD0icHljb21fc3ltYm9sX2JsdWVfY215ayIgZGF0YS1uYW1lPSJweWNvbSBzeW1ib2wgYmx1ZSBjbXlrIj48cG9seWxpbmUgaWQ9IkZpbGwtMSIgcG9pbnRzPSIyMy4zNiAxMy4wNiAyMy4zNiAyMS45NyAyNS42MiAxNy41MiAyNy44OSAxNy41MiAyNy44OSAxMy4wNiAyMy4zNiAxMy4wNiIvPjxwb2x5bGluZSBpZD0iRmlsbC0zIiBwb2ludHM9IjMzLjI1IDEzLjA2IDI4LjczIDEzLjA2IDI4LjczIDIxLjk3IDMzLjI1IDEzLjA2Ii8+PC9nPjwvZz48L2c+PHJlY3QgY2xhc3M9ImNscy0yIiB4PSI0LjM5IiB5PSIzOS41OSIgd2lkdGg9IjcuODMiIGhlaWdodD0iOS43NCIgcng9IjMuOTEiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xNiw1OC41MWMwLTUuMDgtMy40NC05LjE5LTcuNy05LjE5Uy41Nyw1My40My41Nyw1OC41MVoiLz48cmVjdCBjbGFzcz0iY2xzLTMiIHg9IjQuMjciIHk9IjU2LjQzIiB3aWR0aD0iMS4zIiBoZWlnaHQ9IjEuNTgiLz48cmVjdCBjbGFzcz0iY2xzLTMiIHg9IjEwLjkyIiB5PSI1Ni40MyIgd2lkdGg9IjEuMyIgaGVpZ2h0PSIxLjU4Ii8+PHJlY3QgY2xhc3M9ImNscy0yIiB4PSIyNC4zOSIgeT0iMzkuNTkiIHdpZHRoPSI3LjgzIiBoZWlnaHQ9IjkuNzQiIHJ4PSIzLjkxIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzYsNTguNTFjMC01LjA4LTMuNDQtOS4xOS03LjctOS4xOXMtNy43LDQuMTEtNy43LDkuMTlaIi8+PHJlY3QgY2xhc3M9ImNscy00IiB4PSIyNC4yNyIgeT0iNTYuNDMiIHdpZHRoPSIxLjMiIGhlaWdodD0iMS41OCIvPjxyZWN0IGNsYXNzPSJjbHMtNCIgeD0iMzAuOTIiIHk9IjU2LjQzIiB3aWR0aD0iMS4zIiBoZWlnaHQ9IjEuNTgiLz48cmVjdCBjbGFzcz0iY2xzLTIiIHg9IjQ0LjM5IiB5PSIzOS41OSIgd2lkdGg9IjcuODMiIGhlaWdodD0iOS43NCIgcng9IjMuOTEiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik01Niw1OC41MWMwLTUuMDgtMy40NC05LjE5LTcuNy05LjE5cy03LjcsNC4xMS03LjcsOS4xOVoiLz48cmVjdCBjbGFzcz0iY2xzLTMiIHg9IjQ0LjI3IiB5PSI1Ni40MyIgd2lkdGg9IjEuMyIgaGVpZ2h0PSIxLjU4Ii8+PHJlY3QgY2xhc3M9ImNscy0zIiB4PSI1MC45MiIgeT0iNTYuNDMiIHdpZHRoPSIxLjMiIGhlaWdodD0iMS41OCIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMxLjUzLDI4LjU0YTMuMywzLjMsMCwwLDEtNi41OSwwWiIvPjxyZWN0IHg9IjEyLjc0IiB5PSI0Mi45NyIgd2lkdGg9IjMuMjQiIGhlaWdodD0iMC45OCIvPjxyZWN0IHg9IjIxLjE1IiB5PSI0Mi45OSIgd2lkdGg9IjIuNjciIGhlaWdodD0iMC45OCIvPjxyZWN0IHg9IjMyLjc5IiB5PSI0Mi45OSIgd2lkdGg9IjMuMDkiIGhlaWdodD0iMC45OCIvPjxyZWN0IHg9IjQwLjk3IiB5PSI0Mi45OSIgd2lkdGg9IjIuNzUiIGhlaWdodD0iMC45OCIvPjxyZWN0IGlkPSJSZWN0YW5nbGUiIHg9IjI3LjIyIiB5PSIzNi4xMSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTIiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiB4PSIyNy4yMiIgeT0iMzMuMzkiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIi8+PHJlY3QgaWQ9IlJlY3RhbmdsZS0zIiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgeD0iNDQuMzkiIHk9IjM3LjExIiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiByeD0iMSIvPjxyZWN0IGlkPSJSZWN0YW5nbGUtNCIgZGF0YS1uYW1lPSJSZWN0YW5nbGUiIHg9IjQxLjU4IiB5PSIzNS4zOSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTUiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiB4PSIzOC44NyIgeT0iMzMuNzkiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIi8+PHJlY3QgaWQ9IlJlY3RhbmdsZS02IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgeD0iMzYuMTgiIHk9IjMyLjM5IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiByeD0iMSIvPjxyZWN0IGlkPSJSZWN0YW5nbGUtNyIgZGF0YS1uYW1lPSJSZWN0YW5nbGUiIHg9IjMzLjU0IiB5PSIzMC44MyIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTgiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiB4PSIxMC41NCIgeT0iMzcuMTEiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIi8+PHJlY3QgaWQ9IlJlY3RhbmdsZS05IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgeD0iMTMuMzUiIHk9IjM1LjM5IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiByeD0iMSIvPjxyZWN0IGlkPSJSZWN0YW5nbGUtMTAiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiB4PSIxNi4wNyIgeT0iMzMuNzkiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIi8+PHJlY3QgaWQ9IlJlY3RhbmdsZS0xMSIgZGF0YS1uYW1lPSJSZWN0YW5nbGUiIHg9IjE4Ljc1IiB5PSIzMi4zOSIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48cmVjdCBpZD0iUmVjdGFuZ2xlLTEyIiBkYXRhLW5hbWU9IlJlY3RhbmdsZSIgeD0iMjEuMzkiIHk9IjMwLjgzIiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiByeD0iMSIvPjxyZWN0IGlkPSJSZWN0YW5nbGUtMTMiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIiB4PSIxNy42MSIgeT0iNDIuNDgiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIi8+PHJlY3QgaWQ9IlJlY3RhbmdsZS0xNCIgZGF0YS1uYW1lPSJSZWN0YW5nbGUiIHg9IjM3LjQ4IiB5PSI0Mi41MiIgd2lkdGg9IjIiIGhlaWdodD0iMiIgcng9IjEiLz48L2c+PC9nPjwvc3ZnPg==" alt="module_menu" class="description-icon">
+              <div style="justify-content: center; display: flex; flex-direction: column;"> 
+                <span class="bold">Pycom Forum</span>
+                <span>Join a great network of expert Pyoneers</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <div class="row">
+          </section>
+      <a href="http://pybytes.pycom.io" id="pybytes-login-button" class="pybytes-button">
+        Open Pybytes
+      </a> 
+      <div  class="row footer-legal">
         <div class="col-xs-10 col-xs-offset-1">
-          <p class="footerLegal">
-            © 2017 - 2018 All Rights Reserved. Pybytes® is a
-            registered trademark of Pycom Ltd.<br /><a
+          <p >
+            Pycom ©2015- 2020. All Rights Reserved.<br /><a
               href="https://pycom.io/pybytes-privacy"
               target="_blank"
               >Privacy</a
