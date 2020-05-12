@@ -39,7 +39,15 @@ const getBinaries = async () => {
   ).data.map((item) => item.name);
 
   const atomNightlyTag = tags[0];
-  const atomCurrentTag = 'master';
+  let currentIndex = 1;
+  let atomCurrentTag = tags[currentIndex];
+  while (
+    atomCurrentTag.includes('beta') ||
+    (atomCurrentTag == 'master' && currentIndex < 10)
+  ) {
+    currentIndex += 1;
+    atomCurrentTag = tags[currentIndex];
+  }
   const atomNightlyElectron = await fetchElectronVersion(atomNightlyTag);
   const atomCurrentElectron = await fetchElectronVersion(atomCurrentTag);
   const electronVersions = [];
