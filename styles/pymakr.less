@@ -491,9 +491,6 @@
       }
     }
     &.has-sub {
-      &#pybytes{
-        color: white !important;
-      }
       margin-right: 18px;
       cursor: default;
       img {
@@ -652,12 +649,6 @@
         margin-top: 23px;
       }
       &.has-sub {
-         &#pybytes{
-        color: @text-color-highlight !important;
-        svg{
-          fill: @text-color-highlight !important
-        };
-      }
         .open-subnav {
           display: none;
         }
@@ -1087,5 +1078,22 @@ div.pymakr-feedback {
     font-size: 8;
     position: absolute;
     right: -5px;
+  }
+}
+.badge-new{
+  color: @text-color-highlight !important;
+  svg{
+    fill: @text-color-highlight !important
+  };
+
+  &::after{
+    content: '';
+    background-color: #17ffbd;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    position: absolute;
+    right: 2px;
+    top: 12px;
   }
 }
