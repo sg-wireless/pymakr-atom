@@ -491,6 +491,9 @@
       }
     }
     &.has-sub {
+      &#pybytes{
+        color: white !important;
+      }
       margin-right: 18px;
       cursor: default;
       img {
@@ -649,6 +652,12 @@
         margin-top: 23px;
       }
       &.has-sub {
+         &#pybytes{
+        color: @text-color-highlight !important;
+        svg{
+          fill: @text-color-highlight !important
+        };
+      }
         .open-subnav {
           display: none;
         }
@@ -961,7 +970,7 @@ div.pymakr-feedback {
     background: none;
     background-color: #17ffbd;
     font-weight: bold;
-    color: black !important;
+    color: rgb(56, 56, 56) !important;
     text-decoration: none !important;
     width: 100%;
     display: block;
@@ -984,6 +993,7 @@ div.pymakr-feedback {
   }
   .bold {
     color: black;
+    font-weight: bold;
   }
   .cb-inline {
     cursor: pointer;
@@ -1066,4 +1076,16 @@ div.pymakr-feedback {
 }
 .center-header{
   margin-top: 20px;
+}
+.info-sections{
+  color: rgb(75, 75, 75);
+}
+.badge{
+  &:after{
+    content: '';
+    color: red;
+    font-size: 8;
+    position: absolute;
+    right: -5px;
+  }
 }
