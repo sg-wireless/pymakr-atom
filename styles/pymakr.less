@@ -905,7 +905,6 @@ div.pymakr-feedback {
 }
 
 .pybytes {
-  // background-image: url('https://pyauth.pybytes.pycom.io/images/landing-background-sm-up.png');
   font-family: 'Space Mono', 'Roboto', sans-serif;
   &-close {
     background: none;
@@ -913,6 +912,9 @@ div.pymakr-feedback {
     position: absolute;
     right: 8px;
     top: 16px;
+  }
+  &-logo{
+    height: 40px;
   }
   &-error {
     color: rgb(218, 23, 23);
@@ -922,7 +924,7 @@ div.pymakr-feedback {
     width: 100%;
     height: 20px;
     margin: 0;
-    color: #fff;
+    color: black;
     font-family: 'Space Mono', 'Roboto', sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
@@ -930,7 +932,7 @@ div.pymakr-feedback {
   }
   &-login {
     background: none;
-    color: #fff !important;
+    color: black !important;
     background-color: transparent !important;
     padding: 8px 16px;
     border: 1px solid #9b9b9b;
@@ -944,7 +946,6 @@ div.pymakr-feedback {
   }
   &-button {
     width: 100%;
-    height: 36px;
     margin-top: 16px;
     margin-bottom: 0;
     background: linear-gradient(
@@ -952,23 +953,26 @@ div.pymakr-feedback {
       rgba(82, 247, 197, 0) 30%,
       @pycom-primary 100%
     );
-    background-color: #4a7994;
     border: none;
     border-radius: 2px;
     transition: all 200ms ease-in-out;
     font-size: 14px;
-    font-weight: 500;
     line-height: 1.42857143;
     background: none;
-    background-color: @pycom-primary;
-    color: #1e1e3c;
+    background-color: #17ffbd;
     font-weight: bold;
-    background-color: aquamarine;
-    color: black;
+    color: rgb(56, 56, 56) !important;
+    text-decoration: none !important;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 4px 10px;
   }
-  a {
-    color: @text-color-info;
+  .link {
+    color: rgba(82, 247, 197, 1);
+    color: #121224;
     line-height: 18px;
+    font-weight: bold;
   }
   h2,
   h3 {
@@ -976,10 +980,11 @@ div.pymakr-feedback {
     font-weight: 400;
     line-height: 1.1;
     margin-top: 20px;
-    // color: white;
+    color: black;
   }
   .bold {
-    color: white;
+    color: black;
+    font-weight: bold;
   }
   .cb-inline {
     cursor: pointer;
@@ -999,7 +1004,7 @@ div.pymakr-feedback {
       display: block;
       width: 150px;
       height: 3px;
-      background-color: @text-color;
+      background-color: #121224;
       margin-top: 10px;
     }
   }
@@ -1008,6 +1013,22 @@ div.pymakr-feedback {
       margin-top: 4px;
     }
   }
+}
+
+.landing-info-row {
+  margin: 20px 0 20px 5px;
+  display: flex;
+}
+
+.starting-title-section{
+  color: black;
+  background: white;
+  height: 100%;
+}
+
+.footer-legal{
+  position: absolute;
+  bottom: 0;
 }
 #pybytes-logo {
   width: 16px;
@@ -1043,4 +1064,36 @@ div.pymakr-feedback {
 .xterm-rows {
   color: @text-color-highlight !important;
   background-color: transparent !important;
+}
+.center-header{
+  margin-top: 20px;
+}
+.info-sections{
+  color: rgb(75, 75, 75);
+}
+.badge{
+  &:after{
+    content: '';
+    color: red;
+    font-size: 8;
+    position: absolute;
+    right: -5px;
+  }
+}
+.badge-new{
+  color: @text-color-highlight !important;
+  svg{
+    fill: @text-color-highlight !important
+  };
+
+  &::after{
+    content: '';
+    background-color: #17ffbd;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    position: absolute;
+    right: 2px;
+    top: 12px;
+  }
 }
