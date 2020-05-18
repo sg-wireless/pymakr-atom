@@ -1,8 +1,10 @@
 ## [2.1.3] - 18.05.2020
 ### Added
+* Binaries for the new upcoming Atom update (1.47).
 * Pybytes Panel, where you can find the best features of Pybytes.
 ### Fixed
 * Pymakr can't find some devices tabs (mostly with PyJTAG boards), which causes unexpected tabs behaviour (closing, opening, closing all, opening all, tabs sync).
+
 
 ## [2.1.2] - 06.3.2020
 ### Added
@@ -18,6 +20,7 @@
 * Active connection tab is now draggable.
 * Placeholder background color now matches the terminal color.
 * Dropdown alignment.
+
 
 ## [2.1.1] - 19.2.2020
 ### Fixed
