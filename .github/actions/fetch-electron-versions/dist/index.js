@@ -282,7 +282,7 @@ function wrappy (fn, cb) {
 
   function wrapper() {
     var args = new Array(arguments.length)
-    for (var i = 0; i < args.length; i += 1) {
+    for (var i = 0; i < args.length; i++) {
       args[i] = arguments[i]
     }
     var ret = fn.apply(this, args)
@@ -476,7 +476,7 @@ function createDebug(namespace) {
 
     // turn the `arguments` into a proper Array
     var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i += 1) {
+    for (var i = 0; i < args.length; i++) {
       args[i] = arguments[i];
     }
 
@@ -556,7 +556,7 @@ function enable(namespaces) {
   var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
   var len = split.length;
 
-  for (i = 0; i < len; i += 1) {
+  for (i = 0; i < len; i++) {
     if (!split[i]) continue; // ignore empty strings
     namespaces = split[i].replace(/\*/g, '.*?');
     if (namespaces[0] === '-') {
@@ -566,7 +566,7 @@ function enable(namespaces) {
     }
   }
 
-  for (i = 0; i < exports.instances.length; i += 1) {
+  for (i = 0; i < exports.instances.length; i++) {
     var instance = exports.instances[i];
     instance.enabled = exports.enabled(instance.namespace);
   }
@@ -595,12 +595,12 @@ function enabled(name) {
     return true;
   }
   var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i += 1) {
+  for (i = 0, len = exports.skips.length; i < len; i++) {
     if (exports.skips[i].test(name)) {
       return false;
     }
   }
-  for (i = 0, len = exports.names.length; i < len; i += 1) {
+  for (i = 0, len = exports.names.length; i < len; i++) {
     if (exports.names[i].test(name)) {
       return true;
     }
@@ -881,7 +881,7 @@ function forEach(obj, fn) {
 
   if (isArray(obj)) {
     // Iterate over array values
-    for (var i = 0, l = obj.length; i < l; i += 1) {
+    for (var i = 0, l = obj.length; i < l; i++) {
       fn.call(null, obj[i], i, obj);
     }
   } else {
@@ -921,7 +921,7 @@ function merge(/* obj1, obj2, obj3, ... */) {
     }
   }
 
-  for (var i = 0, l = arguments.length; i < l; i += 1) {
+  for (var i = 0, l = arguments.length; i < l; i++) {
     forEach(arguments[i], assignValue);
   }
   return result;
@@ -947,7 +947,7 @@ function deepMerge(/* obj1, obj2, obj3, ... */) {
     }
   }
 
-  for (var i = 0, l = arguments.length; i < l; i += 1) {
+  for (var i = 0, l = arguments.length; i < l; i++) {
     forEach(arguments[i], assignValue);
   }
   return result;
@@ -1297,7 +1297,7 @@ function init (debug) {
   debug.inspectOpts = {};
 
   var keys = Object.keys(exports.inspectOpts);
-  for (var i = 0; i < keys.length; i += 1) {
+  for (var i = 0; i < keys.length; i++) {
     debug.inspectOpts[keys[i]] = exports.inspectOpts[keys[i]];
   }
 }
@@ -1372,8 +1372,18 @@ const getAtomTagsElectron = async (count = 3) => {
       })
     ).data.map(item => item.name);
     const atomNightlyTag = tags[0];
-    const atomCurrentTag = "master";
-    const atomNightlyElectron = await resolveElectronVersion(atomNightlyTag);
+    let currentIndex = 1;
+    let atomCurrentTag = tags[currentIndex];
+    while (
+      (atomCurrentTag.includes('beta') ||
+      (atomCurrentTag=='master') && currentIndex < 10)
+    ) {
+      currentIndex += 1;
+      atomCurrentTag = tags[currentIndex];
+    }
+    const atomNightlyElectron = await resolveElectronVersion(
+      atomNightlyTag,
+    );
     const atomCurrentElectron = await resolveElectronVersion(atomCurrentTag);
     const electronVersions = [];
     electronVersions.push(atomCurrentElectron);
@@ -2773,7 +2783,7 @@ module.exports = opts => {
 	const result = [];
 	const len = Math.max(stdio.length, alias.length);
 
-	for (let i = 0; i < len; i += 1) {
+	for (let i = 0; i < len; i++) {
 		let value = null;
 
 		if (stdio[i] !== undefined) {
@@ -3600,7 +3610,7 @@ src[STAR] = '(<|>)?=?\\s*\\*'
 
 // Compile to actual regexp objects.
 // All are flag-free, unless they were created above with a flag.
-for (var i = 0; i < R; i += 1) {
+for (var i = 0; i < R; i++) {
   debug(i, src[i])
   if (!re[i]) {
     re[i] = new RegExp(src[i])
@@ -4569,7 +4579,7 @@ Range.prototype.test = function (version) {
     version = new SemVer(version, this.options)
   }
 
-  for (var i = 0; i < this.set.length; i += 1) {
+  for (var i = 0; i < this.set.length; i++) {
     if (testSet(this.set[i], version, this.options)) {
       return true
     }
@@ -4578,7 +4588,7 @@ Range.prototype.test = function (version) {
 }
 
 function testSet (set, version, options) {
-  for (var i = 0; i < set.length; i += 1) {
+  for (var i = 0; i < set.length; i++) {
     if (!set[i].test(version)) {
       return false
     }
@@ -4590,7 +4600,7 @@ function testSet (set, version, options) {
     // That should allow `1.2.3-pr.2` to pass.
     // However, `1.2.4-alpha.notready` should NOT be allowed,
     // even though it's within the range set by the comparators.
-    for (i = 0; i < set.length; i += 1) {
+    for (i = 0; i < set.length; i++) {
       debug(set[i].semver)
       if (set[i].semver === ANY) {
         continue
@@ -5723,7 +5733,7 @@ module.exports = require("assert");
 /***/ 361:
 /***/ (function(module) {
 
-module.exports = {"_from":"axios@^0.19.0","_id":"axios@0.19.0","_inBundle":false,"_integrity":"sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.19.0","name":"axios","escapedName":"axios","rawSpec":"^0.19.0","saveSpec":null,"fetchSpec":"^0.19.0"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.19.0.tgz","_shasum":"8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8","_spec":"axios@^0.19.0","_where":"/Users/pk/dev/pycom/pymakr-atom/.github/actions/fetch-electron-versions","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"1.5.10","is-buffer":"^2.0.2"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"bundlesize":"^0.17.0","coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.0.2","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^20.1.0","grunt-karma":"^2.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^1.0.18","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^1.3.0","karma-chrome-launcher":"^2.2.0","karma-coverage":"^1.1.1","karma-firefox-launcher":"^1.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-opera-launcher":"^1.0.0","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^1.2.0","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^1.7.0","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^5.2.0","sinon":"^4.5.0","typescript":"^2.8.1","url-search-params":"^0.10.0","webpack":"^1.13.1","webpack-dev-server":"^1.14.1"},"homepage":"https://github.com/axios/axios","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test && bundlesize","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","version":"0.19.0"};
+module.exports = {"_args":[["axios@0.19.0","/Users/pk/dev/pycom/pymakr-atom/.github/actions/fetch-electron-versions"]],"_from":"axios@0.19.0","_id":"axios@0.19.0","_inBundle":false,"_integrity":"sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.19.0","name":"axios","escapedName":"axios","rawSpec":"0.19.0","saveSpec":null,"fetchSpec":"0.19.0"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.19.0.tgz","_spec":"0.19.0","_where":"/Users/pk/dev/pycom/pymakr-atom/.github/actions/fetch-electron-versions","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"1.5.10","is-buffer":"^2.0.2"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"bundlesize":"^0.17.0","coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.0.2","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^20.1.0","grunt-karma":"^2.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^1.0.18","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^1.3.0","karma-chrome-launcher":"^2.2.0","karma-coverage":"^1.1.1","karma-firefox-launcher":"^1.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-opera-launcher":"^1.0.0","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^1.2.0","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^1.7.0","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^5.2.0","sinon":"^4.5.0","typescript":"^2.8.1","url-search-params":"^0.10.0","webpack":"^1.13.1","webpack-dev-server":"^1.14.1"},"homepage":"https://github.com/axios/axios","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test && bundlesize","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","version":"0.19.0"};
 
 /***/ }),
 
@@ -6626,7 +6636,7 @@ class Blob {
 		if (blobParts) {
 			const a = blobParts;
 			const length = Number(a.length);
-			for (let i = 0; i < length; i += 1) {
+			for (let i = 0; i < length; i++) {
 				const element = a[i];
 				let buffer;
 				if (element instanceof Buffer) {
@@ -10396,7 +10406,7 @@ module.exports = {"activity":{"checkStarringRepo":{"method":"GET","params":{"own
 module.exports = function bind(fn, thisArg) {
   return function wrap() {
     var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i += 1) {
+    for (var i = 0; i < args.length; i++) {
       args[i] = arguments[i];
     }
     return fn.apply(thisArg, args);
@@ -11370,7 +11380,7 @@ function checkPathExt (path, options) {
   if (pathext.indexOf('') !== -1) {
     return true
   }
-  for (var i = 0; i < pathext.length; i += 1) {
+  for (var i = 0; i < pathext.length; i++) {
     var p = pathext[i].toLowerCase()
     if (p && path.substr(-p.length).toLowerCase() === p) {
       return true

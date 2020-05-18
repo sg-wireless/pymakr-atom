@@ -27,10 +27,30 @@
   overflow: hidden;
 }
 .pymakr-status-bar {
-  display: inline-block;
+  display: inline-flex;
+  height: 100%;
   padding: 0 9px;
-  &.light:hover {
-    background-color: #c5cad3 !important;
+  div {
+    width: 20px;
+    position: relative;
+    > svg {
+      margin-top: -2px;
+      width: 20px;
+      margin-right: 2px;
+      vertical-align: middle;
+    }
+  }
+  .cls-2 {
+    fill: @text-color;
+  }
+  path {
+    fill: transparent;
+  }
+  polygon {
+    fill: red;
+  }
+  &:hover {
+    background-color: @background-color-highlight;
   }
 }
 
@@ -159,9 +179,6 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    &:hover {
-      color: @text-color-highlight;
-    }
   }
   .button-title {
     text-overflow: ellipsis;
@@ -211,9 +228,6 @@
         text-align: center;
         color: #333333;
         margin-left: 15px;
-        &:hover {
-          background-color: #ffffff;
-        }
       }
       .column {
         #pymakr-info-top-buttons {
@@ -367,10 +381,6 @@
         color: darken(@text-color, 20%);
       }
     }
-    .pymakr-logo {
-      height: 17px;
-      padding-bottom: 2px;
-    }
     .icon {
       padding-left: 5px;
       margin-bottom: 3px;
@@ -476,6 +486,9 @@
         left: 50%;
         top: 50%;
       }
+      &:hover{
+        background-color: @background-color-selected !important;
+      }
     }
     &.has-sub {
       margin-right: 18px;
@@ -496,8 +509,8 @@
     }
     &:hover,
     &:hover div.open-subnav {
-      background: @background-color-selected !important;
-      color: @text-color-highlight;
+      background: @background-color-highlight !important;
+      
     }
     &.cancel {
       background: @background-color-error;
@@ -526,14 +539,14 @@
     div.subnav {
       display: none;
       position: absolute;
-      bottom: 26px;
+      bottom: 27px;
       line-height: 25px;
       color: @text-color;
       background: @app-background-color !important;
       padding: 11px 1px;
-      z-index: 100;
+      z-index: 10000;
       &.left {
-        left: 0px;
+        left: -2px;
         div {
           width: 237px;
           text-align: left;
@@ -545,7 +558,7 @@
         text-align: left;
         cursor: pointer;
         &:hover {
-          background: @background-color-selected;
+          background: @background-color-highlight;
         }
         input {
           margin-left: 4px;
@@ -575,6 +588,7 @@
       }
     }
     &.open {
+      
       span.fa.up {
         display: none;
       }
@@ -592,8 +606,7 @@
     }
   }
   #pymakr-terminal-area {
-    background: @base-border-color !important;
-    padding-left: 5px;
+    padding-left: 2px;
     height: 100%;
     margin-left: 59px;
     margin-right: 26px;
@@ -627,7 +640,7 @@
     width: 26px;
     background: @app-background-color;
     button {
-      margin: 53px 0 4px -23px;
+      margin: 40px 0 6px -23px;
       padding-left: 24px;
       padding-right: 6px;
       height: 26px;
@@ -649,7 +662,7 @@
           background: @app-background-color;
 
           &:hover {
-            background-color: @background-color-selected !important;
+            background-color: @background-color-highlight !important;
           }
         }
       }
@@ -744,7 +757,9 @@
         opacity: 0.4;
         cursor: not-allowed;
         color: gray !important;
-        border: 1px solid transparent;
+        &:hover{
+         background: @background-color-highlight !important;
+        }
         // border: 1px solid black !important;
         .left-button {
           cursor: unset !important;
@@ -890,7 +905,6 @@ div.pymakr-feedback {
 }
 
 .pybytes {
-  // background-image: url('https://pyauth.pybytes.pycom.io/images/landing-background-sm-up.png');
   font-family: 'Space Mono', 'Roboto', sans-serif;
   &-close {
     background: none;
@@ -898,6 +912,9 @@ div.pymakr-feedback {
     position: absolute;
     right: 8px;
     top: 16px;
+  }
+  &-logo{
+    height: 40px;
   }
   &-error {
     color: rgb(218, 23, 23);
@@ -907,7 +924,7 @@ div.pymakr-feedback {
     width: 100%;
     height: 20px;
     margin: 0;
-    color: #fff;
+    color: black;
     font-family: 'Space Mono', 'Roboto', sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
@@ -915,7 +932,7 @@ div.pymakr-feedback {
   }
   &-login {
     background: none;
-    color: #fff !important;
+    color: black !important;
     background-color: transparent !important;
     padding: 8px 16px;
     border: 1px solid #9b9b9b;
@@ -929,7 +946,6 @@ div.pymakr-feedback {
   }
   &-button {
     width: 100%;
-    height: 36px;
     margin-top: 16px;
     margin-bottom: 0;
     background: linear-gradient(
@@ -937,23 +953,26 @@ div.pymakr-feedback {
       rgba(82, 247, 197, 0) 30%,
       @pycom-primary 100%
     );
-    background-color: #4a7994;
     border: none;
     border-radius: 2px;
     transition: all 200ms ease-in-out;
     font-size: 14px;
-    font-weight: 500;
     line-height: 1.42857143;
     background: none;
-    background-color: @pycom-primary;
-    color: #1e1e3c;
+    background-color: #17ffbd;
     font-weight: bold;
-    background-color: aquamarine;
-    color: black;
+    color: rgb(56, 56, 56) !important;
+    text-decoration: none !important;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 4px 10px;
   }
-  a {
-    color: @text-color-info;
+  .link {
+    color: rgba(82, 247, 197, 1);
+    color: #121224;
     line-height: 18px;
+    font-weight: bold;
   }
   h2,
   h3 {
@@ -961,10 +980,11 @@ div.pymakr-feedback {
     font-weight: 400;
     line-height: 1.1;
     margin-top: 20px;
-    // color: white;
+    color: black;
   }
   .bold {
-    color: white;
+    color: black;
+    font-weight: bold;
   }
   .cb-inline {
     cursor: pointer;
@@ -984,7 +1004,7 @@ div.pymakr-feedback {
       display: block;
       width: 150px;
       height: 3px;
-      background-color: @text-color;
+      background-color: #121224;
       margin-top: 10px;
     }
   }
@@ -992,6 +1012,30 @@ div.pymakr-feedback {
     a {
       margin-top: 4px;
     }
+  }
+}
+
+.landing-info-row {
+  margin: 20px 0 20px 5px;
+  display: flex;
+}
+
+.starting-title-section{
+  color: black;
+  background: white;
+  height: 100%;
+}
+
+.footer-legal{
+  position: absolute;
+  bottom: 0;
+}
+#pybytes-logo {
+  width: 16px;
+  svg{
+    fill: @text-color;
+    padding-top: 3px;
+    padding-right: 3px;
   }
 }
 
@@ -1020,4 +1064,36 @@ div.pymakr-feedback {
 .xterm-rows {
   color: @text-color-highlight !important;
   background-color: transparent !important;
+}
+.center-header{
+  margin-top: 20px;
+}
+.info-sections{
+  color: rgb(75, 75, 75);
+}
+.badge{
+  &:after{
+    content: '';
+    color: red;
+    font-size: 8;
+    position: absolute;
+    right: -5px;
+  }
+}
+.badge-new{
+  color: @text-color-highlight !important;
+  svg{
+    fill: @text-color-highlight !important
+  };
+
+  &::after{
+    content: '';
+    background-color: #17ffbd;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    position: absolute;
+    right: 2px;
+    top: 12px;
+  }
 }
