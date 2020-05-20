@@ -1,3 +1,7 @@
+## [2.1.5] - 20.05.2020
+### Fixed
+* Invisible close icon
+
 ## [2.1.4] - 20.05.2020
 ### Fixed
 * xterm related problem
