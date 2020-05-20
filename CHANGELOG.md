@@ -1,3 +1,10 @@
+## [2.1.4] - 20.05.2020
+### Fixed
+* xterm related problem
+* Invisible Pybytes label in Pybytes button
+* .css file not found being printed on console
+
+
 ## [2.1.3] - 18.05.2020
 ### Added
 * Binaries for the new upcoming Atom update (1.47).
