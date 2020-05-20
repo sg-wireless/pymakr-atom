@@ -1,4 +1,4 @@
-## [2.1.5] - 20.05.2020
+## [2.1.4] - 20.05.2020
 ### Fixed
 * xterm related problem
 * Invisible Pybytes label in Pybytes button
