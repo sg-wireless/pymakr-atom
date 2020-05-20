@@ -6,7 +6,8 @@
   &:hover {
     .chrome-tab-close {
       opacity: 1 !important;
-      color: @text-color;
+      @color: ~`"@{text-color}".replace("\#", '%23')`;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path stroke='@{color}' stroke-linecap='square' stroke-width='1.5' d='M0 0 L8 8 M8 0 L0 8'></path></svg>");
     }
   }
 }
@@ -249,6 +250,7 @@
 }
 .chrome-tabs .chrome-tab .chrome-tab-close {
   flex-grow: 0;
+  opacity: 0;
   flex-shrink: 0;
   position: relative;
   cursor: pointer;
@@ -256,18 +258,22 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path stroke='@{text-color}' stroke-linecap='square' stroke-width='1.5' d='M0 0 L8 8 M8 0 L0 8'></path></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path stroke='' stroke-linecap='square' stroke-width='1.5' d='M0 0 L8 8 M8 0 L0 8'></path></svg>");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 8px 8px;
+  color: @text-color;
 }
+
 @media (hover: hover) {
   .chrome-tabs .chrome-tab .chrome-tab-close:hover {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path stroke='@{text-color-highlight}' stroke-linecap='square' stroke-width='1.5' d='M0 0 L8 8 M8 0 L0 8'></path></svg>");
+    @color: ~`"@{text-color-highlight}".replace("\#", '%23')`;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path stroke='@{color}' stroke-linecap='square' stroke-width='1.5' d='M0 0 L8 8 M8 0 L0 8'></path></svg>");
   }
 
   .chrome-tabs .chrome-tab .chrome-tab-close:hover:active {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path stroke='@{text-color-subtle}' stroke-linecap='square' stroke-width='1.5' d='M0 0 L8 8 M8 0 L0 8'></path></svg>");
+     @color: @text-color-subtle;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path stroke='@{color}' stroke-linecap='square' stroke-width='1.5' d='M0 0 L8 8 M8 0 L0 8'></path></svg>");
   }
 }
 
