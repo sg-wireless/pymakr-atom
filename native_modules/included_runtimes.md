@@ -32,3 +32,10 @@ Includes support for electron/node versions:
    - darwin  , x64  
    - linux   , x64  
    - linux   , ia32 
+Includes support for electron/node versions:
+* electron 6.1.12 uses ABI 73
+   - win32   , x64  
+   - win32   , ia32 
+   - darwin  , x64  
+   - linux   , x64  
+   - linux   , ia32 
