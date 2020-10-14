@@ -1,3 +1,7 @@
+## [2.1.6] - 14.10.2020
+### Fixed
+* update bindings to match new atom version
+
 ## [2.1.5] - 20.05.2020
 ### Fixed
 * Invisible close icon
@@ -26,7 +30,7 @@
 * Pymakr colors (minor changes), better matching with Atom's color.
 * Terminal left padding.
 ### Fixed
-* Buggy artifact behind the terminal with a light theme selected. 
+* Buggy artifact behind the terminal with a light theme selected.
 * Connection tab hover color.
 * Active connection tab is now draggable.
 * Placeholder background color now matches the terminal color.
@@ -56,7 +60,7 @@
 
 ## [2.0.1] - 13.2.2020
 ### Added
-* The connection tabs are now scrollable. 
+* The connection tabs are now scrollable.
 ### Changed
 * Changing the font size no longer requires restarting Atom.
 * Improved terminal responsiveness.
@@ -66,14 +70,14 @@
 
 
 ## [2.0.0]
-* Improved UI: The interface has been completely rearranged, providing an objective, clear and beautiful layout. 
-* Multiple device connections: Now it’s possible to connect to multiple devices simultaneously, with one independent terminal for each one. 
+* Improved UI: The interface has been completely rearranged, providing an objective, clear and beautiful layout.
+* Multiple device connections: Now it’s possible to connect to multiple devices simultaneously, with one independent terminal for each one.
 * Dynamic workspace: The current project is now selected on Pymakr (projects dropdown) and not on the Atom file-tree.  
-* Font size customizable: Now it’s possible to change the terminal font size. 
-* Theme support: Now Pymakr supports current Atom's theme, matching with its color scheme. 
+* Font size customizable: Now it’s possible to change the terminal font size.
+* Theme support: Now Pymakr supports current Atom's theme, matching with its color scheme.
 
 ## 1.5.6 - User experience improvements
-* Now Pymakr shows a post-install notification if it failed to load Serialport library, asking the user to reload Atom. 
+* Now Pymakr shows a post-install notification if it failed to load Serialport library, asking the user to reload Atom.
 
 ## 1.5.5 - Compatibility update
 * Updated supported Atom versions (>=1.41.0)
