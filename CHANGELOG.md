@@ -1,3 +1,7 @@
+## [2.1.8] - 30.11.2020
+### Added
+* Add support for Cypress Semiconductor used in PyGo cradle
+
 ## [2.1.7] - 28.10.2020
 ### Fixed
 * confirmation dialog issue
