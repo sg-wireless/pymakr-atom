@@ -23,6 +23,8 @@ jobs:
 
       - name: Setup node
         uses: actions/setup-node@v1.2.0
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           node-version: "10"
 
