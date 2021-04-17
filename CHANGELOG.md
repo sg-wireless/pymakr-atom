@@ -1,3 +1,7 @@
+## [2.1.10] - 17.04.2021
+### Fixed
+* update bindings to match new atom version
+
 ## [2.1.9] - 15.01.2021
 ### Fixed
 * confirmation dialog issue
