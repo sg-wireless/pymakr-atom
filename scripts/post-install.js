@@ -1,6 +1,7 @@
 const fs = require('fs');
 const rimraf = require('rimraf');
 const path = require('path');
+const os = require('os');
 
 const dir = __dirname.replace('/scripts', '').replace('\\scripts', '');
 const bindings_target = `${dir}/node_modules/@serialport/bindings/build/release`;
@@ -58,6 +59,18 @@ function postInstall() {
       `${dir}/native_modules/@serialport`,
       `${dir}/node_modules`,
     );
+    if(os.platform() === 'win32') {
+      console.log('win32 bindings file copy');
+      try {
+        copyFolderRecursiveSync(
+          `${dir}/native_modules/@serialport/bindings`,
+          `${dir}/node_modules`,
+        );
+      } catch (e) {
+        console.log(e.message);
+      }
+    }
+
     console.log('Success.');
   } catch (error) {
     console.log("Failed to copy bindings file, pymakr won't work");

@@ -1,3 +1,15 @@
+## [2.1.12] - 18.04.2021
+### Fixed
+* update bindings for wind 32 to match new atom version
+
+## [2.1.11] - 18.04.2021
+### Fixed
+* update bindings for wind 64 to match new atom version
+
+## [2.1.10] - 17.04.2021
+### Fixed
+* update bindings to match new atom version
+
 ## [2.1.9] - 15.01.2021
 ### Fixed
 * confirmation dialog issue
