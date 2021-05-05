@@ -1,3 +1,7 @@
+## [2.1.13] - 05.05.2021
+### Fixed
+* update bindings for mac and Linux
+
 ## [2.1.12] - 18.04.2021
 ### Fixed
 * update bindings for wind 32 to match new atom version
