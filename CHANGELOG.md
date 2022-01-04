@@ -1,3 +1,20 @@
+## [2.1.17] - 04.01.2022
+### Fixed
+* spelling
+* avoid serialport race condition
+* added support for QinHeng Electronics
+
+## [2.1.16] - 27.10.2021
+### Fixed
+* binding: updated serialport to 9.2.4 (d4a8934)
+
+## [2.1.15] - 20.10.2021
+### Fixed
+* better handling for unavailable bindings (3b4a57e)
+* better handling for unavailable bindings (3b4a57e)
+* github action error for deploy script (1e2b9c5)
+* reduce requirements for fallback builds (6b05f12)
+
 ## [2.1.14] - 05.05.2021
 ### Fixed
 * project improvements
