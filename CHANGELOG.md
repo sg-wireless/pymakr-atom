@@ -1,3 +1,7 @@
+## [2.1.14] - 05.05.2021
+### Fixed
+* project improvements
+
 ## [2.1.13] - 05.05.2021
 ### Fixed
 * update bindings for mac and Linux
