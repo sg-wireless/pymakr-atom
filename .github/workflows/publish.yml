@@ -1,0 +1,30 @@
+name: Deploy PyMakr
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Atom
+        uses: UziTech/action-setup-atom@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          
+      - run: npm ci
+
+      - name: Publish
+        # for testing, add -- --dry-run --debug
+        run: npm run semantic-release -- --dry-run --debug
+        env:
+          ATOM_ACCESS_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
