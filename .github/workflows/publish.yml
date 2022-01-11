@@ -24,7 +24,7 @@ jobs:
 
       - name: Publish
         # for testing, add -- --dry-run --debug
-        run: npm run semantic-release
+        run: npm run semantic-release --  --debug
         env:
           ATOM_ACCESS_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
