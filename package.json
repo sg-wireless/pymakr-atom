@@ -61,7 +61,8 @@
     "watch": "onchange '**/*.js' '**/*.html'  '**/*.less' -- sh scripts/restart-atom.sh",
     "postinstall": "node scripts/post-install.js",
     "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
-    "download-native": "node scripts/download-binaries.js"
+    "download-native": "node scripts/download-binaries.js",
+    "semantic-release": "semantic-release"
   },
   "consumedServices": {
     "status-bar": {
@@ -70,9 +71,13 @@
       }
     }
   },
+  "release": {
+    "extends": "@semantic-release/apm-config"
+  },
   "devDependencies": {
     "@actions/core": "^1.2.0",
     "@actions/github": "^1.1.0",
+    "@semantic-release/apm-config": "^9.0.1",
     "axios": "^0.19.0",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
@@ -84,6 +89,7 @@
     "node-powershell": "^4.0.0",
     "npm-watch": "^0.6.0",
     "onchange": "^6.1.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "semantic-release": "^18.0.1"
   }
 }
