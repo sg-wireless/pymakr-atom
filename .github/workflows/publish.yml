@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Install Atom
         uses: UziTech/action-setup-atom@v2
@@ -27,4 +30,5 @@ jobs:
         run: npm run semantic-release --  --debug
         env:
           ATOM_ACCESS_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
+          GH_TOKEN: ${{ secrets.ADMIN_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
