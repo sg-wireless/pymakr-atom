@@ -1,3 +1,11 @@
+## [2.2.1](https://github.com/pycom/pymakr-atom/compare/v2.2.0...v2.2.1) (2022-01-13)
+
+
+### Bug Fixes
+
+* bindings fallbacks were limited to download ([9d3bfc7](https://github.com/pycom/pymakr-atom/commit/9d3bfc787a297df697f900bacced7f8e50788bf5))
+* bindings were broke ([dfda4c4](https://github.com/pycom/pymakr-atom/commit/dfda4c49f4ef179f930b243e03f7a9ef58ef3c3a))
+
 ## [2.1.14] - 05.05.2021
 ### Fixed
 * project improvements
