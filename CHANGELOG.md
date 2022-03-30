@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/pycom/pymakr-atom/compare/v2.2.1...v2.2.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* removed deprecated "synchronize project" ([7df8f8a](https://github.com/pycom/pymakr-atom/commit/7df8f8a4f61d1b756170bbf25d5b3a7d6142412d))
+
 ## [2.2.1](https://github.com/pycom/pymakr-atom/compare/v2.2.0...v2.2.1) (2022-01-13)
 
 
