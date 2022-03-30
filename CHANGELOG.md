@@ -1,3 +1,18 @@
+## [2.3.1](https://github.com/pycom/pymakr-atom/compare/v2.3.0...v2.3.1) (2022-03-30)
+
+
+### Bug Fixes
+
+* update serialport package ([4181f10](https://github.com/pycom/pymakr-atom/commit/4181f10399c21ce49c08e699840998b241744cf5))
+* update serialport to v10 (beat) ([34780fe](https://github.com/pycom/pymakr-atom/commit/34780feb74e795f06c1b10a4e25cfdb986a7ebcb))
+
+# [2.3.0](https://github.com/pycom/pymakr-atom/compare/v2.2.2...v2.3.0) (2022-02-21)
+
+
+### Features
+
+* make max scrollback configurable ([f8cdbd5](https://github.com/pycom/pymakr-atom/commit/f8cdbd55d8bc9280935a46180d7223422eaa92c3))
+
 ## [2.2.2](https://github.com/pycom/pymakr-atom/compare/v2.2.1...v2.2.2) (2022-01-31)
 
 
