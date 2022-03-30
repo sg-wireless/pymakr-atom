@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/pycom/pymakr-atom/compare/v2.2.2...v2.3.0) (2022-02-21)
+
+
+### Features
+
+* make max scrollback configurable ([f8cdbd5](https://github.com/pycom/pymakr-atom/commit/f8cdbd55d8bc9280935a46180d7223422eaa92c3))
+
 ## [2.2.2](https://github.com/pycom/pymakr-atom/compare/v2.2.1...v2.2.2) (2022-01-31)
 
 
