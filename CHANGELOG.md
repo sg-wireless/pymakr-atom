@@ -1,3 +1,11 @@
+## [2.3.2](https://github.com/pycom/pymakr-atom/compare/v2.3.1...v2.3.2) (2022-03-30)
+
+
+### Bug Fixes
+
+* disable fixbind (for now) ([6680eb8](https://github.com/pycom/pymakr-atom/commit/6680eb8bc2c2e63c3b42c983099a1b01e266be65))
+* Serialport API changed ([00ddc65](https://github.com/pycom/pymakr-atom/commit/00ddc65128c8e4d7e7aa065d8c882da8a554b302))
+
 ## [2.3.1](https://github.com/pycom/pymakr-atom/compare/v2.3.0...v2.3.1) (2022-03-30)
 
 
