@@ -19,6 +19,7 @@
     "atom": ">=1.41.0"
   },
   "dependencies": {
+    "@serialport/bindings": "^9.2.9",
     "binascii": "0.0.2",
     "bindings": "^1.5.0",
     "bluebird": "^3.7.2",
