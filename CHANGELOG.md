@@ -1,3 +1,11 @@
+## [2.3.1](https://github.com/pycom/pymakr-atom/compare/v2.3.0...v2.3.1) (2022-03-30)
+
+
+### Bug Fixes
+
+* update serialport package ([4181f10](https://github.com/pycom/pymakr-atom/commit/4181f10399c21ce49c08e699840998b241744cf5))
+* update serialport to v10 (beat) ([34780fe](https://github.com/pycom/pymakr-atom/commit/34780feb74e795f06c1b10a4e25cfdb986a7ebcb))
+
 # [2.3.0](https://github.com/pycom/pymakr-atom/compare/v2.2.2...v2.3.0) (2022-02-21)
 
 
