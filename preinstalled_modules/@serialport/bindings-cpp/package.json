@@ -1,0 +1,145 @@
+{
+  "_from": "@serialport/bindings-cpp@10.7.0",
+  "_id": "@serialport/bindings-cpp@10.7.0",
+  "_inBundle": false,
+  "_integrity": "sha512-Xx1wA2UCG2loS32hxNvWJI4smCzGKhWqE85//fLRzHoGgE1lSLe3Nk7W40/ebrlGFHWRbQZmeaIF4chb2XLliA==",
+  "_location": "/@serialport/bindings-cpp",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@serialport/bindings-cpp@10.7.0",
+    "name": "@serialport/bindings-cpp",
+    "escapedName": "@serialport%2fbindings-cpp",
+    "scope": "@serialport",
+    "rawSpec": "10.7.0",
+    "saveSpec": null,
+    "fetchSpec": "10.7.0"
+  },
+  "_requiredBy": [
+    "/serialport"
+  ],
+  "_resolved": "https://registry.npmjs.org/@serialport/bindings-cpp/-/bindings-cpp-10.7.0.tgz",
+  "_shasum": "9cf7dda78d914ba597933089abe2a8511e875851",
+  "_spec": "@serialport/bindings-cpp@10.7.0",
+  "_where": "/mnt/c/Users/jakob/github/pymakr-atom/node_modules/serialport",
+  "binary": {
+    "napi_versions": [
+      6
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/serialport/bindings-cpp/issues"
+  },
+  "bundleDependencies": false,
+  "cc": {
+    "filter": [
+      "legal/copyright",
+      "build/include"
+    ],
+    "files": [
+      "src/*.cpp",
+      "src/*.h"
+    ],
+    "linelength": "120"
+  },
+  "changelog": {
+    "labels": {
+      "breaking": ":boom: BREAKING CHANGES :boom:",
+      "feature-request": "Features",
+      "bug": "Bug Fixes",
+      "docs": "Documentation",
+      "internal": "Chores"
+    }
+  },
+  "dependencies": {
+    "@serialport/bindings-interface": "1.2.1",
+    "@serialport/parser-readline": "^10.2.1",
+    "debug": "^4.3.2",
+    "node-addon-api": "^4.3.0",
+    "node-gyp-build": "^4.3.0"
+  },
+  "deprecated": false,
+  "description": "SerialPort Hardware bindings for node serialport written in c++",
+  "devDependencies": {
+    "@semantic-release/exec": "6.0.3",
+    "@serialport/binding-mock": "10.2.2",
+    "@types/chai": "4.3.0",
+    "@types/chai-subset": "1.3.3",
+    "@types/debug": "4.1.7",
+    "@types/mocha": "9.1.0",
+    "@types/node": "17.0.15",
+    "@typescript-eslint/eslint-plugin": "5.10.2",
+    "@typescript-eslint/parser": "5.10.2",
+    "cc": "3.0.1",
+    "chai": "4.3.6",
+    "chai-subset": "1.6.0",
+    "codecov": "3.8.3",
+    "esbuild": "0.14.23",
+    "esbuild-register": "3.3.2",
+    "eslint": "8.9.0",
+    "mocha": "9.2.1",
+    "node-abi": "3.8.0",
+    "node-gyp": "^9.0.0",
+    "nyc": "15.1.0",
+    "prebuildify": "5.0.0",
+    "prebuildify-cross": "^5.0.0",
+    "semantic-release": "19.0.2",
+    "shx": "^0.3.4",
+    "sinon": "13.0.1",
+    "typescript": "4.5.5"
+  },
+  "engines": {
+    "node": ">=12.17.0 <13.0 || >=14.0.0"
+  },
+  "funding": "https://opencollective.com/serialport/donate",
+  "gypfile": true,
+  "homepage": "https://github.com/serialport/bindings-cpp#readme",
+  "keywords": [
+    "serialport-binding",
+    "COM",
+    "com port",
+    "hardware",
+    "iot",
+    "modem",
+    "serial port",
+    "serial",
+    "serialport",
+    "tty",
+    "UART"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "mocha": {
+    "bail": true,
+    "require": [
+      "esbuild-register"
+    ],
+    "spec": "lib/**/*.test.*"
+  },
+  "name": "@serialport/bindings-cpp",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serialport/bindings-cpp.git"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig-build.json",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "format": "eslint lib test bin --fix",
+    "install": "node-gyp-build",
+    "lint": "eslint lib test bin && cc --verbose",
+    "prebuildify": "prebuildify --napi --target 14.0.0 --force --strip --verbose",
+    "prebuildify-cross": "prebuildify-cross --napi --target 14.0.0 --force --strip --verbose",
+    "rebuild": "node-gyp rebuild",
+    "semantic-release": "semantic-release",
+    "test": "nyc --reporter=html --reporter=text --reporter lcovonly mocha",
+    "test:arduino": "TEST_PORT=$(./bin/find-arduino.ts) npm test",
+    "test:watch": "mocha -w",
+    "typecheck": "tsc"
+  },
+  "types": "./dist/index.d.ts",
+  "version": "10.7.0"
+}

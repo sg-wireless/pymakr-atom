@@ -1,7 +1,7 @@
 {
   "name": "pymakr",
   "main": "./lib/main.js",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Adds a REPL console to Atom that connects to your Pycom board. It can run code on the board or synchronize your project files to it.",
   "keywords": [
     "Pycom",
@@ -59,7 +59,9 @@
   },
   "scripts": {
     "watch": "onchange '**/*.js' '**/*.html'  '**/*.less' -- sh scripts/restart-atom.sh",
-    "postinstall": "node scripts/post-install.js",
+    "@preinstall": "bindings-ccp needs to be preinstalled for Unix. Don't know why. : makes Windows ignore the command",
+    "preinstall": ":; cp preinstalled_modules node_modules -r",
+    "_postinstall": "node scripts/post-install.js",
     "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
     "download-native": "node scripts/download-binaries.js",
     "semantic-release": "semantic-release"
