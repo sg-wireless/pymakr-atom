@@ -59,7 +59,9 @@
   },
   "scripts": {
     "watch": "onchange '**/*.js' '**/*.html'  '**/*.less' -- sh scripts/restart-atom.sh",
-    "postinstall": "node scripts/post-install.js",
+    "@preinstall": "bindings-ccp needs to be preinstalled for Unix. Don't know why. : makes Windows ignore the command",
+    "preinstall": ":; cp preinstalled_modules node_modules -r",
+    "_postinstall": "node scripts/post-install.js",
     "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
     "download-native": "node scripts/download-binaries.js",
     "semantic-release": "semantic-release"
