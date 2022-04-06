@@ -1,3 +1,10 @@
+## [2.3.6](https://github.com/pycom/pymakr-atom/compare/v2.3.5...v2.3.6) (2022-04-06)
+
+
+### Bug Fixes
+
+* removed serialport from dependencies ([6e3d64e](https://github.com/pycom/pymakr-atom/commit/6e3d64e2da6898f563265f30abd00a25ac93afa5))
+
 ## [2.3.5](https://github.com/pycom/pymakr-atom/compare/v2.3.4...v2.3.5) (2022-04-06)
 
 
