@@ -58,8 +58,6 @@
   },
   "scripts": {
     "watch": "onchange '**/*.js' '**/*.html'  '**/*.less' -- sh scripts/restart-atom.sh",
-    "@postinstall": "apm cant install bindings-ccp on linux/mac, so we use npm",
-    "postinstall": "npm install serialport",
     "test-electron": "pwsh -nop -f ./test-electron/runtest.ps1",
     "download-native": "node scripts/download-binaries.js",
     "semantic-release": "semantic-release"
