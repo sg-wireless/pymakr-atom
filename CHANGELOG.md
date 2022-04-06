@@ -1,3 +1,10 @@
+## [2.3.5](https://github.com/pycom/pymakr-atom/compare/v2.3.4...v2.3.5) (2022-04-06)
+
+
+### Bug Fixes
+
+* install serialport from runtime code ([9c62cad](https://github.com/pycom/pymakr-atom/commit/9c62cad824184a7a379380f2998612ea5cbafa6a))
+
 ## [2.3.4](https://github.com/pycom/pymakr-atom/compare/v2.3.3...v2.3.4) (2022-04-06)
 
 
