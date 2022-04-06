@@ -1,3 +1,10 @@
+## [2.3.7](https://github.com/pycom/pymakr-atom/compare/v2.3.6...v2.3.7) (2022-04-06)
+
+
+### Bug Fixes
+
+* npm couldn't install serialport at runtime ([501380e](https://github.com/pycom/pymakr-atom/commit/501380ef6c7ab3585c853d148da545b8798e9ce5))
+
 ## [2.3.6](https://github.com/pycom/pymakr-atom/compare/v2.3.5...v2.3.6) (2022-04-06)
 
 
