@@ -28,7 +28,6 @@
     "draggabilly": "2.2.0",
     "electron-rebuild": "^1.8.5",
     "element-resize-detector": "^1.1.14",
-    "fixbind": "^0.0.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.0",
     "lie": "^3.1.0",
