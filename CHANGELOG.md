@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/pycom/pymakr-atom/compare/v2.3.2...v2.3.3) (2022-04-05)
+
+
+### Bug Fixes
+
+* could not install dependencies on Unix ([aeeb5f4](https://github.com/pycom/pymakr-atom/commit/aeeb5f451ca788661e39f0a31aa16d35f0fbf858))
+
 ## [2.3.2](https://github.com/pycom/pymakr-atom/compare/v2.3.1...v2.3.2) (2022-03-30)
 
 
