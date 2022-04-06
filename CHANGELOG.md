@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/pycom/pymakr-atom/compare/v2.3.3...v2.3.4) (2022-04-06)
+
+
+### Bug Fixes
+
+* use postinstall to install bindings with npm ([ff6635d](https://github.com/pycom/pymakr-atom/commit/ff6635dd0618134903d11bb9294a6f733f383c64))
+
 ## [2.3.3](https://github.com/pycom/pymakr-atom/compare/v2.3.2...v2.3.3) (2022-04-05)
 
 
