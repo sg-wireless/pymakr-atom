@@ -1,3 +1,10 @@
+## [2.3.8](https://github.com/pycom/pymakr-atom/compare/v2.3.7...v2.3.8) (2022-05-30)
+
+
+### Bug Fixes
+
+* add "Silicon Laboratories" to manufacturers ([e04f498](https://github.com/pycom/pymakr-atom/commit/e04f4982b41288bbdf5e2258472641356549e7fd))
+
 ## [2.3.7](https://github.com/pycom/pymakr-atom/compare/v2.3.6...v2.3.7) (2022-04-06)
 
 
