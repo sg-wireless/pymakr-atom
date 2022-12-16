@@ -1,3 +1,84 @@
+## [2.3.7](https://github.com/pycom/pymakr-atom/compare/v2.3.6...v2.3.7) (2022-04-06)
+
+
+### Bug Fixes
+
+* npm couldn't install serialport at runtime ([501380e](https://github.com/pycom/pymakr-atom/commit/501380ef6c7ab3585c853d148da545b8798e9ce5))
+
+## [2.3.6](https://github.com/pycom/pymakr-atom/compare/v2.3.5...v2.3.6) (2022-04-06)
+
+
+### Bug Fixes
+
+* removed serialport from dependencies ([6e3d64e](https://github.com/pycom/pymakr-atom/commit/6e3d64e2da6898f563265f30abd00a25ac93afa5))
+
+## [2.3.5](https://github.com/pycom/pymakr-atom/compare/v2.3.4...v2.3.5) (2022-04-06)
+
+
+### Bug Fixes
+
+* install serialport from runtime code ([9c62cad](https://github.com/pycom/pymakr-atom/commit/9c62cad824184a7a379380f2998612ea5cbafa6a))
+
+## [2.3.4](https://github.com/pycom/pymakr-atom/compare/v2.3.3...v2.3.4) (2022-04-06)
+
+
+### Bug Fixes
+
+* use postinstall to install bindings with npm ([ff6635d](https://github.com/pycom/pymakr-atom/commit/ff6635dd0618134903d11bb9294a6f733f383c64))
+
+## [2.3.3](https://github.com/pycom/pymakr-atom/compare/v2.3.2...v2.3.3) (2022-04-05)
+
+
+### Bug Fixes
+
+* could not install dependencies on Unix ([aeeb5f4](https://github.com/pycom/pymakr-atom/commit/aeeb5f451ca788661e39f0a31aa16d35f0fbf858))
+
+## [2.3.2](https://github.com/pycom/pymakr-atom/compare/v2.3.1...v2.3.2) (2022-03-30)
+
+
+### Bug Fixes
+
+* disable fixbind (for now) ([6680eb8](https://github.com/pycom/pymakr-atom/commit/6680eb8bc2c2e63c3b42c983099a1b01e266be65))
+* Serialport API changed ([00ddc65](https://github.com/pycom/pymakr-atom/commit/00ddc65128c8e4d7e7aa065d8c882da8a554b302))
+
+## [2.3.1](https://github.com/pycom/pymakr-atom/compare/v2.3.0...v2.3.1) (2022-03-30)
+
+
+### Bug Fixes
+
+* update serialport package ([4181f10](https://github.com/pycom/pymakr-atom/commit/4181f10399c21ce49c08e699840998b241744cf5))
+* update serialport to v10 (beat) ([34780fe](https://github.com/pycom/pymakr-atom/commit/34780feb74e795f06c1b10a4e25cfdb986a7ebcb))
+
+# [2.3.0](https://github.com/pycom/pymakr-atom/compare/v2.2.2...v2.3.0) (2022-02-21)
+
+
+### Features
+
+* make max scrollback configurable ([f8cdbd5](https://github.com/pycom/pymakr-atom/commit/f8cdbd55d8bc9280935a46180d7223422eaa92c3))
+
+## [2.2.2](https://github.com/pycom/pymakr-atom/compare/v2.2.1...v2.2.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* removed deprecated "synchronize project" ([7df8f8a](https://github.com/pycom/pymakr-atom/commit/7df8f8a4f61d1b756170bbf25d5b3a7d6142412d))
+
+## [2.2.1](https://github.com/pycom/pymakr-atom/compare/v2.2.0...v2.2.1) (2022-01-13)
+
+
+### Bug Fixes
+
+* bindings fallbacks were limited to download ([9d3bfc7](https://github.com/pycom/pymakr-atom/commit/9d3bfc787a297df697f900bacced7f8e50788bf5))
+* bindings were broke ([dfda4c4](https://github.com/pycom/pymakr-atom/commit/dfda4c49f4ef179f930b243e03f7a9ef58ef3c3a))
+
+## [2.1.14] - 05.05.2021
+### Fixed
+* project improvements
+
+## [2.1.13] - 05.05.2021
+### Fixed
+* update bindings for mac and Linux
+
 ## [2.1.12] - 18.04.2021
 ### Fixed
 * update bindings for wind 32 to match new atom version
