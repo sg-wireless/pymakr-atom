@@ -1,63 +1,63 @@
-name: Build Pymakr
+# name: Build Pymakr
 
-on:
-  pull_request: ~
-  push:
-    branches-ignore:
-      - "dependabot/**"
-    paths-ignore:
-      - "doc/**"
-  schedule:
-    # Run everyday at 1am
-    - cron: "0 1 * * *"
+# on:
+#   pull_request: ~
+#   push:
+#     branches-ignore:
+#       - "dependabot/**"
+#     paths-ignore:
+#       - "doc/**"
+#   schedule:
+#     # Run everyday at 1am
+#     - cron: "0 1 * * *"
 
-jobs:
-  build:
-    name: "Build ${{ matrix.os }}"
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
-    steps:
-      - uses: actions/checkout@v1
+# jobs:
+#   build:
+#     name: "Build ${{ matrix.os }}"
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       matrix:
+#         os: [windows-latest, macos-latest, ubuntu-latest]
+#     steps:
+#       - uses: actions/checkout@v1
 
-      - name: Setup node
-        uses: actions/setup-node@v1.2.0
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-        with:
-          node-version: "10"
+#       - name: Setup node
+#         uses: actions/setup-node@v1.2.0
+#         env:
+#           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+#         with:
+#           node-version: "10"
 
-      - name: Fetch Electron Versions
-        id: electron
-        uses: ./.github/actions/fetch-electron-versions
-        with:
-          max-count: 3
-          git-token: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Fetch Electron Versions
+#         id: electron
+#         uses: ./.github/actions/fetch-electron-versions
+#         with:
+#           max-count: 3
+#           git-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install Dependencies
-        shell: bash
-        run: |
-          npm install npx
-          npm add prebuild-install --save-dev
-          npm install --no-audit
+#       - name: Install Dependencies
+#         shell: bash
+#         run: |
+#           npm install npx
+#           npm add prebuild-install --save-dev
+#           npm install --no-audit
 
-      #      todo: fix errors in running prebuild-install in Action runners
-      #      - name: Update Native Modules
-      #        run: npm run download-native
+#       #      todo: fix errors in running prebuild-install in Action runners
+#       #      - name: Update Native Modules
+#       #        run: npm run download-native
 
-      # TODO
-      # - name: Test Bindings
+#       # TODO
+#       # - name: Test Bindings
 
-      # generic all up electron test
-      - name: Test Bindings (macOS/Windows)
-        if: matrix.os != 'ubuntu-latest'
-        run: npm run test-electron -- ${{ steps.electron.outputs.versions }}
+#       # generic all up electron test
+#       - name: Test Bindings (macOS/Windows)
+#         if: matrix.os != 'ubuntu-latest'
+#         run: npm run test-electron -- ${{ steps.electron.outputs.versions }}
 
-      # electron tests with virtual x server
-      - name: Test Bindings (Linux)
-        if: matrix.os == 'ubuntu-latest'
-        run: xvfb-run -e /dev/stdout -a npm run test-electron -- ${{ steps.electron.outputs.versions }}
+#       # electron tests with virtual x server
+#       - name: Test Bindings (Linux)
+#         if: matrix.os == 'ubuntu-latest'
+#         run: xvfb-run -e /dev/stdout -a npm run test-electron -- ${{ steps.electron.outputs.versions }}
 
       # No tests written :(
       # - name: Run Tests
